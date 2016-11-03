@@ -16,7 +16,7 @@
 				//ce switch détermine la vue $vue et obtient le modèle $data
 				switch($params["action"])
 				{
-					
+					/*
 					case "afficheListeFilms":						
 						$this->afficheListeFilms();	
 						$this->afficheFormAjout();	
@@ -24,14 +24,13 @@
 										
 					default:
 						$this->afficheListeFilms();		
-						$this->afficheFormAjout();							
-				}					
+						$this->afficheFormAjout();	*/							
+				}				
 			}
 			else
 			{
 					//actions par défaut
-					$this->afficheListeFilms();		
-					$this->afficheFormAjout();		
+					$this->afficheVue("vuesArtistes");	
 			}
 			
 				
@@ -40,12 +39,12 @@
 		}
 		
 		
-		
+		/*
 		public function afficheFormAjout()
 		{
 			$modeleRealisateurs = new Modele_Realisateurs();
 			$data = $modeleRealisateurs->obtenirTous();
 			$this->afficheVue("FormAjoutFilmAjax", $data);	
-		}
+		}*/
 	}
 ?>

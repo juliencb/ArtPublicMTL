@@ -23,7 +23,7 @@
 			else
 			{	
 				//controleur par défaut
-				$classe = "Controleur_Films";
+				$classe = "Controleur_Usagers";
 				//$classe = "Controleur_Realisateurs";
 			}
 			//vérifier que la classe existe
