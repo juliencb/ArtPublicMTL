@@ -56,7 +56,7 @@
 			}
 		}
 
-		}
+		
 		
 		public function supprimer($valeur, $cle = null)
 		{

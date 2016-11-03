@@ -1,5 +1,5 @@
 <?php
-	define("RACINE", $_SERVER["DOCUMENT_ROOT"] . "/ProjetMVC-AJAX/");
+	define("RACINE", $_SERVER["DOCUMENT_ROOT"] . "/ArtPublicMtl/");
 	define("RACINEWEB", "http://" . $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . "/ProjetMVC-AJAX/");
 	
 	

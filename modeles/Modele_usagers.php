@@ -3,7 +3,7 @@
 	{
 		public function getTable()
 		{
-			return "usagers";
+			return "oeuvre";
 		}
 
 		public function insereRealisateur($prenom, $nom, $bio)
