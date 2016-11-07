@@ -20,6 +20,7 @@
 			}
 		}
 		
+
         //selects toutes les données utiles pour faire la création des selectes de la recherche avancée
         public function optionsSelects()
         {

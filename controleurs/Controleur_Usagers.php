@@ -2,7 +2,11 @@
 	class Controleur_Usagers extends BaseControleur
 	{
 	
+<<<<<<< HEAD
 		//la fonction qui sera appelÃ©e par le routeur
+=======
+		//la fonction qui sera appelée par le routeur
+>>>>>>> b4ecc2583e7d4d92c0898063955483724ea16963
 		public function traite(array $params)
 		{
 			//affichage du header
@@ -10,6 +14,7 @@
 			
 			if(isset($params["action"]))
 			{
+<<<<<<< HEAD
 				//modÃ¨le et vue vides par dÃ©faut
 				$vue = "";
 				//switch en fonction de l'action qui nous est envoyÃ©e
@@ -52,5 +57,44 @@
 		}
 		
 		
+=======
+				//modèle et vue vides par défaut
+				$vue = "";
+				//switch en fonction de l'action qui nous est envoyée
+				//ce switch détermine la vue $vue et obtient le modèle $data
+				switch($params["action"])
+				{
+					
+					case "afficheListeFilms":						
+						$this->afficheListeFilms();	
+						$this->afficheFormAjout();	
+						break;
+										
+					default:
+						$this->afficheListeFilms();		
+						$this->afficheFormAjout();							
+				}					
+			}
+			else
+			{
+					//actions par défaut
+					$this->afficheListeFilms();		
+					$this->afficheFormAjout();		
+			}
+			
+				
+			//inclusion du footer dans le cas d'une requête qui n'est pas AJAX
+			$this->afficheVue("footer");
+		}
+		
+		
+		
+		public function afficheFormAjout()
+		{
+			$modeleRealisateurs = new Modele_Realisateurs();
+			$data = $modeleRealisateurs->obtenirTous();
+			$this->afficheVue("FormAjoutFilmAjax", $data);	
+		}
+>>>>>>> b4ecc2583e7d4d92c0898063955483724ea16963
 	}
 ?>
