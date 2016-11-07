@@ -1,4 +1,5 @@
 <html>
+    <meta charset="utf-8">
 <head>
 	<link rel="stylesheet" href="css/main.css"/>
 	<link rel="stylesheet" href="css/base_h5bp.css"/>
