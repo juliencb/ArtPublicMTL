@@ -24,12 +24,14 @@
                                      $coordonneeLongitude, 
                                      $numeroAccession, 
                                      $description, 
-                                     $urlImage
+                                     $urlImage,
+                                     $categorie,
+                                     $arrondissement
                                      )
 		{		
 			try
 			{
-				$stmt = $this->connexion->prepare("INSERT INTO `oeuvre` (`noInterne`, `titre`, `titreVariante`, `nomCollection`, `categorieObjet`, `modeAcquisition`, `dateAccession`, `materiaux`, `support`, `technique`, `dimensionsGenerales`, `parc`, `batiment`, `adresseCivique`, `coordonneeLatitude`, `coordonneeLongitude`, `numeroAccession`, `description`, `urlImage`) VALUES (:noInterne, :titre, :titreVariante, :nomCollection, :categorieObjet, :modeAcquisition, :dateAccession, :materiaux, :support, :technique, :dimensionsGenerales, :parc, :batiment, :adresseCivique, :coordonneeLatitude, :coordonneeLongitude, :numeroAccession, :description, :urlImage)");
+				$stmt = $this->connexion->prepare("INSERT INTO `oeuvre` (`noInterne`, `titre`, `titreVariante`, `nomCollection`, `categorieObjet`, `modeAcquisition`, `dateAccession`, `materiaux`, `support`, `technique`, `dimensionsGenerales`, `parc`, `batiment`, `adresseCivique`, `coordonneeLatitude`, `coordonneeLongitude`, `numeroAccession`, `description`, `urlImage`, `categorie`, `arrondissement`) VALUES (:noInterne, :titre, :titreVariante, :nomCollection, :categorieObjet, :modeAcquisition, :dateAccession, :materiaux, :support, :technique, :dimensionsGenerales, :parc, :batiment, :adresseCivique, :coordonneeLatitude, :coordonneeLongitude, :numeroAccession, :description, :urlImage, :categorie, :arrondissement)");
 				$stmt->execute(array("noInterne" => $noInterne, 
                                      ":titre" => $titre, 
                                      ":titreVariante" => $titreVariante, 
@@ -48,7 +50,10 @@
                                      ":coordonneeLongitude" => $coordonneeLongitude, 
                                      ":numeroAccession" => $numeroAccession, 
                                      ":description" => $description, 
-                                     ":urlImage" => $urlImage
+                                     ":urlImage" => $urlImage,
+                                     ":categorie" => $categorie,
+                                     ":arrondissement" => $arrondissement
+                                     
                                      ));
 				return 1;
 			}	
@@ -165,19 +170,7 @@
 			}
 		}
         
-        public function lienOeuvreCategorie($idOeuvre, $categorie)
-		{		
-			try
-			{
-				$stmt = $this->connexion->prepare("INSERT INTO `oeuvrecategorie` (`idOeuvre`, `nomCategorie`) VALUES (:idOeuvre, :categorie)");
-				$stmt->execute(array(":idOeuvre" => $idOeuvre, ":categorie" => $categorie));
-				return 1;
-			}	
-			catch(Exception $exc)
-			{
-				return 0;
-			}
-		}
+      
       
 	}
 ?>

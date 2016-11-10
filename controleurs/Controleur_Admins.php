@@ -26,9 +26,7 @@
 					case "lienOeuvreArrondissement":
 						$this->lienOeuvreArrondissement();
 						break;	
-                    case "lienOeuvreCategorie":
-						$this->lienOeuvreCate();
-						break;
+                   
                   
 					default:
 						echo "ERROR";		
@@ -53,7 +51,7 @@
 				$titreVariante       = utf8_decode($fichierJSON_decode[$i]->TitreVariante);
 				$nomCollection       = utf8_decode($fichierJSON_decode[$i]->NomCollection);
 				$categorieObjet      = utf8_decode($fichierJSON_decode[$i]->CategorieObjet);
-				$sousCategorieObjet  = utf8_decode($fichierJSON_decode[$i]->SousCategorieObjet);
+				$categorie           = utf8_decode($fichierJSON_decode[$i]->SousCategorieObjet);
 				$modeAcquisition     = utf8_decode($fichierJSON_decode[$i]->ModeAcquisition);
 				$dateAccession       = utf8_decode($fichierJSON_decode[$i]->DateAccession);
 				$materiaux           = utf8_decode($fichierJSON_decode[$i]->Materiaux);
@@ -66,6 +64,7 @@
 				$coordonneeLatitude  = utf8_decode($fichierJSON_decode[$i]->CoordonneeLatitude);
 				$coordonneeLongitude = utf8_decode($fichierJSON_decode[$i]->CoordonneeLongitude);
 				$numeroAccession     = utf8_decode($fichierJSON_decode[$i]->NumeroAccession);
+				$arrondissement      = utf8_decode($fichierJSON_decode[$i]->Arrondissement);
 				$description         = "";
 				$urlImage            = "";
 			  
@@ -88,20 +87,24 @@
 					$coordonneeLongitude, 
 					$numeroAccession, 
 					$description, 
-					$urlImage
+					$urlImage,
+                    $categorie,
+                    $arrondissement
 				);
 				
 				 $noInterneArtiste  =utf8_decode($fichierJSON_decode[$i]->Artistes[0]->NoInterne);
 				 $prenom            =utf8_decode($fichierJSON_decode[$i]->Artistes[0]->Prenom);
 				 $nom               =utf8_decode($fichierJSON_decode[$i]->Artistes[0]->Nom);
 				 $nomCollectif      =utf8_decode($fichierJSON_decode[$i]->Artistes[0]->NomCollectif);
-				 $modeleAdmins->insereArtiste($noInterneArtiste, $nom, $prenom, $nomCollectif);
+				 $modeleAdmins->insereArtiste($noInterneArtiste, $nom, $prenom, $nomCollectif);*/
                 
-				 $modeleAdmins->insereCategorie($sousCategorieObjet);
+				 $modeleAdmins->insereCategorie($categorie);
+                
                 
                 
                 
 			}
+               
 		} // fin de la fonction importeOeuvreArtiste
 		
 		
@@ -148,19 +151,7 @@
 			}
 		} // fin de la fonction lienOeuvreArrondissement
 		
-			public function lienOeuvreCate()
-		{
-			$modeleAdmins = new Modele_admins();
-			$fichierJSON = file_get_contents('http://donnees.ville.montreal.qc.ca/dataset/2980db3a-9eb4-4c0e-b7c6-a6584cb769c9/resource/18705524-c8a6-49a0-bca7-92f493e6d329/download/oeuvresdonneesouvertes.json');
-			$fichierJSON_decode = JSON_decode($fichierJSON);
-			$compteur = count($fichierJSON_decode);
-			for($i = 0; $i < $compteur; $i++){
-				$oeuvreCategorie = utf8_decode($fichierJSON_decode[$i]->SousCategorieObjet);
-				$noInterneOeuvre	 =utf8_decode( $fichierJSON_decode[$i]->NoInterne);
-				$idOeuvre = $modeleAdmins->getIdSelonNoInterneO($noInterneOeuvre);
-				$modeleAdmins->lienOeuvreCategorie($idOeuvre["id"], $oeuvreCategorie);
-			}
-		} // fin de la fonction lienOeuvreCate
+		
         
        
 		
