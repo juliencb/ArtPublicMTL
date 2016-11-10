@@ -56,11 +56,6 @@
 				return false;
 			}
 		}
-
-<<<<<<< HEAD
-=======
-		}
->>>>>>> b4ecc2583e7d4d92c0898063955483724ea16963
 		
 		public function supprimer($valeur, $cle = null)
 		{

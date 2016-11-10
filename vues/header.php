@@ -13,10 +13,6 @@
     </style>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
-	
-<?php	
-
-?>
 </head>
 
 <body>
@@ -24,8 +20,15 @@
 	<div id ="global">
 		
 		<!--Debut Section ENTÊTE-->
-		<section class ="entete">
-			<div id="logo"><img src="images/logo.png"/></div>
+		<header class ="entete">
+			<a href="index.php">
+				<img id="logo" src="images/logo.png"/ alt="logo" >
+			</a>
+			<div id="reseauxSociaux">
+				<span = class "icones" id="reseauFacebook"><a href="#" >facebook</a></span>
+				<span = class "icones" id="reseauTwitter"><a href="#" >twitter</a></span>
+				<span = class "icones" id="reaseauInstagram"><a href="#" >instagram</a></span>
+			<div>			
 			<nav id="menu">
 				<ul>
 					<li><a href="index.php?Usagers&action=afficheListeOeuvres">Oeuvres</a></li>
@@ -33,7 +36,7 @@
 					<li><a href="#">À Propos</a></li>
 				</ul>
 			</nav>
-		</section>
+		</header>
 		<!--fin Section ENTÊTE-->
 		
 		<br/>

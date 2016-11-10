@@ -1,8 +1,4 @@
 <?php
-<<<<<<< HEAD
-	/*define("RACINE", $_SERVER["DOCUMENT_ROOT"] . "/ProjetMVC-AJAX/");
-	define("RACINEWEB", "http://" . $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . "/ProjetMVC-AJAX/");
-	*/
 	
 	function __autoload($classe)
 	{

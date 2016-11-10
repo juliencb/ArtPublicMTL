@@ -2,49 +2,45 @@
 	class Controleur_Usagers extends BaseControleur
 	{
 	
-<<<<<<< HEAD
-		//la fonction qui sera appelée par le routeur
-=======
-		//la fonction qui sera appel�e par le routeur
->>>>>>> b4ecc2583e7d4d92c0898063955483724ea16963
+
+		///--la fonction qui sera appelée par le routeur--///
+
 		public function traite(array $params)
 		{
-			//affichage du header
+			///--affichage du header--///
 			$this->afficheVue("header");
 			
 			if(isset($params["action"]))
 			{
-<<<<<<< HEAD
-				//modèle et vue vides par défaut
+				///--modÃ¨le et vue vides par dÃ©faut--///
 				$vue = "";
-				//switch en fonction de l'action qui nous est envoyée
-				//ce switch détermine la vue $vue et obtient le modèle $data
+				//--switch en fonction de l'action qui nous est envoyÃ©e--//
+				///--ce switch dÃ©termine la vue $vue et obtient le modÃ¨le $data--///
 				switch($params["action"])
 				{
-					//cette action permet d'afficher la liste de tous les oeuvres avec le nom de artiste
-					case "afficheListeOeuvres":						
-						$this->afficheListeOeuvres();	
+					///--cette action permet d'afficher la liste de tous les oeuvres avec le nom de artiste--///
+					case "afficheListeOeuvres":
+						$this->afficheListeCateogires();					
+						$this->afficheListeArrondissements();					
+						$this->afficheListeOeuvres();
+											
 						break;
 										
 					default:
 						$this->afficheListeOeuvres();		
-						//$this->afficheFormAjout();
 	
 				}
-					
+				
+				
 			}
 			else
 			{
-					//actions par défaut
-					//$this->afficheOptionArtistes();		
-					//$this->afficheOptionArrondissements();
-                    //$this->afficheOptionSelectes();
-					//$this->afficheOptionCategories();
-				    //$this->afficheVue("pageAccueil",$data);					
+					///--actions par dÃ©faut--///
+				    $this->afficheVue("pageAccueil","");					
 			}
 			
 				
-			//inclusion du footer dans le cas d'une requête qui n'est pas AJAX
+			///--inclusion du footer dans le cas d'une requÃªte qui n'est pas AJAX--///
 			$this->afficheVue("footer");
 		}
 		
@@ -56,45 +52,20 @@
 			$this->afficheVue("vueOeuvres", $data);
 		}
 		
-		
-=======
-				//mod�le et vue vides par d�faut
-				$vue = "";
-				//switch en fonction de l'action qui nous est envoy�e
-				//ce switch d�termine la vue $vue et obtient le mod�le $data
-				switch($params["action"])
-				{
-					
-					case "afficheListeFilms":						
-						$this->afficheListeFilms();	
-						$this->afficheFormAjout();	
-						break;
-										
-					default:
-						$this->afficheListeFilms();		
-						$this->afficheFormAjout();							
-				}					
-			}
-			else
-			{
-					//actions par d�faut
-					$this->afficheListeFilms();		
-					$this->afficheFormAjout();		
-			}
-			
-				
-			//inclusion du footer dans le cas d'une requ�te qui n'est pas AJAX
-			$this->afficheVue("footer");
-		}
-		
-		
-		
-		public function afficheFormAjout()
+		///--fonction permet d'affiche la liste des categories--///	
+		public function afficheListeCateogires()
 		{
-			$modeleRealisateurs = new Modele_Realisateurs();
-			$data = $modeleRealisateurs->obtenirTous();
-			$this->afficheVue("FormAjoutFilmAjax", $data);	
+			$modeleCategories= new Modele_Categories();
+			$data = $modeleCategories->obtenirTous();
+			$this->afficheVue("vueOptionCategories", $data);
 		}
->>>>>>> b4ecc2583e7d4d92c0898063955483724ea16963
+		
+		///--fonction permet d'affiche la liste des arrondissements--///
+		public function afficheListeArrondissements()
+		{
+			$modeleArrondissements= new Modele_Arrondissements();
+			$data= $modeleArrondissements->obtenirTous();
+			$this->afficheVue("vueOptionArrondissement", $data);
+		}
 	}
 ?>

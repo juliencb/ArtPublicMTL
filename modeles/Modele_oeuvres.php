@@ -39,7 +39,7 @@
 			{	
 						
 				$stmt = $this->connexion->prepare("SELECT oeuvre.id, titre, titreVariante, nomCollection, 
-													categorieObjet,sousCategorieObjet,modeAcquisition,dateAccession,
+													categorieObjet,modeAcquisition,dateAccession,
 													materiaux,support,technique,dimensionsGenerales,parc,batiment,
 													adresseCivique,coordonneeLatitude,coordonneeLongitude,description,
 													urlImage,arrondissement,categorie, Concat(artiste.prenom,' ',artiste.nom)AS nomArtiste 
