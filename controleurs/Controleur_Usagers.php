@@ -17,6 +17,7 @@
 				switch($params["action"])
 				{
 					
+
 					case "afficheDetails":
 						if(isset($params["id"])){
 							$this->afficheDetails($params["id"]);	
@@ -27,6 +28,7 @@
 						break;
 										
 					default:
+
 						$this->afficheDetails($params["id"]);		
 											
 				}					
@@ -50,6 +52,7 @@
 			$modeleUsagers = new Modele_Usagers();
 			$data = $modeleUsagers->nomOeuvre($id);
 			$this->afficheVue("AfficheDetails", $data);
+
 		}
 	}
 ?>

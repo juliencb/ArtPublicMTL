@@ -1,3 +1,4 @@
+
 ﻿
 <div id="affichedata">
 	<h1>Affichage des détails de l'oeuvre</h1>
@@ -33,5 +34,4 @@
 				
 				
 
-	
 </div>
