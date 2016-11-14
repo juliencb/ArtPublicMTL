@@ -1,6 +1,6 @@
 <?php
-	define("RACINE", $_SERVER["DOCUMENT_ROOT"] . "/ProjetMVC-AJAX/");
-	define("RACINEWEB", "http://" . $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . "/ProjetMVC-AJAX/");
+	define("RACINE", $_SERVER["DOCUMENT_ROOT"] . "/ArtPublicMTL/");
+	define("RACINEWEB", "http://" . $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . "/ArtPublicMTL/");
 	
 	
 	function __autoload($classe)

@@ -1,0 +1,39 @@
+/*css page d'artistes*/
+.contenu #zoneMontreeDeLaPage {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.contenu #zoneMontreeDeLaPage aside {
+  width: 30%;
+  height: 600px;
+  margin-left: 2%;
+  border: 1px solid black;
+}
+.contenu #zoneMontreeDeLaPage #artistes {
+  border: 1px solid black;
+}
+.contenu #zoneMontreeDeLaPage #artistes #menuArtistes ul {
+  list-style: none;
+}
+.contenu #zoneMontreeDeLaPage #artistes #menuArtistes ul li {
+  display: inline;
+  margin-left: -5px;
+}
+.contenu #zoneCacheDeLArtiste {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border: 1px solid black;
+  width: 60%;
+  position: absolute;
+  top: 410px;
+  left: 380px;
+}
+.contenu #zoneCacheDeLArtiste #listeArtistes,
+.contenu #zoneCacheDeLArtiste #detailDeLArtiste {
+  border: 1px solid black;
+  height: 430px;
+  margin: 5px;
+  padding: 5PX;
+}

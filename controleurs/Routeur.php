@@ -3,9 +3,6 @@
 	{
 		public static function route()
 		{
-			//obtenir le controleur qui devra traiter la requête
-			//$controleur = $_REQUEST["controleur"];
-			
 			//obtenir la query string
 			$chaineRequete = $_SERVER["QUERY_STRING"];
 			$posEperluette = strpos($chaineRequete, "&");
@@ -19,12 +16,13 @@
 			{
 				//chercher la classe du controleur
 				$classe = "Controleur_" . $controleur;
+				
 			}
 			else
 			{	
 				//controleur par défaut
-				$classe = "Controleur_Films";
-				//$classe = "Controleur_Realisateurs";
+				$classe = "Controleur_Public";
+				
 			}
 			//vérifier que la classe existe
 			if(class_exists($classe))
