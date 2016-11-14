@@ -6,7 +6,7 @@
 		public function traite(array $params)
 		{
 			//affichage du header
-			$this->afficheVue("header");
+			//$this->afficheVue("header");
 			
 			if(isset($params["action"]))
 			{
@@ -17,35 +17,39 @@
 				switch($params["action"])
 				{
 					
-					case "afficheListeFilms":						
-						$this->afficheListeFilms();	
-						$this->afficheFormAjout();	
+					case "afficheDetails":
+						if(isset($params["id"])){
+							$this->afficheDetails($params["id"]);	
+						
+						}
+					
+							
 						break;
 										
 					default:
-						$this->afficheListeFilms();		
-						$this->afficheFormAjout();							
+						$this->afficheDetails($params["id"]);		
+											
 				}					
 			}
 			else
 			{
 					//actions par défaut
-					$this->afficheListeFilms();		
-					$this->afficheFormAjout();		
+					//$this->afficheDetails();			
+					//$this->afficheFormAjout();*/		
 			}
 			
 				
 			//inclusion du footer dans le cas d'une requête qui n'est pas AJAX
-			$this->afficheVue("footer");
+			//$this->afficheVue("footer");
 		}
 		
 		
 		
-		public function afficheFormAjout()
+		public function afficheDetails($id)
 		{
-			$modeleRealisateurs = new Modele_Realisateurs();
-			$data = $modeleRealisateurs->obtenirTous();
-			$this->afficheVue("FormAjoutFilmAjax", $data);	
+			$modeleUsagers = new Modele_Usagers();
+			$data = $modeleUsagers->nomOeuvre($id);
+			$this->afficheVue("AfficheDetails", $data);
 		}
 	}
 ?>

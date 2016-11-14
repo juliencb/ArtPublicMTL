@@ -3,22 +3,28 @@
 	{
 		public function getTable()
 		{
-			return "usagers";
+			return "oeuvre";
 		}
+		
 
-		public function insereRealisateur($prenom, $nom, $bio)
+		public function nomOeuvre($id)
 		{		
 			try
 			{
-				$stmt = $this->connexion->prepare("insert into realisateurs(prenom, nom, bio) values (:prenom, :nom, :bio)");
-				$stmt->execute(array(":prenom" => $prenom, ":nom" => $nom, ":bio" => $bio));
-				return 1;
+				$stmt = $this->connexion->prepare("select oeuvre.titre,oeuvre.categorieObjet,oeuvre.categorie,oeuvre.parc,oeuvre.materiaux,oeuvre.adresseCivique,oeuvre.urlImage,artiste.nom,artiste.prenom 
+				from oeuvre join oeuvreartiste on oeuvre.id = oeuvreartiste.idOeuvre
+				join artiste on oeuvreartiste.idArtiste = artiste.id where oeuvre.id = :id");
+				
+				$stmt->execute(array(":id" => $id));
+				return $stmt->fetch();
+				
 			}	
 			catch(Exception $exc)
 			{
 				return 0;
 			}
 		}
+		
 		
 	}
 ?>
