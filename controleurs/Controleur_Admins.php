@@ -13,8 +13,9 @@
 				//ce switch détermine la vue $vue et obtient le modèle $data
 				switch($params["action"])
 				{			
+                   
                     case "importation":
-                    case "importation":
+						//$this->importeArrondissements();
 						$this->importeOeuvreArtiste();
 						break;									
                     case "importationArrondissements":
@@ -22,12 +23,7 @@
 						break;	
 					case "lienArtisteOeuvre":
 						$this->lienArtisteOeuvre();
-						break;	
-					case "lienOeuvreArrondissement":
-						$this->lienOeuvreArrondissement();
-						break;	
-                   
-                  
+						break;	  
 					default:
 						echo "ERROR";		
 				}						
@@ -43,31 +39,40 @@
 		{
 			$modeleAdmins = new Modele_admins();
 			$fichierJSON = file_get_contents('http://donnees.ville.montreal.qc.ca/dataset/2980db3a-9eb4-4c0e-b7c6-a6584cb769c9/resource/18705524-c8a6-49a0-bca7-92f493e6d329/download/oeuvresdonneesouvertes.json');
-			$fichierJSON_decode = JSON_decode($fichierJSON);
-			$compteur = count($fichierJSON_decode);
+			$fichierJSON_decode = JSON_decode($fichierJSON, true);
+            
+			/*foreach($fichierJSON_decode as $oeuvre)
+            {
+                extract($oeuvre);
+                var_dump($NoInterne);
+            }*/
+            $compteur = count($fichierJSON_decode);
 			for($i = 0; $i < $compteur; $i++){
 				$noInterne			 = $fichierJSON_decode[$i]->NoInterne;
-				$titre 				 = utf8_decode($fichierJSON_decode[$i]->Titre);
-				$titreVariante       = utf8_decode($fichierJSON_decode[$i]->TitreVariante);
-				$nomCollection       = utf8_decode($fichierJSON_decode[$i]->NomCollection);
-				$categorieObjet      = utf8_decode($fichierJSON_decode[$i]->CategorieObjet);
-				$categorie           = utf8_decode($fichierJSON_decode[$i]->SousCategorieObjet);
-				$modeAcquisition     = utf8_decode($fichierJSON_decode[$i]->ModeAcquisition);
-				$dateAccession       = utf8_decode($fichierJSON_decode[$i]->DateAccession);
-				$materiaux           = utf8_decode($fichierJSON_decode[$i]->Materiaux);
-				$support             = utf8_decode($fichierJSON_decode[$i]->Support);
-				$technique           = utf8_decode($fichierJSON_decode[$i]->Technique);
-				$dimensionsGenerales = utf8_decode($fichierJSON_decode[$i]->DimensionsGenerales);
-				$parc                = utf8_decode($fichierJSON_decode[$i]->Parc);
-				$batiment            = utf8_decode($fichierJSON_decode[$i]->Batiment);
-				$adresseCivique      = utf8_decode($fichierJSON_decode[$i]->AdresseCivique);
-				$coordonneeLatitude  = utf8_decode($fichierJSON_decode[$i]->CoordonneeLatitude);
-				$coordonneeLongitude = utf8_decode($fichierJSON_decode[$i]->CoordonneeLongitude);
-				$numeroAccession     = utf8_decode($fichierJSON_decode[$i]->NumeroAccession);
-				$arrondissement      = utf8_decode($fichierJSON_decode[$i]->Arrondissement);
+				$titre 				 = $fichierJSON_decode[$i]->Titre;
+				$titreVariante       = $fichierJSON_decode[$i]->TitreVariante;
+				$nomCollection       = $fichierJSON_decode[$i]->NomCollection;
+				$categorieObjet      = $fichierJSON_decode[$i]->CategorieObjet;
+				$categorie           = $fichierJSON_decode[$i]->SousCategorieObjet;
+				$modeAcquisition     = $fichierJSON_decode[$i]->ModeAcquisition;
+				$dateAccession       = $fichierJSON_decode[$i]->DateAccession;
+				$materiaux           = $fichierJSON_decode[$i]->Materiaux;
+				$support             = $fichierJSON_decode[$i]->Support;
+				$technique           = $fichierJSON_decode[$i]->Technique;
+				$dimensionsGenerales = $fichierJSON_decode[$i]->DimensionsGenerales;
+				$parc                = $fichierJSON_decode[$i]->Parc;
+				$batiment            = $fichierJSON_decode[$i]->Batiment;
+				$adresseCivique      = $fichierJSON_decode[$i]->AdresseCivique;
+				$coordonneeLatitude  = $fichierJSON_decode[$i]->CoordonneeLatitude;
+				$coordonneeLongitude = $fichierJSON_decode[$i]->CoordonneeLongitude;
+				$numeroAccession     = $fichierJSON_decode[$i]->NumeroAccession;
+				$arrondissement      = $fichierJSON_decode[$i]->Arrondissement;
 				$description         = "";
 				$urlImage            = "";
 			  
+                
+                $modeleAdmins->insereCategorie($categorie);
+                
 				$modeleAdmins->insereOeuvre( 
 					$noInterne, 
 					$titre, 
@@ -92,13 +97,15 @@
                     $arrondissement
 				);
 				
-				 $noInterneArtiste  =utf8_decode($fichierJSON_decode[$i]->Artistes[0]->NoInterne);
-				 $prenom            =utf8_decode($fichierJSON_decode[$i]->Artistes[0]->Prenom);
-				 $nom               =utf8_decode($fichierJSON_decode[$i]->Artistes[0]->Nom);
-				 $nomCollectif      =utf8_decode($fichierJSON_decode[$i]->Artistes[0]->NomCollectif);
-				 $modeleAdmins->insereArtiste($noInterneArtiste, $nom, $prenom, $nomCollectif);*/
+				
+                 $noInterneArtiste  =$fichierJSON_decode[$i]->Artistes[0]->NoInterne;
+				 $prenom            =$fichierJSON_decode[$i]->Artistes[0]->Prenom;
+				 $nom               =$fichierJSON_decode[$i]->Artistes[0]->Nom;
+				 $nomCollectif      =$fichierJSON_decode[$i]->Artistes[0]->NomCollectif;
+				 $modeleAdmins->insereArtiste($noInterneArtiste, $nom, $prenom, $nomCollectif);
                 
 				 $modeleAdmins->insereCategorie($categorie);
+                 
                 
                 
                 
@@ -116,7 +123,7 @@
 			$compteur = count($arron_decode->features);
 			for($i = 0; $i < $compteur; $i++){
 				$ville = $arron_decode->features[$i]->properties->NOM;
-				$modeleAdmins->insereArrondissement(utf8_decode($ville));
+				$modeleAdmins->insereArrondissement($ville);
 			}	
 		} // fin de la fonction importeArrondissements
 		
@@ -128,8 +135,8 @@
 			$fichierJSON_decode = JSON_decode($fichierJSON);
 			$compteur = count($fichierJSON_decode);
 			for($i = 0; $i < $compteur; $i++){
-				$noInterneOeuvre	 =utf8_decode( $fichierJSON_decode[$i]->NoInterne);
-				$noInterneArtiste    =utf8_decode( $fichierJSON_decode[$i]->Artistes[0]->NoInterne);
+				$noInterneOeuvre	 =$fichierJSON_decode[$i]->NoInterne;
+				$noInterneArtiste    =$fichierJSON_decode[$i]->Artistes[0]->NoInterne;
 				$idOeuvre = $modeleAdmins->getIdSelonNoInterneO($noInterneOeuvre);
 				$idArtiste = $modeleAdmins->getIdSelonNoInterneA($noInterneArtiste);			
 				$modeleAdmins->insereLiens($idOeuvre["id"], $idArtiste["id"]);
@@ -137,7 +144,7 @@
 		} // fin de la fonction lienArtisteOeuvre
 		
 		
-		public function lienOeuvreArrondissement()
+		/*public function lienOeuvreArrondissement()
 		{
 			$modeleAdmins = new Modele_admins();
 			$fichierJSON = file_get_contents('http://donnees.ville.montreal.qc.ca/dataset/2980db3a-9eb4-4c0e-b7c6-a6584cb769c9/resource/18705524-c8a6-49a0-bca7-92f493e6d329/download/oeuvresdonneesouvertes.json');
@@ -149,7 +156,7 @@
 				$idOeuvre = $modeleAdmins->getIdSelonNoInterneO($noInterneOeuvre);
 				$modeleAdmins->lienOeuvreArron($idOeuvre["id"], $oeuvreArrondissement);
 			}
-		} // fin de la fonction lienOeuvreArrondissement
+		} // fin de la fonction lienOeuvreArrondissement*/
 		
 		
         
