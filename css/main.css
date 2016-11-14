@@ -1,4 +1,53 @@
-/*CSS principal du site*/
-img {
-  width: 30%;
+/*** CSS PAGE ACCEUIL  ***/
+body{
+    
 }
+.entete{
+	background-color: grey;
+	
+}
+#global{
+    /*background-image:url('../images/7977_7985.jpg');
+	 background-repeat: no-repeat;
+	 margin: 5px;
+	 padding: 10px;*/
+}
+#logo{
+	height: auto; 
+    width: 15%; 
+    max-width: 300px; 
+    max-height:300px;
+	
+}
+.photo{
+	height: auto; 
+    width: auto; 
+    max-width: 300px; 
+    max-height: 300px;
+}
+/*------menu-----*/
+menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    /*background-color: #333;*/
+}
+
+menu li {
+    float: left;
+}
+
+menu li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+menu li a:hover {
+    background-color: #111;
+}
+/*-------------*/
+/**FIN PAGE ACCEUIL**/
