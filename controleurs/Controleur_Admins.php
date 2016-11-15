@@ -15,15 +15,10 @@
 				{			
                    
                     case "importation":
-						//$this->importeArrondissements();
-						$this->importeOeuvreArtiste();
-						break;									
-                    case "importationArrondissements":
 						$this->importeArrondissements();
-						break;	
-					case "lienArtisteOeuvre":
+						$this->importeOeuvreArtiste();
 						$this->lienArtisteOeuvre();
-						break;	  
+						break;									  
 					default:
 						echo "ERROR";		
 				}						
@@ -39,15 +34,20 @@
 		{
 			$modeleAdmins = new Modele_admins();
 			$fichierJSON = file_get_contents('http://donnees.ville.montreal.qc.ca/dataset/2980db3a-9eb4-4c0e-b7c6-a6584cb769c9/resource/18705524-c8a6-49a0-bca7-92f493e6d329/download/oeuvresdonneesouvertes.json');
-			$fichierJSON_decode = JSON_decode($fichierJSON, true);
+			$fichierJSON_decode = JSON_decode($fichierJSON);
             
-			/*foreach($fichierJSON_decode as $oeuvre)
-            {
-                extract($oeuvre);
-                var_dump($NoInterne);
-            }*/
+            
             $compteur = count($fichierJSON_decode);
 			for($i = 0; $i < $compteur; $i++){
+            
+            //table artiste
+            $noInterneArtiste  =$fichierJSON_decode[$i]->Artistes[0]->NoInterne;
+            $prenom            =$fichierJSON_decode[$i]->Artistes[0]->Prenom;
+            $nom               =$fichierJSON_decode[$i]->Artistes[0]->Nom;
+            $nomCollectif      =$fichierJSON_decode[$i]->Artistes[0]->NomCollectif;
+            $modeleAdmins->insereArtiste($noInterneArtiste, $nom, $prenom, $nomCollectif);
+
+            
 				$noInterne			 = $fichierJSON_decode[$i]->NoInterne;
 				$titre 				 = $fichierJSON_decode[$i]->Titre;
 				$titreVariante       = $fichierJSON_decode[$i]->TitreVariante;
@@ -70,9 +70,11 @@
 				$description         = "";
 				$urlImage            = "";
 			  
-                
+                //table catégorie
                 $modeleAdmins->insereCategorie($categorie);
                 
+                
+                // table oeuvre, APRÈS la table catégorie et la table arrondissement
 				$modeleAdmins->insereOeuvre( 
 					$noInterne, 
 					$titre, 
@@ -97,18 +99,14 @@
                     $arrondissement
 				);
 				
-				
+				//table artiste
                  $noInterneArtiste  =$fichierJSON_decode[$i]->Artistes[0]->NoInterne;
 				 $prenom            =$fichierJSON_decode[$i]->Artistes[0]->Prenom;
 				 $nom               =$fichierJSON_decode[$i]->Artistes[0]->Nom;
 				 $nomCollectif      =$fichierJSON_decode[$i]->Artistes[0]->NomCollectif;
 				 $modeleAdmins->insereArtiste($noInterneArtiste, $nom, $prenom, $nomCollectif);
-                
-				 $modeleAdmins->insereCategorie($categorie);
+              
                  
-                
-                
-                
                 
 			}
                
@@ -143,24 +141,7 @@
 			}
 		} // fin de la fonction lienArtisteOeuvre
 		
-		
-		/*public function lienOeuvreArrondissement()
-		{
-			$modeleAdmins = new Modele_admins();
-			$fichierJSON = file_get_contents('http://donnees.ville.montreal.qc.ca/dataset/2980db3a-9eb4-4c0e-b7c6-a6584cb769c9/resource/18705524-c8a6-49a0-bca7-92f493e6d329/download/oeuvresdonneesouvertes.json');
-			$fichierJSON_decode = JSON_decode($fichierJSON);
-			$compteur = count($fichierJSON_decode);
-			for($i = 0; $i < $compteur; $i++){
-				$oeuvreArrondissement =$fichierJSON_decode[$i]->Arrondissement;
-				$noInterneOeuvre	 =utf8_decode( $fichierJSON_decode[$i]->NoInterne);
-				$idOeuvre = $modeleAdmins->getIdSelonNoInterneO($noInterneOeuvre);
-				$modeleAdmins->lienOeuvreArron($idOeuvre["id"], $oeuvreArrondissement);
-			}
-		} // fin de la fonction lienOeuvreArrondissement*/
-		
-		
-        
-       
+	
 		
 	}
 ?>
