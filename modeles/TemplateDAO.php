@@ -19,7 +19,7 @@
 			}
 			catch(Exception $exc)
 			{
-				die("Connexion à la base de données impossible.");
+				die("Connexion ï¿½ la base de donnï¿½es impossible.");
 			}
 		}
 	
@@ -58,7 +58,7 @@
 
 		}
 		
-		public function supprimer($valeur, $cle = null)
+		/*public function supprimer($valeur, $cle = null)
 		{
 			try
 			{
@@ -78,5 +78,5 @@
 		}
 	
 	
-	}
+	}*/
 ?>

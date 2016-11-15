@@ -5,9 +5,9 @@
 	
 	function __autoload($classe)
 	{
-		$repertoires = array(RACINE . "controleurs/", 
-						RACINE . "modeles/", 
-						RACINE . "vues/");
+		$repertoires = array("./controleurs/", 
+							 "./modeles/", 
+							 "./vues/");
 		
 		foreach($repertoires as $rep)
 		{
