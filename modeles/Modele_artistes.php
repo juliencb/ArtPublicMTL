@@ -1,9 +1,9 @@
 <?php
-	class Modele_usagers extends TemplateDAO
+	class Modele_Artistes extends TemplateDAO
 	{
 		public function getTable()
 		{
-			return "usagers";
+			return "artiste";
 		}
 
 		public function insereRealisateur($prenom, $nom, $bio)
