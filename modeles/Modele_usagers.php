@@ -11,9 +11,9 @@
 		{		
 			try
 			{
-				$stmt = $this->connexion->prepare("select oeuvre.titre,oeuvre.categorieObjet,oeuvre.categorie,oeuvre.parc,oeuvre.materiaux,oeuvre.adresseCivique,oeuvre.urlImage,artiste.nom,artiste.prenom 
+				$stmt = $this->connexion->prepare("select oeuvre.titre,oeuvre.categorieObjet,oeuvre.categorie,oeuvre.parc,oeuvre.materiaux,oeuvre.adresseCivique,oeuvre.urlImage,artiste.nom,artiste.prenom, arrondissement.nom 
 				from oeuvre join oeuvreartiste on oeuvre.id = oeuvreartiste.idOeuvre
-				join artiste on oeuvreartiste.idArtiste = artiste.id where oeuvre.id = :id");
+				join artiste on oeuvreartiste.idArtiste = artiste.id join arrondissement on oeuvre.arrondissement = arrondissement.nom where oeuvre.id = :id");
 				
 				$stmt->execute(array(":id" => $id));
 				return $stmt->fetch();

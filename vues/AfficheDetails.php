@@ -29,6 +29,7 @@
 					<li> Parc : <?php echo $data["parc"] ?></li>
 					<li> Matériaux : <?php echo $data["materiaux"] ?></li>
 					<li> Adresse : <?php echo $data["adresseCivique"] ?></li>
+					<li> Arrondissement : <?php echo $data["nom"] ?></li>
 					
 			</ul>	
 				
