@@ -42,7 +42,11 @@
 						break;
 
 					case "afficheDescriptionArtiste":
-						$this->afficheDescriptionArtiste($params["id"]);
+						if(isset($params["id"])){
+							$this->afficheDescriptionArtiste($params["id"]);
+							$this->afficheOeuvresArtiste($params["id"]);
+						}
+						
 						break;
 							
 					//default:
@@ -101,6 +105,14 @@
 			$modeleArtiste = new Modele_artistes();
 			$data = $modeleArtiste->obtenirDescriptionArtiste($id);
 			$this->afficheVue("vueDescriptionArtiste", $data);
-		}		
+		}
+
+		//afficher l'oeuvre d'un artiste
+		public function afficheOeuvresArtiste($id){
+			$modeleArtiste = new Modele_artistes();
+			$data = $modeleArtiste->obtenirOeuvresArtiste($id);
+			$this->afficheVue("vueOeuvresArtiste", $data);
+			//var_dump($data["urlImage"]);
+		}
 	}
 ?>
