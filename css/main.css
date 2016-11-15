@@ -8,9 +8,11 @@ body{
 }
 #global{
     /*background-image:url('../images/7977_7985.jpg');
-	 background-repeat: no-repeat;
+	 background-repeat: no-repeat;*/
 	 margin: 5px;
-	 padding: 10px;*/
+	 padding: 10px;
+	 height: auto; 
+	width: auto; 
 }
 #logo{
 	height: auto; 

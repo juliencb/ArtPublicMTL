@@ -1,5 +1,5 @@
 <?php
-	class Controleur_Usagers extends BaseControleur
+	class Controleur_Public extends BaseControleur
 	{
 	
 

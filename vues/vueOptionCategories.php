@@ -1,11 +1,11 @@
 
-<!--Debut Section des OEUVRES-->	
+<!--Debut section des OEUVRES-->	
 <section id="sectionOeuvres">
-	<!--Debut MENU PAGE OEUVRES-->	
+	<!--Debut menu PAGE OEUVRES-->	
 	<aside class ="menu oeuvres">
 		<div id="afficheRechercheICI"></div>
 		 <select id="categorie">
-			<option id=>Catégorie</option>
+			<option value="categorie">Catégorie</option>
 			<?php 
 				foreach($data as $categorie){
 				echo"<option value='{$categorie["nom"]}'>{$categorie["nom"]}</option>";

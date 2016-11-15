@@ -23,7 +23,7 @@
 			else
 			{	
 				//controleur par défaut
-				$classe = "Controleur_Usagers";
+				$classe = "Controleur_Public";
 
 				//$classe = "Controleur_Realisateurs";
 			}

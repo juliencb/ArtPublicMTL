@@ -1,9 +1,9 @@
 <div id="pageAccueil">
-<!--Debut Section PRINCIPAL-->				
+<!--Debut section PRINCIPAL-->				
 	<section class = "principal">					
 
 		<button id="IndiquerUneOuevre" >indiquez une oeuvre</button>
 		
 	</section>
-	<!--fin Section PRINCIPAL-->	
+	<!--fin section PRINCIPAL-->	
 </div>

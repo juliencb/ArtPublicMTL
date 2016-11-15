@@ -34,7 +34,8 @@
 						{													
 							echo "ERROR";
 						}
-						break;										
+						break;
+					case "afficheCategorieOeuvres":	
 					default:
 						echo "ERROR";		
 				}						
