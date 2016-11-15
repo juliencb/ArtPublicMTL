@@ -16,73 +16,35 @@
 					case "afficheOeuvresCategorie":
 						$modeleOeuvres= new Modele_Oeuvres();
 						if(isset($params["categorie"]) && ($params["categorie"])!="")
-						{   //$reponse=$modeleOeuvres-> obtenirTous();
-							$data=$modeleOeuvres-> obtenirOeuvresCategorie($params["categorie"]);
-							//$data=json_encode($reponse);
-							//echo $data;
-							
-							//echo "TESTES=======>".$params["categorie"];
-							/*foreach($reponse as $data)
+						{   
+							if(($params["categorie"])=="_")
 							{
-								echo $data["titre"]."<br/>";
-							}*/
-							
-							/*
-							foreach($reponse as $data)
+								$this->afficheListeOeuvres();
+							}
+							else
 							{
-								echo"<div id='{$data["id"]}'>
-								<a href=' #'>";
-								if($data["urlImage"]=="")
-								{
-									$data["urlImage"]="no-image-available";
-								}
-								
-								echo "<img class='photo' src='./images/{$data["urlImage"]}.jpg'alt='{$data["titre"]}'/>
-									
-								 </a>
-									<div class='hoverPhoto'>
-									
-										<span class='titreOeuvres'><a href=' #'>Titre: {$data["titre"]}</a></span>}
-										<span class='nomArtistes'><a href=' #'>Artiste: {$data["prenom"]} {$data["prenom"]}</a></span>
-									</div>
-								</div>";
-							}*/
-							$this->afficheVue("vueOeuvres", $data);
+								$data=$modeleOeuvres-> obtenirOeuvresCategorie($params["categorie"]);
+								$this->afficheVue("vueOeuvres", $data);		
+							}
+							
 						}
 					break;
 				
 				case "afficheOeuvresArrondissement":
 						$modeleOeuvres= new Modele_Oeuvres();
-						if(isset($params["arrondissement"]) && ($params["arrondissement"])!="")
-						{   //$reponse=$modeleOeuvres-> obtenirTous();
-							$reponse=$modeleOeuvres-> obtenirOeuvresArrondissement($params["arrondissement"]);
-							
-							
-							//var_dump($reponse);
-							foreach($reponse as $data)
+						if(isset($params["arrondissement"])&& ($params["arrondissement"])!="")
+						{
+							if(($params["arrondissement"])=="_")
 							{
-								echo "<br><br>";
-								echo json_encode($data["titre"]);
-								echo "<br><br>";
-								//var_dump($data);
-								echo"<div id='{$data["id"]}'>
-								<a href=' #'>";
-								if($data["urlImage"]=="")
-								{
-									$data["urlImage"]="no-image-available";
-								}
-								
-								echo "<img class='photo' src='./images/{$data["urlImage"]}.jpg'alt='{$data["titre"]}'/>
-									
-								 </a>
-									<div class='hoverPhoto'>
-									
-										<span class='titreOeuvres'><a href=' #'>Titre: {$data["titre"]}</a></span>}
-										<span class='nomArtistes'><a href=' #'>Artiste: {$data["prenom"]} {$data["nom"]}</a></span>
-									</div>
-								</div>";
+								$this->afficheListeOeuvres();
+							}
+							else
+							{ 
+								$data=$modeleOeuvres-> obtenirOeuvresArrondissement($params["arrondissement"]);
+								$this->afficheVue("vueOeuvres", $data);
 							}
 						}
+						
 					break;
 
 				
