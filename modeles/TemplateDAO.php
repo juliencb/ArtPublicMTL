@@ -58,6 +58,7 @@
 				return false;
 			}
 		}
+	}
 
 		
 		/*public function supprimer($valeur, $cle = null)

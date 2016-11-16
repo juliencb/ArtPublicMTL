@@ -3,8 +3,11 @@
 	{
 		public function getTable()
 		{
+
+
 			return "artiste";
+
 		}
-        
+
 	}
 ?>

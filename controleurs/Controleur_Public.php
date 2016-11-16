@@ -37,6 +37,19 @@
 					   // echo "Presentation de loeuvre pour: " . $params["titre"] . " sera presente";
 						break;
 					
+					case "afficheDetails":
+						if(isset($params["id"])){
+							$this->afficheDetails($params["id"]);	
+						
+						}
+					
+							
+						break;
+										
+					default:
+
+						$this->afficheDetails($params["id"]);		
+											
 
 					case "soumission":
 						$this->afficheRecherche();
@@ -44,7 +57,8 @@
 						break;
 					//default:
 												
-				}					
+				}
+				
 			}
 			else{
 					//actions par défaut
@@ -88,6 +102,14 @@
 		
 		public function afficheRecherche(){
 			$this->afficheVue("recherche", "");	
+		}
+
+		public function afficheDetails($id)
+		{ 
+			$modelePublic = new Modele_public();
+			$data = $modelePublic->nomOeuvre($id);
+			$this->afficheVue("AfficheDetails", $data);
+
 		}
 
 	}
