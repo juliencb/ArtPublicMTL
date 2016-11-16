@@ -1,6 +1,6 @@
-	</div><!--fin du conteneur GLOBAL-->
-	<footer>
+﻿	<footer>
 
 	</footer>
+	</div><!--fin du conteneur GLOBAL-->
 </body>
 </html>

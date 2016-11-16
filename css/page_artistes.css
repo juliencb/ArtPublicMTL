@@ -1,35 +1,5 @@
-/*css page d'artistes*/
+﻿/*css page d'artistes*/
 .contenu ul{
   max-height: 100%;
   overflow-x: auto;
 }
-/*
-.contenu #zoneMontreeDeLaPage {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.contenu #zoneMontreeDeLaPage #artistes #menuArtistes {
-  margin-left: 0px;
-}
-.contenu #zoneMontreeDeLaPage #artistes #menuArtistes ul {
-  list-style: none;
-}
-.contenu #zoneMontreeDeLaPage #artistes #menuArtistes ul li {
-  display: inline;
-  margin-left: 5px;
-}
-.contenu #zoneCacheDeLArtiste {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin-left: 0px;
-}
-.contenu #zoneCacheDeLArtiste #listeArtistes,
-.contenu #zoneCacheDeLArtiste #detailDeLArtiste {
-  margin: 5px;
-  padding: 5PX;
-}
-.contenu #zoneCacheDeLArtiste #detailDeLArtiste {
-  width: 400px;
-}*/

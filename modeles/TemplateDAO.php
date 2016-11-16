@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 	
 	abstract class TemplateDAO
 	{
@@ -19,7 +19,7 @@
 			}
 			catch(Exception $exc)
 			{
-				die("Connexion à la base de données impossible.");
+				die("Connexion Ã  la base de donnÃ©es impossible.");
 			}
 		}
 	

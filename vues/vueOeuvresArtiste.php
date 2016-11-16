@@ -1,4 +1,4 @@
-	<div id="OeuvresArtiste">
+﻿	<div id="OeuvresArtiste">
 		<?php
 			foreach ($data as $imagesOeuvre) { 
 				if($imagesOeuvre["urlImage"]== ""){
