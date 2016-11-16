@@ -15,7 +15,7 @@
 		{
 			try
 			{
-				$this->connexion = new PDO("mysql:dbname=test;host=localhost", "root", "");
+				$this->connexion = new PDO("mysql:dbname=artpublicmtl;host=localhost", "root", "");
 			}
 			catch(Exception $exc)
 			{
@@ -56,7 +56,6 @@
 			}
 		}
 
-		}
 		
 		/*public function supprimer($valeur, $cle = null)
 		{
