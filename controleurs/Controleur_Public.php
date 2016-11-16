@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 	class Controleur_Public extends BaseControleur{
 	
 		//la fonction qui sera appelée par le routeur
@@ -20,7 +20,7 @@
 						
 						
 					case "listeOeuvres":
-					    $this->afficheListeCateogires();					
+					    $this->afficheListeCategories();					
 						$this->afficheListeArrondissements();					
 						$this->afficheListeOeuvres();	
 						$this->afficheRecherche();
@@ -66,7 +66,7 @@
 			$this->afficheVue("vueOeuvres", $data);
 		}
 		
-		public function afficheListeCateogires()
+		public function afficheListeCategories()
 		{
 			$modeleCategories= new Modele_Categories();
 			$data = $modeleCategories->obtenirTous();
