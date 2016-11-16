@@ -1,9 +1,12 @@
 <?php
-	class Modele_usagers extends TemplateDAO
+	class Modele_Artistes extends TemplateDAO
 	{
 		public function getTable()
 		{
-			return "oeuvre";
+
+
+			return "artiste";
+
 		}
 		
 
