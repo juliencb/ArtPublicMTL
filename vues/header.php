@@ -1,9 +1,9 @@
 ﻿<html>
 <head>
 	 <meta charset="utf-8">
+	<link rel="stylesheet" href="css/main.css"/>
 	<link rel="stylesheet" href="css/recherche.css"/>
 	<link rel="stylesheet" href="css/soumission.css"/>
-	<link rel="stylesheet" href="css/main.css"/>
 	<!--<link rel="stylesheet" href="css/base_h5bp.css"/>
 	<link rel="stylesheet" href="css/normalize.css"/>-->
 	<link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono" rel="stylesheet">
@@ -23,11 +23,11 @@
 			<a href="index.php">
 				<img id="logo" src="images/logo.png"/ alt="logo" >
 			</a>
-			<div id="reseauxSociaux">
-				<span = class "icones" id="reseauFacebook"><a href="#" >facebook</a></span>
-				<span = class "icones" id="reseauTwitter"><a href="#" >twitter</a></span>
-				<span = class "icones" id="reaseauInstagram"><a href="#" >instagram</a></span>
-			<div>			
+			<nav id="reseauxSociaux">
+				<span class= "icones" id="reseauFacebook"><a href="www.facebook.com" >facebook</a></span>
+				<span class= "icones" id="reseauTwitter"><a href="www.twitter.com" >twitter</a></span>
+				<span class= "icones" id="reaseauInstagram"><a href="www.instagram.com" >instagram</a></span>
+            </nav>			
 			<nav id="menu">
 				<ul>
 					<li><a href="index.php?Public&action=listeOeuvres">Oeuvres</a></li>
@@ -36,6 +36,4 @@
 				</ul>
 			</nav>
 		</header>
-		<!--fin Section ENTÊTE-->
-		
-		<br/>
+	

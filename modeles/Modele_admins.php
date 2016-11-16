@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	class Modele_admins extends TemplateDAO
 	{
 		public function getTable()

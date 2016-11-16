@@ -1,12 +1,7 @@
-	
-<!--fin du conteneur GLOBAL-->
-
-</body>
-
-
-
-<footer>
+﻿<footer>
 
 </footer>
 
+</div> <!-- ferme le div global -->
+</body>
 </html>

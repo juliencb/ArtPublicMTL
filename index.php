@@ -1,8 +1,4 @@
-<?php
-	define("RACINE", $_SERVER["DOCUMENT_ROOT"] . "/ArtPublicMTL/");
-	define("RACINEWEB", "http://" . $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . "/ArtPublicMTL/");
-	
-	
+﻿<?php
 	function __autoload($classe)
 	{
 		$repertoires = array("./controleurs/", 

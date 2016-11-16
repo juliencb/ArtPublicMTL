@@ -1,4 +1,4 @@
-(function(){
+﻿(function(){
 	window.addEventListener("load", function(){
 		//lorsque je clique sur btnAjax
 		var inputRecherche = document.getElementById("inputRecherche");

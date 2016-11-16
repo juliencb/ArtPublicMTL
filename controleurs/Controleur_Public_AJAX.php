@@ -1,14 +1,14 @@
-<?php
+ï»¿<?php
 	class Controleur_Public_AJAX extends Controleur_Public{	
-		//la fonction qui sera appelée par le routeur
+		//la fonction qui sera appelÃ©e par le routeur
 		public function traite(array $params){				
 			if(isset($params["action"]))
 			{
-				//modèle et vue vides par défaut
+				//modÃ¨le et vue vides par dÃ©faut
 				$data = array();
 				$vue = "";
-				//switch en fonction de l'action qui nous est envoyée
-				//ce switch détermine la vue $vue et obtient le modèle $data
+				//switch en fonction de l'action qui nous est envoyÃ©e
+				//ce switch dÃ©termine la vue $vue et obtient le modÃ¨le $data
 				switch($params["action"])
 				{
 					case "recherche":
@@ -31,7 +31,7 @@
 				}						
 			}
 			else{
-					//action par défaut
+					//action par dÃ©faut
 					echo "ERROR";					
 			}			
 		}
@@ -42,7 +42,7 @@
 			echo "<resultatsRecherche>";
 
 	       foreach($resultatsRecherche as $r){
-				//générer le XML du contact
+				//gÃ©nÃ©rer le XML du contact
 				echo "<resultatRecherche>";
 				echo "<id>" . $r["id"] . "</id>";
 				echo "<resultat>" . utf8_encode($r["resultat"]) . "</resultat>";

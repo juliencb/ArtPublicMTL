@@ -1,4 +1,4 @@
-<script>
+﻿<script>
 
 //References http://stackoverflow.com/questions/23980733/jquery-ajax-file-upload-php
 			$(document).ready(function(){

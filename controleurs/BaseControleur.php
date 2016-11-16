@@ -1,8 +1,8 @@
-<?php
+﻿<?php
 	abstract class BaseControleur
 	{
 	
-		//la fonction qui sera appel�e par le routeur
+		//la fonction qui sera appelée par le routeur
 		public abstract function traite(array $params);
 		
 		protected function afficheVue($nomVue, $data = null)
