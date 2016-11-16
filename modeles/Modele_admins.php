@@ -5,7 +5,8 @@
 		{
 			return "admins";
 		}
-
+        
+        //insère une oeuvre dans la table oeuvre
 		public function insereOeuvre($noInterne, 
                                      $titre, 
                                      $titreVariante, 
@@ -63,7 +64,8 @@
 			}
 		}
         
-        public function insereArtiste($noInterne, $nom, $prenom, $nomCollectif)
+        //insère un artiste dans la table artiste
+        public function insereArtiste($noInterne, $nom, $prenom, $nomCollectif) 
 		{		
 			try
 			{
@@ -82,7 +84,8 @@
 			}
 		}
         
-         public function insereCategorie($nom)
+        //insère une catégorie dans la table catégorie
+        public function insereCategorie($nom) 
 		{		
 			try
 			{
@@ -98,7 +101,8 @@
 		}
 		
 		
-		public function insereArrondissement($nom)
+        //insère un arrondissement dans la table arrondissement
+		public function insereArrondissement($nom) 
 		{		
 			try
 			{
@@ -113,7 +117,8 @@
 		}
 		
 		
-		public function getIdSelonNoInterneO($noInterne)
+        // retourne l'id de l'oeuvre selon le numéro interne passé en paramètre
+		public function getIdSelonNoInterneO($noInterne) 
 		{		
 			try
 			{
@@ -128,7 +133,8 @@
 		}
 		
 			
-		public function getIdSelonNoInterneA($noInterne)
+        // retourne l'id de l'artiste selon le numéro interne passé en paramètre
+		public function getIdSelonNoInterneA($noInterne) 
 		{		
 			try
 			{
@@ -142,7 +148,8 @@
 			}
 		}
 		
-		public function insereLiens($idOeuvre, $idArtiste)
+        // insère l'id de l'artiste et l'id de l'oeuvre pour faire le lien entre l'oeuvre et l'artiste
+		public function insereLiens($idOeuvre, $idArtiste) 
 		{		
 			try
 			{
@@ -155,23 +162,6 @@
 				return 0;
 			}
 		}
-		
-		public function lienOeuvreArron($idOeuvre, $arron)
-		{		
-			try
-			{
-				$stmt = $this->connexion->prepare("INSERT INTO `oeuvreArrondissement` (`idOeuvre`, `nomArrondissement`) VALUES (:idOeuvre, :arron)");
-				$stmt->execute(array(":idOeuvre" => $idOeuvre, ":arron" => $arron));
-				return 1;
-			}	
-			catch(Exception $exc)
-			{
-				return 0;
-			}
-		}
-        
-      
-      
 	}
 ?>
 

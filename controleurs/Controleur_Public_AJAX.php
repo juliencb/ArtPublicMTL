@@ -1,16 +1,52 @@
 <?php
-	class Controleur_Public_AJAX extends Controleur_Public{	
-		//la fonction qui sera appelée par le routeur
-		public function traite(array $params){				
+	class Controleur_Public_AJAX extends Controleur_Public
+	{	
+		//la fonction qui sera appelÃ©e par le routeur
+		public function traite(array $params)
+		{				
 			if(isset($params["action"]))
 			{
-				//modèle et vue vides par défaut
+				//modÃ¨le et vue vides par dÃ©faut
 				$data = array();
 				$vue = "";
-				//switch en fonction de l'action qui nous est envoyée
-				//ce switch détermine la vue $vue et obtient le modèle $data
+				//switch en fonction de l'action qui nous est envoyÃ©e
+				//ce switch dÃ©termine la vue $vue et obtient le modÃ¨le $data
 				switch($params["action"])
-				{
+				{	
+					case "afficheOeuvresCategorie":
+						$modeleOeuvres= new Modele_Oeuvres();
+						if(isset($params["categorie"]) && ($params["categorie"])!="")
+						{   
+							if(($params["categorie"])=="_")
+							{
+								$this->afficheListeOeuvres();
+							}
+							else
+							{
+								$data=$modeleOeuvres-> obtenirOeuvresCategorie($params["categorie"]);
+								$this->afficheVue("vueOeuvres", $data);		
+							}
+							
+						}
+					break;
+				
+					case "afficheOeuvresArrondissement":
+						$modeleOeuvres= new Modele_Oeuvres();
+						if(isset($params["arrondissement"])&& ($params["arrondissement"])!="")
+						{
+							if(($params["arrondissement"])=="_")
+							{
+								$this->afficheListeOeuvres();
+							}
+							else
+							{ 
+								$data=$modeleOeuvres-> obtenirOeuvresArrondissement($params["arrondissement"]);
+								$this->afficheVue("vueOeuvres", $data);
+							}
+						}
+						
+					break;
+	
 					case "recherche":
 						if(isset($params["recherche"])){
 							//Verification si les champs sont remplis;
@@ -30,11 +66,12 @@
 						echo "ERROR";		
 				}						
 			}
-			else{
-					//action par défaut
+			else
+			{
+					//action par dÃ©faut
 					echo "ERROR";					
 			}			
-		}
+		}	
 
 		public function recherche($strRecherche){
 			$modelePublic = new Modele_public();

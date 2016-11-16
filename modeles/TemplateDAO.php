@@ -15,7 +15,10 @@
 		{
 			try
 			{
-				$this->connexion = new PDO("mysql:dbname=artpublicmtl;host=localhost", "root", "");
+
+
+				$this->connexion = new PDO("mysql:dbname=demoartpublic;host=localhost", "root", "");
+
 			}
 			catch(Exception $exc)
 			{
@@ -77,6 +80,6 @@
 			}
 		}
 	
-	
-	}*/
+	*/
+	}
 ?>
