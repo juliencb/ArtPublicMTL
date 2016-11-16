@@ -6,7 +6,7 @@ window.addEventListener("load", function(){
 		if($("#sectionOeuvres")){
 			$("#categorie").on("change",function(){
 				var _categorie=$("#categorie").val();
-                $.get("./index.php?Public_AJAX&action=afficheOeuvresCategorie&categorie="+ _categorie, function(data){
+                $.get("./index.php?Public_AJAX&action=afficheOeuvrescategorie&idValue="+ _categorie, function(data){
                   
 				   $('#collectionOeuvres').html("");
 				   $('#collectionOeuvres').html(data);
@@ -17,7 +17,7 @@ window.addEventListener("load", function(){
             
 			$("#arrondissements").on("change",function(){
 				var _arrondissement=$("#arrondissements").val();
-                $.get("./index.php?Public_AJAX&action=afficheOeuvresArrondissement&arrondissement="+ _arrondissement, function(data){
+                $.get("./index.php?Public_AJAX&action=afficheOeuvreslieu&idValue="+ _arrondissement, function(data){
 				   $('#collectionOeuvres').html("");
 				   $('#collectionOeuvres').html(data);
                 
