@@ -20,10 +20,11 @@
 						
 						
 					case "listeOeuvres":
-					    $this->afficheListeCateogires();					
-						$this->afficheListeArrondissements();					
+					    $this->afficheListeCategories();					
+						$this->afficheListeArrondissements();
+						$this->afficheRecherche();						
 						$this->afficheListeOeuvres();	
-						$this->afficheRecherche();
+						
 						break;
 						
 					case "listeArtiste":
@@ -67,7 +68,7 @@
 		
 
 		///--fonction permet d'affiche la liste des categories--///	
-		public function afficheListeCateogires()
+		public function afficheListeCategories()
 		{
 			$modeleCategories= new Modele_Categories();
 			$data = $modeleCategories->obtenirTous();
