@@ -25,7 +25,7 @@
 			{	
 				//controleur par défaut
 				$classe = "Controleur_Public";
-				//$classe = "Controleur_Realisateurs";
+
 			}
 			//vérifier que la classe existe
 			if(class_exists($classe))

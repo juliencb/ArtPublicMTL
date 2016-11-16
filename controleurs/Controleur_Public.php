@@ -58,7 +58,6 @@
 		}
 		
 		
-		
 		public function afficheListeOeuvres()
 		{
 			$modeleOeuvres= new Modele_Oeuvres();
@@ -66,6 +65,8 @@
 			$this->afficheVue("vueOeuvres", $data);
 		}
 		
+
+		///--fonction permet d'affiche la liste des categories--///	
 		public function afficheListeCateogires()
 		{
 			$modeleCategories= new Modele_Categories();
@@ -73,12 +74,10 @@
 			$this->afficheVue("vueOptionCategories", $data);
 		}
 		
-		
 		public function afficheSoumission(){
 			$this->afficheVue("formSoumission", "");
 		}
 
-		
 		///--fonction permet d'affiche la liste des arrondissements--///
 		public function afficheListeArrondissements()
 		{
@@ -90,5 +89,6 @@
 		public function afficheRecherche(){
 			$this->afficheVue("recherche", "");	
 		}
+
 	}
 ?>
