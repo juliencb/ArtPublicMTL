@@ -17,7 +17,7 @@
 		if($data["titre"]!="")
 		{
 	
-			echo "<li> Titre :"." ". $data["titre"]. "</li>";
+			echo "<li><span> Titre :"." ". $data["titre"]. "</span></li>";
 		}	
 		
 		 if(($data["prenom"]&&$data["nom"]!="")&&($data["prenom"]!= null && $data["nom"]!= null ))
