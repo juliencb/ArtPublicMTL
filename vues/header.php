@@ -41,7 +41,7 @@
 			<nav id="menu">
 				<ul>
 
-					<li><a href="index.php?Public&action=afficheListeOeuvres">Oeuvres</a></li>
+					<li><a href="index.php?Public&action=listeOeuvres">Oeuvres</a></li>
 					<li><a href="#">Artistes</a></li>
 					<li><a href="#">À Propos</a></li>
 				</ul>
