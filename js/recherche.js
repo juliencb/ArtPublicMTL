@@ -95,7 +95,7 @@
 					var a = document.createElement("a");					
 					a.title = resultat;
 					if (id=="lieu" || id=="categorie") {
-						a.href ="http://localhost/ArtPublicMTL/index.php?Public&action=afficheListeOeuvres&id="+id+"&idValue="+resultat; 
+						a.href ="./index.php?Public_AJAX&action=afficheOeuvres"+id+"&id="+id+"&idValue="+resultat; 
 					}
 					if (id=="artiste"){
 						a.href ="http://localhost/ArtPublicMTL/index.php?Public&action=afficheArtiste&nom="+resultat; 					
