@@ -7,7 +7,8 @@
 		
 		protected function afficheVue($nomVue, $data = null)
 		{
-			$cheminVue = RACINE . "vues/" . $nomVue . ".php";
+
+			$cheminVue = "./vues/" . $nomVue . ".php";
 			
 			if(file_exists($cheminVue))
 			{

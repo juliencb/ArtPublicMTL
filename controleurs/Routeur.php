@@ -22,7 +22,7 @@
 			{	
 				//controleur par défaut
 				$classe = "Controleur_Public";
-				
+
 			}
 			//vérifier que la classe existe
 			if(class_exists($classe))

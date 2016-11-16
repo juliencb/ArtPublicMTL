@@ -1,4 +1,6 @@
-﻿/*** CSS PAGE ACCEUIL  ***/
+
+/*** CSS PAGE ACCUEIL  ***/
+
 body{
     
 }
@@ -7,11 +9,11 @@ body{
 	
 }
 #global{
-    /*background-image:url('../images/7977_7985.jpg');
 	 background-repeat: no-repeat;
 	 margin: 5px;
-	 padding: 10px;*/
+	 padding: 10px;
 }
+
 #logo{
 	height: auto; 
     width: 15%; 
@@ -26,6 +28,7 @@ body{
     max-height: 300px;
 }
 /*------menu-----*/
+
 menu ul {
     list-style-type: none;
     margin: 0;
@@ -46,8 +49,11 @@ menu li a {
     text-decoration: none;
 }
 
+/*-------------*/
+/**FIN PAGE ACCUEIL**/
 menu li a:hover {
     background-color: #111;
 }
 /*-------------*/
-/**FIN PAGE ACCEUIL**/
+/**FIN PAGE ACCUEIL**/
+

@@ -1,3 +1,4 @@
+
 ﻿<?php
 	class Modele_artistes extends TemplateDAO
 	{

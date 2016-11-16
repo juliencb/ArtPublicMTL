@@ -17,10 +17,17 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
+<<<<<<< HEAD
 -- Base de données: `test`
 --
 CREATE DATABASE IF NOT EXISTS `test` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `test`;
+=======
+-- Base de données: `artpublicmtl`
+--
+CREATE DATABASE IF NOT EXISTS `artpublicmtl` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `artpublicmtl`;
+>>>>>>> upstream/master
 
 -- --------------------------------------------------------
 
@@ -100,6 +107,10 @@ CREATE TABLE IF NOT EXISTS `artiste` (
   `prenom` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
   `nomCollectif` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
   `biographie` varchar(2000) CHARACTER SET latin1 DEFAULT NULL,
+<<<<<<< HEAD
+=======
+  `valide` tinyint(1) DEFAULT '0',
+>>>>>>> upstream/master
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   UNIQUE KEY `noInterne` (`noInterne`)
@@ -1154,6 +1165,7 @@ INSERT INTO `oeuvreartiste` (`id`, `idOeuvre`, `idArtiste`) VALUES
 
 -- --------------------------------------------------------
 
+<<<<<<< HEAD
 --
 -- Structure de la table `soumission`
 --
@@ -1187,6 +1199,8 @@ CREATE TABLE IF NOT EXISTS `soumission` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+=======
+>>>>>>> upstream/master
 
 --
 -- Contraintes pour les tables exportées
