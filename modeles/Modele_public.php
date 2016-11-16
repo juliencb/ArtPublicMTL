@@ -1,4 +1,5 @@
 <?php
+
 	class Modele_public extends TemplateDAO
 	{
 		public function getTable()
@@ -45,6 +46,7 @@
 				return null;
 			}
 		}
+
 		public function nomOeuvre($id)
 		{		
 			try
@@ -62,6 +64,7 @@
 				return 0;
 			}
 		}
+
 		
 	}
 ?>

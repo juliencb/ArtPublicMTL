@@ -1,11 +1,8 @@
-<?php
+ï»¿<?php
 	class Routeur
 	{
 		public static function route()
 		{
-			//obtenir le controleur qui devra traiter la requête
-			//$controleur = $_REQUEST["controleur"];
-			
 			//obtenir la query string
 			$chaineRequete = $_SERVER["QUERY_STRING"];
 			$posEperluette = strpos($chaineRequete, "&");

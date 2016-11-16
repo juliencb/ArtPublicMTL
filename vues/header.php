@@ -1,12 +1,14 @@
 
+
 <html>
     <meta charset="utf-8">
 <head>
 	<link rel="stylesheet" href="css/base_h5bp.css"/>
 	<link rel="stylesheet" href="css/normalize.css"/>
+	<link rel="stylesheet" href="css/main.css"/>
 	<link rel="stylesheet" href="css/recherche.css"/>
 	<link rel="stylesheet" href="css/soumission.css"/>
-	<link rel="stylesheet" href="css/main.css"/>
+	<link rel="stylesheet" href="css/page_artistes.css"/>
 	<link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono" rel="stylesheet">
 	<style>
         {     
@@ -41,8 +43,8 @@
 			<nav id="menu">
 				<ul>
 
-					<li><a href="index.php?Public&action=listeOeuvres">Oeuvres</a></li>
-					<li><a href="#">Artistes</a></li>
+					<li><a href="index.php?Public&action=afficheListeOeuvres">Oeuvres</a></li>
+					<li><a href="index.php?Public&action=afficheListeArtistes">Artistes</a></li>
 					<li><a href="#">À Propos</a></li>
 				</ul>
 			</nav>

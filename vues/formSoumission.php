@@ -1,3 +1,4 @@
+
 <script>
 
 //References http://stackoverflow.com/questions/23980733/jquery-ajax-file-upload-php
@@ -156,3 +157,4 @@
 		<br>
 		<input type="submit" value="Soumettre l'oeuvre"/>
 	</div>
+
