@@ -5,7 +5,6 @@
 			$cont=0;
 			foreach($data as $oeuvres)
 			{
-
 				if($cont<15)
 				{
 					
@@ -23,12 +22,13 @@
 						
 							<span class='titreOeuvres'><a href=' #'>Titre: {$oeuvres["titre"]}</a></span>}
 							<span class='nomArtistes'><a href=' #'>Artiste: {$oeuvres["prenom"]} {$oeuvres["nom"]}</a></span>
+
 						</div>
 					</div>";
 					$cont++;
 				}	
 			}
-		
+
 		?>		
 	</div>
 		

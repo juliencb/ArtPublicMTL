@@ -16,11 +16,13 @@
 			try
 			{
 
+
 				$this->connexion = new PDO("mysql:dbname=demoartpublic;host=localhost", "root", "");
+
 			}
 			catch(Exception $exc)
 			{
-				die("Connexion à la base de données impossible.");
+				die("Connexion ï¿½ la base de donnï¿½es impossible.");
 			}
 		}
 	
@@ -56,8 +58,9 @@
 				return false;
 			}
 		}
+
 		
-		public function supprimer($valeur, $cle = null)
+		/*public function supprimer($valeur, $cle = null)
 		{
 			try
 			{
@@ -76,6 +79,6 @@
 			}
 		}
 	
-	
+	*/
 	}
 ?>

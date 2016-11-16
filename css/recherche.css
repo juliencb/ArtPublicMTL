@@ -1,0 +1,34 @@
+#formRecherche{
+	margin-left: 80%;
+} 
+
+#resultatRecherche{
+	float: right;
+	border: 1px solid black;
+	padding: 10px;
+	//max-height: 400px;
+}
+
+#titreListe{
+	font-size: 15px;
+	font-family: 'Share Tech Mono', monospace;
+}
+
+ul{
+	list-style:none;
+	margin-left: -40px;
+	margin-top: -10px;
+	max-height: 70px;
+	display:block;
+	overflow:auto;
+	overflow-x: hidden;
+}
+
+li{
+	font-size: 10px;
+}
+
+a{
+	color: black;
+	text-decoration: none;
+}
