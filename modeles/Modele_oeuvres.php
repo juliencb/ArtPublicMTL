@@ -15,7 +15,7 @@
 			try
 			{	
 						
-				$stmt = $this->connexion->prepare("SELECT oeuvre.id, titre, titreVariante, categorie,urlImage, artiste.prenom, artiste.nom 
+				$stmt = $this->connexion->prepare("SELECT oeuvre.id, artiste.id as idArtiste,titre, titreVariante, categorie,urlImage, artiste.prenom, artiste.nom 
 													FROM " . $this->getTable() . " 
 													JOIN oeuvreartiste ON IdOeuvre = oeuvre.id 
 													JOIN artiste ON IdArtiste = artiste.id");

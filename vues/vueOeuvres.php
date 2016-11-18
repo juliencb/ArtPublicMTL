@@ -20,8 +20,8 @@
 					</a>
 						<div class='hoverPhoto'>
 						
-							<span class='titreOeuvres'><a href=' #'>Titre: {$oeuvres["titre"]}</a></span>
-							<span class='nomArtistes'><a href=' #'>Artiste: {$oeuvres["prenom"]} {$oeuvres["nom"]}</a></span>
+							<span class='titreOeuvres'><a href='./index.php?public&action=afficheDetails&id={$oeuvres["id"]}'>Titre: {$oeuvres["titre"]}</a></span>}
+							<span class='nomArtistes'><a href=' {$oeuvres["idArtiste"]}'>Artiste: {$oeuvres["prenom"]} {$oeuvres["nom"]}</a></span>
 
 						</div>
 					</div>";

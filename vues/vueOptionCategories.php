@@ -4,7 +4,7 @@
 <section id="sectionOeuvres">
 	<!--Debut menu PAGE OEUVRES-->	
 	<aside class ="menu oeuvres">
-		<div id="afficheRechercheICI"></div>
+		<div id="afficheRecherche"></div>
 		 <select id="categorie">
 			<option value="_">Catégorie</option>
 

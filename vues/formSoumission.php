@@ -29,13 +29,7 @@
 					}
 				});
 				
-			/*
-			<input type="radio" name= "nomOuCollectif" value="nomArtiste" checked><br>
-			<span id="spanPrenom">Prenom de l'artiste</span><br><input id="inputTextPrenom" type="text" name="prenomArtiste"><br>
-			<span id="spanNom">Nom de l'artiste</span><br><input id="inputTextNom" type="text" name="nomArtiste"><br><br>
-			<input type="radio" name= "nomOuCollectif" value="nomCollectif"><br>
-			<span id="spanCollectif">Nom de collectif</span><br><input id="inputTextCollectif" type="text" name="nomCollectif"><br><br>
-			*/
+			
 			
 			
 				$("#formChargementImage").change(function(){

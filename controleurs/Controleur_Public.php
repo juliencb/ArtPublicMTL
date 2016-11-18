@@ -1,16 +1,16 @@
 <?php
 	class Controleur_Public extends BaseControleur{
 	
-		//la fonction qui sera appelée par le routeur
+		//la fonction qui sera appelÃ©e par le routeur
 		public function traite(array $params){
 			//affichage du header
 			$this->afficheVue("header");
 			
 			if(isset($params["action"])){
-				//modèle et vue vides par défaut
+				//modÃ¨le et vue vides par dÃ©faut
 				$vue = "";
-				//switch en fonction de l'action qui nous est envoyée
-				//ce switch détermine la vue $vue et obtient le modèle $data
+				//switch en fonction de l'action qui nous est envoyÃ©e
+				//ce switch dÃ©termine la vue $vue et obtient le modÃ¨le $data
 				switch($params["action"]){
 					
 					case "pageAccueil":					
@@ -44,17 +44,27 @@
 						$this->afficheSoumission();
 						break;
 					//default:
-												
-				}					
+					
+					//Stephanie
+					case "afficheDetails":
+						if(isset($params["id"]))
+						{
+							$this->afficheRecherche();
+							$this->afficheDetails($params["id"]);	
+						}							
+				}
+
+
+				
 			}
 			else{
-					//actions par défaut
+					//actions par dÃ©faut
 					$this->afficheVue("pageAccueil","");	
 					$this->afficheRecherche();	
 			}
 			
 				
-			//inclusion du footer dans le cas d'une requête qui n'est pas AJAX
+			//inclusion du footer dans le cas d'une requÃªte qui n'est pas AJAX
 			$this->afficheVue("footer");
 		}
 		
@@ -89,6 +99,14 @@
 		
 		public function afficheRecherche(){
 			$this->afficheVue("recherche", "");	
+		}
+		//Stephanie
+		public function afficheDetails($id)
+		{ 
+			$modelePublic = new Modele_public();
+			$data = $modelePublic->nomOeuvre($id);
+			$this->afficheVue("AfficheDetails", $data);
+
 		}
 
 	}
