@@ -5,13 +5,14 @@
 
 		public function traite(array $params){
 			//affichage du header
+			$this->afficheVue("head");
 			$this->afficheVue("header");
 			
 			if(isset($params["action"])){
 				//modèle et vue vides par défaut
 				$vue = "";
 				//switch en fonction de l'action qui nous est envoyée
-				//ce switch d�termine la vue $vue et obtient le modèle $data
+				//ce switch détermine la vue $vue et obtient le modèle $data
 
 				switch($params["action"]){
 					
@@ -20,64 +21,57 @@
 						$this->afficheRecherche();	
 						break;
 						
-						
 					case "listeOeuvres":
-					    $this->afficheListeCateogires();					
-						$this->afficheListeArrondissements();					
+					    $this->afficheListeCategories();					
+						$this->afficheListeArrondissements();
+						$this->afficheRecherche();						
 						$this->afficheListeOeuvres();	
-						$this->afficheRecherche();
+						
 						break;
 						
 					case "listeArtiste":
-						//$this->afficheArtiste();
+						$this->afficheListeArtistes();
 						$this->afficheRecherche();
-					    echo "Presentation de l'artiste: " . $params["nom"] . " sera presente";
 					    break;
 					
 					case "oeuvre":
 						$this->afficheRecherche();
-					   // echo "Presentation de loeuvre pour: " . $params["titre"] . " sera presente";
 						break;
-						
-					case "afficheListeArtistes":
-						$this->afficheListeArtistes();
-						break;
-
+				
 					case "afficheDescriptionArtiste":
 						if(isset($params["id"])){
 							$this->afficheDescriptionArtiste($params["id"]);
 							$this->afficheOeuvresArtiste($params["id"]);
 						}
-						
 						break;
-					case "afficheDetails":
-						if(isset($params["id"])){
-							$this->afficheDetails($params["id"]);	
 						
-						}
-					
-							
-						break;
 					case "soumission":
 						$this->afficheRecherche();
 						$this->afficheSoumission();
 						break;					
 					
-					//default:
-												
-				}					
+					case "afficheDetails":
+						if(isset($params["id"])){
+							$this->afficheRecherche();
+							$this->afficheDetails($params["id"]);	
+						}	
+						break;
+						
+					default:
+						$this->afficheVue("pageAccueil","");	
+						$this->afficheRecherche();	
+					
+				}
 			}
 			else{
-					//actions par défaut
-
-					$this->afficheVue("pageAccueil","");	
-					$this->afficheRecherche();	
+				//actions par défaut
+				$this->afficheVue("pageAccueil","");	
+				$this->afficheRecherche();	
 			}
 			
 				
 
 			//inclusion du footer dans le cas d'une requête qui n'est pas AJAX
-
 			$this->afficheVue("footer");
 		}
 		
@@ -90,7 +84,7 @@
 		}
 		
 		///--fonction permet d'affiche la liste des categories--///	
-		public function afficheListeCateogires()
+		public function afficheListeCategories()
 		{
 			$modeleCategories= new Modele_Categories();
 			$data = $modeleCategories->obtenirTous();
@@ -112,7 +106,7 @@
 		public function afficheRecherche(){
 			$this->afficheVue("recherche", "");	
 		}
-<<<<<<< HEAD
+
 		
 		//afficher la liste des artistes
 		public function afficheListeArtistes()
@@ -136,6 +130,7 @@
 			$this->afficheVue("vueOeuvresArtiste", $data);
 			//var_dump($data["urlImage"]);
 		}
+
 
 		public function afficheDetails($id)
 		{ 

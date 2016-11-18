@@ -13,34 +13,56 @@
 				//ce switch dÃ©termine la vue $vue et obtient le modÃ¨le $data
 				switch($params["action"])
 				{	
-					case "afficheOeuvresCategorie":
+					case "afficheOeuvrescategorie":
 						$modeleOeuvres= new Modele_Oeuvres();
-						if(isset($params["categorie"]) && ($params["categorie"])!="")
+						if(isset($params["id"])&&($params["id"])=="categorie" && isset($params["idValue"]))
+						{
+							$data=$modeleOeuvres-> obtenirOeuvresCategorie($params["idValue"]);
+							$this->afficheVue("header");
+							$this->afficheListeCategories();					
+							$this->afficheListeArrondissements();
+							$this->afficheRecherche();
+							$this->afficheVue("vueOeuvres", $data);
+							$this->afficheVue("footer");
+						}
+						
+						else if(isset($params["idValue"]) && ($params["idValue"])!="")
 						{   
-							if(($params["categorie"])=="_")
+							if(($params["idValue"])=="_")
 							{
 								$this->afficheListeOeuvres();
+								
 							}
 							else
 							{
-								$data=$modeleOeuvres-> obtenirOeuvresCategorie($params["categorie"]);
+								$data=$modeleOeuvres-> obtenirOeuvresCategorie($params["idValue"]);
 								$this->afficheVue("vueOeuvres", $data);		
 							}
 							
 						}
 					break;
 				
-					case "afficheOeuvresArrondissement":
+					case "afficheOeuvreslieu":
 						$modeleOeuvres= new Modele_Oeuvres();
-						if(isset($params["arrondissement"])&& ($params["arrondissement"])!="")
+						if(isset($params["id"])&&($params["id"])=="lieu" && isset($params["idValue"]))
 						{
-							if(($params["arrondissement"])=="_")
+							$data=$modeleOeuvres-> obtenirOeuvresArrondissement($params["idValue"]);
+							$this->afficheVue("header");
+							$this->afficheListeCategories();					
+							$this->afficheListeArrondissements();
+							$this->afficheRecherche();
+							$this->afficheVue("vueOeuvres", $data);
+							$this->afficheVue("footer");
+						}
+						else if(isset($params["idValue"])&& ($params["idValue"])!="")
+						{
+							if(($params["idValue"])=="_")
 							{
 								$this->afficheListeOeuvres();
 							}
 							else
 							{ 
-								$data=$modeleOeuvres-> obtenirOeuvresArrondissement($params["arrondissement"]);
+								$data=$modeleOeuvres-> obtenirOeuvresArrondissement($params["idValue"]);
 								$this->afficheVue("vueOeuvres", $data);
 							}
 						}
@@ -48,9 +70,11 @@
 					break;
 	
 					case "recherche":
+					
 						if(isset($params["recherche"])){
+							
 							//Verification si les champs sont remplis;
-						$this->recherche($params["recherche"]);		
+							$this->recherche($params["recherche"]);		
 						}
 						else{
 							echo "ERROR Aucune valeur de recherche";
@@ -76,10 +100,11 @@
 		public function recherche($strRecherche){
 			$modelePublic = new Modele_public();
 			$resultatsRecherche = $modelePublic->recherche($strRecherche);
+			//echo json_encode ($resultatsRecherche);
 			echo "<resultatsRecherche>";
 
 	       foreach($resultatsRecherche as $r){
-				//générer le XML du contact
+				//le XML du contact
 				echo "<resultatRecherche>";
 				echo "<id>" . $r["id"] . "</id>";
 				echo "<resultat>" . $r["resultat"] . "</resultat>";

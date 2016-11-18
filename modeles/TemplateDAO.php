@@ -13,8 +13,7 @@
 		
 		public function __construct()
 		{
-			try
-			{
+			try{
 				$this->connexion = new PDO("mysql:dbname=artpublicmtl;host=localhost", "root", "");
 			}
 			catch(Exception $exc)
@@ -76,8 +75,8 @@
 			{
 				return false;
 			}
-		}
+		}*/
 	
-	*/
-	}
+	
+	
 ?>
