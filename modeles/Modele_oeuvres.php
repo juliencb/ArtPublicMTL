@@ -15,8 +15,8 @@
 			try
 			{	
 						
-				$stmt = $this->connexion->prepare("SELECT oeuvre.id, titre, titreVariante, categorie,urlImage, artiste.prenom, artiste.nom 
-													FROM " . $this->getTable() . " 
+				$stmt = $this->connexion->prepare("SELECT oeuvre.id, artiste.id as idArtiste,titre, titreVariante, categorie,urlImage, artiste.prenom, artiste.nom 
+													FROM oeuvre 
 													JOIN oeuvreartiste ON IdOeuvre = oeuvre.id 
 													JOIN artiste ON IdArtiste = artiste.id");
 				$stmt->execute();
@@ -37,7 +37,7 @@
 			try
 			{	
 				
-				$stmt = $this->connexion->prepare("SELECT oeuvre.id, titre, categorie,urlImage, artiste.prenom, artiste.nom  
+				$stmt = $this->connexion->prepare("SELECT oeuvre.id, titre, artiste.id as idArtiste, categorie,urlImage, artiste.prenom, artiste.nom  
 													FROM " . $this->getTable() . " 
 													JOIN oeuvreartiste ON oeuvreartiste.IdOeuvre = oeuvre.id 
 													JOIN artiste ON IdArtiste = artiste.id WHERE categorie= :uneCategorie");
@@ -60,7 +60,7 @@
 			try
 			{	
 						
-				$stmt = $this->connexion->prepare("SELECT oeuvre.id, titre, arrondissement,urlImage, artiste.prenom, artiste.nom 
+				$stmt = $this->connexion->prepare("SELECT oeuvre.id, artiste.id as idArtiste, titre, arrondissement,urlImage, artiste.prenom, artiste.nom 
 													FROM " . $this->getTable() . " 
 													JOIN oeuvreartiste ON oeuvreartiste.IdOeuvre = oeuvre.id 
 													JOIN artiste ON IdArtiste = artiste.id

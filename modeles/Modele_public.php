@@ -14,7 +14,7 @@
 				$rechDebut = $strRecherche."%";
 				$rechDans = "% ".$strRecherche."%";
 				$rechDash = "%-".$strRecherche."%";
-				
+
 				$sqlStm =
 					"SELECT 'lieu' as id, nom as resultat FROM arrondissement WHERE nom LIKE '".$rechDebut."' or nom LIKE '". $rechDans. "' or nom LIKE '". $rechDash. "'".
 					" UNION SELECT 'oeuvre' as id, titre as resultat from oeuvre where titre LIKE '".$rechDebut."' or titre LIKE '". $rechDans. "'".
@@ -23,11 +23,9 @@
 					
 				$stmt = $this->connexion->prepare($sqlStm);
 				$stmt->execute();
-                $resultatRecherche = $stmt->fetchAll();
-				
-				
-				return $resultatRecherche;
-				
+
+                return $stmt->fetchAll();
+		
 			}	
 			catch(Exception $exc)
 			{

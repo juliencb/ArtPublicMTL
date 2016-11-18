@@ -5,13 +5,14 @@
 
 		public function traite(array $params){
 			//affichage du header
+			$this->afficheVue("head");
 			$this->afficheVue("header");
 			
 			if(isset($params["action"])){
 				//modèle et vue vides par défaut
 				$vue = "";
 				//switch en fonction de l'action qui nous est envoyée
-				//ce switch d�termine la vue $vue et obtient le modèle $data
+				//ce switch détermine la vue $vue et obtient le modèle $data
 
 				switch($params["action"]){
 					
@@ -19,12 +20,12 @@
 						$this->afficheVue("pageAccueil","");	
 						$this->afficheRecherche();	
 						break;
-							
+
 					case "listeOeuvres":
-					    $this->afficheListeCateogires();					
-						$this->afficheListeArrondissements();					
-						$this->afficheListeOeuvres();	
-						$this->afficheRecherche();
+					    $this->afficheListeCategories();					
+						$this->afficheListeArrondissements();
+						$this->afficheRecherche();						
+						$this->afficheListeOeuvres();		
 						break;
 						
 					case "listeArtistes":
@@ -35,33 +36,36 @@
 					case "oeuvre":
 						$this->afficheRecherche();
 					 	break;
-						
+
+				
 					case "descriptionArtiste":
 						if(isset($params["id"])){
 							$this->afficheDescriptionArtiste($params["id"]);
 							$this->afficheOeuvresArtiste($params["id"]);
 						}
 						break;
-						
-					case "details":
-						if(isset($params["id"])){
-							$this->afficheDetails($params["id"]);	
-						}
-						break;
-						
+									
 					case "soumission":
 						$this->afficheRecherche();
 						$this->afficheSoumission();
 						break;					
 					
-					//default:
-												
-				}					
+					case "details":
+						if(isset($params["id"])){
+							$this->afficheRecherche();
+							$this->afficheDetails($params["id"]);	
+						}	
+						break;
+						
+					default:
+						$this->afficheVue("pageAccueil","");	
+						$this->afficheRecherche();	
+				}
 			}
 			else{
-					//actions par défaut
-					$this->afficheVue("pageAccueil","");	
-					$this->afficheRecherche();	
+				//actions par défaut
+				$this->afficheVue("pageAccueil","");	
+				$this->afficheRecherche();	
 			}
 
 			//inclusion du footer dans le cas d'une requête qui n'est pas AJAX
@@ -77,7 +81,7 @@
 		}
 		
 		///--fonction permet d'affiche la liste des categories--///	
-		public function afficheListeCateogires()
+		public function afficheListeCategories()
 		{
 			$modeleCategories= new Modele_Categories();
 			$data = $modeleCategories->obtenirTous();
@@ -122,6 +126,7 @@
 			$this->afficheVue("vueOeuvresArtiste", $data);
 			//var_dump($data["urlImage"]);
 		}
+
 
 		public function afficheDetails($id)
 		{ 

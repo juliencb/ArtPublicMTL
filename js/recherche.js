@@ -15,7 +15,7 @@
 							
 							if(xhr.readyState === 4){
 								if(xhr.status === 200){
-									afficheResultatRecherche("resultatRecherche",xhr.responseText);
+									afficheResultatRecherche("resultatRecherche",xhr.responseText.trim());
 								}
 							
 								else if(xhr.status === 404){
@@ -69,8 +69,8 @@
 			function afficheResultatRecherche(nomDiv,xml) {			
 				effaceChild(nomDiv)
 				xmlParse(xml);	
+				console.log(xmlDoc);
 				var listeResultatRecherche = xmlDoc.getElementsByTagName("resultatRecherche");			
-				console.log(listeResultatRecherche.length);
 
 				var id = "";
 				var liste=document.createElement("ul");;
@@ -95,7 +95,7 @@
 					var a = document.createElement("a");					
 					a.title = resultat;
 					if (id=="lieu" || id=="categorie") {
-						a.href ="http://localhost/ArtPublicMTL/index.php?Public&action=afficheListeOeuvres&id="+id+"&idValue="+resultat; 
+						a.href ="./index.php?Public_AJAX&action=afficheOeuvres"+id+"&id="+id+"&idValue="+resultat; 
 					}
 					if (id=="artiste"){
 						a.href ="http://localhost/ArtPublicMTL/index.php?Public&action=afficheArtiste&nom="+resultat; 					
