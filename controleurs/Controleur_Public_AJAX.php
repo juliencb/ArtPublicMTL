@@ -70,14 +70,16 @@
 					break;
 	
 					case "recherche":
+					
 						if(isset($params["recherche"])){
+							
 							//Verification si les champs sont remplis;
-						$this->recherche($params["recherche"]);		
+							$this->recherche($params["recherche"]);		
 						}
 						else{
 							echo "ERROR Aucune valeur de recherche";
 						}
-						
+				
 						break;	
 
 					case "telechargementImage":
@@ -88,29 +90,32 @@
 						echo "ERROR";		
 				}						
 			}
-			else
-			{
-					//action par dÃ©faut
+			else{
+					//action par défaut
 					echo "ERROR";					
 			}			
-		}	
+		}
+
 
 		public function recherche($strRecherche){
 			$modelePublic = new Modele_public();
 			$resultatsRecherche = $modelePublic->recherche($strRecherche);
+			//echo json_encode ($resultatsRecherche);
 			echo "<resultatsRecherche>";
 
 	       foreach($resultatsRecherche as $r){
-				//générer le XML du contact
+				//le XML du contact
 				echo "<resultatRecherche>";
 				echo "<id>" . $r["id"] . "</id>";
-				echo "<resultat>" . utf8_encode($r["resultat"]) . "</resultat>";
+				echo "<resultat>" . $r["resultat"] . "</resultat>";
+
 				echo "</resultatRecherche>";
 			}
 	
 			echo "</resultatsRecherche>";
 			
 		}
+
 		
 		public function telechargementImage(){
 			if ( 0 < $_FILES['file']['error'] ) {
@@ -138,5 +143,6 @@
 
 		}
 		
+
 	}
 ?>

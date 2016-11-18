@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	class Controleur_Admins_AJAX extends Controleur_Admins        
 	{	
 		//la fonction qui sera appelée par le routeur

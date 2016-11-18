@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	class Controleur_Admins extends BaseControleur
 	{	
 		//la fonction qui sera appelée par le routeur

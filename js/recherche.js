@@ -15,7 +15,7 @@
 							
 							if(xhr.readyState === 4){
 								if(xhr.status === 200){
-									afficheResultatRecherche("resultatRecherche",xhr.responseText);
+									afficheResultatRecherche("resultatRecherche",xhr.responseText.trim());
 								}
 							
 								else if(xhr.status === 404){
@@ -69,8 +69,8 @@
 			function afficheResultatRecherche(nomDiv,xml) {			
 				effaceChild(nomDiv)
 				xmlParse(xml);	
+				console.log(xmlDoc);
 				var listeResultatRecherche = xmlDoc.getElementsByTagName("resultatRecherche");			
-				console.log(listeResultatRecherche.length);
 
 				var id = "";
 				var liste=document.createElement("ul");;
