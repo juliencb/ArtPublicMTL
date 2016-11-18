@@ -11,7 +11,7 @@
 						foreach ($data as $artiste){
 					?>
 							<li>
-								<a href="index.php?Public&action=afficheDescriptionArtiste&id=<?php echo $artiste['id'] ?>">
+								<a href="index.php?Public&action=descriptionArtiste&id=<?php echo $artiste['id'] ?>">
 									<?php echo $artiste["prenom"] . " " . $artiste["nom"] . " " . $artiste["nomCollectif"]; ?>
 								</a>
 							</li>

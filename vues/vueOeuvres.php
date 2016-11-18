@@ -13,6 +13,7 @@
 
 						<a href='./index.php?public&action=afficheDetails&id={$oeuvres["id"]}'>";
 						
+
 						if($oeuvres["urlImage"]=="")
 						{
 							$oeuvres["urlImage"]="no-image-available";
@@ -22,9 +23,10 @@
 						</a>
 							<div class='hoverPhoto'>
 							
-								<span class='titreOeuvres'><a href='./index.php?public&action=afficheDetails&id={$oeuvres["id"]}'>Titre: {$oeuvres["titre"]}</a></span>
+								<span class='titreOeuvres'><a href='./index.php?public&action=details&id={$oeuvres["id"]}'>Titre: {$oeuvres["titre"]}</a></span>
 								<span class='nomArtistes'><a href='./index.php?public&action=descriptionArtiste&id={$oeuvres["idArtiste"]}'>Artiste: {$oeuvres["prenom"]} {$oeuvres["nom"]}</a></span>
 							</div>
+
 					</div>";
 					$cont++;
 				}	

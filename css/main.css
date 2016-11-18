@@ -1,59 +1,79 @@
-
-/*** CSS PAGE ACCUEIL  ***/
-
 body{
-    
+    font-size: 16px;
 }
+
 .entete{
-	background-color: grey;
 	
 }
+
 #global{
-	 background-repeat: no-repeat;
 	 margin: 5px;
 	 padding: 10px;
 }
 
-#logo{
-	height: auto; 
-    width: 15%; 
-    max-width: 300px; 
-    max-height:300px;
-	
-}
 .photo{
 	height: auto; 
     width: auto; 
     max-width: 300px; 
     max-height: 300px;
 }
-/*------menu-----*/
 
-menu ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    /*background-color: #333;*/
+/*** CSS PAGE ACCUEIL  ***/
+#logo{
+    width: 30%;
+    margin: 10px; 
 }
 
-menu li {
-    float: left;
+.menu{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
-menu li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
+#menuPrincipal {
+    margin: 20px;
+}
+
+#menuPrincipal ul,
+#reseauxSociaux ul{
+    list-style: none;
+}
+
+.itemMenu,
+.icones {
+   display: inline;
+
+}
+
+.itemMenu a {
+    font-size: 16px;
+    margin-left: 25px;
+    color: #000;
     text-decoration: none;
+    padding: 3px;
 }
 
-/*-------------*/
-/**FIN PAGE ACCUEIL**/
-menu li a:hover {
-    background-color: #111;
+.itemMenu a:hover,
+ #reseauxSociaux .icones:hover{
+    background-color: #fff;
 }
-/*-------------*/
+
+#reseauxSociaux {
+    position: absolute;
+    top: 55px;
+    right: 10px;
+}
+
+#reseauxSociaux ul{
+    overflow: hidden;
+     margin-right: 20px;
+}
+
+#reseauxSociaux .icones{
+    font-size: 1.1em;
+    margin-right: 5px;
+    padding: 3px;
+}
+
 /**FIN PAGE ACCUEIL**/
 

@@ -20,37 +20,37 @@
 						$this->afficheVue("pageAccueil","");	
 						$this->afficheRecherche();	
 						break;
-						
+
 					case "listeOeuvres":
 					    $this->afficheListeCategories();					
 						$this->afficheListeArrondissements();
 						$this->afficheRecherche();						
-						$this->afficheListeOeuvres();	
-						
+						$this->afficheListeOeuvres();		
 						break;
 						
-					case "listeArtiste":
+					case "listeArtistes":
 						$this->afficheListeArtistes();
-						$this->afficheRecherche();
+						$this->afficheRecherche();   
 					    break;
 					
 					case "oeuvre":
 						$this->afficheRecherche();
-						break;
+					 	break;
+
 				
-					case "afficheDescriptionArtiste":
+					case "descriptionArtiste":
 						if(isset($params["id"])){
 							$this->afficheDescriptionArtiste($params["id"]);
 							$this->afficheOeuvresArtiste($params["id"]);
 						}
 						break;
-						
+									
 					case "soumission":
 						$this->afficheRecherche();
 						$this->afficheSoumission();
 						break;					
 					
-					case "afficheDetails":
+					case "details":
 						if(isset($params["id"])){
 							$this->afficheRecherche();
 							$this->afficheDetails($params["id"]);	
@@ -60,7 +60,6 @@
 					default:
 						$this->afficheVue("pageAccueil","");	
 						$this->afficheRecherche();	
-					
 				}
 			}
 			else{
@@ -68,8 +67,6 @@
 				$this->afficheVue("pageAccueil","");	
 				$this->afficheRecherche();	
 			}
-			
-				
 
 			//inclusion du footer dans le cas d'une requête qui n'est pas AJAX
 			$this->afficheVue("footer");
@@ -106,13 +103,12 @@
 		public function afficheRecherche(){
 			$this->afficheVue("recherche", "");	
 		}
-
 		
 		//afficher la liste des artistes
 		public function afficheListeArtistes()
 		{
 			$modeleArtiste = new Modele_artistes();
-			$data = $modeleArtiste->obtenirTous();
+			$data = $modeleArtiste->obtenirTousArtisteAlphabetique();
 			$this->afficheVue("vueArtistes", $data);	
 		}
 
