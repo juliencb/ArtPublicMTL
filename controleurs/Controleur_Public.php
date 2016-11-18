@@ -38,7 +38,7 @@
 						$this->afficheRecherche();
 						break;
 				
-					case "afficheDescriptionArtiste":
+					case "descriptionArtiste":
 						if(isset($params["id"])){
 							$this->afficheDescriptionArtiste($params["id"]);
 							$this->afficheOeuvresArtiste($params["id"]);
@@ -50,7 +50,7 @@
 						$this->afficheSoumission();
 						break;					
 					
-					case "afficheDetails":
+					case "details":
 						if(isset($params["id"])){
 							$this->afficheRecherche();
 							$this->afficheDetails($params["id"]);	

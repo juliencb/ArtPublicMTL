@@ -26,7 +26,7 @@
 							$this->afficheVue("footer");
 						}
 						
-						else if(isset($params["idValue"]) && ($params["idValue"])!="")
+						if(isset($params["idValue"]) && ($params["idValue"])!="")
 						{   
 							if(($params["idValue"])=="_")
 							{
