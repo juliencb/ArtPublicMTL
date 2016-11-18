@@ -4,6 +4,8 @@
 (function(){
 window.addEventListener("load", function(){
 		if($("#sectionOeuvres")){
+            $("#afficheRecherche").append($("#formRecherche"));
+            $("#afficheRecherche").append($("#resultatRecherche"));
 			$("#categorie").on("change",function(){
 				var _categorie=$("#categorie").val();
                 $.get("./index.php?Public_AJAX&action=afficheOeuvrescategorie&idValue="+ _categorie, function(data){
