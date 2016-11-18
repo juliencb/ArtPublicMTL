@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	class Controleur_Public_AJAX extends Controleur_Public
 	{	
 		//la fonction qui sera appelée par le routeur
@@ -76,6 +76,7 @@
 		public function recherche($strRecherche){
 			$modelePublic = new Modele_public();
 			$resultatsRecherche = $modelePublic->recherche($strRecherche);
+			//var_dump($resultatsRecherche);
 			echo "<resultatsRecherche>";
 
 	       foreach($resultatsRecherche as $r){

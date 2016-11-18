@@ -6,6 +6,22 @@
 		{
 			return "artiste";
 		}
+		
+		//afficher toute la liste des artiste en ordre alphabetique par nom
+		public function obtenirTousArtisteAlphabetique(){
+			try
+			{
+				$stmt = $this->connexion->prepare("SELECT *, CONCAT (nom, nomCollectif) AS nomArtiste FROM artiste ORDER BY nomArtiste");
+				$stmt->bindParam(":valeur", $valeur);
+				$stmt->execute();
+				return $stmt->fetchAll();
+			}
+			
+			catch(Exception $exc)
+			{
+				return false;
+			}
+		}
 
 		//afficher la description d'un artiste
 		public function obtenirDescriptionArtiste ($valeur){

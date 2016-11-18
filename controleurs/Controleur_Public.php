@@ -19,8 +19,7 @@
 						$this->afficheVue("pageAccueil","");	
 						$this->afficheRecherche();	
 						break;
-						
-						
+							
 					case "listeOeuvres":
 					    $this->afficheListeCateogires();					
 						$this->afficheListeArrondissements();					
@@ -28,36 +27,28 @@
 						$this->afficheRecherche();
 						break;
 						
-					case "listeArtiste":
-						//$this->afficheArtiste();
-						$this->afficheRecherche();
-					    echo "Presentation de l'artiste: " . $params["nom"] . " sera presente";
+					case "listeArtistes":
+						$this->afficheListeArtistes();
+						$this->afficheRecherche();   
 					    break;
 					
 					case "oeuvre":
 						$this->afficheRecherche();
-					   // echo "Presentation de loeuvre pour: " . $params["titre"] . " sera presente";
-						break;
+					 	break;
 						
-					case "afficheListeArtistes":
-						$this->afficheListeArtistes();
-						break;
-
-					case "afficheDescriptionArtiste":
+					case "descriptionArtiste":
 						if(isset($params["id"])){
 							$this->afficheDescriptionArtiste($params["id"]);
 							$this->afficheOeuvresArtiste($params["id"]);
 						}
-						
 						break;
-					case "afficheDetails":
+						
+					case "details":
 						if(isset($params["id"])){
 							$this->afficheDetails($params["id"]);	
-						
 						}
-					
-							
 						break;
+						
 					case "soumission":
 						$this->afficheRecherche();
 						$this->afficheSoumission();
@@ -69,15 +60,11 @@
 			}
 			else{
 					//actions par défaut
-
 					$this->afficheVue("pageAccueil","");	
 					$this->afficheRecherche();	
 			}
-			
-				
 
 			//inclusion du footer dans le cas d'une requête qui n'est pas AJAX
-
 			$this->afficheVue("footer");
 		}
 		
@@ -112,13 +99,12 @@
 		public function afficheRecherche(){
 			$this->afficheVue("recherche", "");	
 		}
-<<<<<<< HEAD
 		
 		//afficher la liste des artistes
 		public function afficheListeArtistes()
 		{
 			$modeleArtiste = new Modele_artistes();
-			$data = $modeleArtiste->obtenirTous();
+			$data = $modeleArtiste->obtenirTousArtisteAlphabetique();
 			$this->afficheVue("vueArtistes", $data);	
 		}
 

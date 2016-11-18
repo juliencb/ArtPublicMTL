@@ -22,8 +22,8 @@
 					</a>
 						<div class='hoverPhoto'>
 						
-							<span class='titreOeuvres'><a href='./index.php?public&action=afficheDetails&id={$oeuvres["id"]}'>Titre: {$oeuvres["titre"]}</a></span>}
-							<span class='nomArtistes'><a href=' #'>Artiste: {$oeuvres["prenom"]} {$oeuvres["nom"]}</a></span>
+							<span class='titreOeuvres'><a href='./index.php?public&action=details&id={$oeuvres["id"]}'>Titre: {$oeuvres["titre"]}</a></span>}
+							<span class='nomArtistes'><a href='index.php?Public&action=descriptionArtiste&id={$artiste["id"]'}>Artiste: {$oeuvres["prenom"]} {$oeuvres["nom"]}</a></span>
 
 
 						</div>
