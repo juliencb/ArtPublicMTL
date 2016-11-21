@@ -60,6 +60,28 @@
 					default:
 						$this->afficheVue("pageAccueil","");	
 						$this->afficheRecherche();	
+						
+						
+					case "Oeuvreslieu":
+					if(isset($params["idValue"]))
+					{
+						$this->afficheRecherche();	
+						$this->afficheListeCategories();					
+						$this->afficheListeArrondissements();
+						$this->afficheOeuvresLieu($params["idValue"]);
+					}
+					break;
+					
+					case "Oeuvrescategorie":
+					if(isset($params["idValue"]))
+					{
+						$this->afficheRecherche();	
+						$this->afficheListeCategories();					
+						$this->afficheListeArrondissements();
+						$this->afficheOeuvresCategorie($params["idValue"]);
+
+					}
+					break;
 					
 				}
 			}
@@ -139,6 +161,17 @@
 			$this->afficheVue("AfficheDetails", $data);
 
 		}
-
+		//affiche lesOeuvres par categorie de la recherche
+		public function afficheOeuvresCategorie($val){
+			$modeleOeuvres= new Modele_Oeuvres();
+			$data=$modeleOeuvres-> obtenirOeuvresCategorie($val);
+			$this->afficheVue("vueOeuvres", $data);
+		}
+		//affiche lesOeuvres par lieu de la recherche
+		public function afficheOeuvresLieu($val){
+			$modeleOeuvres= new Modele_Oeuvres();
+			$data=$modeleOeuvres-> obtenirOeuvresArrondissement($val);
+			$this->afficheVue("vueOeuvres", $data);
+		}
 	}
 ?>

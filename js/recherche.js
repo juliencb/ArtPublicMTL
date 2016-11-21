@@ -95,10 +95,11 @@
 					var a = document.createElement("a");					
 					a.title = resultat;
 					if (id=="lieu" || id=="categorie") {
-						a.href ="./index.php?Public_AJAX&action=afficheOeuvres"+id+"&id="+id+"&idValue="+resultat; 
+						a.href ="./index.php?Public&action=Oeuvres"+id+"&idValue="+resultat;
+						
 					}
 					if (id=="artiste"){
-						a.href ="http://localhost/ArtPublicMTL/index.php?Public&action=afficheArtiste&nom="+resultat; 					
+						a.href ="http://localhost/ArtPublicMTL/index.php?Public&action=descriptionArtiste&nom="+resultat; 					
 					}
 					if (id=="oeuvre"){
 						a.href ="http://localhost/ArtPublicMTL/index.php?Public&action=afficheOeuvre&titre="+resultat; 					

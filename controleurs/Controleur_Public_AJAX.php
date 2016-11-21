@@ -14,18 +14,6 @@
 				switch($params["action"])
 				{	
 					case "afficheOeuvrescategorie":
-						$modeleOeuvres= new Modele_Oeuvres();
-						if(isset($params["id"])&&($params["id"])=="categorie" && isset($params["idValue"]))
-						{
-							$data=$modeleOeuvres-> obtenirOeuvresCategorie($params["idValue"]);
-							$this->afficheVue("header");
-							$this->afficheListeCategories();					
-							$this->afficheListeArrondissements();
-							$this->afficheRecherche();
-							$this->afficheVue("vueOeuvres", $data);
-							$this->afficheVue("footer");
-						}
-						
 						if(isset($params["idValue"]) && ($params["idValue"])!="")
 						{   
 							if(($params["idValue"])=="_")
@@ -35,26 +23,14 @@
 							}
 							else
 							{
-								$data=$modeleOeuvres-> obtenirOeuvresCategorie($params["idValue"]);
-								$this->afficheVue("vueOeuvres", $data);		
+								$this->afficheOeuvreCategorie($params["idValue"]);		
 							}
 							
 						}
 					break;
 				
 					case "afficheOeuvreslieu":
-						$modeleOeuvres= new Modele_Oeuvres();
-						if(isset($params["id"])&&($params["id"])=="lieu" && isset($params["idValue"]))
-						{
-							$data=$modeleOeuvres-> obtenirOeuvresArrondissement($params["idValue"]);
-							$this->afficheVue("header");
-							$this->afficheListeCategories();					
-							$this->afficheListeArrondissements();
-							$this->afficheRecherche();
-							$this->afficheVue("vueOeuvres", $data);
-							$this->afficheVue("footer");
-						}
-						else if(isset($params["idValue"])&& ($params["idValue"])!="")
+						if(isset($params["idValue"])&& ($params["idValue"])!="")
 						{
 							if(($params["idValue"])=="_")
 							{
@@ -62,8 +38,7 @@
 							}
 							else
 							{ 
-								$data=$modeleOeuvres-> obtenirOeuvresArrondissement($params["idValue"]);
-								$this->afficheVue("vueOeuvres", $data);
+								$this->afficheOeuvreArrondissement($params["idValue"]);
 							}
 						}
 						
@@ -141,6 +116,21 @@
 				echo $nomDuFichier;
 			}
 
+		}
+		//affiche les oeuvres du Select categorie
+		public function afficheOeuvreCategorie($val){
+			$modeleOeuvres= new Modele_Oeuvres();
+			$data=$modeleOeuvres-> obtenirOeuvresCategorie($val);
+			$this->afficheVue("vueOeuvres", $data);
+			
+		} 
+		
+		//affiche les oeuvres du Select lieu
+		public function afficheOeuvreArrondissement($val){
+			$modeleOeuvres= new Modele_Oeuvres();
+			$data=$modeleOeuvres-> obtenirOeuvresArrondissement($val);
+			$this->afficheVue("vueOeuvres", $data);
+			
 		}
 		
 
