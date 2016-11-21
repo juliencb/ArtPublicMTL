@@ -374,7 +374,7 @@ CREATE TABLE IF NOT EXISTS `oeuvre` (
   `mediums` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
   `numeroAccession` varchar(20) CHARACTER SET latin1 DEFAULT NULL,
   `description` varchar(2000) CHARACTER SET latin1 DEFAULT NULL,
-  `urlImage` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  `urlImage` varchar(200) CHARACTER SET latin1 DEFAULT NULL,
   `arrondissement` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
   `categorie` varchar(20) CHARACTER SET latin1 DEFAULT NULL,
   `valide` tinyint(1) DEFAULT '0',

@@ -98,10 +98,12 @@
 						a.href ="./index.php?Public_AJAX&action=afficheOeuvres"+id+"&id="+id+"&idValue="+resultat; 
 					}
 					if (id=="artiste"){
-						a.href ="http://localhost/ArtPublicMTL/index.php?Public&action=afficheArtiste&nom="+resultat; 					
+						//a.href ="http://localhost/ArtPublicMTL/index.php?Public&action=descriptionArtiste&id="+resultat; 					
+						a.href ="#"; 					
 					}
 					if (id=="oeuvre"){
-						a.href ="http://localhost/ArtPublicMTL/index.php?Public&action=afficheOeuvre&titre="+resultat; 					
+						//a.href ="http://localhost/ArtPublicMTL/index.php?Public&action=details&titre="+resultat; 					
+						a.href ="#"; 					
 					}
 					a.appendChild(lien);
 					li.appendChild(a);

@@ -23,7 +23,6 @@
 					
 				$stmt = $this->connexion->prepare($sqlStm);
 				$stmt->execute();
-
                 return $stmt->fetchAll();
 		
 			}	
@@ -39,9 +38,9 @@
 		{		
 			try
 			{
-				$stmt = $this->connexion->prepare("select oeuvre.titre,oeuvre.categorieObjet,oeuvre.categorie,oeuvre.parc,oeuvre.materiaux,oeuvre.adresseCivique,oeuvre.urlImage,artiste.nom,artiste.prenom,artiste.nomCollectif, arrondissement.nom as nomArrondissement from oeuvre 
-				join oeuvreartiste on oeuvre.id = oeuvreartiste.idOeuvre 
-				join artiste on oeuvreartiste.idArtiste = artiste.id join arrondissement on oeuvre.arrondissement = arrondissement.nom where oeuvre.id = :id");
+				$stmt = $this->connexion->prepare("select titre, categorieObjet, categorie, parc, materiaux, adresseCivique, urlImage, artiste.nom, artiste.prenom, artiste.nomCollectif, arrondissement.nom as nomArrondissement from oeuvre 
+                join artiste on oeuvre.idArtiste = artiste.id 
+				join arrondissement on oeuvre.arrondissement = arrondissement.nom where oeuvre.id = :id");
 				
 				$stmt->execute(array(":id" => $id));
 				return $stmt->fetch();

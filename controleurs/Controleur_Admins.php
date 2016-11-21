@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 	class Controleur_Admins extends BaseControleur
 	{	
 		//la fonction qui sera appelée par le routeur
@@ -17,9 +17,9 @@
                    // si l'action est "importation"
                     case "importation":
                         
-						$this->importeArrondissements();
-						$this->importeOeuvreArtiste();
-						$this->lienArtisteOeuvre();
+					//	$this->importeArrondissements();
+						//$this->importeArtiste();
+						$this->importeOeuvre();
                         
 						break;									  
 					default:
@@ -33,7 +33,7 @@
 			}			
 		} // fin de la fonction traite
         
-        public function importeOeuvreArtiste()
+        public function importeOeuvre()
 		{
             // 
 			$modeleAdmins = new Modele_admins();
@@ -48,9 +48,6 @@
             
                 // crée les variables à utiliser
                 $noInterneArtiste  =$fichierJSON_decode[$i]->Artistes[0]->NoInterne;
-                $prenom            =$fichierJSON_decode[$i]->Artistes[0]->Prenom;
-                $nom               =$fichierJSON_decode[$i]->Artistes[0]->Nom;
-                $nomCollectif      =$fichierJSON_decode[$i]->Artistes[0]->NomCollectif;
 				$noInterne			 = $fichierJSON_decode[$i]->NoInterne;
 				$titre 				 = $fichierJSON_decode[$i]->Titre;
 				$titreVariante       = $fichierJSON_decode[$i]->TitreVariante;
@@ -73,9 +70,8 @@
 				$description         = "";
 				$urlImage            = "";
                 
-                
-                //insertion dans la table artiste
-                $modeleAdmins->insereArtiste($noInterneArtiste, $nom, $prenom, $nomCollectif);
+               
+               $idArtiste = $modeleAdmins->getIdSelonNoInterneA($noInterneArtiste);
 			  
                 // insertion dans la table catégorie
                 $modeleAdmins->insereCategorie($categorie);
@@ -103,7 +99,8 @@
 					$description, 
 					$urlImage,
                     $categorie,
-                    $arrondissement
+                    $arrondissement,
+                    $idArtiste[0]
 				);
 			} // fin de la boucle
                
@@ -139,16 +136,37 @@
 			for($i = 0; $i < $compteur; $i++){
                 
                 //rempli les variables 
-				$noInterneOeuvre	 =$fichierJSON_decode[$i]->NoInterne;
+				
 				$noInterneArtiste    =$fichierJSON_decode[$i]->Artistes[0]->NoInterne;
-                
-                // va chercher l'id de l'oeuvre d'après son NoInterne
-				$idOeuvre = $modeleAdmins->getIdSelonNoInterneO($noInterneOeuvre);
+             
                 // va chercher l'id de l'artiste d'après son NoInterne
 				$idArtiste = $modeleAdmins->getIdSelonNoInterneA($noInterneArtiste);
-                //insère les deux id retrouvés pour faire le lien
-				$modeleAdmins->insereLiens($idOeuvre["id"], $idArtiste["id"]);
+               
 			}
+		} // fin de la fonction lienArtisteOeuvre
+        
+        public function importeArtiste()
+		{
+            // va chercher le fichier JSON des oeuvres publiques de la ville de Montréal
+			$modeleAdmins = new Modele_admins();
+			$fichierJSON = file_get_contents('http://donnees.ville.montreal.qc.ca/dataset/2980db3a-9eb4-4c0e-b7c6-a6584cb769c9/resource/18705524-c8a6-49a0-bca7-92f493e6d329/download/oeuvresdonneesouvertes.json');
+			$fichierJSON_decode = JSON_decode($fichierJSON);
+			$compteur = count($fichierJSON_decode);
+			for($i = 0; $i < $compteur; $i++){
+            
+                // crée les variables à utiliser
+                $noInterneArtiste  =$fichierJSON_decode[$i]->Artistes[0]->NoInterne;
+                $prenom            =$fichierJSON_decode[$i]->Artistes[0]->Prenom;
+                $nom               =$fichierJSON_decode[$i]->Artistes[0]->Nom;
+                $nomCollectif      =$fichierJSON_decode[$i]->Artistes[0]->NomCollectif;
+			
+                
+                
+                //insertion dans la table artiste
+                $modeleAdmins->insereArtiste($noInterneArtiste, $nom, $prenom, $nomCollectif);
+                
+			
+			} // fin de la boucle
 		} // fin de la fonction lienArtisteOeuvre
 		
 	

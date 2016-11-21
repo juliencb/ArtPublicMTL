@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 	class Modele_admins extends TemplateDAO
 	{
 		public function getTable()
@@ -27,12 +27,13 @@
                                      $description, 
                                      $urlImage,
                                      $categorie,
-                                     $arrondissement
+                                     $arrondissement,
+                                     $idArtiste
                                      )
 		{		
 			try
 			{
-				$stmt = $this->connexion->prepare("INSERT INTO `oeuvre` (`noInterne`, `titre`, `titreVariante`, `nomCollection`, `categorieObjet`, `modeAcquisition`, `dateAccession`, `materiaux`, `support`, `technique`, `dimensionsGenerales`, `parc`, `batiment`, `adresseCivique`, `coordonneeLatitude`, `coordonneeLongitude`, `numeroAccession`, `description`, `urlImage`, `categorie`, `arrondissement`) VALUES (:noInterne, :titre, :titreVariante, :nomCollection, :categorieObjet, :modeAcquisition, :dateAccession, :materiaux, :support, :technique, :dimensionsGenerales, :parc, :batiment, :adresseCivique, :coordonneeLatitude, :coordonneeLongitude, :numeroAccession, :description, :urlImage, :categorie, :arrondissement)");
+				$stmt = $this->connexion->prepare("INSERT INTO `oeuvre` (`noInterne`, `titre`, `titreVariante`, `nomCollection`, `categorieObjet`, `modeAcquisition`, `dateAccession`, `materiaux`, `support`, `technique`, `dimensionsGenerales`, `parc`, `batiment`, `adresseCivique`, `coordonneeLatitude`, `coordonneeLongitude`, `numeroAccession`, `description`, `urlImage`, `categorie`, `arrondissement`, `idArtiste`) VALUES (:noInterne, :titre, :titreVariante, :nomCollection, :categorieObjet, :modeAcquisition, :dateAccession, :materiaux, :support, :technique, :dimensionsGenerales, :parc, :batiment, :adresseCivique, :coordonneeLatitude, :coordonneeLongitude, :numeroAccession, :description, :urlImage, :categorie, :arrondissement, :idArtiste)");
 				$stmt->execute(array("noInterne" => $noInterne, 
                                      ":titre" => $titre, 
                                      ":titreVariante" => $titreVariante, 
@@ -53,7 +54,8 @@
                                      ":description" => $description, 
                                      ":urlImage" => $urlImage,
                                      ":categorie" => $categorie,
-                                     ":arrondissement" => $arrondissement
+                                     ":arrondissement" => $arrondissement,
+                                     ":idArtiste" => $idArtiste
                                      
                                      ));
 				return 1;
@@ -148,20 +150,7 @@
 			}
 		}
 		
-        // insère l'id de l'artiste et l'id de l'oeuvre pour faire le lien entre l'oeuvre et l'artiste
-		public function insereLiens($idOeuvre, $idArtiste) 
-		{		
-			try
-			{
-				$stmt = $this->connexion->prepare("INSERT INTO `oeuvreArtiste` (`idOeuvre`, `idArtiste`) VALUES (:idOeuvre, :idArtiste)");
-				$stmt->execute(array(":idOeuvre" => $idOeuvre, ":idArtiste" => $idArtiste));
-				return 1;
-			}	
-			catch(Exception $exc)
-			{
-				return 0;
-			}
-		}
+      
 	}
 ?>
 
