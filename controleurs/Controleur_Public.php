@@ -109,6 +109,13 @@
 		{
 			$modeleArtiste = new Modele_artistes();
 			$data = $modeleArtiste->obtenirTousArtisteAlphabetique();
+			/*foreach ($data as $artiste){
+				if($artiste["nomCollectif"] == NULL){
+					$artiste["nomCollectif"] = "";
+					$artiste["nomCollectif"] = $artiste["nom"] . $artiste["nomCollectif"];
+				}
+				
+			}*/
 			$this->afficheVue("vueArtistes", $data);	
 		}
 

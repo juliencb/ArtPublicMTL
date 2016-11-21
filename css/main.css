@@ -37,6 +37,7 @@ body{
 #menuPrincipal ul,
 #reseauxSociaux ul{
     list-style: none;
+	overflow: hidden;
 }
 
 .itemMenu,
