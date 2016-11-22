@@ -19,13 +19,12 @@
 					" UNION SELECT 'oeuvre' as id, titre as resultat from oeuvre where titre LIKE '".$rechDebut."' or titre LIKE '". $rechDans. "'".
 					" UNION SELECT 'artiste' as id, concat(prenom, ' ', nom) as resultat FROM artiste WHERE nom LIKE '". $rechDebut."' or nom LIKE '". $rechDans."' or prenom LIKE '". $rechDebut."' or prenom LIKE '". $rechDans."'".
 					" UNION SELECT 'categorie' as id, nom as resultat FROM categorie WHERE nom LIKE '".$rechDebut."' or nom LIKE '". $rechDans."'";
+					
 				$stmt = $this->connexion->prepare($sqlStm);
 				$stmt->execute();
+
                 return $stmt->fetchAll();
-				
-				
-				
-				
+		
 			}	
 			catch(Exception $exc)
 			{

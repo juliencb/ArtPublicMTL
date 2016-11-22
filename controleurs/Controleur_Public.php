@@ -20,23 +20,23 @@
 						$this->afficheVue("pageAccueil","");	
 						$this->afficheRecherche();	
 						break;
-						
+
 					case "listeOeuvres":
 					    $this->afficheListeCategories();					
 						$this->afficheListeArrondissements();
 						$this->afficheRecherche();						
-						$this->afficheListeOeuvres();	
-						
+						$this->afficheListeOeuvres();		
 						break;
 						
-					case "listeArtiste":
+					case "listeArtistes":
 						$this->afficheListeArtistes();
-						$this->afficheRecherche();
+						$this->afficheRecherche();   
 					    break;
 					
 					case "oeuvre":
 						$this->afficheRecherche();
-						break;
+					 	break;
+
 				
 					case "descriptionArtiste":
 						if(isset($params["id"])){
@@ -44,7 +44,7 @@
 							$this->afficheOeuvresArtiste($params["id"]);
 						}
 						break;
-						
+									
 					case "soumission":
 						$this->afficheRecherche();
 						$this->afficheSoumission();
@@ -56,12 +56,6 @@
 							$this->afficheDetails($params["id"]);	
 						}	
 						break;
-						
-					default:
-						$this->afficheVue("pageAccueil","");	
-						$this->afficheRecherche();	
-						
-						
 					case "Oeuvreslieu":
 					if(isset($params["idValue"]))
 					{
@@ -81,8 +75,11 @@
 						$this->afficheOeuvresCategorie($params["idValue"]);
 
 					}
-					break;
+					break;	
 					
+					default:
+						$this->afficheVue("pageAccueil","");	
+						$this->afficheRecherche();	
 				}
 			}
 			else{
@@ -90,8 +87,6 @@
 				$this->afficheVue("pageAccueil","");	
 				$this->afficheRecherche();	
 			}
-			
-				
 
 			//inclusion du footer dans le cas d'une requête qui n'est pas AJAX
 			$this->afficheVue("footer");
@@ -128,13 +123,19 @@
 		public function afficheRecherche(){
 			$this->afficheVue("recherche", "");	
 		}
-
 		
 		//afficher la liste des artistes
 		public function afficheListeArtistes()
 		{
 			$modeleArtiste = new Modele_artistes();
-			$data = $modeleArtiste->obtenirTous();
+			$data = $modeleArtiste->obtenirTousArtisteAlphabetique();
+			/*foreach ($data as $artiste){
+				if($artiste["nomCollectif"] == NULL){
+					$artiste["nomCollectif"] = "";
+					$artiste["nomCollectif"] = $artiste["nom"] . $artiste["nomCollectif"];
+				}
+				
+			}*/
 			$this->afficheVue("vueArtistes", $data);	
 		}
 
@@ -153,7 +154,6 @@
 			//var_dump($data["urlImage"]);
 		}
 
-
 		public function afficheDetails($id)
 		{ 
 			$modelePublic = new Modele_public();
@@ -161,6 +161,7 @@
 			$this->afficheVue("AfficheDetails", $data);
 
 		}
+
 		//affiche lesOeuvres par categorie de la recherche
 		public function afficheOeuvresCategorie($val){
 			$modeleOeuvres= new Modele_Oeuvres();
@@ -173,5 +174,6 @@
 			$data=$modeleOeuvres-> obtenirOeuvresArrondissement($val);
 			$this->afficheVue("vueOeuvres", $data);
 		}
+
 	}
 ?>

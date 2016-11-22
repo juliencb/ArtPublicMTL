@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	class Controleur_Public_AJAX extends Controleur_Public
 	{	
 		//la fonction qui sera appelée par le routeur
@@ -75,7 +75,7 @@
 		public function recherche($strRecherche){
 			$modelePublic = new Modele_public();
 			$resultatsRecherche = $modelePublic->recherche($strRecherche);
-			//echo json_encode ($resultatsRecherche);
+
 			echo "<resultatsRecherche>";
 
 	       foreach($resultatsRecherche as $r){
@@ -117,6 +117,7 @@
 			}
 
 		}
+		
 		//affiche les oeuvres du Select categorie
 		public function afficheOeuvreCategorie($val){
 			$modeleOeuvres= new Modele_Oeuvres();
@@ -124,6 +125,7 @@
 			$this->afficheVue("vueOeuvres", $data);
 			
 		} 
+		
 		
 		//affiche les oeuvres du Select lieu
 		public function afficheOeuvreArrondissement($val){
