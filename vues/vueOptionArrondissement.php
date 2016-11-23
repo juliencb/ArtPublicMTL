@@ -1,7 +1,6 @@
-
-		 <select id="arrondissements">
-
+ <select id="arrondissements">
 			<option value="_">Lieu</option>
+		
 
 			<?php 
 				foreach($data as $arrondissement){

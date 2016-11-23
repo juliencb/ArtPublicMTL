@@ -1,6 +1,6 @@
+<?php
+	class Modele_Artistes extends TemplateDAO
 
-﻿<?php
-	class Modele_artistes extends TemplateDAO
 	{
 		public function getTable()
 		{

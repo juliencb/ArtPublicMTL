@@ -1,5 +1,4 @@
 <?php
-	
 	function __autoload($classe)
 	{
 		$repertoires = array("./controleurs/", 

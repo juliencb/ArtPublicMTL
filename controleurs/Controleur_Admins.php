@@ -4,23 +4,21 @@
 		//la fonction qui sera appelée par le routeur
 		public function traite(array $params)
 		{				
-            // vérifie s'il y a une action passée en paramêtre
+            // vérifie s'il y a une action passÃ©e en paramÃªtre
 			if(isset($params["action"]))
 			{
-				//modèle et vue vides par défaut
+				//modèle et vue vides par dÃ©faut
 				$data = array();
 				$vue = "";
-				//switch en fonction de l'action qui nous est envoyée
-				//ce switch détermine la vue $vue et obtient le modèle $data
+				//switch en fonction de l'action qui nous est envoyÃ©e
+				//ce switch détermine la vue $vue et obtient le modÃ¨le $data
 				switch($params["action"])
 				{			
                    // si l'action est "importation"
                     case "importation":
-                        
-					//	$this->importeArrondissements();
-						//$this->importeArtiste();
+						$this->importeArrondissements();
+						$this->importeArtiste();
 						$this->importeOeuvre();
-                        
 						break;									  
 					default:
 						echo "ERROR";		
@@ -28,7 +26,7 @@
 			}
 			else
 			{
-					//action par défaut
+					//action par dÃ©faut
 					echo "ERROR";					
 			}			
 		} // fin de la fonction traite
@@ -109,7 +107,7 @@
 		
 		public function importeArrondissements()
 		{
-            // va chercher le fichier JSON des arrondissements de la ville de Montréal
+            // va chercher le fichier JSON des arrondissements de la ville de MontrÃ©al
 			$modeleAdmins = new Modele_admins();
 			$arron = file_get_contents('http://donnees.ville.montreal.qc.ca/dataset/00bd85eb-23aa-4669-8f1b-ba9a000e3dd8/resource/e9b0f927-8f75-458c-8fda-b5da65cc8b73/download/limadmin.json');
 			$arron_decode = JSON_decode($arron);
@@ -138,10 +136,10 @@
                 //rempli les variables 
 				
 				$noInterneArtiste    =$fichierJSON_decode[$i]->Artistes[0]->NoInterne;
-             
+ 
                 // va chercher l'id de l'artiste d'après son NoInterne
 				$idArtiste = $modeleAdmins->getIdSelonNoInterneA($noInterneArtiste);
-               
+
 			}
 		} // fin de la fonction lienArtisteOeuvre
         

@@ -1,5 +1,5 @@
-<?php
 
+<?php
 	class Modele_public extends TemplateDAO
 	{
 		public function getTable()

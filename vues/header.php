@@ -2,14 +2,11 @@
 <!--debut du conteneur GLOBAL-->
 
 	<div id ="global">
-
-		
 		<!--Debut Section ENTÊTE-->
 		<header class ="entete">
 			<a href="index.php">
 				<img id="logo" src="images/logo.png" alt="logo" >
 			</a>
-
 			<div class="menu">
 				<nav id="menuPrincipal">
 					<ul>

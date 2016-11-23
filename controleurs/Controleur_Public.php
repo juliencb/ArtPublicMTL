@@ -1,8 +1,7 @@
-﻿<?php
+<?php
 	class Controleur_Public extends BaseControleur{
 	
 		//la fonction qui sera appelée par le routeur
-
 		public function traite(array $params){
 			//affichage du header
 			$this->afficheVue("head");
@@ -22,10 +21,10 @@
 						break;
 
 					case "listeOeuvres":
-					    $this->afficheListeCategories();					
-						$this->afficheListeArrondissements();
-						$this->afficheRecherche();						
-						$this->afficheListeOeuvres();		
+					    $this->afficheListeCategories();				
+						$this->afficheListeArrondissements();					
+						$this->afficheListeOeuvres();	
+						$this->afficheRecherche();
 						break;
 						
 					case "listeArtistes":
@@ -80,6 +79,7 @@
 			$this->afficheVue("vueOeuvres", $data);
 		}
 		
+
 		///--fonction permet d'affiche la liste des categories--///	
 		public function afficheListeCategories()
 		{
