@@ -3,14 +3,13 @@
 <html>
     <meta charset="utf-8">
 <head>
-	<!--
 
 	<link rel="stylesheet" href="css/main.css"/>
-	<link rel="stylesheet" href="css/recherche.css"/>
+	<!--<link rel="stylesheet" href="css/recherche.css"/>-->
 	<link rel="stylesheet" href="css/soumission.css"/>
 	<link rel="stylesheet" href="css/page_artistes.css"/>
 	<link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono" rel="stylesheet">
-	-->
+
 	<style>
         {     
             font-family: 'Roboto', sans-serif;

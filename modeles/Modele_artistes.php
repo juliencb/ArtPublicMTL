@@ -11,7 +11,7 @@
 		public function obtenirTousArtisteAlphabetique(){
 			try
 			{
-				$stmt = $this->connexion->prepare("SELECT *, CONCAT (nom, nomCollectif) AS nomArtiste FROM artiste ORDER BY nomArtiste");
+				$stmt = $this->connexion->prepare("SELECT id, IFNULL(prenom, ' ')AS prenom, IFNULL(nom , nomCollectif) as nomArtiste FROM artiste ORDER BY nomArtiste");
 				$stmt->bindParam(":valeur", $valeur);
 				$stmt->execute();
 				return $stmt->fetchAll();

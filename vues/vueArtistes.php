@@ -12,7 +12,8 @@
 					?>
 							<li>
 								<a href="index.php?Public&action=descriptionArtiste&id=<?php echo $artiste['id'] ?>">
-									<?php echo $artiste["prenom"] . " " . $artiste["nom"] . " " . $artiste["nomCollectif"]; ?>
+									<?php echo $artiste["prenom"] . " " . $artiste["nomArtiste"]; ?>
+									
 								</a>
 							</li>
 					<?php 

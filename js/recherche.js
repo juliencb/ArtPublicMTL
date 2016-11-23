@@ -72,18 +72,19 @@
 				console.log(xmlDoc);
 				var listeResultatRecherche = xmlDoc.getElementsByTagName("resultatRecherche");			
 
-				var id = "";
+				var type = "";
 				var liste=document.createElement("ul");;
 				for(var i = 0; i < listeResultatRecherche.length; i++){
-					if (id !=  listeResultatRecherche[i].getElementsByTagName("id")[0].childNodes[0].nodeValue) {
+					if (type !=  listeResultatRecherche[i].getElementsByTagName("type")[0].childNodes[0].nodeValue) {
 						if (i > 0) document.getElementById(nomDiv).appendChild(liste);
+						var type = listeResultatRecherche[i].getElementsByTagName("type")[0].childNodes[0].nodeValue;
 						var id = listeResultatRecherche[i].getElementsByTagName("id")[0].childNodes[0].nodeValue;
 						var h1 = document.createElement("h1");
 						h1.id = "titreListe";
-						if(id=="artiste")var titre = document.createTextNode("Artistes");
-						if(id=="lieu")var titre = document.createTextNode("Arrondissements");
-						if(id=="categorie")var titre = document.createTextNode("Catégories");
-						if(id=="oeuvre")var titre = document.createTextNode("Oeuvres");
+						if(type=="artiste")var titre = document.createTextNode("Artistes");
+						if(type=="lieu")var titre = document.createTextNode("Arrondissements");
+						if(type=="categorie")var titre = document.createTextNode("Catégories");
+						if(type=="oeuvre")var titre = document.createTextNode("Oeuvres");
 						h1.appendChild(titre);
 						document.getElementById(nomDiv).appendChild(h1);
 						liste=document.createElement("ul");
@@ -94,14 +95,16 @@
 					var lien = document.createTextNode(resultat);
 					var a = document.createElement("a");					
 					a.title = resultat;
-					if (id=="lieu" || id=="categorie") {
-						a.href ="./index.php?Public_AJAX&action=afficheOeuvres"+id+"&id="+id+"&idValue="+resultat; 
+					if (type=="lieu" || type=="categorie") {
+						a.href ="./index.php?Public_AJAX&action=afficheOeuvres"+type+"&id="+type+"&idValue="+resultat; 
 					}
-					if (id=="artiste"){
-						a.href ="http://localhost/ArtPublicMTL/index.php?Public&action=afficheArtiste&nom="+resultat; 					
+					if (type=="artiste"){
+						a.href ="http://localhost/ArtPublicMTL/index.php?Public&action=descriptionArtiste&id="+id; 					
+						//a.href ="#"; 					
 					}
-					if (id=="oeuvre"){
-						a.href ="http://localhost/ArtPublicMTL/index.php?Public&action=afficheOeuvre&titre="+resultat; 					
+					if (type=="oeuvre"){
+						a.href ="http://localhost/ArtPublicMTL/index.php?Public&action=details&id="+id; 					
+						//a.href ="#"; 					
 					}
 					a.appendChild(lien);
 					li.appendChild(a);

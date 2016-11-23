@@ -106,8 +106,9 @@
 	       foreach($resultatsRecherche as $r){
 				//le XML du contact
 				echo "<resultatRecherche>";
-				echo "<id>" . $r["id"] . "</id>";
+				echo "<type>" . $r["type"] . "</type>";
 				echo "<resultat>" . $r["resultat"] . "</resultat>";
+				echo "<id>" . $r["id"] . "</id>";
 
 				echo "</resultatRecherche>";
 			}

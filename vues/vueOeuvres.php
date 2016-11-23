@@ -11,7 +11,7 @@
 					
 					echo"<div id='{$oeuvres["id"]}'>
 
-						<a href='./index.php?public&action=afficheDetails&id={$oeuvres["id"]}'>";
+						<a href='./index.php?public&action=details&id={$oeuvres["id"]}'>";
 						
 
 						if($oeuvres["urlImage"]=="")
