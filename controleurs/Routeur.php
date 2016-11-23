@@ -1,9 +1,10 @@
-﻿<?php
+<?php
 	class Routeur
 	{
 		public static function route()
 		{
 			//obtenir le controleur qui devra traiter la requête
+
 			//$controleur = $_REQUEST["controleur"];
 
 			//obtenir la query string
@@ -23,11 +24,15 @@
 			}
 			else
 			{	
+
 				//controleur par défaut
+
 				$classe = "Controleur_Public";
 
 			}
+
 			//vérifier que la classe existe
+
 			if(class_exists($classe))
 			{
 				//dans $classe se trouve le nom de la classe ex : "Controleur_Films"

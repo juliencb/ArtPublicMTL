@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	require_once("../modeles/TemplateDAO.php");
 	require_once("../modeles/Modele_Films.php");
 	

@@ -1,8 +1,7 @@
-﻿<?php
+<?php
 	class Controleur_Public extends BaseControleur{
 	
 		//la fonction qui sera appelée par le routeur
-
 		public function traite(array $params){
 			//affichage du header
 			$this->afficheVue("head");
@@ -37,26 +36,46 @@
 						$this->afficheRecherche();
 					 	break;
 
-				
 					case "descriptionArtiste":
 						if(isset($params["id"])){
 							$this->afficheDescriptionArtiste($params["id"]);
 							$this->afficheOeuvresArtiste($params["id"]);
 						}
 						break;
-									
+                        
 					case "soumission":
 						$this->afficheRecherche();
 						$this->afficheSoumission();
-						break;					
-					
+						break;		
+                        
 					case "details":
 						if(isset($params["id"])){
 							$this->afficheRecherche();
 							$this->afficheDetails($params["id"]);	
 						}	
 						break;
-						
+                        
+					case "Oeuvreslieu":
+                        if(isset($params["idValue"]))
+                        {
+                            $this->afficheRecherche();	
+                            $this->afficheListeCategories();					
+                            $this->afficheListeArrondissements();
+                            $this->afficheOeuvresLieu($params["idValue"]);
+                        }
+                        break;
+					
+					case "Oeuvrescategorie":
+                        if(isset($params["idValue"]))
+                        {
+                            $this->afficheRecherche();	
+                            $this->afficheListeCategories();					
+                            $this->afficheListeArrondissements();
+                            $this->afficheOeuvresCategorie($params["idValue"]);
+
+                        }
+                        break;	
+                        
 					default:
 						$this->afficheVue("pageAccueil","");	
 						$this->afficheRecherche();	
@@ -80,6 +99,7 @@
 			$this->afficheVue("vueOeuvres", $data);
 		}
 		
+
 		///--fonction permet d'affiche la liste des categories--///	
 		public function afficheListeCategories()
 		{
@@ -134,13 +154,25 @@
 			//var_dump($data["urlImage"]);
 		}
 
-
 		public function afficheDetails($id)
 		{ 
 			$modelePublic = new Modele_public();
 			$data = $modelePublic->nomOeuvre($id);
 			$this->afficheVue("AfficheDetails", $data);
 
+		}
+
+		//affiche lesOeuvres par categorie de la recherche
+		public function afficheOeuvresCategorie($val){
+			$modeleOeuvres= new Modele_Oeuvres();
+			$data=$modeleOeuvres-> obtenirOeuvresCategorie($val);
+			$this->afficheVue("vueOeuvres", $data);
+		}
+		//affiche lesOeuvres par lieu de la recherche
+		public function afficheOeuvresLieu($val){
+			$modeleOeuvres= new Modele_Oeuvres();
+			$data=$modeleOeuvres-> obtenirOeuvresArrondissement($val);
+			$this->afficheVue("vueOeuvres", $data);
 		}
 
 	}

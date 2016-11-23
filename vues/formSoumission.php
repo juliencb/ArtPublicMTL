@@ -1,6 +1,4 @@
-
 <script>
-
 //References http://stackoverflow.com/questions/23980733/jquery-ajax-file-upload-php
 			$(document).ready(function(){
 				//Stack overflow http://stackoverflow.com/questions/8838648/onchange-event-handler-for-radio-button-input-type-radio-doesnt-work-as-one
