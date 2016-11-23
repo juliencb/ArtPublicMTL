@@ -1,6 +1,5 @@
 <body>
 <!--debut du conteneur GLOBAL-->
-
 	<div id ="global">
 		<!--Debut Section ENTÊTE-->
 		<header class ="entete">
@@ -10,7 +9,6 @@
 			<div class="menu">
 				<nav id="menuPrincipal">
 					<ul>
-
 						<li class="itemMenu"><a href="index.php?Public&action=listeOeuvres">Oeuvres</a></li>
 						<li class="itemMenu"><a href="index.php?Public&action=listeArtistes">Artistes</a></li>
 						<li class="itemMenu"><a href="#">À Propos</a></li>
@@ -36,7 +34,5 @@
 					</ul>
 				</nav>			
 			</div>
-
 		</header>
 		<!--fin Section ENTÊTE-->
-

@@ -23,6 +23,7 @@
 					
 				$stmt = $this->connexion->prepare($sqlStm);
 				$stmt->execute();
+
                 return $stmt->fetchAll();
 		
 			}	

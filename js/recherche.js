@@ -57,6 +57,7 @@
           }
     }
 
+
     // Fonction pour trouver la valeur d'un id dans un xml de contact
     function xmlValue(xml,id) {		
         xmlParse(xml);		  
@@ -93,16 +94,22 @@
             var a = document.createElement("a");					
             a.title = resultat;
             if (id=="lieu" || id=="categorie") {
-                a.href ="./index.php?Public_AJAX&action=afficheOeuvres"+id+"&id="+id+"&idValue="+resultat; 
+                a.href ="./index.php?Public&action=Oeuvres"+id+"&idValue="+resultat;
+
             }
+            /*if (id=="artiste"){
+                a.href ="http://localhost/ArtPublicMTL/index.php?Public&action=descriptionArtiste&nom="+resultat; 					
+            }
+            if (id=="oeuvre"){
+                a.href ="http://localhost/ArtPublicMTL/index.php?Public&action=afficheOeuvre&titre="+resultat; 					
+            }*/
             if (id=="artiste"){
-                //a.href ="http://localhost/ArtPublicMTL/index.php?Public&action=descriptionArtiste&id="+resultat; 					
                 a.href ="#"; 					
             }
             if (id=="oeuvre"){
-                //a.href ="http://localhost/ArtPublicMTL/index.php?Public&action=details&titre="+resultat; 					
                 a.href ="#"; 					
             }
+
             a.appendChild(lien);
             li.appendChild(a);
             liste.appendChild(li);
