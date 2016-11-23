@@ -9,12 +9,9 @@ window.addEventListener("load", function(){
 			$("#categorie").on("change",function(){
 				var _categorie=$("#categorie").val();
                 $.get("./index.php?Public_AJAX&action=afficheOeuvrescategorie&idValue="+ _categorie, function(data){
-                  
 				   $('#collectionOeuvres').html("");
 				   $('#collectionOeuvres').html(data);
-                
                 });
-				
 			});
             
 			$("#arrondissements").on("change",function(){
@@ -22,14 +19,9 @@ window.addEventListener("load", function(){
                 $.get("./index.php?Public_AJAX&action=afficheOeuvreslieu&idValue="+ _arrondissement, function(data){
 				   $('#collectionOeuvres').html("");
 				   $('#collectionOeuvres').html(data);
-                
                 });
-				
 			})
-			
 		}
-
-
 	});	
 })();	
 //===FIN SECTION OEUVRES====//

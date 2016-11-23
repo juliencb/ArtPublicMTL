@@ -15,10 +15,8 @@
 			try
 			{	
 						
-				$stmt = $this->connexion->prepare("SELECT oeuvre.id, artiste.id as idArtiste,titre, titreVariante, categorie,urlImage, artiste.prenom, artiste.nom 
-													FROM oeuvre 
-													JOIN oeuvreartiste ON IdOeuvre = oeuvre.id 
-													JOIN artiste ON IdArtiste = artiste.id");
+				$stmt = $this->connexion->prepare("SELECT oeuvre.id, idArtiste,titre, titreVariante, categorie,urlImage, artiste.prenom, artiste.nom 
+													FROM oeuvre JOIN artiste ON idArtiste = artiste.id");
 				$stmt->execute();
 				return $stmt->fetchAll();
 			}		
@@ -33,14 +31,10 @@
 		///---les oeuvres d'une categorie ainsi que le nom de artiste lié à chaque oeuvre.---///
 		public function obtenirOeuvresCategorie($uneCategorie)
 		{
-			
 			try
 			{	
-				
-				$stmt = $this->connexion->prepare("SELECT oeuvre.id, titre, artiste.id as idArtiste, categorie,urlImage, artiste.prenom, artiste.nom  
-													FROM " . $this->getTable() . " 
-													JOIN oeuvreartiste ON oeuvreartiste.IdOeuvre = oeuvre.id 
-													JOIN artiste ON IdArtiste = artiste.id WHERE categorie= :uneCategorie");
+				$stmt = $this->connexion->prepare("SELECT oeuvre.id, titre, idArtiste, categorie,urlImage, artiste.prenom, artiste.nom  
+													FROM oeuvre JOIN artiste ON idArtiste = artiste.id WHERE categorie= :uneCategorie");
 				$stmt->bindParam(":uneCategorie", $uneCategorie);
 				$stmt->execute();
 				return $stmt->fetchAll();
@@ -56,14 +50,10 @@
 		///---les oeuvres d'un arrondissement ainsi que le nom de artiste lié à chaque oeuvre.---///
 		public function obtenirOeuvresArrondissement($unArrondissement)
 		{
-				
 			try
-			{	
-						
-				$stmt = $this->connexion->prepare("SELECT oeuvre.id, artiste.id as idArtiste, titre, arrondissement,urlImage, artiste.prenom, artiste.nom 
-													FROM " . $this->getTable() . " 
-													JOIN oeuvreartiste ON oeuvreartiste.IdOeuvre = oeuvre.id 
-													JOIN artiste ON IdArtiste = artiste.id
+			{			
+				$stmt = $this->connexion->prepare("SELECT oeuvre.id, idArtiste, titre, arrondissement,urlImage, artiste.prenom, artiste.nom 
+													FROM oeuvre JOIN artiste ON idArtiste = artiste.id
 													WHERE arrondissement= :unArrondissement");
 				$stmt->bindParam(":unArrondissement", $unArrondissement);
 				$stmt->execute();
@@ -75,9 +65,5 @@
 			}
 		
 		}
-		
-		
-		
-
 	}
 ?>

@@ -1,18 +1,14 @@
-
-	
 	<div id="collectionOeuvres">
 		<?php
 			$cont=0;
 			foreach($data as $oeuvres)
 			{
-
+               // if (strpos($oeuvres["titre"], 'Non titré') === true) {
 				if($cont<15)
 				{
-					
 					echo"<div id='{$oeuvres["id"]}'>
 
 						<a href='./index.php?public&action=details&id={$oeuvres["id"]}'>";
-						
 
 						if($oeuvres["urlImage"]=="")
 						{
@@ -22,18 +18,14 @@
 							
 						</a>
 							<div class='hoverPhoto'>
-							
 								<span class='titreOeuvres'><a href='./index.php?public&action=details&id={$oeuvres["id"]}'>Titre: {$oeuvres["titre"]}</a></span>
 								<span class='nomArtistes'><a href='./index.php?public&action=descriptionArtiste&id={$oeuvres["idArtiste"]}'>Artiste: {$oeuvres["prenom"]} {$oeuvres["nom"]}</a></span>
 							</div>
-
 					</div>";
 					$cont++;
 				}	
 			}
-
 		?>		
 	</div>
-		
 </section>
 <!--fin Section Oeuvres-->

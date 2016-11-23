@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <script>
 	window.addEventListener("load", function(){
 		//lorsque je clique sur btnAjax
@@ -115,6 +116,9 @@
 				document.getElementById(nomDiv).appendChild(liste);
 			}
 </script>
+=======
+﻿
+>>>>>>> upstream/master
 
 <div id="resultatRecherche"></div>
 <form id="formRecherche" method="POST">
