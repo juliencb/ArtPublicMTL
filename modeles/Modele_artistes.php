@@ -1,6 +1,6 @@
+<?php
+	class Modele_Artistes extends TemplateDAO
 
-﻿<?php
-	class Modele_artistes extends TemplateDAO
 	{
 		public function getTable()
 		{
@@ -11,7 +11,7 @@
 		public function obtenirTousArtisteAlphabetique(){
 			try
 			{
-				$stmt = $this->connexion->prepare("SELECT *, CONCAT (nom, nomCollectif) AS nomArtiste FROM artiste ORDER BY nomArtiste");
+				$stmt = $this->connexion->prepare("SELECT id, IFNULL(prenom, ' ')AS prenom, IFNULL(nom , nomCollectif) as nomArtiste FROM artiste ORDER BY nomArtiste");
 				$stmt->bindParam(":valeur", $valeur);
 				$stmt->execute();
 				return $stmt->fetchAll();
@@ -42,7 +42,7 @@
 		public function obtenirOeuvresArtiste ($valeur){
 			try
 			{
-				$stmt = $this->connexion->prepare("SELECT urlImage FROM artiste JOIN oeuvreartiste ON idArtiste = artiste.id JOIN oeuvre ON idOeuvre = oeuvre.id WHERE artiste.id = :valeur");
+				$stmt = $this->connexion->prepare("SELECT urlImage FROM artiste WHERE artiste.id = :valeur");
 				$stmt->bindParam(":valeur", $valeur);
 				$stmt->execute();
 				return $stmt->fetchAll();

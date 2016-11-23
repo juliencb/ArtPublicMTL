@@ -1,3 +1,5 @@
+/*** CSS PAGE ACCEUIL  ***/
+
 body{
     font-size: 16px;
 }
@@ -37,6 +39,7 @@ body{
 #menuPrincipal ul,
 #reseauxSociaux ul{
     list-style: none;
+	overflow: hidden;
 }
 
 .itemMenu,
