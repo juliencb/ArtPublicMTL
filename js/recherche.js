@@ -17,6 +17,7 @@
 								if(xhr.status === 200){
 									afficheResultatRecherche("resultatRecherche",xhr.responseText.trim());
 								}
+							
 								else if(xhr.status === 404){
 									//Aucune action dans le cas oû on ne trouve pas l'URL
 								}
@@ -26,7 +27,7 @@
 						xhr.send();
 					}
 					else{
-				        effaceChild("resultatRecherche");
+							effaceChild("resultatRecherche");
 					}		
 				}
 			}
@@ -34,43 +35,46 @@
 
 	});
 
-    // Fonction qui efface les éléments présents dans la division.
-    function effaceChild(nomDiv) {
-        var division = document.getElementById(nomDiv);			
-        var fc = division.firstChild;
-        while( fc ) {
-            division.removeChild( fc );
-            fc = division.firstChild;
-        }						
-    }
 
-    //Fonction pour parser le xml 
-    function xmlParse(xml){
-        if (window.DOMParser){
-            parser = new DOMParser();
-            xmlDoc = parser.parseFromString(xml, "text/xml");
-          }
-        else{ // Internet Explorer
-            xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-            xmlDoc.async = false;
-            xmlDoc.loadXML(xml);
-          }
-    }
+	// Fonction qui efface les éléments présents dans la division.
+	function effaceChild(nomDiv) {
+		var division = document.getElementById(nomDiv);			
+		var fc = division.firstChild;
+		while( fc ) {
+			division.removeChild( fc );
+			fc = division.firstChild;
+		}						
+	}
+	
+	//Fonction pour parser le xml 
+	function xmlParse(xml){
+		if (window.DOMParser){
+			parser = new DOMParser();
+			xmlDoc = parser.parseFromString(xml, "text/xml");
+		  }
+		else{ // Internet Explorer
+			xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+			xmlDoc.async = false;
+			xmlDoc.loadXML(xml);
+		  }
+	}
+	
+	// Fonction pour trouver la valeur d'un id dans un xml de contact
+	function xmlValue(xml,id) {		
+		xmlParse(xml);		  
+		var contact = xmlDoc.getElementsByTagName("contact"); 
+		return contact[0].getElementsByTagName(id)[0].childNodes[0].nodeValue;
+	}
+	
+	function afficheResultatRecherche(nomDiv,xml) {			
+		effaceChild(nomDiv);
+		//xml = xml.substr(1); // pour enlever le caractère bizarre du début.
+		//console.log(xml);
+		xmlParse(xml);	
+		console.log(xmlDoc);
+		var listeResultatRecherche = xmlDoc.getElementsByTagName("resultatRecherche");			
 
-    // Fonction pour trouver la valeur d'un id dans un xml de contact
-    function xmlValue(xml,id) {		
-        xmlParse(xml);		  
-        var contact = xmlDoc.getElementsByTagName("contact"); 
-        return contact[0].getElementsByTagName(id)[0].childNodes[0].nodeValue;
-    }
-
-    function afficheResultatRecherche(nomDiv,xml) {			
-        effaceChild(nomDiv)
-        xmlParse(xml);	
-        console.log(xmlDoc);
-        var listeResultatRecherche = xmlDoc.getElementsByTagName("resultatRecherche");			
-
-        var type = "";
+		var type = "";
 		var liste=document.createElement("ul");;
 		for(var i = 0; i < listeResultatRecherche.length; i++){
 			if (type !=  listeResultatRecherche[i].getElementsByTagName("type")[0].childNodes[0].nodeValue) {
@@ -109,5 +113,5 @@
 			liste.appendChild(li);
 		}						
 		document.getElementById(nomDiv).appendChild(liste);
-    }
+	}
 })();

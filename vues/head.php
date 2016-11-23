@@ -20,7 +20,7 @@
     </style>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script src="./js/public_Oeuvres.js"></script>
-	<script src="js/recherche.js"></script>
+	<script src="./js/recherche.js"></script>
 	<!--<script src="js/telechargementImage.js"></script>-->
 
 </head>
