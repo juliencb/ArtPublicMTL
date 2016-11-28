@@ -54,8 +54,8 @@
 							$this->afficheDetails($params["id"]);	
 						}	
 						break;
-                        
-					case "Oeuvreslieu":
+
+					case "afficheOeuvreslieu":
                         if(isset($params["idValue"]))
                         {
                             $this->afficheRecherche();	
@@ -65,7 +65,7 @@
                         }
                         break;
 					
-					case "Oeuvrescategorie":
+					case "afficheOeuvrescategorie":
                         if(isset($params["idValue"]))
                         {
                             $this->afficheRecherche();	
