@@ -15,6 +15,7 @@
 		{
 			try{
 				$this->connexion = new PDO("mysql:dbname=artpublicmtl;host=localhost", "root", "");
+				$this->connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
 			}
 			catch(Exception $exc)
 			{

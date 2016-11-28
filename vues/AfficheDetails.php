@@ -22,7 +22,7 @@
 			
 		
 		if(($data["prenom"]&&$data["nom"]!="")&&($data["prenom"]!= null && $data["nom"]!= null )){
-			echo "<li><span>Artiste: ". $data["nom"].", ".$data["prenom"]. "</span></li>";
+			echo "<li><span>Artiste: <a href='./index.php?Public&action=descriptionArtiste&id=". $data["idArtiste"] . "'>". $data["nom"].", ".$data["prenom"]. "</a></span></li>";
 		}
 		
 		else{
@@ -52,7 +52,9 @@
 		if($data["nomArrondissement"]!=""){
 			echo "<li><span>Arrondissement :". $data["nomArrondissement"]. "</span></li>";
 		}	
-        
+        ?>
+	</ul>
+    <?php
         
         if($data["coordonneeLatitude"]!=""){
 		
@@ -88,5 +90,4 @@
 
 	?>	
 
-	</ul>	
 </div>
