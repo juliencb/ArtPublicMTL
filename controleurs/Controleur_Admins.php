@@ -26,8 +26,8 @@
 			}
 			else
 			{
-					//action par dÃ©faut
-					echo "ERROR";					
+                //action par dÃ©faut
+                echo "ERROR";					
 			}			
 		} // fin de la fonction traite
         

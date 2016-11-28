@@ -39,7 +39,7 @@
 		{		
 			try
 			{
-				$stmt = $this->connexion->prepare("select titre, categorieObjet, categorie, parc, materiaux, adresseCivique, urlImage, artiste.nom, artiste.prenom, artiste.nomCollectif, arrondissement.nom as nomArrondissement from oeuvre 
+				$stmt = $this->connexion->prepare("select titre, categorieObjet, categorie, parc, materiaux, adresseCivique, urlImage, artiste.nom, artiste.prenom, artiste.nomCollectif, arrondissement.nom as nomArrondissement, coordonneeLatitude, coordonneeLongitude from oeuvre 
                 join artiste on oeuvre.idArtiste = artiste.id 
 				join arrondissement on oeuvre.arrondissement = arrondissement.nom where oeuvre.id = :id");
 				

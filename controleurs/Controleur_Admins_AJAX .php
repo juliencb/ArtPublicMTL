@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 	class Controleur_Admins_AJAX extends Controleur_Admins        
 	{	
 		//la fonction qui sera appelée par le routeur
@@ -41,8 +41,8 @@
 			}
 			else
 			{
-					//action par défaut
-					echo "ERROR";					
+                //action par défaut
+                echo "ERROR";					
 			}			
 		}	
 	}

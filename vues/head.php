@@ -3,7 +3,6 @@
 <html>
     <meta charset="utf-8">
 <head>
-
 	<link rel="stylesheet" href="css/main.css"/>
 	<link rel="stylesheet" href="css/recherche.css"/>
 	<link rel="stylesheet" href="css/soumission.css"/>

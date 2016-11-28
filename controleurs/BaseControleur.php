@@ -16,6 +16,5 @@
 				die("Erreur 404! La vue n'existe pas.");				
 			}
 		}
-	
 	}
 ?>
