@@ -16,11 +16,11 @@
 				$rechDash = "%-".$strRecherche."%";
 
 				$sqlStm =
-					"SELECT 'lieu' as id, nom as resultat FROM arrondissement WHERE nom LIKE '".$rechDebut."' or nom LIKE '". $rechDans. "' or nom LIKE '". $rechDash. "'".
-					" UNION SELECT 'oeuvre' as id, titre as resultat from oeuvre where titre LIKE '".$rechDebut."' or titre LIKE '". $rechDans. "'".
-					" UNION SELECT 'artiste' as id, concat(prenom, ' ', nom) as resultat FROM artiste WHERE nom LIKE '". $rechDebut."' or nom LIKE '". $rechDans."' or prenom LIKE '". $rechDebut."' or prenom LIKE '". $rechDans."'".
-					" UNION SELECT 'categorie' as id, nom as resultat FROM categorie WHERE nom LIKE '".$rechDebut."' or nom LIKE '". $rechDans."'";
-					
+					"SELECT 'lieu' as type, nom as resultat, (0) as id FROM arrondissement WHERE nom LIKE '".$rechDebut."' or nom LIKE '". $rechDans. "' or nom LIKE '". $rechDash. "'".
+					" UNION SELECT 'oeuvre' as type, titre as resultat, id from oeuvre where titre LIKE '".$rechDebut."' or titre LIKE '". $rechDans. "'".
+					" UNION SELECT 'artiste' as type, concat(prenom, ' ', nom) as resultat, id FROM artiste WHERE nom LIKE '". $rechDebut."' or nom LIKE '". $rechDans."' or prenom LIKE '". $rechDebut."' or prenom LIKE '". $rechDans."'".
+					" UNION SELECT 'categorie' as type, nom as resultat, (0) as id FROM categorie WHERE nom LIKE '".$rechDebut."' or nom LIKE '". $rechDans."'";
+				//echo $sqlStm;	
 				$stmt = $this->connexion->prepare($sqlStm);
 				$stmt->execute();
 
@@ -35,6 +35,56 @@
 			}
 		}
 
+		
+			
+		public function rechercheArtiste($strRecherchePrenom, $strRechercheNom)
+		{		
+			try
+			{
+			
+				$sqlStm =
+					"SELECT prenom, nom FROM artiste WHERE nom like '".$strRechercheNom. "%' AND prenom like '".$strRecherchePrenom ."%'"; 
+				$stmt = $this->connexion->prepare($sqlStm);
+				$stmt->execute();
+                $resultatRecherche = $stmt->fetchAll();
+			
+				return $resultatRecherche;
+				
+			}	
+			catch(Exception $exc)
+			{
+				echo "ERROR:";
+				echo $exc->getMessage();
+				return null;
+			}
+		}
+		
+		public function rechercheCollectif($strRechercheCollectif)
+		{		
+			try
+			{
+			
+				$sqlStm =
+					"SELECT nomCollectif FROM artiste WHERE nomCollectif like '".$strRechercheCollectif. "%'"; 
+				$stmt = $this->connexion->prepare($sqlStm);
+				$stmt->execute();
+                $resultatRecherche = $stmt->fetchAll();
+			
+				return $resultatRecherche;
+				
+			}	
+			catch(Exception $exc)
+			{
+				echo "ERROR:";
+				echo $exc->getMessage();
+				return null;
+			}
+		}		
+		
+		
+		
+		
+		
 		public function nomOeuvre($id)
 		{		
 			try

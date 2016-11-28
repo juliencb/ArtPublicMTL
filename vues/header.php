@@ -3,15 +3,15 @@
 	<div id ="global">
 		<!--Debut Section ENTÊTE-->
 		<header class ="entete">
-			<a href="index.php">
-				<img id="logo" src="images/logo.png" alt="logo" >
+			<a id="lienLogo" href="index.php">
+				<img id="logo" src="images/logo+blanc.png" alt="logo" >
 			</a>
 			<div class="menu">
 				<nav id="menuPrincipal">
 					<ul>
-						<li class="itemMenu"><a href="index.php?Public&action=listeOeuvres">Oeuvres</a></li>
-						<li class="itemMenu"><a href="index.php?Public&action=listeArtistes">Artistes</a></li>
-						<li class="itemMenu"><a href="#">À Propos</a></li>
+						<li class="itemMenu"><a href="index.php?Public&action=listeOeuvres">OEUVRES</a></li>
+						<li class="itemMenu"><a href="index.php?Public&action=listeArtistes">ARTISTES</a></li>
+						<li class="itemMenu"><a href="#">À PROPOS</a></li>
 					</ul>
 				</nav>
 				<nav id="reseauxSociaux">
