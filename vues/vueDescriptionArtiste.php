@@ -16,6 +16,8 @@
 		<p>
 			<?php echo $data["biographie"]; ?>
 		</p>
+		<img src>
+		
 	</div>
 	
 
