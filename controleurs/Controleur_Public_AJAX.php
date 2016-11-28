@@ -54,6 +54,54 @@
 						}
 				
 						break;	
+						
+						
+						
+						
+										case "rechercheArtiste":
+						if(isset($params["prenom"]) && isset($params["nom"])){
+							//Verification si les champs sont remplis;
+						$this->rechercheArtiste($params["prenom"], $params["nom"]);		
+						}
+						else{
+							echo "ERROR Aucune valeur de recherche";
+						}
+						
+						break;	
+						
+						
+							
+					case "envoieSoumission":
+						if(isset($params["id"]) ){  // on assume ici que si on recoit le champ id on aurra tout les autres champs.
+							if ($params["id"]=="") {
+								// on insere le record
+								$modeleOeuvres = new Modele_Oeuvres();
+								$resultatsMAJ = $modeleOeuvres->oeuvreMAJ($params["id"], $params["titre"], $params["categorie"], $params["arrondissement"], $params["adresse"], $params["description"], $params["image"], 
+								$params["nomParc"], $params["batiment"], $params["prenomArtiste"], $params["nomArtiste"], $params["nomCollectif"], $params["bio"], $params["modeAcquisition"], $params["numeroAccession"], $params["dateAccession"], $params["materiaux"], 
+								$params["support"], $params["technique"], $params["dimensionGenerales"], $params["coordonneeLatitude"], $params["coordonneeLongitude"], $params["mediums"]);							 
+								echo $resultatsMAJ;
+							}
+
+						}
+						else{
+							echo "ERROR Aucune valeur de recherche";
+						}
+						break;		
+					   
+			
+			
+					case "rechercheCollectif":
+						if(isset($params["nomCollectif"]) ){
+							//Verification si les champs sont remplis;
+						$this->rechercheCollectif($params["nomCollectif"]);		
+						}
+						else{
+							echo "ERROR Aucune valeur de recherche";
+						}
+						
+						break;	
+						
+						
 
 					case "telechargementImage":
 						$this->telechargementImage();
@@ -85,6 +133,42 @@
 				echo "</resultatRecherche>";
 			}
 	
+			echo "</resultatsRecherche>";
+			
+		}
+		
+		
+		
+		
+		public function rechercheArtiste($strRecherchePrenom, $strRechercheNom){
+			$modelePublic = new Modele_public();
+			$resultatsRecherche = $modelePublic->rechercheArtiste($strRecherchePrenom, $strRechercheNom);
+			echo "<resultatsRecherche>";
+
+	       foreach($resultatsRecherche as $r){
+				//générer le XML du contact
+				echo "<resultatRecherche>";
+				echo "<prenomArtiste>" . $r["prenom"]. "</prenomArtiste>";
+				echo "<nomArtiste>" . $r["nom"]. "</nomArtiste>";
+				echo "</resultatRecherche>";
+			}
+			echo "</resultatsRecherche>";
+			
+		}
+		
+		
+		
+		public function rechercheCollectif($strRechercheCollectif){
+			$modelePublic = new Modele_public();
+			$resultatsRecherche = $modelePublic->rechercheCollectif($strRechercheCollectif);
+			echo "<resultatsRecherche>";
+
+	       foreach($resultatsRecherche as $r){
+				//générer le XML du contact
+				echo "<resultatRecherche>";
+				echo "<nomCollectif>" . $r["nomCollectif"]. "</nomCollectif>";
+				echo "</resultatRecherche>";
+			}
 			echo "</resultatsRecherche>";
 			
 		}

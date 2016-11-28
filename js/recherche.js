@@ -68,8 +68,6 @@
 	
 	function afficheResultatRecherche(nomDiv,xml) {			
 		effaceChild(nomDiv);
-		//xml = xml.substr(1); // pour enlever le caractère bizarre du début.
-		//console.log(xml);
 		xmlParse(xml);	
 		console.log(xmlDoc);
 		var listeResultatRecherche = xmlDoc.getElementsByTagName("resultatRecherche");			
@@ -80,7 +78,6 @@
 			if (type !=  listeResultatRecherche[i].getElementsByTagName("type")[0].childNodes[0].nodeValue) {
 				if (i > 0) document.getElementById(nomDiv).appendChild(liste);
 				var type = listeResultatRecherche[i].getElementsByTagName("type")[0].childNodes[0].nodeValue;
-				var id = listeResultatRecherche[i].getElementsByTagName("id")[0].childNodes[0].nodeValue;
 				var h1 = document.createElement("h1");
 				h1.id = "titreListe";
 				if(type=="artiste")var titre = document.createTextNode("Artistes");
@@ -92,21 +89,22 @@
 				liste=document.createElement("ul");
 				
 			}
+			var id = listeResultatRecherche[i].getElementsByTagName("id")[0].childNodes[0].nodeValue;
 			var resultat = listeResultatRecherche[i].getElementsByTagName("resultat")[0].childNodes[0].nodeValue;
 			var li = document.createElement("li");
 			var lien = document.createTextNode(resultat);
 			var a = document.createElement("a");					
 			a.title = resultat;
 			if (type=="lieu" || type=="categorie") {
-				a.href ="./index.php?Public_AJAX&action=afficheOeuvres"+type+"&id="+type+"&idValue="+resultat; 
+				a.href ="./index.php?Public&action=afficheOeuvres"+type+"&idValue="+resultat; 
 			}
 			if (type=="artiste"){
 				a.href ="http://localhost/ArtPublicMTL/index.php?Public&action=descriptionArtiste&id="+id; 					
-				//a.href ="#"; 					
+								
 			}
 			if (type=="oeuvre"){
 				a.href ="http://localhost/ArtPublicMTL/index.php?Public&action=details&id="+id; 					
-				//a.href ="#"; 					
+							
 			}
 			a.appendChild(lien);
 			li.appendChild(a);

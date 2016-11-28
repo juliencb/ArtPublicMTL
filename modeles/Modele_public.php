@@ -35,6 +35,56 @@
 			}
 		}
 
+		
+			
+		public function rechercheArtiste($strRecherchePrenom, $strRechercheNom)
+		{		
+			try
+			{
+			
+				$sqlStm =
+					"SELECT prenom, nom FROM artiste WHERE nom like '".$strRechercheNom. "%' AND prenom like '".$strRecherchePrenom ."%'"; 
+				$stmt = $this->connexion->prepare($sqlStm);
+				$stmt->execute();
+                $resultatRecherche = $stmt->fetchAll();
+			
+				return $resultatRecherche;
+				
+			}	
+			catch(Exception $exc)
+			{
+				echo "ERROR:";
+				echo $exc->getMessage();
+				return null;
+			}
+		}
+		
+		public function rechercheCollectif($strRechercheCollectif)
+		{		
+			try
+			{
+			
+				$sqlStm =
+					"SELECT nomCollectif FROM artiste WHERE nomCollectif like '".$strRechercheCollectif. "%'"; 
+				$stmt = $this->connexion->prepare($sqlStm);
+				$stmt->execute();
+                $resultatRecherche = $stmt->fetchAll();
+			
+				return $resultatRecherche;
+				
+			}	
+			catch(Exception $exc)
+			{
+				echo "ERROR:";
+				echo $exc->getMessage();
+				return null;
+			}
+		}		
+		
+		
+		
+		
+		
 		public function nomOeuvre($id)
 		{		
 			try
