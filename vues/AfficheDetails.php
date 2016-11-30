@@ -72,12 +72,13 @@
                  function initMap() {
                    var uluru = {lat: <?php echo $data["coordonneeLatitude"] ?>, lng: <?php echo $data["coordonneeLongitude"] ?> };
                    var map = new google.maps.Map(document.getElementById('map'), {
-                     zoom: 4,
+                     zoom: 14,
                      center: uluru
                    });
                    var marker = new google.maps.Marker({
                      position: uluru,
-                     map: map
+                     map: map,
+                    title: <?php echo "'" . $data["titre"] ."'"?>
                    });
                  }
             </script>

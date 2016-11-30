@@ -7,11 +7,11 @@
             // vérifie s'il y a une action passÃ©e en paramÃªtre
 			if(isset($params["action"]))
 			{
-				//modèle et vue vides par dÃ©faut
+				//modèle et vue vides par défaut
 				$data = array();
 				$vue = "";
-				//switch en fonction de l'action qui nous est envoyÃ©e
-				//ce switch détermine la vue $vue et obtient le modÃ¨le $data
+				//switch en fonction de l'action qui nous est envoyée
+				//ce switch détermine la vue $vue et obtient le modèle $data
 				switch($params["action"])
 				{			
                    // si l'action est "importation"

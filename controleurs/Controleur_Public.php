@@ -165,7 +165,7 @@
 		public function afficheOeuvresLieu($val){
 			$modeleOeuvres= new Modele_Oeuvres();
 			$data=$modeleOeuvres-> obtenirOeuvresArrondissement($val);
-			$this->afficheVue("vueOeuvres", $data);
+			$this->afficheVue("arrondissements", $data);
 		}
 
 	}
