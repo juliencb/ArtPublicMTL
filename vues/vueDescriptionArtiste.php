@@ -1,4 +1,4 @@
-﻿<!--commencer directement avec la div contenu-->
+<!--commencer directement avec la div contenu-->
 <div class="contenu">
 	<aside class="recherche">
 		<!--recherche ici -->
@@ -15,7 +15,8 @@
 		</h1>
 		<p>
 			<?php echo $data["biographie"]; ?>
-		</p>
+        </p>
+		
 	</div>
 	
 
