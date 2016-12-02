@@ -99,11 +99,11 @@
 				a.href ="./index.php?Public&action=afficheOeuvres"+type+"&idValue="+resultat; 
 			}
 			if (type=="artiste"){
-				a.href ="http://localhost/ArtPublicMTL/index.php?Public&action=descriptionArtiste&id="+id; 					
+				a.href ="./index.php?Public&action=descriptionArtiste&id="+id; 					
 								
 			}
 			if (type=="oeuvre"){
-				a.href ="http://localhost/ArtPublicMTL/index.php?Public&action=details&id="+id; 					
+				a.href ="./index.php?Public&action=details&id="+id; 					
 							
 			}
 			a.appendChild(lien);
