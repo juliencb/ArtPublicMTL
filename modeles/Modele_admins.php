@@ -124,5 +124,19 @@
 				return 0;
 			}
 		}
+		
+		//retourne le mot de passer selon le nom de usager
+		public function getMotDePasse($nomUsager){
+			try{
+				$stmt = $this->connexion->prepare("SELECT motDePasse FROM administrateur WHERE nom = :nomUsager");
+				$stmt->bindParam(":nomUsager", $nomUsager);
+				$stmt->execute();
+				return $stmt->fetch();
+				
+			}
+			catch(Exception $exc){
+				return 0;	
+			}
+		}
 	}
 ?>

@@ -69,7 +69,7 @@
 		console.log(xmlDoc);
 		var listeResultatRecherche = xmlDoc.getElementsByTagName("resultatRecherche");			
 		var type = "";
-		var liste=document.createElement("ul");;
+		var liste=document.createElement("ul");
 		for(var i = 0; i < listeResultatRecherche.length; i++){
 			if (type !=  listeResultatRecherche[i].getElementsByTagName("type")[0].childNodes[0].nodeValue) {
 				if (i > 0) document.getElementById(nomDiv).appendChild(liste);
@@ -83,7 +83,6 @@
 				h1.appendChild(titre);
 				document.getElementById(nomDiv).appendChild(h1);
 				liste=document.createElement("ul");
-				
 			}
 			var id = listeResultatRecherche[i].getElementsByTagName("id")[0].childNodes[0].nodeValue;
 			var resultat = listeResultatRecherche[i].getElementsByTagName("resultat")[0].childNodes[0].nodeValue;
@@ -96,14 +95,17 @@
 			}
 			if (type=="artiste"){
 				a.href ="./index.php?Public&action=descriptionArtiste&id="+id; 					
+
 			}
 			if (type=="oeuvre"){
-				a.href ="./index.php?Public&action=details&id="+id; 						
+				a.href ="./index.php?Public&action=details&id="+id; 											
 			}
+		
+        
 			a.appendChild(lien);
 			li.appendChild(a);
 			liste.appendChild(li);
-		}						
-		document.getElementById(nomDiv).appendChild(liste);
 	}
+    document.getElementById(nomDiv).appendChild(liste);
+    }						
 })();

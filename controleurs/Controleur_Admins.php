@@ -2,8 +2,11 @@
 	class Controleur_Admins extends BaseControleur{	
         
 		//la fonction qui sera appelée par le routeur
-		public function traite(array $params){
-            
+		public function traite(array $params)
+		{	
+			//affichage du head
+			$this->afficheVue("headAdmin");
+
             // vérifie s'il y a une action passÃ©e en paramÃªtre
 			if(isset($params["action"])){
 				//modèle et vue vides par défaut
@@ -20,12 +23,27 @@
 						break;									  
 					default:
 						echo "ERROR";		
-				}						
+					
+					
+					case "authentification":
+					
+						if(isset($_POST["username"]) && isset($_POST["password"]))
+						{
+							$this-> authenficationUsager($_POST["username"],$_POST["password"]);
+						}
+						break;
+						
+					default:
+						$this->afficheVue("vueLogin","");				
+				}
 			}
 			else{
-                //action par dÃ©faut
-                echo "ERROR";					
-			}			
+				//actions par défaut
+				$this->afficheVue("vueLogin","");							
+			}	
+			//inclusion du footer 
+			$this->afficheVue("footerAdmin");	
+
 		} // fin de la fonction traite
         
         public function importeOeuvre(){
@@ -132,7 +150,7 @@
 				$idArtiste = $modeleAdmins->getIdSelonNoInterneA($noInterneArtiste);
 			}
 		} // fin de la fonction lienArtisteOeuvre
-        
+
         public function importeArtiste(){
             // va chercher le fichier JSON des oeuvres publiques de la ville de Montréal
 			$modeleAdmins = new Modele_admins();
@@ -151,5 +169,23 @@
                 $modeleAdmins->insereArtiste($noInterneArtiste, $nom, $prenom, $nomCollectif);
 			} // fin de la boucle
 		} // fin de la fonction lienArtisteOeuvre
+
+		//fait l'authenfication de l'usager avec la base de donnees
+		public function authenficationUsager($nomUsager,$motdePasse){
+			
+			$modeleAdmins = new Modele_admins();
+			$motDePasseMD5=$modeleAdmins -> getMotDePasse($nomUsager);			
+			$motDePasseGrainSel = md5($motDePasseMD5["motDePasse"] . $_POST["grainSel"]);
+			
+			if($motDePasseGrainSel == $motdePasse){
+				$_SESSION["authentifie"] = $nomUsager;
+				$this->afficheVue("headerAdmin",$_SESSION["authentifie"]);
+			}
+			else{
+				$message = "Mauvaise combinaison username/password " . $nomUsager;
+				echo $message;
+			}
+			//$this->afficheVue("vueLogin",$message);
+		}
 	}
 ?>

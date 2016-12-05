@@ -136,7 +136,7 @@
 		public function afficheOeuvresArtiste($id){
 			$modeleArtiste = new Modele_artistes();
 			$data = $modeleArtiste->obtenirOeuvresArtiste($id);
-			$this->afficheVue("vueOeuvresArtiste", $data);
+            $this->afficheVue("vueOeuvresArtiste", $data);
 			//var_dump($data["urlImage"]);
 		}
 
