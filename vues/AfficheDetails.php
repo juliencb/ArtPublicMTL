@@ -1,4 +1,4 @@
-<div id="affichedata">
+<div class="contenu">
 	
 	<?php
     if($data["titre"]!=""){
@@ -13,18 +13,13 @@
 	?>
 			<img src = "./images/no-image-available.jpg" alt = "aucune image"/><br><br>
 	<?php
-
 		}
-
 	?>
 	<ul>	
 	<?php
-			
-		
 		if(($data["prenom"]&&$data["nom"]!="")&&($data["prenom"]!= null && $data["nom"]!= null )){
 			echo "<li><span>Artiste: <a href='./index.php?Public&action=descriptionArtiste&id=". $data["idArtiste"] . "'>". $data["nom"].", ".$data["prenom"]. "</a></span></li>";
 		}
-		
 		else{
 			echo "<li><span>Atelier: ". $data["nomCollectif"]."</span></li>";
 		}
@@ -57,16 +52,16 @@
     <?php
         
         if($data["coordonneeLatitude"]!=""){
-		
-        //    https://developers.google.com/maps/documentation/javascript/adding-a-google-map
-        //   comment mettre une map de google dans un site 
-     ?>
-    <style>
-       #map {
-        height: 400px;
-        width: 800px
-       }
-    </style>
+            // affiche la map goole
+            //    https://developers.google.com/maps/documentation/javascript/adding-a-google-map
+            //   comment mettre une map de google dans un site 
+             ?>
+            <style>
+               #map {
+                height: 400px;
+                width: 800px
+               }
+            </style>
             <div id="map"></div>
             <script>
                  function initMap() {
@@ -85,10 +80,7 @@
             <script async defer
                  src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC4QkcRKk6J15A3d0lLu8SZljq6opZkBMI&callback=initMap&zoom=14'>
             </script>
-            
-        <?php
+    <?php
         }
-
 	?>	
-
 </div>

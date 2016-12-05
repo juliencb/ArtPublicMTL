@@ -10,15 +10,14 @@
 					<?php 
 						foreach ($data as $artiste){
                             if($artiste["prenom"]!="Inconnu"){
-                                
-					?>
-							<li>
-								<a href="index.php?Public&action=descriptionArtiste&id=<?php echo $artiste['id'] ?>">
-									<?php echo $artiste["prenom"] . " " . $artiste["nomArtiste"]; ?>
-									
-								</a>
-							</li>
-					<?php 
+					       ?>
+                                <li>
+                                    <a href="index.php?Public&action=descriptionArtiste&id=<?php echo $artiste['id'] ?>">
+                                        <?php echo $artiste["prenom"] . " " . $artiste["nomArtiste"]; ?>
+
+                                    </a>
+                                </li>
+					       <?php 
                             }
 						} //fermeture foreach
 					?>
@@ -26,4 +25,3 @@
 		</section>
 	</div>
 </div>	
-
