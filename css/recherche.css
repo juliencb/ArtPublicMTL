@@ -23,7 +23,6 @@
 	font-family: 'bang_whack_powregular';
 }
 
-
 #inputRecherche:focus{	
 	outline: none;	
 }
@@ -32,8 +31,6 @@
 	color: white;
 	font-size: 1.7em;
 }
-
-
 
 #textRecherchez{
 	display: inline;
@@ -45,14 +42,12 @@
 	letter-spacing: 3px;
 }
 
-
 .divChoixRecherche{
 	overflow:hidden;
 	height:30px;
 	margin-left: -80px;
 	margin-top: -28px;
 	letter-spacing: 3px;
-
 
   &:after, &:before {
     position:absolute;
@@ -62,13 +57,11 @@
     animation-name: opacity;
     animation-duration: 4s;
     animation-iteration-count: infinite;
-
   }
-	
 }
 
 #listeChoixRecherche{
-	 margin-top:0;	
+	margin-top:0;	
 	text-align:left;
 	list-style:none;
 	-webkit-animation-name: change;
@@ -85,8 +78,6 @@
 	font-family: 'bang_whack_powregular';	
 	list-style: none;
 }
-
-
 
 @-webkit-keyframes opacity {
   0%, 100% {opacity:0;}
@@ -115,8 +106,6 @@
   68%,80% {transform:translateY(-50%);}
   85%,97% {transform:translateY(-25%);}
 }
-
-
 
 #formRecherche{
 	margin-left: 80%;

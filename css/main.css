@@ -12,17 +12,17 @@
 }
 
 body{
+
     font-size: 16px;
     margin-left: 20px;
-    margin-top: 20px;    	
+    margin-top: 20px;
 }
 
 a{
 	text-decoration: none;
 }
 
-#carroussel{
-}
+#carroussel{}
 
 #inputRecherche{
 	background-color: transparent;
@@ -76,7 +76,7 @@ a{
     margin-left: -40px; 
 }
 
-.menu{
+.menu {
     display: flex;
 	width: 100%;
 }
@@ -86,15 +86,14 @@ a{
 }
 
 #menuPrincipal ul,
-#reseauxSociaux ul{
+#reseauxSociaux ul {
     list-style: none;
-	overflow: hidden;
+    overflow: hidden;
 }
 
 .itemMenu,
 .icones {
-   display: inline;
-
+    display: inline;
 }
 
 .itemMenu a {
@@ -106,9 +105,7 @@ a{
 }
 
 .itemMenu a:hover,
- #reseauxSociaux .icones:hover{
-   
-}
+#reseauxSociaux .icones:hover {}
 
 #reseauxSociaux {
     position: absolute;
@@ -116,12 +113,12 @@ a{
     right: 10px;
 }
 
-#reseauxSociaux ul{
+#reseauxSociaux ul {
     overflow: hidden;
-     margin-right: 20px;
+    margin-right: 20px;
 }
 
-#reseauxSociaux .icones{
+#reseauxSociaux .icones {
     font-size: 1.1em;
     margin-right: 5px;
     padding: 3px;
@@ -131,4 +128,3 @@ a{
 	color: #fff;
 }
 /**FIN PAGE ACCUEIL**/
-

@@ -1,19 +1,20 @@
 <?php
-	class Controleur_Admins extends BaseControleur
-	{	
+	class Controleur_Admins extends BaseControleur{	
+        
 		//la fonction qui sera appelée par le routeur
 		public function traite(array $params)
-		{				
+		{	
+			//affichage du head
+			$this->afficheVue("headAdmin");
+
             // vérifie s'il y a une action passÃ©e en paramÃªtre
-			if(isset($params["action"]))
-			{
-				//modèle et vue vides par dÃ©faut
+			if(isset($params["action"])){
+				//modèle et vue vides par défaut
 				$data = array();
 				$vue = "";
-				//switch en fonction de l'action qui nous est envoyÃ©e
-				//ce switch détermine la vue $vue et obtient le modÃ¨le $data
-				switch($params["action"])
-				{			
+				//switch en fonction de l'action qui nous est envoyée
+				//ce switch détermine la vue $vue et obtient le modèle $data
+				switch($params["action"]){			
                    // si l'action est "importation"
                     case "importation":
 						$this->importeArrondissements();
@@ -22,18 +23,31 @@
 						break;									  
 					default:
 						echo "ERROR";		
-				}						
+					
+					
+					case "authentification":
+					
+						if(isset($_POST["username"]) && isset($_POST["password"]))
+						{
+							$this-> authenficationUsager($_POST["username"],$_POST["password"]);
+						}
+						break;
+						
+					default:
+						$this->afficheVue("vueLogin","");				
+				}
 			}
-			else
-			{
-					//action par dÃ©faut
-					echo "ERROR";					
-			}			
+			else{
+				//actions par défaut
+				$this->afficheVue("vueLogin","");							
+			}	
+			//inclusion du footer 
+			$this->afficheVue("footerAdmin");	
+
 		} // fin de la fonction traite
         
-        public function importeOeuvre()
-		{
-            // 
+        public function importeOeuvre(){
+
 			$modeleAdmins = new Modele_admins();
             
             // va chercher le JSON de la ville et le décode
@@ -105,8 +119,7 @@
 		} // fin de la fonction importeOeuvreArtiste
 		
 		
-		public function importeArrondissements()
-		{
+		public function importeArrondissements(){
             // va chercher le fichier JSON des arrondissements de la ville de MontrÃ©al
 			$modeleAdmins = new Modele_admins();
 			$arron = file_get_contents('http://donnees.ville.montreal.qc.ca/dataset/00bd85eb-23aa-4669-8f1b-ba9a000e3dd8/resource/e9b0f927-8f75-458c-8fda-b5da65cc8b73/download/limadmin.json');
@@ -115,15 +128,13 @@
             // fait une boucle sur tous les arrondissements du JSON
 			for($i = 0; $i < $compteur; $i++){
 				$ville = $arron_decode->features[$i]->properties->NOM;
-                
                 // rempli la BD avec les arrondissements
 				$modeleAdmins->insereArrondissement($ville);
 			}	
 		} // fin de la fonction importeArrondissements
 		
 		
-		public function lienArtisteOeuvre()
-		{
+		public function lienArtisteOeuvre(){
             // va chercher le fichier JSON des oeuvres publiques de la ville de Montréal
 			$modeleAdmins = new Modele_admins();
 			$fichierJSON = file_get_contents('http://donnees.ville.montreal.qc.ca/dataset/2980db3a-9eb4-4c0e-b7c6-a6584cb769c9/resource/18705524-c8a6-49a0-bca7-92f493e6d329/download/oeuvresdonneesouvertes.json');
@@ -132,19 +143,15 @@
             
             // fait la boucle sur tous les NoInterne du JSON des oeuvres et des artistes, 
 			for($i = 0; $i < $compteur; $i++){
-                
                 //rempli les variables 
-				
 				$noInterneArtiste    =$fichierJSON_decode[$i]->Artistes[0]->NoInterne;
  
                 // va chercher l'id de l'artiste d'après son NoInterne
 				$idArtiste = $modeleAdmins->getIdSelonNoInterneA($noInterneArtiste);
-
 			}
 		} // fin de la fonction lienArtisteOeuvre
-        
-        public function importeArtiste()
-		{
+
+        public function importeArtiste(){
             // va chercher le fichier JSON des oeuvres publiques de la ville de Montréal
 			$modeleAdmins = new Modele_admins();
 			$fichierJSON = file_get_contents('http://donnees.ville.montreal.qc.ca/dataset/2980db3a-9eb4-4c0e-b7c6-a6584cb769c9/resource/18705524-c8a6-49a0-bca7-92f493e6d329/download/oeuvresdonneesouvertes.json');
@@ -157,17 +164,28 @@
                 $prenom            =$fichierJSON_decode[$i]->Artistes[0]->Prenom;
                 $nom               =$fichierJSON_decode[$i]->Artistes[0]->Nom;
                 $nomCollectif      =$fichierJSON_decode[$i]->Artistes[0]->NomCollectif;
-			
-                
-                
+			                
                 //insertion dans la table artiste
                 $modeleAdmins->insereArtiste($noInterneArtiste, $nom, $prenom, $nomCollectif);
-                
-			
 			} // fin de la boucle
 		} // fin de la fonction lienArtisteOeuvre
-		
-	
-		
+
+		//fait l'authenfication de l'usager avec la base de donnees
+		public function authenficationUsager($nomUsager,$motdePasse){
+			
+			$modeleAdmins = new Modele_admins();
+			$motDePasseMD5=$modeleAdmins -> getMotDePasse($nomUsager);			
+			$motDePasseGrainSel = md5($motDePasseMD5["motDePasse"] . $_POST["grainSel"]);
+			
+			if($motDePasseGrainSel == $motdePasse){
+				$_SESSION["authentifie"] = $nomUsager;
+				$this->afficheVue("headerAdmin",$_SESSION["authentifie"]);
+			}
+			else{
+				$message = "Mauvaise combinaison username/password " . $nomUsager;
+				echo $message;
+			}
+			//$this->afficheVue("vueLogin",$message);
+		}
 	}
 ?>
