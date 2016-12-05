@@ -1,55 +1,56 @@
+
 body{
+
     font-size: 16px;
     margin-left: 20px;
-    margin-top: 20px;    	
+    margin-top: 20px;
 }
+
+
 
 a{
 	text-decoration: none;
 }
 
+#carroussel {}
 
-#carroussel{
+#logoSuggestionOeuvre {
+    max-height: 190px;
+    margin-top: 20%;
+    margin-left: 30px;
 }
 
-
-
-
-#logoSuggestionOeuvre{
-	max-height: 190px;
-	margin-top: 20%;
-	margin-left: 30px;
-	
+#global {
+    margin: 5px;
+    padding: 10px;
 }
 
-#global{
-	 margin: 5px;
-	 padding: 10px;
-}
-.entete{
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
+.entete {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
 }
 
-.entete #lienLogo{
-	margin-right: -900px;
+.entete #lienLogo {
+    margin-right: -900px;
 }
 
-.photo{
-	height: auto; 
-    width: auto; 
-    max-width: 300px; 
+.photo {
+    height: auto;
+    width: auto;
+    max-width: 300px;
     max-height: 300px;
 }
 
+
 /*** CSS PAGE ACCUEIL  ***/
-#logo{
+
+#logo {
     width: 30%;
-    margin-left: -40px; 
+    margin-left: -40px;
 }
 
-.menu{
+.menu {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -60,30 +61,27 @@ a{
 }
 
 #menuPrincipal ul,
-#reseauxSociaux ul{
+#reseauxSociaux ul {
     list-style: none;
-	overflow: hidden;
+    overflow: hidden;
 }
 
 .itemMenu,
 .icones {
-   display: inline;
-
+    display: inline;
 }
 
 .itemMenu a {
     font-size: 1.8em;
     margin-left: 60px;
-	font-family: 'Inconsolata', monospace;
-	color: white;
+    font-family: 'Inconsolata', monospace;
+    color: white;
     text-decoration: none;
     padding: 3px;
 }
 
 .itemMenu a:hover,
- #reseauxSociaux .icones:hover{
-   
-}
+#reseauxSociaux .icones:hover {}
 
 #reseauxSociaux {
     position: absolute;
@@ -91,19 +89,18 @@ a{
     right: 10px;
 }
 
-#reseauxSociaux ul{
+#reseauxSociaux ul {
     overflow: hidden;
-     margin-right: 20px;
+    margin-right: 20px;
 }
 
-#reseauxSociaux .icones{
+#reseauxSociaux .icones {
     font-size: 1.1em;
     margin-right: 5px;
     padding: 3px;
 }
 
 #reseauSociaux ul a {
-	text-decoration: none;
+    text-decoration: none;
 }
 /**FIN PAGE ACCUEIL**/
-

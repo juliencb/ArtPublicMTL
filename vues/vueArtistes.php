@@ -8,6 +8,7 @@
 			<h1>Artistes</h1>
 				<ul>
 					<?php 
+
                         $compteur = 65;
                     ?>
                         <h1>A</h1>
@@ -21,27 +22,29 @@
                         <h1><?php echo chr($compteur); ?></h1>
                     <?php    
                             }
-                            if(($artiste["prenom"]!="Inconnu") && (chr($compteur) == $premiereLettre)){   ?>    
+                            if(($artiste["prenom"]!="Inconnu") && (chr($compteur) == $premiereLettre)){   
+                    ?>    
                                 <li>
                                     <a href="index.php?Public&action=descriptionArtiste&id=<?php echo $artiste['id'] ?>">
                                         <?php echo $artiste["prenom"] . " " . $artiste["nomArtiste"]; ?>
 
                                     </a>
                                 </li>
-                        <?php 
-                                }//fermeture if
-                            } //fermeture foreach
-                            if($compteur < 91){
-                                do{
-                                $compteur++;
+
+                    <?php 
+                            }//fermeture if
+                        } //fermeture foreach
+                        // fini d'écrire les lettres jusqu'à Z si'il en manque
+                        if($compteur < 91){
+                            do{
+                            $compteur++;
                         ?>
                         <h1><?php echo chr($compteur); ?></h1>
                     <?php        
-                                }while($compteur < 90) ;
-                            }
+                            }while($compteur < 90) ;
+                        }
 				    ?>
 				</ul>
 		</section>
 	</div>
 </div>	
-

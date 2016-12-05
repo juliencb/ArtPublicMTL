@@ -1,47 +1,23 @@
-﻿(function(){
-    window.addEventListener("load", function(){
-       if(document.querySelector(".nomDeClasseHTML")){
-           
-           var btnModif = document.querySelector(".btnModifier");
-           btnModif.addEventListener("click",function(evt){
-               console.log("yep");
-               console.log(evt);
-               //history.back();
-               
-           var valDesc = document.querySelector("textarea[name=description]").value; // un textearea avec un name description, sans formulaire
-               
-           })
-           
-       } ;
-        
-    });
-    
-})();
-
 //--IIFE fait la validation de l'information soumis par usager avant de faire la requete server pour authentification
 (function(){
 	window.addEventListener("load", function(){
 		if($("#sectionLogin")){
 			$("#btnSoumettre").on("click",function(){
-				
 				//valide que le champs sont rempli avant de faire la requete vers le server
 				if(($("#username").val()!=="")&&($("#password").val()!=="")){
 					encrypte();	
 				}
-				else
-				{	
+				else{	
 					var message ="vous devez remplir tous les champs!";
 					$("#message").html("");
 					$("#message").append(message);
-					
-						if($("#username").val()=="")
-							$("#username").focus();
-						else
-							$("#password").focus();				
+                    if($("#username").val()=="")
+                        $("#username").focus();
+                    else
+                        $("#password").focus();				
 				}
 			});
 		}
-		
 	});
 	
 	//function va encripter les informations venant du formulaire de login
@@ -57,5 +33,5 @@
 		document.formEncrypte.submit();			
 	};
 //--Fin fonction de validation Javascript
-	
+
 })();
