@@ -1,6 +1,15 @@
-/*** CSS PAGE ACCEUIL  ***/
+@font-face {
+    font-family: 'bang_whack_powregular';
+    src: url('font/bang_whack_pow-webfont.eot');
+    src: url('font/bang_whack_pow-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/bang_whack_pow-webfont.woff2') format('woff2'),
+         url('font/bang_whack_pow-webfont.woff') format('woff'),
+         url('font/bang_whack_pow-webfont.ttf') format('truetype'),
+         url('font/bang_whack_pow-webfont.svg#bang_whack_powregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
 
-
+}
 
 body{
     font-size: 16px;
@@ -10,15 +19,31 @@ body{
 
 a{
 	text-decoration: none;
-	color: white;
 }
-
 
 #carroussel{
 }
 
+#inputRecherche{
+	background-color: transparent;
+	width: 400px;
+	height: 30px;
+	margin-left: -200px;
+	border: none;
+    border-bottom: 2px solid white;
+	font-size: 1.5em;
+	color: white;
+	font-family: 'bang_whack_powregular';
+}
 
+#inputRecherche:focus{	
+	outline: none;	
+}
 
+#faSearch{
+	color: white;
+	font-size: 1.7em;
+}
 
 #logoSuggestionOeuvre{
 	max-height: 190px;
@@ -31,14 +56,11 @@ a{
 	 margin: 5px;
 	 padding: 10px;
 }
+
 .entete{
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
-}
-
-.entete #lienLogo{
-	margin-right: -900px;
 }
 
 .photo{
@@ -50,14 +72,13 @@ a{
 
 /*** CSS PAGE ACCUEIL  ***/
 #logo{
-    width: 30%;
+    width: 70%;
     margin-left: -40px; 
 }
 
 .menu{
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+	width: 100%;
 }
 
 #menuPrincipal {
@@ -78,10 +99,9 @@ a{
 
 .itemMenu a {
     font-size: 1.8em;
-    margin-left: 60px;
-	font-family: 'Inconsolata', monospace;
+    margin-left: 30px;
+	font-family: 'bang_whack_powregular';
 	color: white;
-    text-decoration: none;
     padding: 3px;
 }
 
@@ -107,8 +127,8 @@ a{
     padding: 3px;
 }
 
-#reseauSociaux ul a {
-	text-decoration: none;
+#reseauxSociaux .icones a {
+	color: #fff;
 }
 /**FIN PAGE ACCUEIL**/
 

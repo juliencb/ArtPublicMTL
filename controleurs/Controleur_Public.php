@@ -74,7 +74,12 @@
                             $this->afficheOeuvresCategorie($params["idValue"]);
 
                         }
-                        break;	
+                        break;
+                        
+                    case "aPropos":
+                        $this->affichePageApropos();
+						$this->afficheRecherche();   
+					    break;
                         
 					default:
 						$this->afficheVue("pageAccueil","");	
@@ -167,6 +172,12 @@
 			$data=$modeleOeuvres-> obtenirOeuvresArrondissement($val);
 			$this->afficheVue("vueOeuvres", $data);
 		}
-
+        
+        //afficher les titres de la page à propos
+        public function affichePageApropos(){
+            $modeleApropos = new Modele_Propos();
+            $data = $modeleApropos->obtenirTousPagePropos();
+            $this->afficheVue("vuePropos", $data);
+        }
 	}
 ?>
