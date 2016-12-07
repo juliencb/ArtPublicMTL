@@ -3,7 +3,9 @@
 	{	
 		//la fonction qui sera appelée par le routeur
 		public function traite(array $params)
-		{				
+		{		
+			$this->afficheVue("head");
+			$this->afficheVue("header");	
             // vérifie s'il y a une action passÃ©e en paramÃªtre
 			if(isset($params["action"]))
 			{
@@ -19,7 +21,10 @@
 						$this->importeArrondissements();
 						$this->importeArtiste();
 						$this->importeOeuvre();
-						break;									  
+						break;	
+					case "soumission":
+						$this->afficheSoumission();
+						break;	
 					default:
 						echo "ERROR";		
 				}						
@@ -28,7 +33,8 @@
 			{
 					//action par dÃ©faut
 					echo "ERROR";					
-			}			
+			}	
+			$this->afficheVue("footer");
 		} // fin de la fonction traite
         
         public function importeOeuvre()
@@ -167,7 +173,11 @@
 			} // fin de la boucle
 		} // fin de la fonction lienArtisteOeuvre
 		
-	
+		 public function afficheSoumission(){
+			global $admin;
+			$admin = true;
+			$this->afficheVue("formSoumission", "");
+		}
 		
 	}
 ?>

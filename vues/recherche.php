@@ -3,13 +3,13 @@
 		<input type="text" id="inputRecherche"/>
 		<i id="faSearch" class="fa fa-search" aria-hidden="true"></i>
 		<div id="recherchezPar">
-			<p id="textRecherchez">Recherchez</p>
+			<p id="textRecherchez">RECHERCHEZ</p>
 			<div class="divChoixRecherche">
 				<ul id="listeChoixRecherche">
-					<li class="elmChoixRecherche">un artiste</li>
-					<li class="elmChoixRecherche">une oeuvre</li>
-					<li class="elmChoixRecherche">par arrondissement</li>
-					<li class="elmChoixRecherche">par categorie</li>
+					<li class="elmChoixRecherche">UN ARTISTE</li>
+					<li class="elmChoixRecherche">UNE OEUVRE</li>
+					<li class="elmChoixRecherche">PAR ARRONDISSEMENT</li>
+					<li class="elmChoixRecherche">PAR CATÉGORIE</li>
 				</ul>
 			</div>
 		</div>

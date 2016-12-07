@@ -74,8 +74,8 @@
                             $this->afficheOeuvresCategorie($params["idValue"]);
 
                         }
-                        break;	
-                        
+                        break;
+
 					default:
 						$this->afficheVue("pageAccueil","");	
 						$this->afficheRecherche();	
@@ -109,6 +109,8 @@
 		}
 		
 		public function afficheSoumission(){
+			global $admin;
+			$admin = false;
 			$this->afficheVue("formSoumission", "");
 		}
 

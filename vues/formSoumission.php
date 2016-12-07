@@ -176,12 +176,38 @@
 	function modifierArtiste(prenomArtiste, nomArtiste, nomDiv){
 		document.getElementById("prenomArtiste").value = prenomArtiste;
 		document.getElementById("nomArtiste").value = nomArtiste;
+		mettreBioAJour(prenomArtiste, nomArtiste, "")
 		effaceChild(nomDiv)
 	}
 
 	function modifierNomCollectif(nomCollectif, nomDiv){
 		document.getElementById("nomCollectif").value = nomCollectif;
+		mettreBioAJour("", "", nomCollectif)
 		effaceChild(nomDiv)
+	}
+	
+	function mettreBioAJour(prenomArtiste, nomArtiste, nomCollectif) {
+			var xhr;
+			xhr = new XMLHttpRequest();
+			if(xhr){	
+						
+						xhr.open("GET", "http://localhost/ArtPublicMTL/index.php?Public_AJAX&action=obtenirBio&prenomArtiste="+prenomArtiste+"&nomArtiste="+nomArtiste+"&nomCollectif="+nomCollectif);
+						xhr.addEventListener("readystatechange", function(){							
+							if(xhr.readyState === 4){
+								if(xhr.status === 200){
+									// On modifie la bio seuleument s'il y en a une sinon on garde le texte entree s'il y a lieu dans le texarea.
+									if (xhr.responseText != "") document.getElementById("bio").value = xhr.responseText;
+									return;
+								}							
+								else if(xhr.status === 404){
+									//Aucune action dans le cas oû on ne trouve pas l'URL
+								}
+							}
+						});
+						//envoi de la requête
+						xhr.send();					
+			}		
+		
 	}
 
 
@@ -262,12 +288,13 @@
 			
 	$(document).ready(function(){
 		$("#envoyerSoumission").click(function(){
+			
+			
 			//obtenir les infos du formulaire
 			var id = document.getElementById("id").value;
 			var titre = document.getElementById("titre").value;
 				var selectCategorie = document.getElementById("categorie");
 			var categorie = selectCategorie.options[selectCategorie.selectedIndex].value;
-			alert (categorie);
 				var selectArrondissement = document.getElementById("arrondissements");
 			var arrondissement = selectArrondissement.options[selectArrondissement.selectedIndex].value;
 			var adresse = document.getElementById("adresse").value;
@@ -279,7 +306,7 @@
 			else {
 				image= document.getElementById("imgId").src;
 			}
-			
+			var titreVariante = document.getElementById("titreVariante").value; // !
 			var nomParc = document.getElementById("nomParc").value;
 			var batiment = document.getElementById("batiment").value;
 			var prenomArtiste = document.getElementById("prenomArtiste").value;
@@ -292,12 +319,23 @@
 			var materiaux = document.getElementById("materiaux").value;
 			var support = document.getElementById("support").value;
 			var technique = document.getElementById("technique").value;
+			var categorieObjet = document.getElementById("categorieObjet").value; // !
 			var dimensionGenerales = document.getElementById("dimensionGenerales").value;
 			var coordonneeLatitude = document.getElementById("coordonneeLatitude").value;
 			var coordonneeLongitude = document.getElementById("coordonneeLongitude").value;
 			var mediums = document.getElementById("mediums").value;
-			
-			
+			var nomCollection = document.getElementById("nomCollection").value; // !
+			var valide;
+			if(document.getElementById("valide").checked==true){
+				valide = 1;
+			}
+			else{ valide = 0}
+
+			// validation
+			if (titre == "" || categorie == "" || arrondissement == "" || adresse == "" || description == "" || image == ""){
+				document.getElementById("msgRetourSoumission").value= "Vous devez entrer les champs obligatoires (*)";
+			}
+			else{
 			    $.post("http://localhost/ArtPublicMTL/index.php?Public_AJAX&action=envoieSoumission",
 				{
 					id: id,
@@ -307,6 +345,7 @@
 					adresse: adresse,
 					description: description,
 					image: image,
+					titreVariante: titreVariante,
 					nomParc: nomParc,
 					batiment: batiment,
 					prenomArtiste: prenomArtiste,
@@ -319,28 +358,51 @@
 					materiaux: materiaux,
 					support: support,
 					technique: technique,
+					categorieObjet: categorieObjet,
 					dimensionGenerales: dimensionGenerales,
 					coordonneeLatitude: coordonneeLatitude,
 					coordonneeLongitude: coordonneeLongitude,
-					mediums: mediums
+					mediums: mediums,
+					nomCollection: nomCollection,
+					valide: valide
 				},
 				function(data, status){
-					document.getElementById("msgRetourSoumission").value= data;
+					// data = <id>&<msg>
+					var dataSplit = data.split("&");
+					document.getElementById("id").value = dataSplit[0];
+					//alert ("id="+ dataSplit[0]);
+					
+					document.getElementById("msgRetourSoumission").value= document.getElementById("id").value + "msg="+dataSplit[1];
 	
 				});
-						
+			}
+			
 		});
 	});
 
 </script>
+	<?php
+	 global $admin;
+	 if (isset($param["id"])) {
+		 echo "patate";
+		// va chercher l'Oeuvre.
+		$modeleOeuvres= new Modele_Oeuvres();
+		$oeuvre = $modeleOeuvres->obtenirOeuvre($params["id"]);		
+	 }
 
+	?>
 	<div id="divSoumission">
-		
+		<?php
+			global $admin;
+			if ($admin){
+				echo "MODE ADMINISTRATEUR";
+			}
+		?>
 	<!-- Form Obligatoire -->
 		<form id="formSoumissionObligatoire">	
 		
 		<!--id de l'oeuvre -->
-			<input type="text" name="inputid" id="id" style="visibility: hidden;">
+			<input type="text" name="inputid" id="id" <?php if (isset($oeuvre)){ echo "value=".$oeuvre["id"]; } ?>>
 			
 		<!--Titre de loeuvre-->
 			<label class="elemSoumission"> <span class= "textElemSoumission">Titre de l'oeuvre</span><span id="etoileImportant">*</span></label>
@@ -371,7 +433,7 @@
 				   $data= $modeleArrondissements->obtenirTous();
 
 					foreach($data as $arrondissement){
-						echo"<option value='" . $arrondissement["nom"] . "'>" . $arrondissement["nom"] . "</option>";
+						echo '<option value="' .$arrondissement["nom"] . '">' . $arrondissement["nom"] . "</option>";
 					}
 				?>
 			 </select>
@@ -397,9 +459,19 @@
 		
 	<!-- Bouton afficher Form Optionnel -->		
 		<input type="button" value="Ajouter plus d'informations" id="btnAjoutInfos" onclick="afficherOptionnel()">
-		
+	
+	
+	
+	
+
+	
 	<!-- Form Optionnel -->	
 		<form id="formSoumissionOptionnel" style="display: none";>
+		
+			<!--titre variante-->
+			<label class="elemSoumission"> <span class= "textElemSoumission">Titre variante</span></label>
+			<input type="text" name="inputTitreVariante" id="titreVariante">
+		
 			<!--Nom du Parc-->
 			<label class="elemSoumission"> <span class= "textElemSoumission">Nom du parc</span></label>
 			<input type="text" name="inputNomParc" id="nomParc">
@@ -465,6 +537,9 @@
 			<label class="elemSoumission"> <span class= "textElemSoumission">Technique</span></label>
 			<input type="text" name="inputTechnique" id="technique">
 			
+			<!-- categorieObjet -->
+			<label class="elemSoumission"> <span class= "textElemSoumission">Categorie de l'objet</span></label>
+			<input type="text" name="inputCategorieObjet" id="categorieObjet">
 			
 			<!-- Dimensions generales -->
 			<label class="elemSoumission"> <span class= "textElemSoumission">Dimensions generales</span></label>
@@ -483,6 +558,23 @@
 			<label class="elemSoumission"> <span class= "textElemSoumission">Mediums</span></label>
 			<input type="text" name="inputMediums" id="mediums">
 			
+			<!-- Nom Collection -->
+			<label class="elemSoumission"> <span class= "textElemSoumission">Nom Collection</span></label>
+			<input type="text" name="inputNomCollection" id="nomCollection">
+			
+			<!-- Valide -->
+			<?php
+				global $admin;
+				if ($admin){	
+					echo "<label class='elemSoumission'> <span class= 'textElemSoumission'>Accepter</span></label>";
+					echo "<input type='checkbox' name='inputValide' id='valide' value='valide'>";
+				}
+				else{
+					echo "<label class='elemSoumission'> <span class= 'textElemSoumission' style='visibility: hidden;'>Accepter</span></label>";
+					echo "<input type='checkbox' style='visibility: hidden; name='inputValide' id='valide' value='valide'>";
+				}
+			?>
+		
 		</form>
 		<br><br>
 		<input type="submit" value="Soumettre l'oeuvre" id="envoyerSoumission"/>
@@ -490,3 +582,4 @@
 		
 		<textarea rows="100" cols="100" id="msgRetourSoumission"></textarea>
 	</div>
+	
