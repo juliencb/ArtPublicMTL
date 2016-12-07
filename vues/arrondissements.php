@@ -12,12 +12,30 @@
         if ($cont<=4){
             $cont++;
             echo "<li class='titreOeuvres'><a id='{$oeuvres["id"]}' href='./index.php?public&action=details&id={$oeuvres["id"]}'>{$oeuvres["titre"]}</a></li>";
-            /*
-            <div class='hoverPhoto'>
-                <span class='titreOeuvres'><a href='./index.php?public&action=details&id={$oeuvres["id"]}'>Titre: {$oeuvres["titre"]}</a></span>
-                <span class='nomArtistes'><a href='./index.php?public&action=descriptionArtiste&id={$oeuvres["idArtiste"]}'>Artiste: {$oeuvres["prenom"]} {$oeuvres["nom"]}</a></span>
-            </div>
-        */
+            
+            // fabrication de l'indoWindow du curseur de la map
+            $divInfo = "<div class='infoWindow'>";
+            //section de l'image
+            if($oeuvres["urlImage"] !=""){ 
+                $divInfo .= "<section>";
+                $divInfo .= "<img style='height:100px' src='./images/";
+                $divInfo .=  $oeuvres["urlImage"]; 
+                $divInfo .= ".jpg' />";
+                $divInfo .= "</section>";
+            }
+            //section du texte
+            $divInfo .= "<section><a href='./index.php?public&action=details&id=" . $oeuvres["id"] . "'>";
+            $divInfo .= $oeuvres["titre"];
+            $divInfo .= "</a><br>";
+            $divInfo .= "<a href='./index.php?public&action=descriptionArtiste&id=" . $oeuvres["idArtiste"] . "'>";
+            if(isset($oeuvres["prenom"])){
+                $divInfo .= $oeuvres["nom"] . ", " . $oeuvres["prenom"];
+            }
+            else{
+                $divInfo .= $oeuvres["nomCollectif"];
+            }
+            $divInfo .= "</a></section>";
+         
     //   https://developers.google.com/maps/documentation/javascript/adding-a-google-map
     //   comment mettre une map de google dans un site 
             if($oeuvres["coordonneeLatitude"]!=""){
@@ -27,13 +45,8 @@
                     locations.push({
                         lat: <?php echo $oeuvres["coordonneeLatitude"] ?>
                         , lng: <?php echo $oeuvres["coordonneeLongitude"]?>
-                        , infoWindow: "<a href='#'><img style='height:100px' src=./images/<?php echo isset($oeuvres["urlImage"]) ? $oeuvres["urlImage"] : 'no-image-available' ?>.jpg><a/>"
-                        
-                        
-                       
-                        
-                        
-                 
+                        , infoWindow: "<?php echo $divInfo ?>"
+                    
                     });
                 </script>
                 <?php
@@ -93,3 +106,15 @@
 </div>
 </section>
 <!--fin Section Arrondisements-->
+
+
+
+
+
+
+
+
+
+
+Marc St-Onge
+ST-ONGE, Marc

@@ -36,7 +36,7 @@
 		///---les oeuvres d'un arrondissement ainsi que le nom de artiste lié à chaque oeuvre.---///
 		public function obtenirOeuvresArrondissement($unArrondissement){
 			try{			
-				$stmt = $this->connexion->prepare("SELECT oeuvre.id, idArtiste, titre, arrondissement,urlImage, artiste.prenom, artiste.nom, coordonneeLatitude, coordonneeLongitude
+				$stmt = $this->connexion->prepare("SELECT oeuvre.id, idArtiste, titre, arrondissement,urlImage, artiste.prenom, artiste.nom, artiste.nomCollectif, coordonneeLatitude, coordonneeLongitude
 													FROM oeuvre JOIN artiste ON idArtiste = artiste.id
 													WHERE arrondissement= :unArrondissement");
 				$stmt->bindParam(":unArrondissement", $unArrondissement);

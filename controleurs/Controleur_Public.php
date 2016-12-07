@@ -98,7 +98,7 @@
 
 		///--fonction permet d'affiche la liste des categories--///	
 		public function afficheListeCategories(){
-			$modeleCategories= new Modele_Categories();
+			$modeleCategories= new Modele_categories();
 			$data = $modeleCategories->obtenirTous();
 			$this->afficheVue("vueOptionCategories", $data);
 		}
@@ -109,7 +109,7 @@
 
 		///--fonction permet d'affiche la liste des arrondissements--///
 		public function afficheListeArrondissements(){
-			$modeleArrondissements= new Modele_Arrondissements();
+			$modeleArrondissements= new Modele_arrondissements();
 			$data= $modeleArrondissements->obtenirTous();
 			$this->afficheVue("vueOptionArrondissement", $data);
 		}
@@ -149,13 +149,13 @@
 
 		//affiche lesOeuvres par categorie de la recherche
 		public function afficheOeuvresCategorie($val){
-			$modeleOeuvres= new Modele_Oeuvres();
+			$modeleOeuvres= new Modele_oeuvres();
 			$data=$modeleOeuvres-> obtenirOeuvresCategorie($val);
 			$this->afficheVue("vueOeuvres", $data);
 		}
 		//affiche lesOeuvres par lieu de la recherche
 		public function afficheOeuvresLieu($val){
-			$modeleOeuvres= new Modele_Oeuvres();
+			$modeleOeuvres= new Modele_oeuvres();
 			$data=$modeleOeuvres-> obtenirOeuvresArrondissement($val);
 			$this->afficheVue("arrondissements", $data);
 		}

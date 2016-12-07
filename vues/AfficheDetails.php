@@ -58,8 +58,8 @@
              ?>
             <style>
                #map {
-                height: 400px;
-                width: 800px
+                height: 200px;
+                width: 300px
                }
             </style>
             <div id="map"></div>
