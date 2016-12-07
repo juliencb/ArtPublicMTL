@@ -2,25 +2,20 @@
 	class Controleur_Public_AJAX extends Controleur_Public{	
 		//la fonction qui sera appelée par le routeur
 		public function traite(array $params){				
-			if(isset($params["action"]))
-			{
+			if(isset($params["action"])){
 				//modèle et vue vides par défaut
 				$data = array();
 				$vue = "";
 				//switch en fonction de l'action qui nous est envoyée
 				//ce switch détermine la vue $vue et obtient le modèle $data
-				switch($params["action"])
-				{	
+				switch($params["action"]){	
 					case "afficheOeuvrescategorie":
-						if(isset($params["idValue"]) && ($params["idValue"])!="")
-						{   
-							if(($params["idValue"])=="_")
-							{
+						if(isset($params["idValue"]) && ($params["idValue"])!=""){   
+							if(($params["idValue"])=="_"){
 								$this->afficheListeOeuvres();
 								
 							}
-							else
-							{
+							else{
 								$this->afficheOeuvreCategorie($params["idValue"]);		
 							}
 							
@@ -28,14 +23,11 @@
 					break;
 				
 					case "afficheOeuvreslieu":
-						if(isset($params["idValue"])&& ($params["idValue"])!="")
-						{
-							if(($params["idValue"])=="_")
-							{
+						if(isset($params["idValue"])&& ($params["idValue"])!=""){
+							if(($params["idValue"])=="_"){
 								$this->afficheListeOeuvres();
 							}
-							else
-							{ 
+							else{ 
 								$this->afficheOeuvreArrondissement($params["idValue"]);
 							}
 						}
@@ -44,22 +36,16 @@
 					
 	
 					case "recherche":
-					
 						if(isset($params["recherche"])){
-							
 							//Verification si les champs sont remplis;
 							$this->recherche($params["recherche"]);		
 						}
 						else{
 							echo "ERROR Aucune valeur de recherche";
 						}
-				
 						break;	
-						
-						
-						
-						
-										case "rechercheArtiste":
+				
+				    case "rechercheArtiste":
 						if(isset($params["prenom"]) && isset($params["nom"])){
 							//Verification si les champs sont remplis;
 						$this->rechercheArtiste($params["prenom"], $params["nom"]);		
@@ -67,10 +53,7 @@
 						else{
 							echo "ERROR Aucune valeur de recherche";
 						}
-						
 						break;	
-						
-						
 							
 					case "envoieSoumission":
 						if(isset($params["id"]) ){  // on assume ici que si on recoit le champ id on aurra tout les autres champs.
@@ -81,7 +64,6 @@
 								$params["nomParc"], $params["batiment"], $params["prenomArtiste"], $params["nomArtiste"], $params["nomCollectif"], $params["bio"], $params["modeAcquisition"], $params["numeroAccession"], $params["dateAccession"], $params["materiaux"], 
 								$params["support"], $params["technique"], $params["categorieObjet"], $params["dimensionGenerales"], $params["coordonneeLatitude"], $params["coordonneeLongitude"], $params["mediums"],  $params["nomCollection"], $params["valide"]);							 
 								echo $resultatsMAJ;
-							//}
 
 						}
 						else{
@@ -89,8 +71,6 @@
 						}
 						break;		
 					   
-			
-			
 					case "rechercheCollectif":
 						if(isset($params["nomCollectif"]) ){
 							//Verification si les champs sont remplis;
@@ -99,11 +79,8 @@
 						else{
 							echo "ERROR Aucune valeur de recherche";
 						}
-						
 						break;	
 						
-						
-
 					case "telechargementImage":
 						$this->telechargementImage();
 						break;	
@@ -120,8 +97,8 @@
 				}						
 			}
 			else{
-					//action par défaut
-					echo "ERROR";					
+                //action par défaut
+                echo "ERROR";					
 			}			
 		}
 
@@ -129,9 +106,7 @@
 		public function recherche($strRecherche){
 			$modelePublic = new Modele_public();
 			$resultatsRecherche = $modelePublic->recherche($strRecherche);
-
-			echo "<resultatsRecherche>";
-
+            echo "<resultatsRecherche>";
 	       foreach($resultatsRecherche as $r){
 				//générer le XML du contact
 				echo "<resultatRecherche>";
@@ -140,13 +115,8 @@
 				echo "<id>" . $r["id"] . "</id>";
 				echo "</resultatRecherche>";
 			}
-	
 			echo "</resultatsRecherche>";
-			
 		}
-		
-		
-		
 		
 		public function rechercheArtiste($strRecherchePrenom, $strRechercheNom){
 			$modelePublic = new Modele_public();
@@ -163,7 +133,6 @@
 			echo "</resultatsRecherche>";
 			
 		}
-		
 		
 		
 		public function rechercheCollectif($strRechercheCollectif){
@@ -195,17 +164,14 @@
 					 // this is where the file is temporarily stored on the server when uploaded
 					// do not change this
 					$_FILES['file']['tmp_name'],
-
 					// this is where you want to put the file and what you want to name it
 					// in this case we are putting in a directory called "uploads"
 					// and giving it the original filename
 					//'uploads/' . $_FILES['file']['name']
 					$nomDuFichier
 				);
-				
 				echo $nomDuFichier;
 			}
-
 		}
 		
 		//affiche les oeuvres du Select categorie
@@ -216,15 +182,11 @@
 			
 		} 
 		
-		
 		//affiche les oeuvres du Select lieu
 		public function afficheOeuvreArrondissement($val){
 			$modeleOeuvres= new Modele_Oeuvres();
 			$data=$modeleOeuvres-> obtenirOeuvresArrondissement($val);
 			$this->afficheVue("vueOeuvres", $data);
-			
 		}
-		
-
 	}
 ?>

@@ -1,17 +1,15 @@
 <script>
 	//Recherche Prenom
 	window.addEventListener("load", function(){	
-		
 		var artiste = document.getElementById("artiste");
 		var nomCollectif = document.getElementById("nomCollectif");
 		var formSoumission = document.getElementById("divSoumission");
 		var keyupInArtisteName = false;
 		var focusInArtisteName = false;
-		
+        
 		artiste.addEventListener("keyup", function(){
 			keyupInArtisteName = true;
 		});
-		
 		
 		formSoumission.addEventListener("keyup", function(){
 			if (! keyupInArtisteName || ! focusInArtisteName) {
@@ -23,7 +21,6 @@
 			effaceChild("resultatRechercheArtiste");
 			effaceChild("resultatRechercheCollectif");
 		});
-		
 		
 		artiste.addEventListener("keyup", function(){
 			//déclaration de l'objet XMLHttpRequest
@@ -81,109 +78,102 @@
 						});
 						//envoi de la requête
 						xhr.send();
-					
 				}
 				else{
 					effaceChild("resultatRechercheCollectif");
 				}		
 			}
 		});	
-		
-	
-
 	});
 
-	
-		function effaceChild(nomDiv) {
-				var division = document.getElementById(nomDiv);			
-				var fc = division.firstChild;
-				while( fc ) {
-					division.removeChild( fc );
-					fc = division.firstChild;
-				}						
-			}
-			
-			//Fonction pour parser le xml 
-			function xmlParse(xml){
-				if (window.DOMParser){
-					parser = new DOMParser();
-					xmlDoc = parser.parseFromString(xml, "text/xml");
-				  }
-				else{ // Internet Explorer
-					xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-					xmlDoc.async = false;
-					xmlDoc.loadXML(xml);
-				  }
-			}
-			
-			// Fonction pour trouver la valeur d'un id dans un xml de contact
-			function xmlValue(xml,id) {		
-				xmlParse(xml);		  
-				var contact = xmlDoc.getElementsByTagName("contact"); 
-				return contact[0].getElementsByTagName(id)[0].childNodes[0].nodeValue;
-			}
-	
+    function effaceChild(nomDiv) {
+            var division = document.getElementById(nomDiv);			
+            var fc = division.firstChild;
+            while( fc ) {
+                division.removeChild( fc );
+                fc = division.firstChild;
+            }						
+        }
+
+    //Fonction pour parser le xml 
+    function xmlParse(xml){
+        if (window.DOMParser){
+            parser = new DOMParser();
+            xmlDoc = parser.parseFromString(xml, "text/xml");
+          }
+        else{ // Internet Explorer
+            xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+            xmlDoc.async = false;
+            xmlDoc.loadXML(xml);
+          }
+    }
+
+        // Fonction pour trouver la valeur d'un id dans un xml de contact
+    function xmlValue(xml,id) {		
+        xmlParse(xml);		  
+        var contact = xmlDoc.getElementsByTagName("contact"); 
+        return contact[0].getElementsByTagName(id)[0].childNodes[0].nodeValue;
+    }
 	
 	function afficheResultatRechercheArtiste(nomDiv,xml) {			
-				effaceChild(nomDiv);
-				xmlParse(xml);	
-				var listeResultatRecherche = xmlDoc.getElementsByTagName("resultatRecherche");			
-			
-
-				var id = "";
-				var liste=document.createElement("ul");;
-				for(var i = 0; i < listeResultatRecherche.length; i++){
-					var nomArtiste = listeResultatRecherche[i].getElementsByTagName("nomArtiste")[0].childNodes[0].nodeValue;
-					//alert(nomArtiste);
-					var prenomArtiste = listeResultatRecherche[i].getElementsByTagName("prenomArtiste")[0].childNodes[0].nodeValue;
-					var resultat = prenomArtiste + " " + nomArtiste ;
-					var li = document.createElement("li");
-					var lien = document.createTextNode(resultat);
-					var a = document.createElement("a");					
-					a.title = resultat;
-					a.href ="javascript: modifierArtiste('"+prenomArtiste+"' , '"+ nomArtiste+"' , '"+nomDiv+"');"; 
-
-					a.appendChild(lien);
-					li.appendChild(a);
-					liste.appendChild(li);
-				}						
-				document.getElementById(nomDiv).appendChild(liste);
-			}
+        effaceChild(nomDiv);
+        xmlParse(xml);	
+        var listeResultatRecherche = xmlDoc.getElementsByTagName("resultatRecherche");			
+        var id = "";
+        var liste=document.createElement("ul");
+        
+        for(var i = 0; i < listeResultatRecherche.length; i++){
+            var nomArtiste = listeResultatRecherche[i].getElementsByTagName("nomArtiste")[0].childNodes[0].nodeValue;
+            var prenomArtiste = listeResultatRecherche[i].getElementsByTagName("prenomArtiste")[0].childNodes[0].nodeValue;
+            var resultat = prenomArtiste + " " + nomArtiste ;
+            var li = document.createElement("li");
+            var lien = document.createTextNode(resultat);
+            var a = document.createElement("a");					
+            a.title = resultat;
+            a.href ="javascript: modifierArtiste('"+prenomArtiste+"' , '"+ nomArtiste+"' , '"+nomDiv+"');";
+            a.appendChild(lien);
+            li.appendChild(a);
+            liste.appendChild(li);
+        }						
+        document.getElementById(nomDiv).appendChild(liste);
+    }
 			
 	function afficheResultatRechercheCollectif(nomDiv,xml) {			
-				effaceChild(nomDiv);
-				xmlParse(xml);	
-				var listeResultatRecherche = xmlDoc.getElementsByTagName("resultatRecherche");			
-				
+        effaceChild(nomDiv);
+        xmlParse(xml);	
+        var listeResultatRecherche = xmlDoc.getElementsByTagName("resultatRecherche");			
+        var id = "";
+        var liste=document.createElement("ul");
 
-				var id = "";
-				var liste=document.createElement("ul");;
-				for(var i = 0; i < listeResultatRecherche.length; i++){
-					var resultat = listeResultatRecherche[i].getElementsByTagName("nomCollectif")[0].childNodes[0].nodeValue; 
-					var li = document.createElement("li");
-					var lien = document.createTextNode(resultat);
-					var a = document.createElement("a");					
-					a.title = resultat;
-					a.href ="javascript: modifierNomCollectif('"+resultat+"' , '"+nomDiv+"');"; 
-
-					a.appendChild(lien);
-					li.appendChild(a);
-					liste.appendChild(li);
-				}						
-				document.getElementById(nomDiv).appendChild(liste);
-			}
+        for(var i = 0; i < listeResultatRecherche.length; i++){
+            var resultat = listeResultatRecherche[i].getElementsByTagName("nomCollectif")[0].childNodes[0].nodeValue; 
+            var li = document.createElement("li");
+            var lien = document.createTextNode(resultat);
+            var a = document.createElement("a");					
+            a.title = resultat;
+            a.href ="javascript: modifierNomCollectif('"+resultat+"' , '"+nomDiv+"');"; 
+            a.appendChild(lien);
+            li.appendChild(a);
+            liste.appendChild(li);
+        }						
+        document.getElementById(nomDiv).appendChild(liste);
+    }
 	
 	function modifierArtiste(prenomArtiste, nomArtiste, nomDiv){
 		document.getElementById("prenomArtiste").value = prenomArtiste;
 		document.getElementById("nomArtiste").value = nomArtiste;
+
 		mettreBioAJour(prenomArtiste, nomArtiste, "")
 		effaceChild(nomDiv)
+
 	}
 
 	function modifierNomCollectif(nomCollectif, nomDiv){
 		document.getElementById("nomCollectif").value = nomCollectif;
+
 		mettreBioAJour("", "", nomCollectif)
-		effaceChild(nomDiv)
+		effaceChild(nomDiv);
+
 	}
 	
 	function mettreBioAJour(prenomArtiste, nomArtiste, nomCollectif) {
@@ -211,81 +201,73 @@
 	}
 
 
-			$(document).ready(function(){
-				//Stack overflow http://stackoverflow.com/questions/8838648/onchange-event-handler-for-radio-button-input-type-radio-doesnt-work-as-one
-				// Des fois la paresse l'emporte!
-				$('input:radio[name="nomOuCollectif"]').change(function() {
-					 for (var i = 0; i < 2; i++) {
-						if (document.getElementsByName('nomOuCollectif')[i].checked){	
-							if (i ==1){
-								document.getElementById("spanPrenom").style = "color: grey";
-								document.getElementById("spanNom").style = "color: grey";
-								document.getElementById("nomArtiste").disabled = true;
-								document.getElementById("prenomArtiste").disabled = true;
-								document.getElementById("spanCollectif").style = "color: black";
-								document.getElementById("prenomArtiste").value = "";
-								document.getElementById("nomArtiste").value = "";
-								document.getElementById("nomCollectif").disabled = false;				
-							}
-							if (i ==0){
-								document.getElementById("spanPrenom").style = "color: black";
-								document.getElementById("spanNom").style = "color: black";
-								document.getElementById("nomArtiste").disabled = false;
-								document.getElementById("prenomArtiste").disabled = false;
-								document.getElementById("spanCollectif").style = "color: grey";
-								document.getElementById("nomCollectif").value = "";
-								document.getElementById("nomCollectif").disabled = true;	
-							}
-						}
-					}
-				});
-			
-			
-				//References http://stackoverflow.com/questions/23980733/jquery-ajax-file-upload-php
-				$("#formChargementImage").change(function(){
-					var file_data = $('#chargerImage').prop('files')[0];   
-					var form_data = new FormData();                                              
-					form_data.append('file', file_data);
-					$.ajax({
-								url: 'http://localhost/ArtPublicMTL/vues/upload.php', // point to server-side PHP script 
-								dataType: 'text',  // what to expect back from the PHP script, if anything
-								cache: false,
-								contentType: false,
-								processData: false, 
-								data: form_data,                         								
-								type: 'post',
-								success: function(nom_fichier){
-									var imgForm = document.getElementById("formChargementImage");
-									var img;
-									if (document.getElementById("imgId") == null){
-									  img = document.createElement("img");
-									  img.id = "imgId";
-									  img.style = "width: 150px; margin-left: -100px;"; 
-									  img.src = nom_fichier.substring(3);
-									  imgForm.appendChild(img);
-									  document.getElementById("labelImportImage").innerHTML="Changez l'image";
-									}
-									else {
-									  img = document.getElementById("imgId");
-									  img.src = nom_fichier.substring(3);
-									  
-									}
-									
-								}
-					 });
-				});
+    $(document).ready(function(){
+        //Stack overflow http://stackoverflow.com/questions/8838648/onchange-event-handler-for-radio-button-input-type-radio-doesnt-work-as-one
+        // Des fois la paresse l'emporte!
+        $('input:radio[name="nomOuCollectif"]').change(function() {
+             for (var i = 0; i < 2; i++) {
+                if (document.getElementsByName('nomOuCollectif')[i].checked){	
+                    if (i ==1){
+                        document.getElementById("spanPrenom").style = "color: grey";
+                        document.getElementById("spanNom").style = "color: grey";
+                        document.getElementById("nomArtiste").disabled = true;
+                        document.getElementById("prenomArtiste").disabled = true;
+                        document.getElementById("spanCollectif").style = "color: black";
+                        document.getElementById("prenomArtiste").value = "";
+                        document.getElementById("nomArtiste").value = "";
+                        document.getElementById("nomCollectif").disabled = false;				
+                    }
+                    if (i ==0){
+                        document.getElementById("spanPrenom").style = "color: black";
+                        document.getElementById("spanNom").style = "color: black";
+                        document.getElementById("nomArtiste").disabled = false;
+                        document.getElementById("prenomArtiste").disabled = false;
+                        document.getElementById("spanCollectif").style = "color: grey";
+                        document.getElementById("nomCollectif").value = "";
+                        document.getElementById("nomCollectif").disabled = true;	
+                    }
+                }
+            }
+        });
+
+        //References http://stackoverflow.com/questions/23980733/jquery-ajax-file-upload-php
+        $("#formChargementImage").change(function(){
+            var file_data = $('#chargerImage').prop('files')[0];   
+            var form_data = new FormData();                                              
+            form_data.append('file', file_data);
+            $.ajax({
+                url: 'http://localhost/ArtPublicMTL/vues/upload.php', // point to server-side PHP script 
+                dataType: 'text',  // what to expect back from the PHP script, if anything
+                cache: false,
+                contentType: false,
+                processData: false, 
+                data: form_data,                         								
+                type: 'post',
+                success: function(nom_fichier){
+                    var imgForm = document.getElementById("formChargementImage");
+                    var img;
+                    if (document.getElementById("imgId") == null){
+                      img = document.createElement("img");
+                      img.id = "imgId";
+                      img.style = "width: 150px; margin-left: -100px;"; 
+                      img.src = nom_fichier.substring(3);
+                      imgForm.appendChild(img);
+                      document.getElementById("labelImportImage").innerHTML="Changez l'image";
+                    }
+                    else {
+                      img = document.getElementById("imgId");
+                      img.src = nom_fichier.substring(3);
+                    }
+                }
+             });
+        });
+    });
+
+    function afficherOptionnel(){
+        document.getElementById("formSoumissionOptionnel").style.display="inline";
+        document.getElementById("btnAjoutInfos").style.visibility="hidden";
+    }
 				
-			
-			});
-			
-			function afficherOptionnel(){
-				document.getElementById("formSoumissionOptionnel").style.display="inline";
-				document.getElementById("btnAjoutInfos").style.visibility="hidden";
-			}
-			
-			
-			
-			
 	$(document).ready(function(){
 		$("#envoyerSoumission").click(function(){
 			
@@ -293,9 +275,11 @@
 			//obtenir les infos du formulaire
 			var id = document.getElementById("id").value;
 			var titre = document.getElementById("titre").value;
-				var selectCategorie = document.getElementById("categorie");
+            var selectCategorie = document.getElementById("categorie");
 			var categorie = selectCategorie.options[selectCategorie.selectedIndex].value;
-				var selectArrondissement = document.getElementById("arrondissements");
+
+            var selectArrondissement = document.getElementById("arrondissements");
+
 			var arrondissement = selectArrondissement.options[selectArrondissement.selectedIndex].value;
 			var adresse = document.getElementById("adresse").value;
 			var description = document.getElementById("description").value;
@@ -306,6 +290,7 @@
 			else {
 				image= document.getElementById("imgId").src;
 			}
+
 			var titreVariante = document.getElementById("titreVariante").value; // !
 			var nomParc = document.getElementById("nomParc").value;
 			var batiment = document.getElementById("batiment").value;
@@ -324,6 +309,7 @@
 			var coordonneeLatitude = document.getElementById("coordonneeLatitude").value;
 			var coordonneeLongitude = document.getElementById("coordonneeLongitude").value;
 			var mediums = document.getElementById("mediums").value;
+
 			var nomCollection = document.getElementById("nomCollection").value; // !
 			var valide;
 			if(document.getElementById("valide").checked==true){
@@ -380,6 +366,7 @@
 		});
 	});
 
+
 </script>
 	<?php
 	 global $admin;
@@ -416,7 +403,6 @@
 				<?php 
 					$modeleCategories= new Modele_Categories();
 					$data = $modeleCategories->obtenirTous();
-					
 					foreach($data as $categorie){
 						echo '<option value="' .$categorie["nom"] . '">' . $categorie["nom"] . "</option>";
 					}
@@ -425,13 +411,11 @@
 			 
 		<!--Arrondissement-->	 
 			<label class="elemSoumission"> <span class= "textElemSoumission">Arrondissement</span><span id="etoileImportant">*</span></label>
-			
 			<select id="arrondissements">
 				<option>--</option>
 				<?php 
 				   $modeleArrondissements= new Modele_Arrondissements();
 				   $data= $modeleArrondissements->obtenirTous();
-
 					foreach($data as $arrondissement){
 						echo '<option value="' .$arrondissement["nom"] . '">' . $arrondissement["nom"] . "</option>";
 					}
@@ -449,13 +433,11 @@
 		<!-- Fin form obligatoire -->
 		</form>
 		
-		
 	<!-- Form Chargement Image -->
 		<form id="formChargementImage">
 			<label for="chargerImage" class="btn" id="labelImportImage">Importez votre image<span id="etoileImportant">*</span></label>
 			<input id="chargerImage" type="file" name="sortpic" style="visibility:hidden;"/>
 		</form>
-		
 		
 	<!-- Bouton afficher Form Optionnel -->		
 		<input type="button" value="Ajouter plus d'informations" id="btnAjoutInfos" onclick="afficherOptionnel()">
@@ -466,12 +448,14 @@
 
 	
 	<!-- Form Optionnel -->	
+
 		<form id="formSoumissionOptionnel" style="display: none";>
 		
 			<!--titre variante-->
 			<label class="elemSoumission"> <span class= "textElemSoumission">Titre variante</span></label>
 			<input type="text" name="inputTitreVariante" id="titreVariante">
 		
+
 			<!--Nom du Parc-->
 			<label class="elemSoumission"> <span class= "textElemSoumission">Nom du parc</span></label>
 			<input type="text" name="inputNomParc" id="nomParc">
@@ -578,8 +562,7 @@
 		</form>
 		<br><br>
 		<input type="submit" value="Soumettre l'oeuvre" id="envoyerSoumission"/>
-		
-		
 		<textarea rows="100" cols="100" id="msgRetourSoumission"></textarea>
+
 	</div>
-	
+

@@ -1,5 +1,6 @@
 <div id="resultatRecherche"></div>
 <form id="formRecherche" method="POST">
+
 		<input type="text" id="inputRecherche"/>
 		<i id="faSearch" class="fa fa-search" aria-hidden="true"></i>
 		<div id="recherchezPar">
