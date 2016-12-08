@@ -54,5 +54,4 @@
         document.formEncrypte.submit();
     };
     //--Fin fonction de validation Javascript
-
 })();

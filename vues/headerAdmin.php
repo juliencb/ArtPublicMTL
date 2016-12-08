@@ -20,8 +20,7 @@
 						<li class="itemMenu"><a href="index.php?Admins&action=">Mise à jour BD</a></li>
 						<li class="itemMenu"><a href="index.php?Admins&action=apropos">À Propos</a></li>
 					</ul>
-				</nav>
-					
+				</nav>	
 			</div>
 		</header>
 		<!--fin Section ENTÊTE-->

@@ -15,8 +15,5 @@
 		</h1>
 		<p>
 			<?php echo $data["biographie"]; ?>
-        </p>
-		
+		</p>
 	</div>
-	
-

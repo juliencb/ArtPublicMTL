@@ -1,6 +1,3 @@
-<?php
-//$message="";
-?>
 <!--affichage du Login-->
 <div id="sectionLogin">
 
