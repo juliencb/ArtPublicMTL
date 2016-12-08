@@ -1,4 +1,5 @@
 <?php
+
 	function __autoload($classe)
 	{
 		$repertoires = array("./controleurs/", 
@@ -14,6 +15,6 @@
 			}
 		}
 	}
-	
+    session_start();	
 	Routeur::route();
 ?>
