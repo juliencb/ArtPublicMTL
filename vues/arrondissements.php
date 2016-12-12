@@ -28,7 +28,7 @@
             $divInfo .= "</a><br>";
             $divInfo .= "<a href='./index.php?public&action=descriptionArtiste&id=" . $oeuvres["idArtiste"] . "'>";
             if(isset($oeuvres["prenom"])){
-                $divInfo .= $oeuvres["nom"] . ", " . $oeuvres["prenom"];
+                $divInfo .= $oeuvres["prenom"] . " " . $oeuvres["nom"];
             }
             else{
                 $divInfo .= $oeuvres["nomCollectif"];
@@ -44,8 +44,8 @@
                     locations.push({
                         lat: <?php echo $oeuvres["coordonneeLatitude"] ?>
                         , lng: <?php echo $oeuvres["coordonneeLongitude"]?>
+                        , titre : "<?php echo $oeuvres["titre"] ?>"
                         , infoWindow: "<?php echo $divInfo ?>"
-                    
                     });
                 </script>
                 <?php
@@ -62,10 +62,9 @@
         <div id="map"></div>
         <script>
             function initMap() {
-                
                 var map = new google.maps.Map(document.getElementById('map'), {
                     zoom: 12
-                    // met le centre de la map sur la dernière oeuvre entrée
+                        // met le centre de la map sur la dernière oeuvre entrée
                     , center: {
                         lat: <?php echo $oeuvres["coordonneeLatitude"] ?>
                         , lng: <?php echo $oeuvres["coordonneeLongitude"] ?>
@@ -74,20 +73,20 @@
                 var b = 0;
                 // https://developers.google.com/maps/documentation/javascript/events
                 var markers = locations.map(function (location, i) {
-                     
-                    var titre = document.querySelectorAll(".listeOeuvreParArron >li")[b].firstChild.innerHTML.toString();
-                    //var idDeLOeuvreMarquee = document.querySelectorAll(".listeOeuvreParArron >li")[b].firstChild.getAttribute("id").toString();
-               console.log(location);
                     var marker = new google.maps.Marker({
                         position: location
                         , map: map
-                        , title: titre
+                        , title: location.titre
                     });
-
                     attachSecretMessage(marker, location.infoWindow);
                     b++;
+                    
+                    marker.addListener('click', function() {
+                        
+                        map.setZoom(18);
+                        map.setCenter(marker.getPosition());
+                    }); 
                 });
-
             };
             // https://developers.google.com/maps/documentation/javascript/examples/event-closure
             function attachSecretMessage(marker, infoWindow) {
