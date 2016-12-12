@@ -45,7 +45,7 @@
 		}
 		
 		if($data["nomArrondissement"]!=""){
-			echo "<li><span>Arrondissement :". $data["nomArrondissement"]. "</span></li>";
+			echo "<li><span>Arrondissement :<a href='./index.php?Public&action=afficheOeuvreslieu&idValue=". $data["nomArrondissement"]. "'>". $data["nomArrondissement"]. "</span></li>";
 		}	
         ?>
 	</ul>
@@ -58,8 +58,8 @@
              ?>
             <style>
                #map {
-                height: 200px;
-                width: 300px
+                height: 600px;
+                width: 800px
                }
             </style>
             <div id="map"></div>
@@ -67,7 +67,7 @@
                  function initMap() {
                    var uluru = {lat: <?php echo $data["coordonneeLatitude"] ?>, lng: <?php echo $data["coordonneeLongitude"] ?> };
                    var map = new google.maps.Map(document.getElementById('map'), {
-                     zoom: 14,
+                     zoom: 16,
                      center: uluru
                    });
                    var marker = new google.maps.Marker({

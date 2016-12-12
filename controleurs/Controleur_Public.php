@@ -74,6 +74,10 @@
                         }
                         break;	
                         
+                    case "carte":
+                            $this->afficheCarte();					
+                        break;	
+                        
 					default:
 						$this->afficheVue("pageAccueil","");	
 						$this->afficheRecherche();	
@@ -159,5 +163,13 @@
 			$data=$modeleOeuvres-> obtenirOeuvresArrondissement($val);
 			$this->afficheVue("arrondissements", $data);
 		}
+            
+        public function afficheCarte(){
+			$modeleOeuvres= new Modele_oeuvres();
+			$data=$modeleOeuvres-> obtenirTousOeuvresArrondissement();
+			$this->afficheVue("pageCarte", $data);
+		}
+            
+            
 	}
 ?>

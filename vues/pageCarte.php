@@ -6,12 +6,10 @@
             var x = 0;
             var locations = [];
         </script>
-        <ul class="listeOeuvreParArron">
+        
             <?php
     foreach($data as $oeuvres){
        
-            echo "<li class='titreOeuvres'><a id='{$oeuvres["id"]}' href='./index.php?public&action=details&id={$oeuvres["id"]}'>{$oeuvres["titre"]}</a></li>";
-            
             // fabrication de l'indoWindow du curseur de la map
             $divInfo = "<div class='infoWindow'>";
             //section de l'image
@@ -44,6 +42,7 @@
                     locations.push({
                         lat: <?php echo $oeuvres["coordonneeLatitude"] ?>
                         , lng: <?php echo $oeuvres["coordonneeLongitude"]?>
+                        , titre : "<?php echo $oeuvres["titre"] ?>"
                         , infoWindow: "<?php echo $divInfo ?>"
                     
                     });
@@ -52,11 +51,11 @@
             }	//fin du if de la latitude
     } // fin de la boucle foreach
 	?>
-        </ul>
+    
         <style>
             #map {
-                height: 400px;
-                width: 800px
+                height: 1000px;
+                width:1000px;
             }
         </style>
         <div id="map"></div>
@@ -64,7 +63,7 @@
             function initMap() {
                 
                 var map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 12
+                    zoom: 11
                     // met le centre de la map sur la dernière oeuvre entrée
                     , center: {
                         lat: <?php echo $oeuvres["coordonneeLatitude"] ?>
@@ -75,13 +74,12 @@
                 // https://developers.google.com/maps/documentation/javascript/events
                 var markers = locations.map(function (location, i) {
                      
-                    var titre = document.querySelectorAll(".listeOeuvreParArron >li")[b].firstChild.innerHTML.toString();
+                   // var titre = document.querySelectorAll(".listeOeuvreParArron >li")[b].firstChild.innerHTML.toString();
                     //var idDeLOeuvreMarquee = document.querySelectorAll(".listeOeuvreParArron >li")[b].firstChild.getAttribute("id").toString();
-               console.log(location);
                     var marker = new google.maps.Marker({
                         position: location
                         , map: map
-                        , title: titre
+                        , title: location.titre
                     });
 
                     attachSecretMessage(marker, location.infoWindow);
