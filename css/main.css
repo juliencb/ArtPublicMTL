@@ -1,3 +1,15 @@
+@font-face {
+    font-family: 'bang_whack_powregular';
+    src: url('font/bang_whack_pow-webfont.eot');
+    src: url('font/bang_whack_pow-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/bang_whack_pow-webfont.woff2') format('woff2'),
+         url('font/bang_whack_pow-webfont.woff') format('woff'),
+         url('font/bang_whack_pow-webfont.ttf') format('truetype'),
+         url('font/bang_whack_pow-webfont.svg#bang_whack_powregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
 
 body{
 
@@ -5,8 +17,6 @@ body{
     margin-left: 20px;
     margin-top: 20px;
 }
-
-
 
 a{
 	text-decoration: none;
@@ -74,7 +84,7 @@ a{
 .itemMenu a {
     font-size: 1.8em;
     margin-left: 60px;
-    font-family: 'Inconsolata', monospace;
+    font-family: 'bang_whack_powregular';
     color: white;
     text-decoration: none;
     padding: 3px;
