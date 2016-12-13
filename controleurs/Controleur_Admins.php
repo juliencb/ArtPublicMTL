@@ -43,6 +43,7 @@
 					//pour initier le processus de login initie la Session grainDeSel
 					case "login":
 					default:
+						$this->afficheVue("vueLogin","");
 						if(!isset($_SESSION["grainDeSel"]))
 							$_SESSION["grainDeSel"] = rand(1, 10000);
 							$this->afficheVue("vueLogin",$_SESSION["grainDeSel"]);							
