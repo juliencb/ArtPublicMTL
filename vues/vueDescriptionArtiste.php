@@ -1,6 +1,5 @@
 <!--commencer directement avec la div contenu-->
-<div class="contenu">
-	<section id="descriptionArtiste">
+	<section id="descriptionArtiste" class="flex column">
 		<h1 class="bioArtiste">Biographie
 			<?php 
 				if (isset($data["prenom"]) && isset($data["nom"])){
@@ -10,7 +9,7 @@
 				}
 			?>
 		</h1>
-		<div id="infosMonArtiste" class="flex row-reverse JCflex-start ACflex-start">
+		<div id="infosMonArtiste" class="flex row-reverse JCspace-around ACflex-start">
 			<p>
 				<?php echo $data["biographie"]; ?>
 			</p>

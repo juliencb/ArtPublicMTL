@@ -79,7 +79,7 @@ ul{
 .pas_accueil .image_droite{
 	position: absolute;
 	top: 94px;
-	right: -32px;
+	right: 0px;
 }
 
 .menu {
@@ -135,8 +135,10 @@ ul{
 }
 /**FIN PAGE ACCUEIL**/
 /**DÉBUT PAGE DES ARTISTES**/
-#zoneDesArtistes{
+#zoneDesArtistes,
+#descriptionArtiste{
 	margin-left: 350px;
+	width: 100%;
 }
 
 #zoneDesArtistes .titrePage{
@@ -182,7 +184,11 @@ ul{
 .titrePagePropos{
 	font-size: 2em;
 	border-bottom: 2px solid black;
-	margin: 30px 20px 20px 350px;
+	margin: -10px 20px 20px 0px;
+}
+
+.bioArtiste{
+	flex: 1 0 0;
 }
 
 #descriptionArtiste p{
@@ -193,13 +199,16 @@ ul{
 #descriptionArtiste img{
 	width: 30%;
 	height: 30%;
-	margin-left: 330px;
 }
 /**FIN PAGE DE LA BIO D'UN ARTISTE**/
 /**DÉBUT PAGE À PROPOS**/
+.pageAPropos{
+	margin-left: 350px;
+}
+
 .descriptionPagePropos{
 	font-size: 1.2em;
-	margin-left: 380px;
+	margin: 20px 0px;
 }
 /**FIN PAGE À PROPOS**/
 /**DÉBUT TEMPLATE GAUCHE**/

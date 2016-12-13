@@ -8,7 +8,7 @@
 		///---les oeuvres ainsi que le nom de artiste lié à chaque oeuvre.---///
 		public function obtenirTousOeuvresArtistes(){
 			try{			
-				$stmt = $this->connexion->prepare("SELECT oeuvre.id, idArtiste,titre, titreVariante, categorie,urlImage, artiste.prenom, artiste.nom 
+				$stmt = $this->connexion->prepare("SELECT oeuvre.id, idArtiste,titre, titreVariante, categorie,urlImage, artiste.prenom, artiste.nom
 													FROM oeuvre JOIN artiste ON idArtiste = artiste.id");
 				$stmt->execute();
 				return $stmt->fetchAll();
@@ -36,7 +36,7 @@
 		///---les oeuvres d'un arrondissement ainsi que le nom de artiste lié à chaque oeuvre.---///
 		public function obtenirOeuvresArrondissement($unArrondissement){
 			try{			
-				$stmt = $this->connexion->prepare("SELECT oeuvre.id, idArtiste, titre, arrondissement,urlImage, artiste.prenom, artiste.nom, coordonneeLatitude, coordonneeLongitude
+				$stmt = $this->connexion->prepare("SELECT oeuvre.id, idArtiste, titre, arrondissement,urlImage, artiste.prenom, artiste.nom, artiste.nomCollectif, coordonneeLatitude, coordonneeLongitude
 													FROM oeuvre JOIN artiste ON idArtiste = artiste.id
 													WHERE arrondissement= :unArrondissement");
 				$stmt->bindParam(":unArrondissement", $unArrondissement);
@@ -47,6 +47,20 @@
 				return false;
 			}
 		}
+        
+        public function obtenirTousOeuvresArrondissement(){
+			try{			
+				$stmt = $this->connexion->prepare("SELECT oeuvre.id, idArtiste, titre, arrondissement,urlImage, artiste.prenom, artiste.nom, artiste.nomCollectif, coordonneeLatitude, coordonneeLongitude
+													FROM oeuvre JOIN artiste ON idArtiste = artiste.id");
+				$stmt->bindParam(":unArrondissement", $unArrondissement);
+				$stmt->execute();
+				return $stmt->fetchAll();
+			}		
+			catch(Exception $exc){
+				return false;
+			}
+		}
+        
 			
 		// Mise a jour des oeuvres (a partir de l'information du formulaire de soumission)
 		public function oeuvreMAJ($id, $titre, $categorie, $arrondissement, $adresse, $description, $image,  $nomParc, $batiment,  

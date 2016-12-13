@@ -1,5 +1,4 @@
 <!--commencer directement avec la div contenu-->
-
 	<section id="zoneDesArtistes">
 		<h1 class="titrePage">Artistes</h1>
 			<ul>

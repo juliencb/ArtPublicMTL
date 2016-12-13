@@ -7,7 +7,7 @@
 		//afficher toute la liste des artiste en ordre alphabetique par nom
 		public function obtenirTousArtisteAlphabetique(){
 			try{
-				$stmt = $this->connexion->prepare("SELECT id, IFNULL(prenom, ' ')AS prenom, IFNULL(nom , nomCollectif) as nomArtiste FROM artiste ORDER BY nomArtiste");
+				$stmt = $this->connexion->prepare("SELECT id, IFNULL(prenom, ' ')AS prenom, IFNULL(nom , nomCollectif) as nomArtiste, valide FROM artiste WHERE valide = 0 ORDER BY nomArtiste" );
 				$stmt->bindParam(":valeur", $valeur);
 				$stmt->execute();
 				return $stmt->fetchAll();
@@ -21,7 +21,7 @@
 		//afficher la description d'un artiste
 		public function obtenirDescriptionArtiste ($valeur){
 			try{
-				$stmt = $this->connexion->prepare("SELECT prenom, nom, nomCollectif, biographie FROM artiste WHERE id = :valeur");
+				$stmt = $this->connexion->prepare("SELECT prenom, nom, nomCollectif, biographie FROM artiste WHERE id = :valeur && valide = 0");
 				$stmt->bindParam(":valeur", $valeur);
 				$stmt->execute();
 				return $stmt->fetch();

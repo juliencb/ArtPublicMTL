@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="css/flexbox.css"/>
 	<link rel="stylesheet" href="css/recherche.css"/>
 	<link rel="stylesheet" href="css/soumission.css"/>
+	<link rel="stylesheet" href="css/arrondissement.css"/>
 	<link rel="stylesheet" href="css/fonts-awesome/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Averia+Libre|Inconsolata" rel="stylesheet">

@@ -7,3 +7,4 @@
 		<!--<button id="suggererUneOeuvre" >Suggérer une oeuvre</button>-->
 		<img id="logoSuggestionOeuvre" src="images/logo-Suggestion-noir.png">
 	</div>
+
