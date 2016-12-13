@@ -34,7 +34,12 @@
 						break;
 						
 					default:
-						$this->afficheVue("vueLogin","");				
+						$this->afficheVue("vueLogin","");
+                        
+                    case "insererPropos":
+						$this->afficheFormModifPropos();
+						break;
+                        
 				}
 			}
 			else{
@@ -186,6 +191,21 @@
 				echo $message;
 			}
 			//$this->afficheVue("vueLogin",$message);
+		}
+        
+        //modification de la page à propos
+		public function afficheFormModifPropos(){
+			$modeleApropos = new Modele_Admins();
+			if(isset($params[$sommesT]) && isset($params[$sommesD]) && isset($params[$missionT]) && isset($params[$missionD]) && isset($params[$joindreT]) && isset($params[$joindreD]) && isset($params[$partenaireT]) && isset($params[$partenaireD])){
+				$valide = $modeleApropos->insererPagePropos($params["sommesT"], $params["sommesD"], $params["missionT"], $params["missionD"], $params["joindreT"], $params["joindreD"], $params["partenaireT"], $params["partenaireD"]);
+				if ($valide){
+					$this->afficheVue("vuePropos", $valide);
+				} else {
+					echo "ERROR";
+				} 
+			} else{
+				echo "ERROR";
+            }
 		}
 	}
 ?>

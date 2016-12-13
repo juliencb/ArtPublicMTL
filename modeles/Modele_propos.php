@@ -21,8 +21,16 @@
 				return false;
 			}
 		}
-
-       
-
+		
+		public function insererPagePropos($sommesT, $sommesD, $missionT, $missionD, $joindreT, $joindreD, $partenaireT, $partenaireD){
+			try{
+				$stmt = $this->connexion->prepare("INSERT into a_propos(sommesT, sommesD, missionT, missionD, joindreT, joindreD, partenaireT, partenaireD) VALUES (:sommesT, :sommesD, :missionT, :missionD, :joindreT, :joindreD, :partenaireT, :partenaireD)");
+				$stmt->execute(array(":sommesT" => $sommesT, ":sommesD" => $sommesD, ":missionT" => $missionT, ":missionD" => $missionD, ":joindreT" => $joindreT, ":joindreD" => $joindreD, ":partenaireT" => $partenaireT, ":partenaireD" => $partenaireD));
+				return 1;
+			}
+			catch(Exception $exc){
+				return 0;
+			}
+		}
 	}
 ?>

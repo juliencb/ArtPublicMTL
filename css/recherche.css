@@ -8,7 +8,6 @@
          url('font/bang_whack_pow-webfont.svg#bang_whack_powregular') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
 
 #inputRecherche{
@@ -45,8 +44,8 @@
 .divChoixRecherche{
 	overflow:hidden;
 	height:30px;
-	margin-left: -80px;
-	margin-top: -28px;
+	margin-left: -50px;
+	margin-top: -31px;
 	letter-spacing: 3px;
 
   &:after, &:before {
@@ -115,19 +114,18 @@
 	float: right;
 	border: 1px solid black;
 	padding-left: 10px;
-	padding-right: -10px;
 	background-color: white;
-	//max-height: 400px;
+	margin: 0px 10px 13px 0px;
 }
 
 #titreListe{
 	font-size: 15px;
 	font-family: 'Share Tech Mono', monospace;
+	margin: 5px 0px;
 }
 
 #resultatRecherche ul{
 	list-style:none;
-	margin-left: -40px;
 	margin-top: -10px;
 	max-height: 70px;
 	display:block;
@@ -137,6 +135,8 @@
 
 #resultatRecherche li{
 	font-size: 10px;
+	margin-top: 5px;
+	margin-right: 10px;
 }
 
 #resultatRecherche a{

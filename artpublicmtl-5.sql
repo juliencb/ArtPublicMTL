@@ -1,11 +1,11 @@
--- phpMyAdmin SQL Dump
--- version 4.0.4
+﻿-- phpMyAdmin SQL Dump
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Client: localhost
--- Généré le: Lun 05 Décembre 2016 à 19:35
--- Version du serveur: 5.6.12-log
--- Version de PHP: 5.4.12
+-- Host: 127.0.0.1
+-- Generation Time: 10-Dez-2016 às 22:15
+-- Versão do servidor: 5.6.17
+-- PHP Version: 5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,15 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données: `artpublicmtl`
+-- Database: `artpublicmtl`
 --
-CREATE DATABASE IF NOT EXISTS `artpublicmtl` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `artpublicmtl`;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `administrateur`
+-- Estrutura da tabela `administrateur`
 --
 
 CREATE TABLE IF NOT EXISTS `administrateur` (
@@ -38,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `administrateur` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `arrondissement`
+-- Estrutura da tabela `arrondissement`
 --
 
 CREATE TABLE IF NOT EXISTS `arrondissement` (
@@ -48,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `arrondissement` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `arrondissement`
+-- Extraindo dados da tabela `arrondissement`
 --
 
 INSERT INTO `arrondissement` (`nom`) VALUES
@@ -90,7 +88,7 @@ INSERT INTO `arrondissement` (`nom`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `artiste`
+-- Estrutura da tabela `artiste`
 --
 
 CREATE TABLE IF NOT EXISTS `artiste` (
@@ -104,19 +102,19 @@ CREATE TABLE IF NOT EXISTS `artiste` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   UNIQUE KEY `noInterne` (`noInterne`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=444 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=300 ;
 
 --
--- Contenu de la table `artiste`
+-- Extraindo dados da tabela `artiste`
 --
 
 INSERT INTO `artiste` (`id`, `noInterne`, `nom`, `prenom`, `nomCollectif`, `biographie`, `valide`) VALUES
 (1, 960, 'Coutu', 'Patrick', NULL, NULL, 0),
-(2, 1098, 'Alloucherie', 'Jocelyne', NULL, 'Je suis une biographie', 0),
+(2, 1098, 'Alloucherie', 'Jocelyne', NULL, 'Jocelyne Alloucherie vit et travaille à Montréal. À travers des configurations complexes, son oeuvre explore de manière conceptuelle et poétique des notions relatives à l’image, à l’objet et au lieu. Elle a réalisé de nombreuses installations qui associent des éléments relevant de considérations sculpturales, architecturales et photographiques. http://www.jocelynealloucherie.com/iiix/home/', 0),
 (4, 1135, 'Angers', 'Pierre Yves', NULL, NULL, 0),
 (6, 1152, 'Arsenault', 'Denise', NULL, NULL, 0),
 (7, 1156, NULL, NULL, 'Atelier TAG', NULL, 0),
-(8, 1173, 'Adam', 'Henri-Georges', NULL, NULL, 0),
+(8, 1173, 'Adam', 'Henri-Georges', NULL, 'Henri-Georges Adam (1904-1967) est un graveur et sculpteur non figuratif français de la nouvelle École de Paris qui a également réalisé de nombreuses tapisseries monumentales.  https://fr.wikipedia.org/wiki/Henri-Georges_Adam', 0),
 (9, 1394, 'Antoci', 'Rosario', NULL, NULL, 0),
 (10, 1396, 'Aquino', 'Eduardo', NULL, NULL, 0),
 (11, 6661, 'Streubel', 'Heinrich', NULL, NULL, 0),
@@ -204,109 +202,136 @@ INSERT INTO `artiste` (`id`, `noInterne`, `nom`, `prenom`, `nomCollectif`, `biog
 (141, 1243, 'Hunter', 'Raoul', NULL, NULL, 0),
 (143, 1246, 'Jarnuszkiewicz', 'Jacek', NULL, NULL, 0),
 (144, 1681, 'Keyt', 'George', NULL, NULL, 0),
-(289, 1247, 'Lachapelle', 'Guillaume', NULL, NULL, 0),
-(291, 1248, 'LalibertÃ©', 'Alfred', NULL, NULL, 0),
-(296, 1694, 'Lamarche', 'Claude', NULL, NULL, 0),
-(299, 1249, 'Lancz', 'Paul', NULL, NULL, 0),
-(302, 1250, 'Langevin', 'Roger', NULL, NULL, 0),
-(304, 1707, 'Lapalme', 'Robert', NULL, NULL, 0),
-(305, 1709, 'Lapointe', 'MichÃ¨le', NULL, NULL, 0),
-(307, 1251, 'LarivÃ©e', 'Francine', NULL, NULL, 0),
-(308, 1252, 'LariviÃ¨re', 'Gilles', NULL, NULL, 0),
-(309, 1253, 'Lasalle', 'Jules', NULL, NULL, 0),
-(314, 1254, 'Lawson', 'Georges Anderson', NULL, NULL, 0),
-(315, 1255, 'Leblanc', 'Pierre', NULL, NULL, 0),
-(321, 1257, 'Lebourg', 'Charles-Auguste', NULL, NULL, 0),
-(322, 1258, 'Leclerc', 'Pierre E.', NULL, NULL, 0),
-(323, 1256, 'LefÃ©bure', 'Jean', NULL, NULL, 0),
-(324, 1260, 'Lemieux', 'F. Maurice', NULL, NULL, 0),
-(329, 1259, 'Lemieux', 'Lisette', NULL, NULL, 0),
-(333, 1262, NULL, NULL, 'Les Industries perdues', NULL, 0),
-(334, 1263, 'Lui', 'Andrew', NULL, NULL, 0),
-(335, 1264, 'Maler', 'Miroslav Frederik', NULL, NULL, 0),
-(337, 1772, 'McCarthy', 'Coeur de lion', NULL, NULL, 0),
-(338, 1241, 'Hilton-Moore', 'Marlene', NULL, NULL, 0),
-(339, 1775, 'Merola', 'Mario', NULL, NULL, 0),
-(341, 1266, 'Mihalcean', 'Gilles', NULL, NULL, 0),
-(344, 1267, 'Millette', 'Claude', NULL, NULL, 0),
-(348, 2786, 'Mitchell', 'Robert', NULL, NULL, 0),
-(349, 1270, 'Moore', 'David', NULL, NULL, 0),
-(350, 1797, 'Moreau', 'Mathurin', NULL, NULL, 0),
-(351, 1271, 'Morin', 'Jean-Pierre', NULL, NULL, 0),
-(353, 1802, 'Morin', 'Madeleine', NULL, NULL, 0),
-(354, 1804, 'Morosoli', 'JoÃ«lle', NULL, NULL, 0),
-(355, 1805, 'Mott', 'J.L.', NULL, NULL, 0),
-(357, 1272, 'Nadeau', 'Guy', NULL, NULL, 0),
-(359, 1806, 'Nadeau', 'Marc-Antoine', NULL, NULL, 0),
-(360, 1273, 'Narita', 'Takera', NULL, NULL, 0),
-(361, 1274, 'Nepveu', 'Robert', NULL, NULL, 0),
-(362, 1275, 'Olariu', 'Octavian', NULL, NULL, 0),
-(363, 1808, 'O''Shea', 'John Patrick', NULL, NULL, 0),
-(364, 1829, 'Paiement', 'Alain', NULL, NULL, 0),
-(366, 1276, 'Pang', 'Tin Neon', NULL, NULL, 0),
-(367, 1277, 'Pellegrinuzzi', 'Roberto', NULL, NULL, 0),
-(369, 1830, 'Pellerin', 'Guy', NULL, NULL, 0),
-(370, 1278, 'Pelletier', 'Robert', NULL, NULL, 0),
-(371, 1831, 'Pellus', 'Raymond', NULL, NULL, 0),
-(372, 1279, 'Pelzer', 'Alfonso', NULL, NULL, 0),
-(373, 1280, 'Pillhofer', 'Josef', NULL, NULL, 0),
-(374, 1832, 'Pilot', 'Robert', NULL, NULL, 0),
-(375, 1282, 'Planes', 'JosÃ©', NULL, NULL, 0),
-(376, 1283, 'Poliquin', 'Jean-NoÃ«l', NULL, NULL, 0),
-(377, 1285, 'Poulin', 'Roland', NULL, NULL, 0),
-(378, 1286, 'Prent', 'Mark', NULL, NULL, 0),
-(379, 1288, 'Reddy', 'Krishna', NULL, NULL, 0),
-(380, 1846, 'Reusch', 'Astri', NULL, NULL, 0),
-(381, 1849, 'Rochette', 'Sylvie', NULL, NULL, 0),
-(382, 2883, 'Rolland', 'Dominique', NULL, NULL, 0),
-(384, 1291, 'Roussil', 'Robert', NULL, NULL, 0),
-(388, 1293, 'Sandonato', 'Aurelio', NULL, NULL, 0),
-(389, 1294, 'Santini', 'Laura', NULL, NULL, 0),
-(390, 1295, 'Saxe', 'Henry', NULL, NULL, 0),
-(391, 1296, 'Schleeh', 'Hans', NULL, NULL, 0),
-(392, 1297, 'Sebastian', NULL, NULL, NULL, 0),
-(393, 1850, 'Si Tu', 'Jie', NULL, NULL, 0),
-(394, 1298, 'Signori', 'Carlos Sergio', NULL, NULL, 0),
-(395, 1299, 'Sklavos', 'YÃ©rassimo (Gerasimos)', NULL, NULL, 0),
-(396, 1300, 'Szekely', 'Pierre', NULL, NULL, 0),
-(397, 1902, 'Taccola', 'U', NULL, NULL, 0),
-(398, 1904, 'Taylor', 'William Hughes', NULL, NULL, 0),
-(399, 1905, 'Tett', 'Alison', NULL, NULL, 0),
-(401, 1301, 'ThÃ©berge', 'Claude', NULL, NULL, 0),
-(403, 1302, 'Thorvaldsen', 'Berthel', NULL, NULL, 0),
-(404, 1908, 'Topham', 'William Thurston', NULL, NULL, 0),
-(405, 1303, 'Toto', 'Carlos Maria', NULL, NULL, 0),
-(406, 1304, 'Trudeau', 'Yves', NULL, NULL, 0),
-(409, 1305, 'Vaillancourt', 'Armand', NULL, NULL, 0),
-(414, 1306, 'Valade', 'Dominique', NULL, NULL, 0),
-(418, 1909, 'Van Der Heide', 'Herman J.', NULL, NULL, 0),
-(419, 1307, 'Vazan', 'Bill', NULL, NULL, 0),
-(422, 1910, 'VÃ©giard', 'Alfonse', NULL, NULL, 0),
-(423, 1911, 'Vermette', 'Claude', NULL, NULL, 0),
-(424, 1308, 'Viger', 'Louise', NULL, NULL, 0),
-(425, 1309, 'Vincent', 'Joseph-Arthur', NULL, NULL, 0),
-(426, 1310, 'Vivot', 'LÃ©a', NULL, NULL, 0),
-(427, 1311, 'Wade', 'George Edward', NULL, NULL, 0),
-(428, 1312, 'Widgery', 'Catherine', NULL, NULL, 0),
-(430, 1313, 'Winant', 'Alice', NULL, NULL, 0),
-(431, 1314, 'Witebsky', 'Shirley', NULL, NULL, 0),
-(432, 1315, 'Wood', 'Marshall', NULL, NULL, 0),
-(433, 1284, 'Pelletier', 'Luce', NULL, NULL, 0),
-(434, 1235, 'Hannah', 'Adad', NULL, NULL, 0),
-(435, 3094, 'Lauda', 'Jiri Georges', NULL, NULL, 0),
-(436, 1178, 'BÃ©langer', 'GwenaÃ«l', NULL, NULL, 0),
-(437, 1181, 'Besner', 'Jean-Jacques', NULL, NULL, 0),
-(438, 5598, NULL, NULL, 'Daily tous les jours', NULL, 0),
-(439, 3103, 'Montillaud', 'Francis', NULL, NULL, 0),
-(440, 3106, 'Wilson', 'Robert', NULL, NULL, 0),
-(441, 1182, 'Bisson', 'Yvette', NULL, NULL, 0),
-(442, 5797, 'Sylvain', 'Catherine', NULL, NULL, 0),
-(443, 6671, NULL, NULL, 'BGL', NULL, 0);
+(145, 1247, 'Lachapelle', 'Guillaume', NULL, NULL, 0),
+(147, 1248, 'LalibertÃ©', 'Alfred', NULL, NULL, 0),
+(152, 1694, 'Lamarche', 'Claude', NULL, NULL, 0),
+(155, 1249, 'Lancz', 'Paul', NULL, NULL, 0),
+(158, 1250, 'Langevin', 'Roger', NULL, NULL, 0),
+(160, 1707, 'Lapalme', 'Robert', NULL, NULL, 0),
+(161, 1709, 'Lapointe', 'MichÃ¨le', NULL, NULL, 0),
+(163, 1251, 'LarivÃ©e', 'Francine', NULL, NULL, 0),
+(164, 1252, 'LariviÃ¨re', 'Gilles', NULL, NULL, 0),
+(165, 1253, 'Lasalle', 'Jules', NULL, NULL, 0),
+(170, 1254, 'Lawson', 'Georges Anderson', NULL, NULL, 0),
+(171, 1255, 'Leblanc', 'Pierre', NULL, NULL, 0),
+(177, 1257, 'Lebourg', 'Charles-Auguste', NULL, NULL, 0),
+(178, 1258, 'Leclerc', 'Pierre E.', NULL, NULL, 0),
+(179, 1256, 'LefÃ©bure', 'Jean', NULL, NULL, 0),
+(180, 1260, 'Lemieux', 'F. Maurice', NULL, NULL, 0),
+(185, 1259, 'Lemieux', 'Lisette', NULL, NULL, 0),
+(189, 1262, NULL, NULL, 'Les Industries perdues', NULL, 0),
+(190, 1263, 'Lui', 'Andrew', NULL, NULL, 0),
+(191, 1264, 'Maler', 'Miroslav Frederik', NULL, NULL, 0),
+(193, 1772, 'McCarthy', 'Coeur de lion', NULL, NULL, 0),
+(194, 1241, 'Hilton-Moore', 'Marlene', NULL, NULL, 0),
+(195, 1775, 'Merola', 'Mario', NULL, NULL, 0),
+(197, 1266, 'Mihalcean', 'Gilles', NULL, NULL, 0),
+(200, 1267, 'Millette', 'Claude', NULL, NULL, 0),
+(204, 2786, 'Mitchell', 'Robert', NULL, NULL, 0),
+(205, 1270, 'Moore', 'David', NULL, NULL, 0),
+(206, 1797, 'Moreau', 'Mathurin', NULL, NULL, 0),
+(207, 1271, 'Morin', 'Jean-Pierre', NULL, NULL, 0),
+(209, 1802, 'Morin', 'Madeleine', NULL, NULL, 0),
+(210, 1804, 'Morosoli', 'JoÃ«lle', NULL, NULL, 0),
+(211, 1805, 'Mott', 'J.L.', NULL, NULL, 0),
+(213, 1272, 'Nadeau', 'Guy', NULL, NULL, 0),
+(215, 1806, 'Nadeau', 'Marc-Antoine', NULL, NULL, 0),
+(216, 1273, 'Narita', 'Takera', NULL, NULL, 0),
+(217, 1274, 'Nepveu', 'Robert', NULL, NULL, 0),
+(218, 1275, 'Olariu', 'Octavian', NULL, NULL, 0),
+(219, 1808, 'O''Shea', 'John Patrick', NULL, NULL, 0),
+(220, 1829, 'Paiement', 'Alain', NULL, NULL, 0),
+(222, 1276, 'Pang', 'Tin Neon', NULL, NULL, 0),
+(223, 1277, 'Pellegrinuzzi', 'Roberto', NULL, NULL, 0),
+(225, 1830, 'Pellerin', 'Guy', NULL, NULL, 0),
+(226, 1278, 'Pelletier', 'Robert', NULL, NULL, 0),
+(227, 1831, 'Pellus', 'Raymond', NULL, NULL, 0),
+(228, 1279, 'Pelzer', 'Alfonso', NULL, NULL, 0),
+(229, 1280, 'Pillhofer', 'Josef', NULL, NULL, 0),
+(230, 1832, 'Pilot', 'Robert', NULL, NULL, 0),
+(231, 1282, 'Planes', 'JosÃ©', NULL, NULL, 0),
+(232, 1283, 'Poliquin', 'Jean-NoÃ«l', NULL, NULL, 0),
+(233, 1285, 'Poulin', 'Roland', NULL, NULL, 0),
+(234, 1286, 'Prent', 'Mark', NULL, NULL, 0),
+(235, 1288, 'Reddy', 'Krishna', NULL, NULL, 0),
+(236, 1846, 'Reusch', 'Astri', NULL, NULL, 0),
+(237, 1849, 'Rochette', 'Sylvie', NULL, NULL, 0),
+(238, 2883, 'Rolland', 'Dominique', NULL, NULL, 0),
+(240, 1291, 'Roussil', 'Robert', NULL, NULL, 0),
+(244, 1293, 'Sandonato', 'Aurelio', NULL, NULL, 0),
+(245, 1294, 'Santini', 'Laura', NULL, NULL, 0),
+(246, 1295, 'Saxe', 'Henry', NULL, NULL, 0),
+(247, 1296, 'Schleeh', 'Hans', NULL, NULL, 0),
+(248, 1297, 'Sebastian', NULL, NULL, NULL, 0),
+(249, 1850, 'Si Tu', 'Jie', NULL, NULL, 0),
+(250, 1298, 'Signori', 'Carlos Sergio', NULL, NULL, 0),
+(251, 1299, 'Sklavos', 'YÃ©rassimo (Gerasimos)', NULL, NULL, 0),
+(252, 1300, 'Szekely', 'Pierre', NULL, NULL, 0),
+(253, 1902, 'Taccola', 'U', NULL, NULL, 0),
+(254, 1904, 'Taylor', 'William Hughes', NULL, NULL, 0),
+(255, 1905, 'Tett', 'Alison', NULL, NULL, 0),
+(257, 1301, 'ThÃ©berge', 'Claude', NULL, NULL, 0),
+(259, 1302, 'Thorvaldsen', 'Berthel', NULL, NULL, 0),
+(260, 1908, 'Topham', 'William Thurston', NULL, NULL, 0),
+(261, 1303, 'Toto', 'Carlos Maria', NULL, NULL, 0),
+(262, 1304, 'Trudeau', 'Yves', NULL, NULL, 0),
+(265, 1305, 'Vaillancourt', 'Armand', NULL, NULL, 0),
+(270, 1306, 'Valade', 'Dominique', NULL, NULL, 0),
+(274, 1909, 'Van Der Heide', 'Herman J.', NULL, NULL, 0),
+(275, 1307, 'Vazan', 'Bill', NULL, NULL, 0),
+(278, 1910, 'VÃ©giard', 'Alfonse', NULL, NULL, 0),
+(279, 1911, 'Vermette', 'Claude', NULL, NULL, 0),
+(280, 1308, 'Viger', 'Louise', NULL, NULL, 0),
+(281, 1309, 'Vincent', 'Joseph-Arthur', NULL, NULL, 0),
+(282, 1310, 'Vivot', 'LÃ©a', NULL, NULL, 0),
+(283, 1311, 'Wade', 'George Edward', NULL, NULL, 0),
+(284, 1312, 'Widgery', 'Catherine', NULL, NULL, 0),
+(286, 1313, 'Winant', 'Alice', NULL, NULL, 0),
+(287, 1314, 'Witebsky', 'Shirley', NULL, NULL, 0),
+(288, 1315, 'Wood', 'Marshall', NULL, NULL, 0),
+(289, 1284, 'Pelletier', 'Luce', NULL, NULL, 0),
+(290, 1235, 'Hannah', 'Adad', NULL, NULL, 0),
+(291, 3094, 'Lauda', 'Jiri Georges', NULL, NULL, 0),
+(292, 1178, 'BÃ©langer', 'GwenaÃ«l', NULL, NULL, 0),
+(293, 1181, 'Besner', 'Jean-Jacques', NULL, NULL, 0),
+(294, 5598, NULL, NULL, 'Daily tous les jours', NULL, 0),
+(295, 3103, 'Montillaud', 'Francis', NULL, NULL, 0),
+(296, 3106, 'Wilson', 'Robert', NULL, NULL, 0),
+(297, 1182, 'Bisson', 'Yvette', NULL, NULL, 0),
+(298, 5797, 'Sylvain', 'Catherine', NULL, NULL, 0),
+(299, 6671, NULL, NULL, 'BGL', NULL, 0);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `caroussel`
+-- Estrutura da tabela `a_propos`
+--
+
+CREATE TABLE IF NOT EXISTS `a_propos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sommesT` varchar(30) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `sommesD` varchar(3000) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `missionT` varchar(30) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `missionD` varchar(3000) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `joindreT` varchar(30) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `joindreD` varchar(3000) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `partenaireT` varchar(30) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `partenaireD` varchar(3000) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Extraindo dados da tabela `a_propos`
+--
+
+INSERT INTO `a_propos` (`id`, `sommesT`, `sommesD`, `missionT`, `missionD`, `joindreT`, `joindreD`, `partenaireT`, `partenaireD`) VALUES
+(1, 'Qui sommes nous', 'Bacon ipsum dolor amet shankle ball tip picanha sausage venison doner. Filet mignon bresaola salami, flank ground round short loin chicken shank alcatra shankle picanha fatback burgdoggen leberkas. T-bone kielbasa bresaola kevin turkey. Meatball salami kielbasa sausage, swine picanha pancetta jowl beef chuck filet mignon burgdoggen. Landjaeger bacon pastrami fatback, salami jerky meatball venison t-bone.', 'Notre mission', 'En sillonnant les rues de Montréal, il vous est sans doute déjà arrivé de tomber, par hasard, sur une œuvre d’art placée là, tout bonnement, au coin de la rue ou vous travaillez, par exemple, ou au café que vous affectionnez. Qui sait? Des œuvres, à l’effigie de Paul Émile Borduas, de Félix Leclerc en passant par la chasse Galerie jusqu’à Gilles Vigneault. Oui, Montréal regorge de plus de 300 œuvres rappelant que Montréal est bel est bien une ville culturellement riche. \nQui a dit qu’admirer des œuvres d’art se faisait seulement à l’intérieur des murs d’un musée? Ici, l’art est public! Et, constituer un répertoire de ces œuvres est précisément la toute première mission d’ARTPUBLIC.', 'Nous joindre', 'Pour nous joindre, contactez: artpublic@montreal.qc . ', 'Nos partenaire', '- Banque Nationale\n- Bibliothèque et archives nationales du Québec\n- Ville de Montréal ');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `caroussel`
 --
 
 CREATE TABLE IF NOT EXISTS `caroussel` (
@@ -318,7 +343,7 @@ CREATE TABLE IF NOT EXISTS `caroussel` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `categorie`
+-- Estrutura da tabela `categorie`
 --
 
 CREATE TABLE IF NOT EXISTS `categorie` (
@@ -328,7 +353,7 @@ CREATE TABLE IF NOT EXISTS `categorie` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `categorie`
+-- Extraindo dados da tabela `categorie`
 --
 
 INSERT INTO `categorie` (`nom`) VALUES
@@ -350,7 +375,7 @@ INSERT INTO `categorie` (`nom`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `oeuvre`
+-- Estrutura da tabela `oeuvre`
 --
 
 CREATE TABLE IF NOT EXISTS `oeuvre` (
@@ -387,7 +412,7 @@ CREATE TABLE IF NOT EXISTS `oeuvre` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=599 ;
 
 --
--- Contenu de la table `oeuvre`
+-- Extraindo dados da tabela `oeuvre`
 --
 
 INSERT INTO `oeuvre` (`id`, `noInterne`, `titre`, `titreVariante`, `nomCollection`, `categorieObjet`, `modeAcquisition`, `dateAccession`, `materiaux`, `support`, `technique`, `dimensionsGenerales`, `parc`, `batiment`, `adresseCivique`, `coordonneeLatitude`, `coordonneeLongitude`, `mediums`, `numeroAccession`, `description`, `urlImage`, `arrondissement`, `categorie`, `idArtiste`, `valide`) VALUES
@@ -637,7 +662,7 @@ INSERT INTO `oeuvre` (`id`, `noInterne`, `titre`, `titreVariante`, `nomCollectio
 -- --------------------------------------------------------
 
 --
--- Structure de la table `soumission`
+-- Estrutura da tabela `soumission`
 --
 
 CREATE TABLE IF NOT EXISTS `soumission` (
@@ -669,18 +694,6 @@ CREATE TABLE IF NOT EXISTS `soumission` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Contraintes pour les tables exportées
---
-
---
--- Contraintes pour la table `oeuvre`
---
-ALTER TABLE `oeuvre`
-  ADD CONSTRAINT `oeuvre_ibfk_1` FOREIGN KEY (`arrondissement`) REFERENCES `arrondissement` (`nom`),
-  ADD CONSTRAINT `oeuvre_ibfk_2` FOREIGN KEY (`categorie`) REFERENCES `categorie` (`nom`),
-  ADD CONSTRAINT `oeuvre_ibfk_3` FOREIGN KEY (`idArtiste`) REFERENCES `artiste` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

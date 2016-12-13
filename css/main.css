@@ -8,59 +8,53 @@
          url('font/bang_whack_pow-webfont.svg#bang_whack_powregular') format('svg');
     font-weight: normal;
     font-style: normal;
+}
 
+@font-face {
+    font-family: 'klillregular';
+    src: url('font/klill-light-webfont.eot');
+    src: url('font/klill-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/klill-light-webfont.woff2') format('woff2'),
+         url('font/klill-light-webfont.woff') format('woff'),
+         url('font/klill-light-webfont.ttf') format('truetype'),
+         url('font/klill-light-webfont.svg#klillregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+	margin: 0px;
+	padding: 0px;
 }
 
 body{
-
+	font-family: 'klillregular';
     font-size: 16px;
-    margin-left: 20px;
-    margin-top: 20px;
 }
 
 a{
 	text-decoration: none;
+	color: #000000;
+}
+
+h1{
+	font-size: 2em;
+}
+
+ul{
+	list-style: none;
 }
 
 #carroussel{}
-
-#inputRecherche{
-	background-color: transparent;
-	width: 400px;
-	height: 30px;
-	margin-left: -200px;
-	border: none;
-    border-bottom: 2px solid white;
-	font-size: 1.5em;
-	color: white;
-	font-family: 'bang_whack_powregular';
-}
-
-#inputRecherche:focus{	
-	outline: none;	
-}
-
-#faSearch{
-	color: white;
-	font-size: 1.7em;
-}
 
 #logoSuggestionOeuvre{
 	max-height: 190px;
 	margin-top: 20%;
 	margin-left: 30px;
-	
-}
-
-#global{
-	 margin: 5px;
-	 padding: 10px;
 }
 
 .entete{
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
+	margin: 20px;
 }
 
 .photo{
@@ -70,25 +64,30 @@ a{
     max-height: 300px;
 }
 
-/*** CSS PAGE ACCUEIL  ***/
+/**CSS PAGE ACCUEIL**/
 #logo{
     width: 70%;
-    margin-left: -40px; 
+    margin-left: -20px; 
+}
+
+.pas_accueil .image_gauche{
+	position: absolute;
+	top: 100px;
+	left: -13px;
+}
+
+.pas_accueil .image_droite{
+	position: absolute;
+	top: 94px;
+	right: -32px;
 }
 
 .menu {
-    display: flex;
 	width: 100%;
 }
 
 #menuPrincipal {
-    margin: 20px;
-}
-
-#menuPrincipal ul,
-#reseauxSociaux ul {
-    list-style: none;
-    overflow: hidden;
+    margin-top: 45px;
 }
 
 .itemMenu,
@@ -98,10 +97,14 @@ a{
 
 .itemMenu a {
     font-size: 1.8em;
-    margin-left: 30px;
+    margin-left: 10px;
 	font-family: 'bang_whack_powregular';
 	color: white;
     padding: 3px;
+}
+
+.pas_accueil .itemMenu a {
+	color: black;
 }
 
 .itemMenu a:hover,
@@ -114,8 +117,7 @@ a{
 }
 
 #reseauxSociaux ul {
-    overflow: hidden;
-    margin-right: 20px;
+    margin: 10px 20px;
 }
 
 #reseauxSociaux .icones {
@@ -127,4 +129,151 @@ a{
 #reseauxSociaux .icones a {
 	color: #fff;
 }
+
+.pas_accueil #reseauxSociaux .icones a {
+	color: #000;
+}
 /**FIN PAGE ACCUEIL**/
+/**DÉBUT PAGE DES ARTISTES**/
+#zoneDesArtistes{
+	margin-left: 350px;
+}
+
+#zoneDesArtistes .titrePage{
+	border-bottom: 2px solid black;
+	margin: -10px 20px 20px 0;
+}
+
+/*http://www.webcis.com.br/dividir-texto-colunas-css3.html*/
+#zoneDesArtistes ul{
+	-moz-column-count: 5;
+	-moz-column-gap: 50px;
+	-webkit-column-count: 4;
+	-webkit-column-gap: 50px;
+}
+
+#zoneDesArtistes ul h1{
+	font-size: 2em;
+	color: red;
+	margin-bottom: 15px;
+	margin-top: 0px;
+}
+#zoneDesArtistes ul .titreABC{
+	margin-top: 10px;
+}
+
+#zoneDesArtistes ul li,
+#descriptionArtiste p {
+	font-size: 1.2em;
+}
+
+.suggererOeuvre{
+	float: left;
+	position: absolute;
+	bottom: -10px;
+}
+/**FIN PAGE DES ARTISTES**/
+/**DÉBUT PAGE DE LA BIO D'UN ARTISTE**/
+#infosMonArtiste{
+	margin-top: 30px;
+}
+
+#descriptionArtiste h1,
+.titrePagePropos{
+	font-size: 2em;
+	border-bottom: 2px solid black;
+	margin: 30px 20px 20px 350px;
+}
+
+#descriptionArtiste p{
+	width: 50%;
+	margin-left: 10px;
+}
+
+#descriptionArtiste img{
+	width: 30%;
+	height: 30%;
+	margin-left: 330px;
+}
+/**FIN PAGE DE LA BIO D'UN ARTISTE**/
+/**DÉBUT PAGE À PROPOS**/
+.descriptionPagePropos{
+	font-size: 1.2em;
+	margin-left: 380px;
+}
+/**FIN PAGE À PROPOS**/
+/**DÉBUT TEMPLATE GAUCHE**/
+.pas_accueil aside{
+	position: fixed;
+}
+
+#labelRechercheSimple {
+	font-family: 'bang_whack_powregular';
+	font-size: 1.5em;
+}
+
+.rechercheSimple{
+	margin-top: 5px; 
+	background-color: transparent;
+	width: 250px;
+	height: 30px;
+	border: none;
+    border-top: 2px solid black;
+}
+
+.pas_accueil #formRecherche{
+	margin-left: 40px;
+}
+
+.pas_accueil #textRecherchez{
+	color: black;
+	letter-spacing: 1px;
+	margin-left: 0px;
+	font-size: 1.2em;
+}
+
+.pas_accueil .divChoixRecherche{
+	font-size: 1em;
+	margin-left: 105px;
+	margin-top: -22px;
+	letter-spacing: 1px;
+	height: 22px;
+	width: 65%;
+}
+
+.pas_accueil #listeChoixRecherche{
+	margin-top: -2px;
+} 
+
+.pas_accueil .elmChoixRecherche{
+	color: black;
+	font-size: 1.2em;
+	white-space: nowrap;
+} 
+
+.pas_accueil #inputRecherche{
+	width: 250px;
+	height: 30px;
+	margin-left: 0px;
+    border-bottom: 2px solid black;
+	font-size: 1em;
+	color: black;
+}
+
+.pas_accueil #faSearch{
+	color: black;
+	font-size: 1em;
+	float: right;
+	margin-top: 25px;
+}
+
+.pas_accueil #logoSuggestionOeuvre{
+	margin-top: 300px;
+}	
+
+.pas_accueil #resultatRecherche	{
+	border: none;
+	position: absolute;
+	top: 100px;
+}	
+/**FIN TEMPLATE GAUCHE**/

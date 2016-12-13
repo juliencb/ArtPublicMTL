@@ -5,7 +5,6 @@
 		public function traite(array $params){
 			//affichage du header
 			$this->afficheVue("head");
-			$this->afficheVue("header");
 			
 			if(isset($params["action"])){
 				//modèle et vue vides par défaut
@@ -16,11 +15,13 @@
 				switch($params["action"]){
 					
 					case "pageAccueil":					
+						$this->afficheVue("header","");
 						$this->afficheVue("pageAccueil","");	
 						$this->afficheRecherche();	
 						break;
 
 					case "listeOeuvres":
+						$this->afficheVue("headerPasAccueil");
 					    $this->afficheListeCategories();					
 						$this->afficheListeArrondissements();
 						$this->afficheRecherche();						
@@ -28,27 +29,39 @@
 						break;
 						
 					case "listeArtistes":
+						$this->afficheVue("headerPasAccueil");
+						$this->afficheVue("ouvertureAside",""); 
+						$this->afficheVue("rechercheGauche","");   
+						$this->afficheVue("vueBtnSoumission",""); 
+						$this->afficheVue("fermetureAside",""); 
 						$this->afficheListeArtistes();
-						$this->afficheRecherche();   
 					    break;
 					
 					case "oeuvre":
+						$this->afficheVue("headerPasAccueil");
 						$this->afficheRecherche();
 					 	break;
 
 					case "descriptionArtiste":
+						$this->afficheVue("headerPasAccueil");
+						$this->afficheVue("ouvertureAside","");
+						$this->afficheVue("rechercheGauche","");
+						$this->afficheVue("vueBtnSoumission","");   
 						if(isset($params["id"])){
 							$this->afficheDescriptionArtiste($params["id"]);
 							$this->afficheOeuvresArtiste($params["id"]);
 						}
+						$this->afficheVue("fermetureAside","");
 						break;
                         
 					case "soumission":
+						$this->afficheVue("headerPasAccueil");
 						$this->afficheRecherche();
 						$this->afficheSoumission();
 						break;		
                         
 					case "details":
+						$this->afficheVue("headerPasAccueil");
 						if(isset($params["id"])){
 							$this->afficheRecherche();
 							$this->afficheDetails($params["id"]);	
@@ -75,17 +88,23 @@
                         break;
                         
                     case "aPropos":
-                        $this->affichePageApropos();
-						$this->afficheRecherche();   
+						$this->afficheVue("headerPasAccueil");
+						$this->afficheVue("ouvertureAside","");
+						$this->afficheVue("rechercheGauche",""); 
+						$this->afficheVue("vueBtnSoumission","");  
+						$this->afficheVue("fermetureAside","");						
+                        $this->affichePageApropos();   
 					    break;
-                        
+					
 					default:
+						$this->afficheVue("header","");
 						$this->afficheVue("pageAccueil","");	
 						$this->afficheRecherche();	
 				}
 			}
 			else{
 				//actions par défaut
+				$this->afficheVue("header","");
 				$this->afficheVue("pageAccueil","");	
 				$this->afficheRecherche();	
 			}
@@ -97,7 +116,7 @@
 		public function afficheListeOeuvres(){
 			$modeleOeuvres= new Modele_Oeuvres();
 			$data = $modeleOeuvres->obtenirTousOeuvresArtistes();
-			$this->afficheVue("vueOeuvres", $data);
+           	$this->afficheVue("vueOeuvres", $data);
 		}
 		
 
@@ -171,6 +190,5 @@
             $data = $modeleApropos->obtenirTousPagePropos();
             $this->afficheVue("vuePropos", $data);
         }
-
 	}
 ?>
