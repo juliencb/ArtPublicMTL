@@ -2,7 +2,10 @@
 	class Controleur_Public extends BaseControleur{
 	
 		//la fonction qui sera appelée par le routeur
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 		public function traite(array $params){
 			//affichage du header
 			$this->afficheVue("head");
@@ -13,7 +16,10 @@
 				$vue = "";
 				//switch en fonction de l'action qui nous est envoyée
 				//ce switch détermine la vue $vue et obtient le modèle $data
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 				switch($params["action"]){
 					
 					case "pageAccueil":					
@@ -23,9 +29,15 @@
 
 					case "listeOeuvres":
 					    $this->afficheListeCategories();					
+<<<<<<< HEAD
 						$this->afficheListeArrondissements();
 						$this->afficheRecherche();						
 						$this->afficheListeOeuvres();		
+=======
+						$this->afficheListeArrondissements();					
+						$this->afficheListeOeuvres();	
+						$this->afficheRecherche();
+>>>>>>> origin/master
 						break;
 						
 					case "listeArtistes":
@@ -63,11 +75,20 @@
 				}
 			}
 			else{
+<<<<<<< HEAD
 				//actions par défaut
 				$this->afficheVue("pageAccueil","");	
 				$this->afficheRecherche();	
 			}
 
+=======
+					//actions par défaut
+					$this->afficheVue("pageAccueil","");	
+					$this->afficheRecherche();	
+			}
+			
+				
+>>>>>>> origin/master
 			//inclusion du footer dans le cas d'une requête qui n'est pas AJAX
 			$this->afficheVue("footer");
 		}
@@ -80,7 +101,10 @@
 			$this->afficheVue("vueOeuvres", $data);
 		}
 		
+<<<<<<< HEAD
 		///--fonction permet d'affiche la liste des categories--///	
+=======
+>>>>>>> origin/master
 		public function afficheListeCategories()
 		{
 			$modeleCategories= new Modele_Categories();

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
             <footer>
@@ -7,5 +8,12 @@
         </div>
         <!--fin du conteneur GLOBAL-->
     </body>
+=======
+﻿<footer>
 
+</footer>
+>>>>>>> origin/master
+
+</div> <!-- ferme le div global -->
+</body>
 </html>

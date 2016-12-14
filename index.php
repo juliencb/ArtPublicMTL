@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 <?php
 	
+=======
+﻿<?php
+>>>>>>> origin/master
 	function __autoload($classe)
 	{
 		$repertoires = array("./controleurs/", 

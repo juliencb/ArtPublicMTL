@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 <?php
 
+=======
+﻿<?php
+>>>>>>> origin/master
 	class Modele_public extends TemplateDAO
 	{
 		public function getTable()

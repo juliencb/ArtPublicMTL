@@ -1,9 +1,15 @@
 ﻿<?php
+<<<<<<< HEAD
 	class Controleur_Public_AJAX extends Controleur_Public
 	{	
 		//la fonction qui sera appelée par le routeur
 		public function traite(array $params)
 		{				
+=======
+	class Controleur_Public_AJAX extends Controleur_Public{	
+		//la fonction qui sera appelée par le routeur
+		public function traite(array $params){				
+>>>>>>> origin/master
 			if(isset($params["action"]))
 			{
 				//modèle et vue vides par défaut
@@ -91,7 +97,7 @@
 				}						
 			}
 			else{
-					//action par d�faut
+					//action par défaut
 					echo "ERROR";					
 			}			
 		}
@@ -104,7 +110,11 @@
 			echo "<resultatsRecherche>";
 
 	       foreach($resultatsRecherche as $r){
+<<<<<<< HEAD
 				//le XML du contact
+=======
+				//générer le XML du contact
+>>>>>>> origin/master
 				echo "<resultatRecherche>";
 				echo "<id>" . $r["id"] . "</id>";
 				echo "<resultat>" . $r["resultat"] . "</resultat>";

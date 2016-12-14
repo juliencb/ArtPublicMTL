@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 
 ﻿<?php
 	class Modele_artistes extends TemplateDAO
+=======
+﻿<?php
+	class Modele_Artistes extends TemplateDAO
+>>>>>>> origin/master
 	{
 		public function getTable()
 		{
