@@ -33,3 +33,5 @@
 .AIspace-between{align-items: space-between;}
 .AIspace-around {align-items: space-around;}
 .AIstretch      {align-items: stretch;}
+
+.tousEgal       {flex: 1 0 auto;}

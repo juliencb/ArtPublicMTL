@@ -1,4 +1,4 @@
-<div class="oeuvresParArrondissement">
+<div class="flex row oeuvresParArrondissement ml50">
     <?php
         $cont=0;
     ?>
@@ -56,7 +56,7 @@
         <style>
             #map {
                 height: 400px;
-                width: 800px
+                width: 600px
             }
         </style>
         <div id="map"></div>
