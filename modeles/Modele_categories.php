@@ -1,15 +1,9 @@
-<<<<<<< HEAD
+
 <?php
 
-=======
-﻿<?php
->>>>>>> origin/master
-	class Modele_Categories extends TemplateDAO
-	{
-		public function getTable()
-		{
+	class Modele_categories extends TemplateDAO{
+		public function getTable(){
 			return "categorie";
 		}
-		
 	}
 ?>

@@ -1,4 +1,46 @@
-﻿#divSoumission{
-	margin-left: 20%;
-} 
+.elemSoumission {
+    display: block;
+    margin-top: 20px;
+    //margin-bottom: -10px;
+}
 
+#etoileImportant {
+    color: red;
+}
+
+#labelImportImage {
+    text-decoration: underline;
+}
+
+#labelImportImage:hover {
+    cursor: pointer;
+}
+
+#artiste {
+    margin-top: 10px;
+}
+
+#resultatRechercheArtiste {
+    z-index: 1;
+    background-color: white;
+}
+
+#divSoumission {
+    margin-left: 20%;
+    font-size: 15px;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+#labelNom,
+#labelPrenom {
+    display: inline;
+}
+
+#nomOuCollectif {
+    margin-top: 50px;
+    display: block;
+}
+
+#labelCollectif {
+    margin-top: 5px;
+}

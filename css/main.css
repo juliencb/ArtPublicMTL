@@ -1,35 +1,65 @@
-<<<<<<< HEAD
-=======
-﻿
 /*** CSS PAGE ACCEUIL  ***/
->>>>>>> origin/master
+@font-face {
+    font-family: 'bang_whack_powregular';
+    src: url('font/bang_whack_pow-webfont.eot');
+    src: url('font/bang_whack_pow-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/bang_whack_pow-webfont.woff2') format('woff2'),
+         url('font/bang_whack_pow-webfont.woff') format('woff'),
+         url('font/bang_whack_pow-webfont.ttf') format('truetype'),
+         url('font/bang_whack_pow-webfont.svg#bang_whack_powregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body{
     font-size: 16px;
+    margin-left: 20px;
+    margin-top: 20px;
 }
 
-.entete{
-	
+a{
+	text-decoration: none;
 }
 
-#global{
-	 margin: 5px;
-	 padding: 10px;
+#carroussel {}
+
+#logoSuggestionOeuvre {
+    max-height: 190px;
+    margin-top: 20%;
+    margin-left: 30px;
 }
 
-.photo{
-	height: auto; 
-    width: auto; 
-    max-width: 300px; 
+#global {
+    margin: 5px;
+    padding: 10px;
+}
+
+.entete {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.entete #lienLogo {
+    margin-right: -900px;
+}
+
+.photo {
+    height: auto;
+    width: auto;
+    max-width: 300px;
     max-height: 300px;
 }
 
+
 /*** CSS PAGE ACCUEIL  ***/
-#logo{
+
+#logo {
     width: 30%;
-    margin: 10px; 
+    margin-left: -40px;
 }
 
-.menu{
+.menu {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -40,46 +70,46 @@ body{
 }
 
 #menuPrincipal ul,
-#reseauxSociaux ul{
+#reseauxSociaux ul {
     list-style: none;
-	overflow: hidden;
+    overflow: hidden;
 }
 
 .itemMenu,
 .icones {
-   display: inline;
-
+    display: inline;
 }
 
 .itemMenu a {
-    font-size: 16px;
-    margin-left: 25px;
-    color: #000;
+    font-size: 1.8em;
+    margin-left: 60px;
+    font-family: 'bang_whack_powregular';
+    color: white;
     text-decoration: none;
     padding: 3px;
 }
 
 .itemMenu a:hover,
- #reseauxSociaux .icones:hover{
-    background-color: #fff;
-}
+#reseauxSociaux .icones:hover {}
 
 #reseauxSociaux {
     position: absolute;
-    top: 55px;
+    top: 10px;
     right: 10px;
 }
 
-#reseauxSociaux ul{
+#reseauxSociaux ul {
     overflow: hidden;
-     margin-right: 20px;
+    margin-right: 20px;
 }
 
-#reseauxSociaux .icones{
+#reseauxSociaux .icones {
     font-size: 1.1em;
     margin-right: 5px;
     padding: 3px;
 }
 
+#reseauSociaux ul a {
+    text-decoration: none;
+}
 /**FIN PAGE ACCUEIL**/
-

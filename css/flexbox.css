@@ -1,0 +1,35 @@
+/* http://demo.agektmr.com/flexbox/ */
+
+.flex{display: flex;}
+
+/*  les flex-flow*/
+.column         {flex-flow : column;}
+.column-reverse {flex-flow : column-reverse;}
+.row            {flex-flow : row;}
+.row-reverse    {flex-flow : row-reverse;}
+
+
+/* les space-between   */
+.JCflex-start   {justify-content: flex-start;}
+.JCflex-end     {justify-content: flex-end;}
+.JCcenter       {justify-content: center;}
+.JCspace-between{justify-content: space-between;}
+.JCspace-around {justify-content: space-around;}
+
+
+/*  les align-content */
+.ACflex-start   {align-content: flex-start;}
+.ACflex-end     {align-content: flex-end;}
+.ACcenter       {align-content: center;}
+.ACspace-between{align-content: space-between;}
+.ACspace-around {align-content: space-around;}
+.ACstretch      {align-content: stretch;}
+
+
+/*  les align-items  */
+.AIflex-start   {align-items: flex-start;}
+.AIflex-end     {align-items: flex-end;}
+.AIcenter       {align-items: center;}
+.AIspace-between{align-items: space-between;}
+.AIspace-around {align-items: space-around;}
+.AIstretch      {align-items: stretch;}

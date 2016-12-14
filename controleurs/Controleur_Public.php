@@ -1,11 +1,8 @@
-﻿<?php
+<?php
 	class Controleur_Public extends BaseControleur{
 	
 		//la fonction qui sera appelée par le routeur
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/master
 		public function traite(array $params){
 			//affichage du header
 			$this->afficheVue("head");
@@ -16,10 +13,7 @@
 				$vue = "";
 				//switch en fonction de l'action qui nous est envoyée
 				//ce switch détermine la vue $vue et obtient le modèle $data
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/master
 				switch($params["action"]){
 					
 					case "pageAccueil":					
@@ -29,15 +23,11 @@
 
 					case "listeOeuvres":
 					    $this->afficheListeCategories();					
-<<<<<<< HEAD
+
 						$this->afficheListeArrondissements();
 						$this->afficheRecherche();						
 						$this->afficheListeOeuvres();		
-=======
-						$this->afficheListeArrondissements();					
-						$this->afficheListeOeuvres();	
-						$this->afficheRecherche();
->>>>>>> origin/master
+
 						break;
 						
 					case "listeArtistes":
@@ -49,65 +39,74 @@
 						$this->afficheRecherche();
 					 	break;
 
-				
 					case "descriptionArtiste":
 						if(isset($params["id"])){
 							$this->afficheDescriptionArtiste($params["id"]);
 							$this->afficheOeuvresArtiste($params["id"]);
 						}
 						break;
-									
+                        
 					case "soumission":
 						$this->afficheRecherche();
 						$this->afficheSoumission();
-						break;					
-					
+						break;		
+                        
 					case "details":
 						if(isset($params["id"])){
 							$this->afficheRecherche();
 							$this->afficheDetails($params["id"]);	
 						}	
 						break;
+
+					case "afficheOeuvreslieu":
+                        if(isset($params["idValue"])){
+                            $this->afficheRecherche();	
+                            $this->afficheListeCategories();					
+                            $this->afficheListeArrondissements();
+                            $this->afficheOeuvresLieu($params["idValue"]);
+                        }
+                        break;
 					
+					case "afficheOeuvrescategorie":
+                        if(isset($params["idValue"])){
+                            $this->afficheRecherche();	
+                            $this->afficheListeCategories();					
+                            $this->afficheListeArrondissements();
+                            $this->afficheOeuvresCategorie($params["idValue"]);
+
+                        }
+                        break;	
+                        
+                    case "carte":
+                            $this->afficheCarte();					
+                        break;	
+                        
 					default:
 						$this->afficheVue("pageAccueil","");	
 						$this->afficheRecherche();	
 				}
 			}
 			else{
-<<<<<<< HEAD
 				//actions par défaut
 				$this->afficheVue("pageAccueil","");	
 				$this->afficheRecherche();	
 			}
 
-=======
-					//actions par défaut
-					$this->afficheVue("pageAccueil","");	
-					$this->afficheRecherche();	
-			}
-			
-				
->>>>>>> origin/master
 			//inclusion du footer dans le cas d'une requête qui n'est pas AJAX
 			$this->afficheVue("footer");
 		}
 		
 		
-		public function afficheListeOeuvres()
-		{
+		public function afficheListeOeuvres(){
 			$modeleOeuvres= new Modele_Oeuvres();
 			$data = $modeleOeuvres->obtenirTousOeuvresArtistes();
 			$this->afficheVue("vueOeuvres", $data);
 		}
 		
-<<<<<<< HEAD
 		///--fonction permet d'affiche la liste des categories--///	
-=======
->>>>>>> origin/master
-		public function afficheListeCategories()
-		{
-			$modeleCategories= new Modele_Categories();
+		public function afficheListeCategories(){
+			$modeleCategories= new Modele_categories();
+
 			$data = $modeleCategories->obtenirTous();
 			$this->afficheVue("vueOptionCategories", $data);
 		}
@@ -117,9 +116,8 @@
 		}
 
 		///--fonction permet d'affiche la liste des arrondissements--///
-		public function afficheListeArrondissements()
-		{
-			$modeleArrondissements= new Modele_Arrondissements();
+		public function afficheListeArrondissements(){
+			$modeleArrondissements= new Modele_arrondissements();
 			$data= $modeleArrondissements->obtenirTous();
 			$this->afficheVue("vueOptionArrondissement", $data);
 		}
@@ -129,17 +127,9 @@
 		}
 		
 		//afficher la liste des artistes
-		public function afficheListeArtistes()
-		{
+		public function afficheListeArtistes(){
 			$modeleArtiste = new Modele_artistes();
 			$data = $modeleArtiste->obtenirTousArtisteAlphabetique();
-			/*foreach ($data as $artiste){
-				if($artiste["nomCollectif"] == NULL){
-					$artiste["nomCollectif"] = "";
-					$artiste["nomCollectif"] = $artiste["nom"] . $artiste["nomCollectif"];
-				}
-				
-			}*/
 			$this->afficheVue("vueArtistes", $data);	
 		}
 
@@ -154,18 +144,36 @@
 		public function afficheOeuvresArtiste($id){
 			$modeleArtiste = new Modele_artistes();
 			$data = $modeleArtiste->obtenirOeuvresArtiste($id);
-			$this->afficheVue("vueOeuvresArtiste", $data);
+            $this->afficheVue("vueOeuvresArtiste", $data);
 			//var_dump($data["urlImage"]);
 		}
 
-
-		public function afficheDetails($id)
-		{ 
+		public function afficheDetails($id){ 
 			$modelePublic = new Modele_public();
 			$data = $modelePublic->nomOeuvre($id);
-			$this->afficheVue("AfficheDetails", $data);
+			$this->afficheVue("afficheDetails", $data);
 
 		}
 
+		//affiche lesOeuvres par categorie de la recherche
+		public function afficheOeuvresCategorie($val){
+			$modeleOeuvres= new Modele_oeuvres();
+			$data=$modeleOeuvres-> obtenirOeuvresCategorie($val);
+			$this->afficheVue("vueOeuvres", $data);
+		}
+		//affiche lesOeuvres par lieu de la recherche
+		public function afficheOeuvresLieu($val){
+			$modeleOeuvres= new Modele_oeuvres();
+			$data=$modeleOeuvres-> obtenirOeuvresArrondissement($val);
+			$this->afficheVue("arrondissements", $data);
+		}
+            
+        public function afficheCarte(){
+			$modeleOeuvres= new Modele_oeuvres();
+			$data=$modeleOeuvres-> obtenirTousOeuvresArrondissement();
+			$this->afficheVue("pageCarte", $data);
+		}
+            
+            
 	}
 ?>

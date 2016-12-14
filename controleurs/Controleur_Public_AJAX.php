@@ -1,93 +1,84 @@
-﻿<?php
-<<<<<<< HEAD
-	class Controleur_Public_AJAX extends Controleur_Public
-	{	
-		//la fonction qui sera appelée par le routeur
-		public function traite(array $params)
-		{				
-=======
+<?php
 	class Controleur_Public_AJAX extends Controleur_Public{	
 		//la fonction qui sera appelée par le routeur
 		public function traite(array $params){				
->>>>>>> origin/master
-			if(isset($params["action"]))
-			{
 				//modèle et vue vides par défaut
 				$data = array();
 				$vue = "";
 				//switch en fonction de l'action qui nous est envoyée
 				//ce switch détermine la vue $vue et obtient le modèle $data
-				switch($params["action"])
-				{	
+				switch($params["action"]){	
 					case "afficheOeuvrescategorie":
-						$modeleOeuvres= new Modele_Oeuvres();
-						if(isset($params["id"])&&($params["id"])=="categorie" && isset($params["idValue"]))
-						{
-							$data=$modeleOeuvres-> obtenirOeuvresCategorie($params["idValue"]);
-							$this->afficheVue("header");
-							$this->afficheListeCategories();					
-							$this->afficheListeArrondissements();
-							$this->afficheRecherche();
-							$this->afficheVue("vueOeuvres", $data);
-							$this->afficheVue("footer");
-						}
-						
-						else if(isset($params["idValue"]) && ($params["idValue"])!="")
-						{   
-							if(($params["idValue"])=="_")
-							{
+						if(isset($params["idValue"]) && ($params["idValue"])!=""){   
+							if(($params["idValue"])=="_"){
 								$this->afficheListeOeuvres();
 								
 							}
-							else
-							{
-								$data=$modeleOeuvres-> obtenirOeuvresCategorie($params["idValue"]);
-								$this->afficheVue("vueOeuvres", $data);		
+							else{
+								$this->afficheOeuvreCategorie($params["idValue"]);		
 							}
 							
 						}
 					break;
 				
 					case "afficheOeuvreslieu":
-						$modeleOeuvres= new Modele_Oeuvres();
-						if(isset($params["id"])&&($params["id"])=="lieu" && isset($params["idValue"]))
-						{
-							$data=$modeleOeuvres-> obtenirOeuvresArrondissement($params["idValue"]);
-							$this->afficheVue("header");
-							$this->afficheListeCategories();					
-							$this->afficheListeArrondissements();
-							$this->afficheRecherche();
-							$this->afficheVue("vueOeuvres", $data);
-							$this->afficheVue("footer");
-						}
-						else if(isset($params["idValue"])&& ($params["idValue"])!="")
-						{
-							if(($params["idValue"])=="_")
-							{
+						if(isset($params["idValue"])&& ($params["idValue"])!=""){
+							if(($params["idValue"])=="_"){
 								$this->afficheListeOeuvres();
 							}
-							else
-							{ 
-								$data=$modeleOeuvres-> obtenirOeuvresArrondissement($params["idValue"]);
-								$this->afficheVue("vueOeuvres", $data);
+							else{ 
+								$this->afficheOeuvreArrondissement($params["idValue"]);
 							}
 						}
 						
 					break;
 	
 					case "recherche":
-					
 						if(isset($params["recherche"])){
-							
 							//Verification si les champs sont remplis;
 							$this->recherche($params["recherche"]);		
 						}
 						else{
 							echo "ERROR Aucune valeur de recherche";
 						}
-				
 						break;	
-
+				
+				    case "rechercheArtiste":
+						if(isset($params["prenom"]) && isset($params["nom"])){
+							//Verification si les champs sont remplis;
+						$this->rechercheArtiste($params["prenom"], $params["nom"]);		
+						}
+						else{
+							echo "ERROR Aucune valeur de recherche";
+						}
+						break;	
+							
+					case "envoieSoumission":
+						if(isset($params["id"]) ){  // on assume ici que si on recoit le champ id on aurra tout les autres champs.
+							if ($params["id"]=="") {
+								// on insere le record
+								$modeleOeuvres = new Modele_Oeuvres();
+								$resultatsMAJ = $modeleOeuvres->oeuvreMAJ($params["id"], $params["titre"], $params["categorie"], $params["arrondissement"], $params["adresse"], $params["description"], $params["image"], 
+								$params["nomParc"], $params["batiment"], $params["prenomArtiste"], $params["nomArtiste"], $params["nomCollectif"], $params["bio"], $params["modeAcquisition"], $params["numeroAccession"], $params["dateAccession"], $params["materiaux"], 
+								$params["support"], $params["technique"], $params["dimensionGenerales"], $params["coordonneeLatitude"], $params["coordonneeLongitude"], $params["mediums"]);							 
+								echo $resultatsMAJ;
+							}
+						}
+						else{
+							echo "ERROR Aucune valeur de recherche";
+						}
+						break;		
+					   
+					case "rechercheCollectif":
+						if(isset($params["nomCollectif"]) ){
+							//Verification si les champs sont remplis;
+						$this->rechercheCollectif($params["nomCollectif"]);		
+						}
+						else{
+							echo "ERROR Aucune valeur de recherche";
+						}
+						break;	
+						
 					case "telechargementImage":
 						$this->telechargementImage();
 						break;	
@@ -97,8 +88,8 @@
 				}						
 			}
 			else{
-					//action par défaut
-					echo "ERROR";					
+                //action par défaut
+                echo "ERROR";					
 			}			
 		}
 
@@ -106,22 +97,46 @@
 		public function recherche($strRecherche){
 			$modelePublic = new Modele_public();
 			$resultatsRecherche = $modelePublic->recherche($strRecherche);
-
+            echo "<resultatsRecherche>";
+	       foreach($resultatsRecherche as $r){
+				//générer le XML du contact
+				echo "<resultatRecherche>";
+				echo "<type>" . $r["type"] . "</type>";
+				echo "<resultat>" . $r["resultat"] . "</resultat>";
+				echo "<id>" . $r["id"] . "</id>";
+				echo "</resultatRecherche>";
+			}
+			echo "</resultatsRecherche>";
+		}
+		
+		public function rechercheArtiste($strRecherchePrenom, $strRechercheNom){
+			$modelePublic = new Modele_public();
+			$resultatsRecherche = $modelePublic->rechercheArtiste($strRecherchePrenom, $strRechercheNom);
 			echo "<resultatsRecherche>";
 
 	       foreach($resultatsRecherche as $r){
-<<<<<<< HEAD
-				//le XML du contact
-=======
 				//générer le XML du contact
->>>>>>> origin/master
 				echo "<resultatRecherche>";
-				echo "<id>" . $r["id"] . "</id>";
-				echo "<resultat>" . $r["resultat"] . "</resultat>";
-
+				echo "<prenomArtiste>" . $r["prenom"]. "</prenomArtiste>";
+				echo "<nomArtiste>" . $r["nom"]. "</nomArtiste>";
 				echo "</resultatRecherche>";
 			}
-	
+			echo "</resultatsRecherche>";
+			
+		}
+		
+		
+		public function rechercheCollectif($strRechercheCollectif){
+			$modelePublic = new Modele_public();
+			$resultatsRecherche = $modelePublic->rechercheCollectif($strRechercheCollectif);
+			echo "<resultatsRecherche>";
+
+	       foreach($resultatsRecherche as $r){
+				//générer le XML du contact
+				echo "<resultatRecherche>";
+				echo "<nomCollectif>" . $r["nomCollectif"]. "</nomCollectif>";
+				echo "</resultatRecherche>";
+			}
 			echo "</resultatsRecherche>";
 			
 		}
@@ -140,19 +155,29 @@
 					 // this is where the file is temporarily stored on the server when uploaded
 					// do not change this
 					$_FILES['file']['tmp_name'],
-
 					// this is where you want to put the file and what you want to name it
 					// in this case we are putting in a directory called "uploads"
 					// and giving it the original filename
 					//'uploads/' . $_FILES['file']['name']
 					$nomDuFichier
 				);
-				
 				echo $nomDuFichier;
 			}
-
 		}
 		
-
+		//affiche les oeuvres du Select categorie
+		public function afficheOeuvreCategorie($val){
+			$modeleOeuvres= new Modele_Oeuvres();
+			$data=$modeleOeuvres-> obtenirOeuvresCategorie($val);
+			$this->afficheVue("vueOeuvres", $data);
+			
+		} 
+		
+		//affiche les oeuvres du Select lieu
+		public function afficheOeuvreArrondissement($val){
+			$modeleOeuvres= new Modele_Oeuvres();
+			$data=$modeleOeuvres-> obtenirOeuvresArrondissement($val);
+			$this->afficheVue("vueOeuvres", $data);
+		}
 	}
 ?>
