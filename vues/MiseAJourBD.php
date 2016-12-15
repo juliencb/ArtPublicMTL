@@ -49,7 +49,7 @@
 
 <div class="boutonImp">
     <input  type = "hidden" name ="action" value = "updateImport"/>
-    <input id = "importer" type = "button" value = "test"/><br>
+    <input id = "importer" type = "button" value = "Mise à jour de la base de données"/><br>
    
 </div><br>
 <div id="conteneur">

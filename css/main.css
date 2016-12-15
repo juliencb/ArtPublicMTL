@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 @font-face {
     font-family: 'bang_whack_powregular';
     src: url('font/bang_whack_pow-webfont.eot');
@@ -29,7 +28,7 @@
 	padding: 0px;
 }
 
->>>>>>> upstream/master
+
 body{
 	font-family: 'klillregular';
     font-size: 16px;
@@ -37,11 +36,11 @@ body{
 
 a{
 	text-decoration: none;
-<<<<<<< HEAD
 
-=======
+
+
 	color: #000000;
->>>>>>> upstream/master
+
 }
 
 h1{
