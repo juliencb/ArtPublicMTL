@@ -16,7 +16,7 @@
 				{			
                    // si l'action est "importation"
                     case "importation":
-                     $this->afficheVue("admin");	
+                     $this->afficheVue("MiseAJourBD");	
 						$this->importeArrondissements();
 						$this->importeArtiste();
 						$this->importeOeuvre();

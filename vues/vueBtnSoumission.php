@@ -1,0 +1,1 @@
+	<img id="logoSuggestionOeuvre" src="images/logo-Suggestion-blanc.png">

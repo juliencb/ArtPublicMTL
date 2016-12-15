@@ -12,12 +12,10 @@
 						xhr.open("GET", "./index.php?Public_AJAX&action=recherche&recherche="+document.getElementById("inputRecherche").value);
 						//xhr.open("GET", http://e1595242.webdev.cmaisonneuve.qc.ca/ArtPublicMTL/index.php?Public_AJAX&action=recherche&recherche="+document.getElementById("inputRecherche").value);
 						xhr.addEventListener("readystatechange", function(){
-							
 							if(xhr.readyState === 4){
 								if(xhr.status === 200){
 									afficheResultatRecherche("resultatRecherche",xhr.responseText.trim());
 								}
-							
 								else if(xhr.status === 404){
 									//Aucune action dans le cas oû on ne trouve pas l'URL
 								}
@@ -27,14 +25,13 @@
 						xhr.send();
 					}
 					else{
-							effaceChild("resultatRecherche");
+				        effaceChild("resultatRecherche");
 					}		
 				}
 			}
 		});	
 
 	});
-
 
 	// Fonction qui efface les éléments présents dans la division.
 	function effaceChild(nomDiv) {
@@ -71,7 +68,6 @@
 		xmlParse(xml);	
 		console.log(xmlDoc);
 		var listeResultatRecherche = xmlDoc.getElementsByTagName("resultatRecherche");			
-
 		var type = "";
 		var liste=document.createElement("ul");
 		for(var i = 0; i < listeResultatRecherche.length; i++){
@@ -87,7 +83,6 @@
 				h1.appendChild(titre);
 				document.getElementById(nomDiv).appendChild(h1);
 				liste=document.createElement("ul");
-				
 			}
 			var id = listeResultatRecherche[i].getElementsByTagName("id")[0].childNodes[0].nodeValue;
 			var resultat = listeResultatRecherche[i].getElementsByTagName("resultat")[0].childNodes[0].nodeValue;
@@ -99,17 +94,18 @@
 				a.href ="./index.php?Public&action=afficheOeuvres"+type+"&idValue="+resultat; 
 			}
 			if (type=="artiste"){
-				a.href ="http://localhost/ArtPublicMTL/index.php?Public&action=descriptionArtiste&id="+id; 					
-								
+				a.href ="./index.php?Public&action=descriptionArtiste&id="+id; 					
+
 			}
 			if (type=="oeuvre"){
-				a.href ="http://localhost/ArtPublicMTL/index.php?Public&action=details&id="+id; 					
-							
+				a.href ="./index.php?Public&action=details&id="+id; 											
 			}
+		
+        
 			a.appendChild(lien);
 			li.appendChild(a);
 			liste.appendChild(li);
-		}						
-		document.getElementById(nomDiv).appendChild(liste);
 	}
+    document.getElementById(nomDiv).appendChild(liste);
+    }						
 })();

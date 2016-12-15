@@ -1,8 +1,10 @@
 <?php
+
 	class Modele_admins extends TemplateDAO
     {
 		public function getTable()
 		{
+
 			return "admins";
 		}
         
@@ -30,6 +32,7 @@
                                      $arrondissement,
                                      $idArtiste
                                      )
+
 		{		
 			
             try
@@ -104,8 +107,8 @@
                                                  );
               
                
-         $stmt->execute(array(
-                                    ":noInterne" => $noInterne, 
+        
+				$stmt->execute(array("noInterne" => $noInterne, 
                                      ":titre" => $titre, 
                                      ":titreVariante" => $titreVariante, 
                                      ":nomCollection" => $nomCollection, 
@@ -127,18 +130,18 @@
                                      ":categorie" => $categorie,
                                      ":arrondissement" => $arrondissement,
                                      ":idArtiste" => $idArtiste
-                                     
                                      ));
               
              
 				return 1;
                  
           
-			}	
+			}
 			catch(Exception $exc)
 			{
 				
                 return 0;
+
 			}
 		}
         //insère un artiste dans la table artiste
@@ -149,7 +152,8 @@
              
 				$stmt = $this->connexion->prepare("INSERT INTO artiste (noInterne, nom, prenom, nomCollectif) VALUES (:noInterne, :nom, :prenom, :nomCollectif) ON DUPLICATE KEY UPDATE noInterne = :noInterne, nom = :nom, prenom = :prenom, nomCollectif =:nomCollectif ");
                 
-			 $stmt->execute(array(":noInterne" => $noInterne, 
+			
+				$stmt->execute(array(":noInterne" => $noInterne, 
                                      ":nom" => $nom, 
                                      ":prenom" => $prenom, 
                                      ":nomCollectif" => $nomCollectif
@@ -157,78 +161,72 @@
                 return 1;
 		
 			}	
-			catch(Exception $exc)
-			{
+			catch(Exception $exc){
 				return 0;
 			}
              
 		}
         
         //insère une catégorie dans la table catégorie
-        public function insereCategorie($nom) 
-		{		
-			try
-			{
-				$stmt = $this->connexion->prepare("INSERT INTO `categorie` ( `nom`) VALUES (:nom)");
-                
+        public function insereCategorie($nom) {		
+			try{
+				$stmt = $this->connexion->prepare("INSERT INTO `categorie` ( `nom`) VALUES (:nom)");   
 				$stmt->execute(array(":nom" => $nom));
 				return 1;
 			}	
-			catch(Exception $exc)
-			{
+			catch(Exception $exc){
 				return 0;
 			}
 		}
 		
-		
         //insère un arrondissement dans la table arrondissement
-		public function insereArrondissement($nom) 
-		{		
-			try
-			{
+		public function insereArrondissement($nom) {		
+			try{
 				$stmt = $this->connexion->prepare("INSERT INTO `arrondissement` (`nom`) VALUES (:nom)");
 				$stmt->execute(array(":nom" => $nom));
 				return 1;
 			}	
-			catch(Exception $exc)
-			{
+			catch(Exception $exc){
 				return 0;
 			}
         }
 		
-		
         // retourne l'id de l'oeuvre selon le numéro interne passé en paramètre
-		public function getIdSelonNoInterneO($noInterne) 
-		{		
-			try
-			{
+		public function getIdSelonNoInterneO($noInterne) {		
+			try{
 				$stmt = $this->connexion->prepare("SELECT id FROM oeuvre where noInterne = :noInterne ");
 				$stmt->execute(array(":noInterne" => $noInterne));
 				return $stmt->fetch();
 			}	
-			catch(Exception $exc)
-			{
+			catch(Exception $exc){
 				return 0;
 			}
 		}
-		
 			
         // retourne l'id de l'artiste selon le numéro interne passé en paramètre
-		public function getIdSelonNoInterneA($noInterne) 
-		{		
-			try
-			{
+		public function getIdSelonNoInterneA($noInterne) {		
+			try{
 				$stmt = $this->connexion->prepare("SELECT id FROM artiste where noInterne = :noInterne ");
 				$stmt->execute(array(":noInterne" => $noInterne));
 				return $stmt->fetch();
 			}	
-			catch(Exception $exc)
-			{
+			catch(Exception $exc){
 				return 0;
 			}
         }
 		
-      
+		//retourne le mot de passer selon le nom de usager
+		public function getMotDePasse($nomUsager){
+			try{
+				$stmt = $this->connexion->prepare("SELECT motDePasse FROM administrateur WHERE nom = :nomUsager");
+				$stmt->bindParam(":nomUsager", $nomUsager);
+				$stmt->execute();
+				return $stmt->fetch();
+				
+			}
+			catch(Exception $exc){
+				return 0;	
+			}
+		}
 	}
 ?>
-

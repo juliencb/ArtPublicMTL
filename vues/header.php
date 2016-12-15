@@ -2,15 +2,16 @@
 <!--debut du conteneur GLOBAL-->
 	<div id ="global">
 		<!--Debut Section ENTÊTE-->
-		<header class ="entete">
+		<header class ="entete flex row JCflex-start">
 			<a id="lienLogo" href="index.php">
-				<img id="logo" src="images/logo+blanc.png" alt="logo" >
+				<img id="logo" src="images/logo+blanc3.png" alt="logo" >
 			</a>
 			<div class="menu">
 				<nav id="menuPrincipal">
 					<ul>
 						<li class="itemMenu"><a href="index.php?Public&action=listeOeuvres">OEUVRES</a></li>
 						<li class="itemMenu"><a href="index.php?Public&action=listeArtistes">ARTISTES</a></li>
+						<li class="itemMenu"><a href="#">CARTE</a></li>
 						<li class="itemMenu"><a href="#">À PROPOS</a></li>
 					</ul>
 				</nav>

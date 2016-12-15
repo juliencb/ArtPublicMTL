@@ -1,15 +1,13 @@
-﻿	<div id="OeuvresArtiste">
 		<?php
 			foreach ($data as $imagesOeuvre) { 
 				if($imagesOeuvre["urlImage"]== ""){
 					$imagesOeuvre["urlImage"] = "no-image-available";
 				}
 		?>
-			<img src="./images/<?php echo $imagesOeuvre["urlImage"]; ?>.jpg">
+			<img src="./images/<?php echo $imagesOeuvre["urlImage"]; ?>.jpg" class="photosOeuvreUnArtiste">
 		<?php		
 			}
 		?>
-	
-	</div>	
+		</div><!--fermeture div infosMonArtiste-->
+	</section>	
 </div><!--fermeture div contenu-->
-
