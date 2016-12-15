@@ -168,7 +168,9 @@
 			}	
 		} // fin de la fonction importeArrondissements
 		
+
 		public function lienArtisteOeuvre(){
+
             // va chercher le fichier JSON des oeuvres publiques de la ville de Montréal
 			$modeleAdmins = new Modele_admins();
 			$fichierJSON = file_get_contents('http://donnees.ville.montreal.qc.ca/dataset/2980db3a-9eb4-4c0e-b7c6-a6584cb769c9/resource/18705524-c8a6-49a0-bca7-92f493e6d329/download/oeuvresdonneesouvertes.json');
@@ -179,9 +181,16 @@
 			for($i = 0; $i < $compteur; $i++){
                 //rempli les variables 
 				$noInterneArtiste    =$fichierJSON_decode[$i]->Artistes[0]->NoInterne;
- 
                 // va chercher l'id de l'artiste d'après son NoInterne
 				$idArtiste = $modeleAdmins->getIdSelonNoInterneA($noInterneArtiste);
+          
+                // va chercher l'id de l'oeuvre d'aprÃ¨s son NoInterne
+				$idOeuvre = $modeleAdmins->getIdSelonNoInterneO($noInterneOeuvre);
+                // va chercher l'id de l'artiste d'aprÃ¨s son NoInterne
+				$idArtiste = $modeleAdmins->getIdSelonNoInterneA($noInterneArtiste);
+                //insÃ¨re les deux id retrouvÃ©s pour faire le lien
+				$modeleAdmins->insereLiens($idOeuvre["id"], $idArtiste["id"]);
+
 			}
 		} // fin de la fonction lienArtisteOeuvre
 

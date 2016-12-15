@@ -14,6 +14,7 @@
 			}
 			catch(Exception $exc){
 				die("Connexion à la base de données impossible.");
+
 			}
 		}
 	
