@@ -1,4 +1,10 @@
-<div class="flex row oeuvresParArrondissement ml50">
+<div class="flex column oeuvresParArrondissement ml50">
+    <section>
+        <?php
+            echo  "<h1 class='ligneBas'>" . $data[0]["arrondissement"] . "</h1>";
+        ?>
+    </section>
+   <section class="flex row ">
     <?php
         $cont=0;
     ?>
@@ -100,6 +106,7 @@
         </script>
         <script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC4QkcRKk6J15A3d0lLu8SZljq6opZkBMI&callback=initMap'>
         </script>
+    </section>
 </div>
 </section>
 <!--fin Section Arrondisements-->

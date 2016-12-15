@@ -9,7 +9,7 @@
 		public function obtenirTousOeuvresArtistes(){
 			try{			
 				$stmt = $this->connexion->prepare("SELECT oeuvre.id, idArtiste,titre, titreVariante, categorie,urlImage, artiste.prenom, artiste.nom
-													FROM oeuvre JOIN artiste ON idArtiste = artiste.id");
+													FROM oeuvre JOIN artiste ON idArtiste = artiste.id WHERE oeuvre.valide = 0");
 				$stmt->execute();
 				return $stmt->fetchAll();
 			}		
@@ -23,7 +23,7 @@
 		public function obtenirOeuvresCategorie($uneCategorie){
 			try{	
 				$stmt = $this->connexion->prepare("SELECT oeuvre.id, titre, idArtiste, categorie,urlImage, artiste.prenom, artiste.nom  
-													FROM oeuvre JOIN artiste ON idArtiste = artiste.id WHERE categorie= :uneCategorie");
+													FROM oeuvre JOIN artiste ON idArtiste = artiste.id WHERE categorie= :uneCategorie AND oeuvre.valide = 0");
 				$stmt->bindParam(":uneCategorie", $uneCategorie);
 				$stmt->execute();
 				return $stmt->fetchAll();	
@@ -38,7 +38,7 @@
 			try{			
 				$stmt = $this->connexion->prepare("SELECT oeuvre.id, idArtiste, titre, arrondissement,urlImage, artiste.prenom, artiste.nom, artiste.nomCollectif, coordonneeLatitude, coordonneeLongitude
 													FROM oeuvre JOIN artiste ON idArtiste = artiste.id
-													WHERE arrondissement= :unArrondissement");
+													WHERE arrondissement= :unArrondissement AND oeuvre.valide = 0");
 				$stmt->bindParam(":unArrondissement", $unArrondissement);
 				$stmt->execute();
 				return $stmt->fetchAll();
@@ -51,7 +51,7 @@
         public function obtenirTousOeuvresArrondissement(){
 			try{			
 				$stmt = $this->connexion->prepare("SELECT oeuvre.id, idArtiste, titre, arrondissement,urlImage, artiste.prenom, artiste.nom, artiste.nomCollectif, coordonneeLatitude, coordonneeLongitude
-													FROM oeuvre JOIN artiste ON idArtiste = artiste.id");
+													FROM oeuvre JOIN artiste ON idArtiste = artiste.id AND oeuvre.valide = 0");
 				$stmt->bindParam(":unArrondissement", $unArrondissement);
 				$stmt->execute();
 				return $stmt->fetchAll();

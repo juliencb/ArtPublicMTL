@@ -18,7 +18,7 @@
 						if(($artiste["prenom"]!="Inconnu") && (chr($compteur) == $premiereLettre)){   
                 ?>    
 							<li><a href="index.php?Public&action=descriptionArtiste&id=<?php echo $artiste['id'] ?>">
-								<?php echo $artiste["prenom"] . " " . $artiste["nomArtiste"]; ?>
+								<?php echo $artiste["prenom"] . " <span class='gras'>" . $artiste["nomArtiste"] . "</span>"; ?>
 								</a>
 							</li>
                 <?php 

@@ -289,5 +289,13 @@ ul{
     margin-left: 50px;
 }
 
+.gras{
+    font-weight: bold;
+}
+
+.ligneBas{
+    border-bottom: 2px solid black;
+}
+
 
 
