@@ -1,4 +1,4 @@
- <select id="arrondissements">
+ <select class="row pas_Select"  id="arrondissements">
 			<option value="_">Lieu</option>
 			<?php 
 				foreach($data as $arrondissement){

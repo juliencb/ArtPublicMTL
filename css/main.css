@@ -62,6 +62,7 @@ ul{
     width: auto; 
     max-width: 300px; 
     max-height: 300px;
+	padding:30x;
 }
 
 /**CSS PAGE ACCUEIL**/
@@ -213,7 +214,7 @@ ul{
 /**FIN PAGE À PROPOS**/
 /**DÉBUT TEMPLATE GAUCHE**/
 .pas_accueil aside{
-	position: fixed;
+	/*position: fixed;*/
 }
 
 #labelRechercheSimple {
@@ -286,3 +287,18 @@ ul{
 	top: 100px;
 }	
 /**FIN TEMPLATE GAUCHE**/
+/**PARTIE LISTEOEUVRES**/
+#collectionOeuvres .titrePage{
+	border-bottom: 2px solid black;
+	margin: -10px 20px 20px 0;
+}
+.pas_oeuvres{
+	margin:30x;
+	padding:30x;
+}
+.pas_Select{
+	margin-right:100x;
+	padding:30x;
+	width: 250px;
+	height: 50px;
+}
