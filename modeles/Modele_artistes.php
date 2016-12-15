@@ -7,9 +7,9 @@
 		//afficher toute la liste des artiste en ordre alphabetique par nom
 		public function obtenirTousArtisteAlphabetique(){
 			try{
+
 				$stmt = $this->connexion->prepare("SELECT id, IFNULL(prenom, ' ')AS prenom, IFNULL(nom , nomCollectif) as nomArtiste FROM artiste ORDER BY nomArtiste");
 				//SELECT distinct artiste.id, IFNULL(prenom, ' ')AS prenom, IFNULL(nom , nomCollectif) as nomArtiste, oeuvre.valide FROM artiste,oeuvre where oeuvre.idArtiste = artiste.id and oeuvre.valide = 1 ORDER BY nomArtiste
-				
 				$stmt->bindParam(":valeur", $valeur);
 				$stmt->execute();
 				return $stmt->fetchAll();

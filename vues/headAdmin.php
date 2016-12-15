@@ -1,10 +1,3 @@
-<?php
-	//démarrage de la session OU obtention de la session existente
-	//session_start();
-	
-	if(!isset($_SESSION["authentifie"]))
-		header("index.php?Admins");
-?>	
 <html>
     <meta charset="utf-8">
 <head>

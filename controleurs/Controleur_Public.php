@@ -5,7 +5,6 @@
 		public function traite(array $params){
 			//affichage du header
 			$this->afficheVue("head");
-			$this->afficheVue("header");
 			
 			if(isset($params["action"])){
 				//modèle et vue vides par défaut
@@ -16,11 +15,13 @@
 				switch($params["action"]){
 					
 					case "pageAccueil":					
+						$this->afficheVue("header","");
 						$this->afficheVue("pageAccueil","");	
 						$this->afficheRecherche();	
 						break;
 
 					case "listeOeuvres":
+						$this->afficheVue("headerPasAccueil");
 					    $this->afficheListeCategories();					
 						$this->afficheListeArrondissements();
 						$this->afficheRecherche();						
@@ -28,15 +29,25 @@
 						break;
 						
 					case "listeArtistes":
+						$this->afficheVue("headerPasAccueil");
+						$this->afficheVue("ouvertureAside",""); 
+						$this->afficheVue("rechercheGauche","");   
+						$this->afficheVue("vueBtnSoumission",""); 
+						$this->afficheVue("fermetureAside",""); 
 						$this->afficheListeArtistes();
-						$this->afficheRecherche();   
 					    break;
 					
 					case "oeuvre":
+						$this->afficheVue("headerPasAccueil");
 						$this->afficheRecherche();
 					 	break;
 
 					case "descriptionArtiste":
+						$this->afficheVue("headerPasAccueil");
+						$this->afficheVue("ouvertureAside","");
+						$this->afficheVue("rechercheGauche","");
+						$this->afficheVue("vueBtnSoumission","");   
+						$this->afficheVue("fermetureAside","");
 						if(isset($params["id"])){
 							$this->afficheDescriptionArtiste($params["id"]);
 							$this->afficheOeuvresArtiste($params["id"]);
@@ -44,11 +55,13 @@
 						break;
                         
 					case "soumission":
+						$this->afficheVue("headerPasAccueil");
 						$this->afficheRecherche();
 						$this->afficheSoumission();
 						break;		
                         
 					case "details":
+						$this->afficheVue("headerPasAccueil");
 						if(isset($params["id"])){
 							$this->afficheRecherche();
 							$this->afficheDetails($params["id"]);	
@@ -74,13 +87,21 @@
                         }
                         break;
 
+                        
+                    case "carte":
+                            $this->afficheCarte();					
+                        break;	
+
+
 					default:
+						$this->afficheVue("header","");
 						$this->afficheVue("pageAccueil","");	
 						$this->afficheRecherche();	
 				}
 			}
 			else{
 				//actions par défaut
+				$this->afficheVue("header","");
 				$this->afficheVue("pageAccueil","");	
 				$this->afficheRecherche();	
 			}
@@ -92,13 +113,13 @@
 		public function afficheListeOeuvres(){
 			$modeleOeuvres= new Modele_Oeuvres();
 			$data = $modeleOeuvres->obtenirTousOeuvresArtistes();
-			$this->afficheVue("vueOeuvres", $data);
+           	$this->afficheVue("vueOeuvres", $data);
 		}
 		
 
 		///--fonction permet d'affiche la liste des categories--///	
 		public function afficheListeCategories(){
-			$modeleCategories= new Modele_Categories();
+			$modeleCategories= new Modele_categories();
 			$data = $modeleCategories->obtenirTous();
 			$this->afficheVue("vueOptionCategories", $data);
 		}
@@ -111,7 +132,7 @@
 
 		///--fonction permet d'affiche la liste des arrondissements--///
 		public function afficheListeArrondissements(){
-			$modeleArrondissements= new Modele_Arrondissements();
+			$modeleArrondissements= new Modele_arrondissements();
 			$data= $modeleArrondissements->obtenirTous();
 			$this->afficheVue("vueOptionArrondissement", $data);
 		}
@@ -151,15 +172,21 @@
 
 		//affiche lesOeuvres par categorie de la recherche
 		public function afficheOeuvresCategorie($val){
-			$modeleOeuvres= new Modele_Oeuvres();
+			$modeleOeuvres= new Modele_oeuvres();
 			$data=$modeleOeuvres-> obtenirOeuvresCategorie($val);
 			$this->afficheVue("vueOeuvres", $data);
 		}
 		//affiche lesOeuvres par lieu de la recherche
 		public function afficheOeuvresLieu($val){
-			$modeleOeuvres= new Modele_Oeuvres();
+			$modeleOeuvres= new Modele_oeuvres();
 			$data=$modeleOeuvres-> obtenirOeuvresArrondissement($val);
 			$this->afficheVue("arrondissements", $data);
+		}
+            
+        public function afficheCarte(){
+			$modeleOeuvres= new Modele_oeuvres();
+			$data=$modeleOeuvres-> obtenirTousOeuvresArrondissement();
+			$this->afficheVue("pageCarte", $data);
 		}
 	}
 ?>

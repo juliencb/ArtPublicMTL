@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4
+-- version 4.1.4
 -- http://www.phpmyadmin.net
 --
--- Client: localhost
--- Généré le: Mer 23 Novembre 2016 à 19:06
--- Version du serveur: 5.6.12-log
--- Version de PHP: 5.4.12
+-- Client :  127.0.0.1
+-- Généré le :  Lun 05 Décembre 2016 à 18:50
+-- Version du serveur :  5.6.15-log
+-- Version de PHP :  5.5.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données: `artpublicmtl`
+-- Base de données :  `artpublicmtl`
 --
 CREATE DATABASE IF NOT EXISTS `artpublicmtl` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `artpublicmtl`;
@@ -30,10 +30,18 @@ USE `artpublicmtl`;
 
 CREATE TABLE IF NOT EXISTS `administrateur` (
   `nom` varchar(20) CHARACTER SET latin1 NOT NULL DEFAULT '',
-  `motDePasse` varchar(10) CHARACTER SET latin1 DEFAULT NULL,
+  `motDePasse` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
   PRIMARY KEY (`nom`),
   UNIQUE KEY `nom` (`nom`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `administrateur`
+--
+
+INSERT INTO `administrateur` (`nom`, `motDePasse`) VALUES
+('artpublicmtl', 'adcdbf2d0d8c4c9053256256831136cf'),
+('totolemagicien', 'c83663d1c69a2024012428f0cdb2c45b');
 
 -- --------------------------------------------------------
 
