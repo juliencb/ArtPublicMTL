@@ -1,3 +1,4 @@
+/*** CSS PAGE ACCEUIL  ***/
 @font-face {
     font-family: 'bang_whack_powregular';
     src: url('font/bang_whack_pow-webfont.eot');
@@ -9,6 +10,8 @@
     font-weight: normal;
     font-style: normal;
 }
+
+
 
 @font-face {
     font-family: 'klillregular';
@@ -133,11 +136,9 @@ ul{
 .pas_accueil #reseauxSociaux .icones a {
 	color: #000;
 }
-/**FIN PAGE ACCUEIL**/
 /**DÉBUT PAGE DES ARTISTES**/
 #zoneDesArtistes,
 #descriptionArtiste{
-	margin-left: 350px;
 	width: 100%;
 }
 
@@ -202,9 +203,6 @@ ul{
 }
 /**FIN PAGE DE LA BIO D'UN ARTISTE**/
 /**DÉBUT PAGE À PROPOS**/
-.pageAPropos{
-	margin-left: 350px;
-}
 
 .descriptionPagePropos{
 	font-size: 1.2em;
@@ -213,7 +211,7 @@ ul{
 /**FIN PAGE À PROPOS**/
 /**DÉBUT TEMPLATE GAUCHE**/
 .pas_accueil aside{
-	position: fixed;
+	//position: fixed;
 }
 
 #labelRechercheSimple {
@@ -286,3 +284,8 @@ ul{
 	top: 100px;
 }	
 /**FIN TEMPLATE GAUCHE**/
+
+
+
+
+

@@ -1,4 +1,6 @@
-<!--Debut Section des OEUVRES-->	
+
+<!--Debut section des OEUVRES-->	
+
 <section id="sectionOeuvres">
 	<!--Debut menu PAGE OEUVRES-->	
 	<aside class ="menu oeuvres">
