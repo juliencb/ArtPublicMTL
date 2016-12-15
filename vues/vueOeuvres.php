@@ -6,7 +6,7 @@
                    // if (strpos($oeuvres["titre"], 'Non titré') === true) {
                     if($cont<15)
                     {
-                        echo"<div class ='flex column ACcenter AIcenter avecWrap pas_oeuvres id='{$oeuvres["id"]}'>
+                        echo"<div class ='flex column ACcenter AIcenter avecWrap id='{$oeuvres["id"]}'>
 
                             <a href='./index.php?public&action=details&id={$oeuvres["id"]}'>";
 

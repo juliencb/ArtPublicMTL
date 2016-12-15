@@ -17,7 +17,7 @@
 						<li class="itemMenu"><a href="index.php?Admins&action=listeArtistes">Artsites</a></li>
 						<li class="itemMenu"><a href="index.php?Admins&action=">Soumission</a></li>
 						<li class="itemMenu"><a href="index.php?Admins&action=">Caroussel</a></li>
-						<li class="itemMenu"><a href="index.php?Admins&action=">Mise à jour BD</a></li>
+						<li class="itemMenu"><a href="index.php?AdminsAjax&action=importation">Mise à jour BD</a></li>
 						<li class="itemMenu"><a href="index.php?Admins&action=apropos">À Propos</a></li>
 					</ul>
 				</nav>	

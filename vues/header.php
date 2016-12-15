@@ -4,7 +4,7 @@
 		<!--Debut Section ENTÊTE-->
 		<header class ="entete flex row JCflex-start">
 			<a id="lienLogo" href="index.php">
-				<img id="logo" src="images/logo+blanc3.png" alt="logo">
+				<img id="logo" src="images/logo+blanc3.png" alt="logo" >
 			</a>
 			<div class="menu">
 				<nav id="menuPrincipal">
