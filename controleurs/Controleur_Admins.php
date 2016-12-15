@@ -24,12 +24,20 @@
 						$this->importeOeuvre();
 						break;	
 					case "soumission":
-						$this->afficheSoumission();
-						break;	
-					default:
-						echo "ERROR";		
-					
-					
+						$modeleOeuvres= new Modele_Oeuvres();
+						$oeuvre = "";
+						if (isset($params["id"])) $oeuvre = $modeleOeuvres->obtenirOeuvre($params["id"]);							
+						if ($oeuvre !="") {
+							$this->afficheSoumission($oeuvre);
+							break; // Si il a les infos d<une oeuvre il sort (break)
+						}
+
+					case "listeDesOeuvres":	 // Sinon il affiche la liste des oeuvres
+						$modeleOeuvres= new Modele_Oeuvres();
+						$data = $modeleOeuvres->listeDesOeuvres();	
+						$this->afficheVue("adminListeDesOeuvres", $data);
+						break;									
+			
 					case "authentification":
 					
 						if(isset($_POST["username"]) && isset($_POST["password"]))
@@ -178,10 +186,10 @@
 		} // fin de la fonction lienArtisteOeuvre
 
 		
-		 public function afficheSoumission(){
+		 public function afficheSoumission($oeuvre){
 			global $admin;
 			$admin = true;
-			$this->afficheVue("formSoumission", "");
+			$this->afficheVue("formSoumission", $oeuvre);
 		}
 		
 
