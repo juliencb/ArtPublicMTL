@@ -39,6 +39,7 @@
 			try{
 				$stmt = $this->connexion->prepare("SELECT urlImage FROM oeuvre WHERE idArtiste = :valeur");
 
+
 				$stmt->bindParam(":valeur", $valeur);
 				$stmt->execute();
 				return $stmt->fetchAll();

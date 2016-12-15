@@ -1,4 +1,5 @@
-/*** CSS PAGE ACCEUIL  ***/
+/* CSS PAGE ACCEUIL  */
+
 @font-face {
     font-family: 'bang_whack_powregular';
     src: url('font/bang_whack_pow-webfont.eot');
@@ -30,6 +31,7 @@
 	padding: 0px;
 }
 
+
 body{
 	font-family: 'klillregular';
     font-size: 16px;
@@ -37,7 +39,11 @@ body{
 
 a{
 	text-decoration: none;
+
+
+
 	color: #000000;
+
 }
 
 h1{
@@ -283,7 +289,7 @@ ul{
 	position: absolute;
 	top: 100px;
 }	
-/**FIN TEMPLATE GAUCHE**/
+/*FIN TEMPLATE GAUCHE*/
 
 
 
