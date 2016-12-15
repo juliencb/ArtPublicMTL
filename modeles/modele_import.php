@@ -1,13 +1,16 @@
 <?php
-	class Modele_admins extends TemplateDAO
-    {
-		public function getTable()
+   
+class Modele_import extends TemplateDAO
+{
+  
+    public function getTable()
 		{
+            
+            
 			return "admins";
 		}
-        
-        //insère une oeuvre dans la table oeuvre
-		public function insereOeuvre($noInterne, 
+    
+       public function insereOeuvre($noInterne, 
                                      $titre, 
                                      $titreVariante, 
                                      $nomCollection, 
@@ -141,8 +144,30 @@
                 return 0;
 			}
 		}
+     /*   public function updateArtiste($noInterne, $nom, $prenom, $nomCollectif)
+        {
+            try
+            {
+                
+            $stmt = $this->connexion->prepare("UPDATE artiste SET `nom`= :nom,`prenom`= :prenom,`nomCollectif`=[value-5],`biographie`=[value-6],`valide`=[value-7] WHERE noInterne = :noInterne");
+            }
+            	 $stmt->execute(array(":noInterne" => $noInterne, 
+                                     ":nom" => $nom, 
+                                     ":prenom" => $prenom, 
+                                     ":nomCollectif" => $nomCollectif
+                                ));
+                return 1;
+		
+			}	
+			catch(Exception $exc)
+			{
+				return 0;
+			}
+            
+        }*/
+        
         //insère un artiste dans la table artiste
-         public function insereArtiste($noInterne, $nom, $prenom, $nomCollectif) 
+       public function insereArtiste($noInterne, $nom, $prenom, $nomCollectif) 
 		{	
 			try
 			{
@@ -163,26 +188,23 @@
 			}
              
 		}
-        
-        //insère une catégorie dans la table catégorie
-        public function insereCategorie($nom) 
+       public function insereCategorie($nom) 
 		{		
 			try
 			{
 				$stmt = $this->connexion->prepare("INSERT INTO `categorie` ( `nom`) VALUES (:nom)");
-                
-				$stmt->execute(array(":nom" => $nom));
+              
+				 $stmt->execute(array(":nom" => $nom));
+             
 				return 1;
 			}	
 			catch(Exception $exc)
 			{
 				return 0;
+                die($exc->getMessage());
 			}
 		}
-		
-		
-        //insère un arrondissement dans la table arrondissement
-		public function insereArrondissement($nom) 
+        public function insereArrondissement($nom) 
 		{		
 			try
 			{
@@ -193,28 +215,12 @@
 			catch(Exception $exc)
 			{
 				return 0;
-			}
-        }
-		
-		
-        // retourne l'id de l'oeuvre selon le numéro interne passé en paramètre
-		public function getIdSelonNoInterneO($noInterne) 
-		{		
-			try
-			{
-				$stmt = $this->connexion->prepare("SELECT id FROM oeuvre where noInterne = :noInterne ");
-				$stmt->execute(array(":noInterne" => $noInterne));
-				return $stmt->fetch();
-			}	
-			catch(Exception $exc)
-			{
-				return 0;
+                die($exc->getMessage());
 			}
 		}
-		
-			
-        // retourne l'id de l'artiste selon le numéro interne passé en paramètre
-		public function getIdSelonNoInterneA($noInterne) 
+		 
+
+    	public function getIdSelonNoInterneA($noInterne) 
 		{		
 			try
 			{
@@ -225,10 +231,14 @@
 			catch(Exception $exc)
 			{
 				return 0;
+                die($exc->getMessage());
 			}
-        }
-		
-      
-	}
+		}
+   
+       
+    
+    
+    
+    
+}
 ?>
-

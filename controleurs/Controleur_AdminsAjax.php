@@ -1,5 +1,5 @@
 <?php
-	class Controleur_Admins extends Controleur_Admins
+	class Controleur_AdminsAjax extends BaseControleur
 	{	
 		//la fonction qui sera appelée par le routeur
 		public function traite(array $params)
@@ -16,10 +16,10 @@
 				{			
                    // si l'action est "importation"
                     case "importation":
+                     $this->afficheVue("admin");	
 						$this->importeArrondissements();
 						$this->importeArtiste();
 						$this->importeOeuvre();
-                       
 						break;
                
 					default:

@@ -73,7 +73,7 @@
 		var listeResultatRecherche = xmlDoc.getElementsByTagName("resultatRecherche");			
 
 		var type = "";
-		var liste=document.createElement("ul");;
+		var liste=document.createElement("ul");
 		for(var i = 0; i < listeResultatRecherche.length; i++){
 			if (type !=  listeResultatRecherche[i].getElementsByTagName("type")[0].childNodes[0].nodeValue) {
 				if (i > 0) document.getElementById(nomDiv).appendChild(liste);
