@@ -2,7 +2,6 @@
 	class Controleur_Public_AJAX extends Controleur_Public{	
 		//la fonction qui sera appelée par le routeur
 		public function traite(array $params){				
-			if(isset($params["action"])){
 				//modèle et vue vides par défaut
 				$data = array();
 				$vue = "";

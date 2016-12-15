@@ -4,6 +4,7 @@
 		public static function route()
 		{
 			//obtenir le controleur qui devra traiter la requête
+
 			//$controleur = $_REQUEST["controleur"];
 
 			//obtenir la query string
@@ -19,8 +20,10 @@
 				//chercher la classe du controleur
 				$classe = "Controleur_" . $controleur;
 			}
+
 			else{	
 				//controleur par défaut
+
 				$classe = "Controleur_Public";
 			}
 

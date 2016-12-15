@@ -2,7 +2,7 @@
 <!--debut du conteneur GLOBAL-->
 	<div id ="global">
 		<!--Debut Section ENTÊTE-->
-		<header class ="entete flex row JCflex-start">
+		<header class ="entete flex row JCflex-start pas_accueil">
 			<a id="lienLogo" href="index.php">
 				<img id="logo" src="images/logo+blanc3.png" alt="logo">
 			</a>
@@ -12,7 +12,7 @@
 						<li class="itemMenu"><a href="index.php?Public&action=listeOeuvres">OEUVRES</a></li>
 						<li class="itemMenu"><a href="index.php?Public&action=listeArtistes">ARTISTES</a></li>
 						<li class="itemMenu"><a href="#">CARTE</a></li>
-						<li class="itemMenu"><a href="#">À PROPOS</a></li>
+						<li class="itemMenu"><a href="index.php?Public&action=aPropos">À PROPOS</a></li>
 					</ul>
 				</nav>
 				<nav id="reseauxSociaux">
@@ -35,5 +35,9 @@
 					</ul>
 				</nav>			
 			</div>
+			<section class="lignes_menu flex row JCspace-between">
+				<img class="image_gauche" src="images/lignes haut gauche.png" alt="lignes haut gauche">
+				<img class="image_droite" src="images/lignes haut droite.png" alt="lignes haut droite">
+			</section>
 		</header>
 		<!--fin Section ENTÊTE-->
