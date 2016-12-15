@@ -1,7 +1,7 @@
 <div class="flex column oeuvresParArrondissement ml50">
     <section>
         <?php
-            echo  "<h1 class='ligneBas'>" . $data[0]["arrondissement"] . "</h1>";
+           echo  "<h1 class='ligneBas'>" . $data[0]["arrondissement"] . "</h1>";
         ?>
     </section>
    <section class="flex row ">

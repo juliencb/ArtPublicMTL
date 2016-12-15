@@ -97,10 +97,12 @@
 
                         }
                         break;
+
                         
                     case "carte":
                             $this->afficheCarte();					
                         break;	
+
 
 					default:
 						$this->afficheVue("header","");
@@ -135,6 +137,8 @@
 		}
 		
 		public function afficheSoumission(){
+			global $admin;
+			$admin = false;
 			$this->afficheVue("formSoumission", "");
 		}
 

@@ -3,6 +3,7 @@
 	class Controleur_Admins extends BaseControleur{	
         
 		//la fonction qui sera appelée par le routeur
+
 		public function traite(array $params){	
 			//affichage du head
 			$this->afficheVue("headAdmin","");
@@ -20,9 +21,24 @@
 						$this->importeArrondissements();
 						$this->importeArtiste();
 						$this->importeOeuvre();
-						break;									  
-					
-					//si action est authentification de usager
+
+						break;	
+					case "soumission":
+						$modeleOeuvres= new Modele_Oeuvres();
+						$oeuvre = "";
+						if (isset($params["id"])) $oeuvre = $modeleOeuvres->obtenirOeuvre($params["id"]);							
+						if ($oeuvre !="") {
+							$this->afficheSoumission($oeuvre);
+							break; // Si il a les infos d<une oeuvre il sort (break)
+						}
+
+					case "listeDesOeuvres":	 // Sinon il affiche la liste des oeuvres
+						$modeleOeuvres= new Modele_Oeuvres();
+						$data = $modeleOeuvres->listeDesOeuvres();	
+						$this->afficheVue("adminListeDesOeuvres", $data);
+						break;									
+			
+
 					case "authentification":
 					//Authentifie l'usager ou redirection-le vers la vue login
 						if(isset($_POST["username"]) && isset($_POST["password"])){
@@ -51,6 +67,7 @@
 						break;
 				}		
 			}
+
 			else{
 				//actions par défaut 
 				if(!isset($_SESSION["grainDeSel"]))	
@@ -60,6 +77,7 @@
 			}
 			//inclusion du footer 
 			$this->afficheVue("footerAdmin");	
+
 
 		} // fin de la fonction traite
         
@@ -193,6 +211,15 @@
 			} // fin de la boucle
 			
 		} // fin de la fonction lienArtisteOeuvre
+
+		
+		 public function afficheSoumission($oeuvre){
+			global $admin;
+			$admin = true;
+			$this->afficheVue("formSoumission", $oeuvre);
+		}
+		
+
 
 		//fait l'authenfication de l'usager avec la base de donnees
 		public function authenficationUsager($nomUsager,$motdePasse){

@@ -27,8 +27,11 @@
 
 #divSoumission {
     margin-left: 20%;
+	margin-right: 25%;
     font-size: 15px;
     font-family: 'Share Tech Mono', monospace;
+	border: 1px solid;
+	padding: 15px;
 }
 
 #labelNom,
@@ -44,3 +47,11 @@
 #labelCollectif {
     margin-top: 5px;
 }
+
+#id{
+	background-color: transparent;
+	border: 0px solid;
+	margin-left: 85%;
+	font-size: 20px;
+}
+

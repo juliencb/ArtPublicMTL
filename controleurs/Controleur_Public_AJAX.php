@@ -1,7 +1,8 @@
 <?php
 	class Controleur_Public_AJAX extends Controleur_Public{	
 		//la fonction qui sera appelée par le routeur
-		public function traite(array $params){				
+		public function traite(array $params){	
+            if($params["action"]){
 				//modèle et vue vides par défaut
 				$data = array();
 				$vue = "";
@@ -12,12 +13,10 @@
 						if(isset($params["idValue"]) && ($params["idValue"])!=""){   
 							if(($params["idValue"])=="_"){
 								$this->afficheListeOeuvres();
-								
 							}
 							else{
 								$this->afficheOeuvreCategorie($params["idValue"]);		
 							}
-							
 						}
 					break;
 				
@@ -32,6 +31,7 @@
 						}
 						
 					break;
+					
 	
 					case "recherche":
 						if(isset($params["recherche"])){
@@ -55,14 +55,14 @@
 							
 					case "envoieSoumission":
 						if(isset($params["id"]) ){  // on assume ici que si on recoit le champ id on aurra tout les autres champs.
-							if ($params["id"]=="") {
+							//if ($params["id"]=="") {
 								// on insere le record
 								$modeleOeuvres = new Modele_Oeuvres();
-								$resultatsMAJ = $modeleOeuvres->oeuvreMAJ($params["id"], $params["titre"], $params["categorie"], $params["arrondissement"], $params["adresse"], $params["description"], $params["image"], 
+								$resultatsMAJ = $modeleOeuvres->oeuvreMAJ($params["id"], $params["titre"], $params["categorie"], $params["arrondissement"], $params["adresse"], $params["description"], $params["image"], $params["titreVariante"],
 								$params["nomParc"], $params["batiment"], $params["prenomArtiste"], $params["nomArtiste"], $params["nomCollectif"], $params["bio"], $params["modeAcquisition"], $params["numeroAccession"], $params["dateAccession"], $params["materiaux"], 
-								$params["support"], $params["technique"], $params["dimensionGenerales"], $params["coordonneeLatitude"], $params["coordonneeLongitude"], $params["mediums"]);							 
+								$params["support"], $params["technique"], $params["categorieObjet"], $params["dimensionGenerales"], $params["coordonneeLatitude"], $params["coordonneeLongitude"], $params["mediums"],  $params["nomCollection"], $params["valide"]);							 
 								echo $resultatsMAJ;
-							}
+
 						}
 						else{
 							echo "ERROR Aucune valeur de recherche";
@@ -82,6 +82,13 @@
 					case "telechargementImage":
 						$this->telechargementImage();
 						break;	
+						
+						
+					case "obtenirBio";
+						$modeleOeuvres= new Modele_Oeuvres();
+			            $bio = $modeleOeuvres->obtenirBio($params["prenomArtiste"],$params["nomArtiste"],$params["nomCollectif"]);
+						echo $bio;
+						break;                       
 									
 					default:
 						echo "ERROR";		
@@ -141,7 +148,7 @@
 			
 		}
 
-		
+		//References http://stackoverflow.com/questions/23980733/jquery-ajax-file-upload-php
 		public function telechargementImage(){
 			if ( 0 < $_FILES['file']['error'] ) {
 				echo 'Error: ' . $_FILES['file']['error'] . '<br>';
