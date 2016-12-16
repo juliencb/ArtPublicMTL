@@ -4,7 +4,9 @@
 	<div class="contenu">
 		<!-- img à changer pour le carroussel-->
 		<div id= "carroussel"></div>
-		<!--<button id="suggererUneOeuvre" >Suggérer une oeuvre</button>-->
-		<img id="logoSuggestionOeuvre" src="images/logo-Suggestion-noir.png">
+		<!--<button id="suggererUneOeuvre" >Suggérer une oeuvre</button>-->	
+		<a href="index.php?Public&action=soumission">
+			<img id="logoSuggestionOeuvre" src="images/logo-Suggestion-noir.png">
+		</a>
 	</div>
 

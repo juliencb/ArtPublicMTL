@@ -217,8 +217,8 @@
              for (var i = 0; i < 2; i++) {
                 if (document.getElementsByName('nomOuCollectif')[i].checked){	
                     if (i ==1){
-                        document.getElementById("spanPrenom").style = "color: grey";
-                        document.getElementById("spanNom").style = "color: grey";
+                        document.getElementById("spanPrenom").style = "color: #C0C0C0";
+                        document.getElementById("spanNom").style = "color: #C0C0C0";
                         document.getElementById("nomArtiste").disabled = true;
                         document.getElementById("prenomArtiste").disabled = true;
                         document.getElementById("spanCollectif").style = "color: black";
@@ -231,7 +231,7 @@
                         document.getElementById("spanNom").style = "color: black";
                         document.getElementById("nomArtiste").disabled = false;
                         document.getElementById("prenomArtiste").disabled = false;
-                        document.getElementById("spanCollectif").style = "color: grey";
+                        document.getElementById("spanCollectif").style = "color: #C0C0C0";
                         document.getElementById("nomCollectif").value = "";
                         document.getElementById("nomCollectif").disabled = true;	
                     }
@@ -258,7 +258,6 @@
                     if (document.getElementById("imgId") == null){
                       img = document.createElement("img");
                       img.id = "imgId";
-                      img.style = "width: 150px; margin-left: -100px;"; 
                       img.src = nom_fichier.substring(3);
                       imgForm.appendChild(img);
                       document.getElementById("labelImportImage").innerHTML="Changez l'image";
@@ -273,14 +272,19 @@
     });
 
     function afficherOptionnel(){
-        document.getElementById("formSoumissionOptionnel").style.display="inline";
-        document.getElementById("btnAjoutInfos").style.visibility="hidden";
+		if(document.getElementById("formSoumissionOptionnel").style.display=="inline"){
+			document.getElementById("formSoumissionOptionnel").style.display="none";
+			document.getElementById("btnAjoutInfos").value="Voir +";
+		}
+		else
+		if(document.getElementById("formSoumissionOptionnel").style.display=="none"){
+			document.getElementById("formSoumissionOptionnel").style.display="inline";
+			document.getElementById("btnAjoutInfos").value="Voir -";
+		}
     }
 				
 	$(document).ready(function(){
-		$("#envoyerSoumission").click(function(){
-			
-			
+		$("#envoyerSoumission").click(function(){	
 			//obtenir les infos du formulaire
 			var id = document.getElementById("id").value;
 			var titre = document.getElementById("titre").value;
@@ -328,9 +332,11 @@
 
 			// validation
 			if (titre == "" || categorie == "" || arrondissement == "" || adresse == "" || description == "" || image == ""){
-				document.getElementById("msgRetourSoumission").value= "Vous devez entrer les champs obligatoires (*)";
+				$('html, body').animate({ scrollTop: 0 }, 'slow'); // Reference http://stackoverflow.com/questions/4147112/how-to-jump-to-top-of-browser-page
+				document.getElementById("msgRetourSoumission").value= "VOUS DEVEZ ENTRER TOUS LES CHAMPS OBLIGATOIRES(*)";
 			}
 			else{
+				$('html, body').animate({ scrollTop: 0 }, 'slow'); // Reference http://stackoverflow.com/questions/4147112/how-to-jump-to-top-of-browser-page
 			    $.post("http://localhost/ArtPublicMTL/index.php?Public_AJAX&action=envoieSoumission",
 				{
 					id: id,
@@ -364,8 +370,7 @@
 				function(data, status){
 					// data = <id>&<msg>
 					var dataSplit = data.split("&");
-					document.getElementById("id").value = dataSplit[0];
-					//alert ("id="+ dataSplit[0]);
+					//document.getElementById("id").value = dataSplit[0];
 					document.getElementById("msgRetourSoumission").value= dataSplit[1];
 	
 				});
@@ -412,11 +417,14 @@
 	 global $admin;
 
 	?>
-	<div id="divSoumission">
+	<!-- Message de confirmation-->
+	<div id="idMsgRetourSoumission"<?php if($admin){echo "style = 'margin-top: 100px;'";}?>   >
+		<textarea rows= "3" cols="50" id='msgRetourSoumission' disabled></textarea>
+	</div>
+	<div id="divSoumission" <?php if($admin){echo "style = 'margin-top: -10px;'";}?>>
 		<?php
 			global $admin;
 			if ($admin){
-				echo "MODE ADMINISTRATEUR";
 				echo "<input type='text' name='inputAdmin' id='verifAdmin' value='true' style='visibility:hidden;'>"; // Pour pouvoir accéder à cette info ds le JS
 			}
 			else {
@@ -427,24 +435,22 @@
 				return str_replace("'","&#39;",$str);
 			}
 		?>
-	<!-- Message de confirmation-->
-		<textarea rows="1" cols="60" id="msgRetourSoumission" ></textarea>
+	
 	
 	<!-- Form Obligatoire -->
-		<form id="formSoumissionObligatoire">	
+		<form id="formSoumissionObligatoire"<?php if($admin){echo "style = 'margin-top: 20px;'";}?>>	
 		
 		<!--id de l'oeuvre -->
-			<input type="text" name="inputId" id="id" disabled <?php if ($data!=""){ echo " value=".$data["id"]; } ?>
-			
+			<input type="text" name="inputId" id="id" disabled <?php if ($admin && $data!=""){ echo "value=".$data["id"]; } ?>
 		<!--Titre de loeuvre-->
 			<label class="elemSoumission"> <span class= "textElemSoumission">Titre de l'oeuvre</span><?php if($admin==false){echo"<span id='etoileImportant'>*</span>";} ?></label>
-			<input type="text" name="inputTitre" id="titre" <?php if ($data!=""){ echo " value='".ca($data["titre"])."'"; } ?>>
+			<input type="text" class="inputFormSoumission" name="inputTitre" id="titre" <?php if ($data!=""){ echo " value='".ca($data["titre"])."'"; } ?>>
 		
 		<!--Categorie-->			
 			<label class="elemSoumission"> <span class= "textElemSoumission">Catégorie</span><?php if($admin==false){echo"<span id='etoileImportant'>*</span>";} ?></label>
 			
 			 <select id="categorie" >
-				<option>--</option>
+				<option> </option>
 				<?php 
 					$modeleCategories= new Modele_Categories();
 					$dataCategorie = $modeleCategories->obtenirTous();
@@ -461,7 +467,7 @@
 		<!--Arrondissement-->	 
 			<label class="elemSoumission"> <span class= "textElemSoumission">Arrondissement</span><?php if($admin==false){echo"<span id='etoileImportant'>*</span>";} ?></label>
 			<select id="arrondissements">
-				<option>--</option>
+				<option> </option>
 				<?php 
 				   $modeleArrondissements= new Modele_Arrondissements();
 				   $dataArrondissement= $modeleArrondissements->obtenirTous();
@@ -478,11 +484,11 @@
 			 
 		<!--Adresse Civique--> 
 			<label class="elemSoumission"> <span class= "textElemSoumission">Adresse Civique</span><?php if($admin==false){echo"<span id='etoileImportant'>*</span>";} ?></label>
-			<input type="text" name="inputAdresse" id="adresse" <?php if ($data!=""){ echo " value='".ca($data["adresseCivique"])."'"; } ?>>
+			<input type="text" class="inputFormSoumission" name="inputAdresse" id="adresse" <?php if ($data!=""){ echo " value='".ca($data["adresseCivique"])."'"; } ?>>
 			
 		<!--Description de l'oeuvre--> 
 			<label class="elemSoumission"> <span class= "textElemSoumission">Description de l'oeuvre</span><?php if($admin==false){echo"<span id='etoileImportant'>*</span>";} ?></label>
-			<textarea rows="4" cols="50" id="description" name="inputDescription"><?php if ($data!=""){ echo ca($data["description"]); } ?></textarea>	
+			<textarea rows="4" cols="50" class="inputTextAreaFormSoumission" id="description" name="inputDescription"><?php if ($data!=""){ echo ca($data["description"]); } ?></textarea>	
 		
 		<!-- Fin form obligatoire -->
 		</form>
@@ -495,52 +501,49 @@
 		</form>
 		
 	<!-- Bouton afficher Form Optionnel -->	
-		<?php if ($data=="") echo "<input type='button' value='Ajouter plus d&#39;informations' id='btnAjoutInfos' onclick='afficherOptionnel()'>"; ?>
+		<?php if ($data=="") echo "<input type='button' value='Voir +' id='btnAjoutInfos' onclick='afficherOptionnel()'/>"; ?>
 		
 	
 
 	
 	<!-- Form Optionnel -->	
-
+	
 		<form id="formSoumissionOptionnel" <?php if ($data=="") echo " style='display: none;'"; else echo " style='display: inline;' >"; ?>
 		
 			<!--titre variante-->
 			<label class="elemSoumission"> <span class= "textElemSoumission">Titre variante</span></label>
-			<input type="text" name="inputTitreVariante" id="titreVariante" <?php if ($data!=""){ echo " value='".ca($data["titreVariante"])."'"; } ?>>
+			<input type="text" class="inputFormSoumission" name="inputTitreVariante" id="titreVariante" <?php if ($data!=""){ echo " value='".ca($data["titreVariante"])."'"; } ?>>
 		
 
 			<!--Nom du Parc-->
 			<label class="elemSoumission"> <span class= "textElemSoumission">Nom du parc</span></label>
-			<input type="text" name="inputNomParc" id="nomParc" <?php if ($data!=""){ echo " value='".ca($data["parc"])."'"; } ?>>
+			<input type="text" class="inputFormSoumission" name="inputNomParc" id="nomParc" <?php if ($data!=""){ echo " value='".ca($data["parc"])."'"; } ?>>
 			
 			<!--Nom du Batiment-->
 			<label class="elemSoumission"> <span class= "textElemSoumission"> Batiment</span></label>
-			<input type="text" name="inputBatiment" id="batiment" <?php if ($data!=""){ echo " value='".ca($data["batiment"])."'"; } ?>>
+			<input type="text" class="inputFormSoumission" name="inputBatiment" id="batiment" <?php if ($data!=""){ echo " value='".ca($data["batiment"])."'"; } ?>>
 			
 			
 			<br><br>
 			
 		<!--Radio Nom artiste-->
 		    <!--<input type="radio" name= "nomOuCollectif" value="nomArtiste" checked>-->
-		  
 			<?php if ($data!="" && $data["nomCollectif"]!="") {
-				echo '<input type="radio" name= "nomOuCollectif" value="nomArtiste" >';
+				echo '<input type="radio" class="radioNomArtiste" name= "nomOuCollectif" value="nomArtiste" >';
 			}
 			else {
-				echo '<input type="radio" name= "nomOuCollectif" value="nomArtiste"  checked>';				
+				echo '<input type="radio" class="radioNomArtiste" name= "nomOuCollectif" value="nomArtiste"  checked>';				
 			}
 			?>
 			
-			
-			
-			<!-- artiste -->
+		<!-- artiste -->
 			<div id="artiste">
 				<!--Prenom-->
-				<label class="elemSoumission" id="labelPrenom" <?php if ($data!="" && $data["nomCollectif"]!="") echo "style='color: grey';";?>> <span class= "textElemSoumission" id="spanPrenom">Prenom de l'artiste</span></label>
-				<input type="text" name="inputPrenomArtiste" id="prenomArtiste" <?php if ($data!=""){ echo " value='".ca($data["prenom"])."'"; } ?><?php if ($data!="" && $data["nomCollectif"]!="") echo "disabled = true";?>>
+				<label class="elemSoumission" id="labelPrenom" <?php if ($data!="" && $data["nomCollectif"]!="") echo "style='color: #C0C0C0';";?>> <span class= "textElemSoumission" id="spanPrenom">Prenom de l'artiste</span></label>
+				<input type="text" class="inputFormSoumission" name="inputPrenomArtiste" id="prenomArtiste" <?php if ($data!=""){ echo " value='".ca($data["prenom"])."'"; } ?><?php if ($data!="" && $data["nomCollectif"]!="") echo "disabled = true";?>>
 				<!--Nom-->
 				<label class="elemSoumission" id="labelNom"><span id="spanNom">Nom de l'artiste</span></label>
-				<input name="inputTextNom" type="text" id="nomArtiste"<?php if ($data!=""){ echo " value='".ca($data["nom"])."'"; } ?><?php if ($data!="" && $data["nomCollectif"]!="") echo "disabled = true";?>><br><br>
+				<input name="inputTextNom" class="inputFormSoumission" type="text" id="nomArtiste"<?php if ($data!=""){ echo " value='".ca($data["nom"])."'"; } ?><?php if ($data!="" && $data["nomCollectif"]!="") echo "disabled = true";?>><br><br>
 				<!-- Affichage resultat Recherche Artiste-->		
 				<div id="resultatRechercheArtiste"></div>
 			</div>
@@ -550,72 +553,72 @@
 		<!--Radio Collectif-->
 			<!--<input type="radio" name= "nomOuCollectif" value="nomCollectif"-->
 			<?php if ($data!="" && $data["nomCollectif"]!="") {
-				echo '<input type="radio" name= "nomOuCollectif" value="nomCollectif" checked>';
+				echo '<input type="radio" class="radioNomArtiste" name= "nomOuCollectif" value="nomCollectif" checked>';
 			}
 			else {
-				echo '<input type="radio" name= "nomOuCollectif" value="nomCollectif">';				
+				echo '<input type="radio" class="radioNomArtiste" name= "nomOuCollectif" value="nomCollectif">';				
 			} 
 			?>
 			<br>
 			
 			<!--Collectif-->
-			<label class="elemSoumission" id="labelCollectif"><span class= "textElemSoumission" id="spanCollectif" <?php if ($data==""||($data!="" && $data["nomCollectif"]=="")) echo "style='color: grey';";?>>Nom de collectif</span></label>
-			<input name="inputTextCollectif" type="text" id="nomCollectif"<?php if ($data!=""){ echo "value='".ca($data["nomCollectif"])."'";}?><?php if ($data==""|| ($data!="" && $data["nomCollectif"]=="")) echo "disabled = true";?>><br><br>
+			<label class="elemSoumission" id="labelCollectif"><span class= "textElemSoumission" id="spanCollectif" <?php if ($data==""||($data!="" && $data["nomCollectif"]=="")) echo "style='color: #C0C0C0';";?>>Nom de collectif</span></label>
+			<input name="inputTextCollectif"  class="inputFormSoumission" type="text" id="nomCollectif"<?php if ($data!=""){ echo "value='".ca($data["nomCollectif"])."'";}?><?php if ($data==""|| ($data!="" && $data["nomCollectif"]=="")) echo "disabled = true";?>><br><br>
 			<!-- Affichage resultat Recherche Collectif-->
 			<div id="resultatRechercheCollectif"></div>
 			
 			<!--Bio de l'artiste-->
 			<label class="elemSoumission"> <span class= "textElemSoumission">Biographie de l'artiste</span></label>
-			<textarea rows="4" cols="50" name="inputBio" id="bio"><?php if ($data!=""){ echo ca($data["biographie"]); } ?></textarea>
+			<textarea rows="4" cols="50" class="inputTextAreaFormSoumission" name="inputBio" id="bio"><?php if ($data!=""){ echo ca($data["biographie"]); } ?></textarea>
 			
 			<!-- Mode d'acquisition -->
 			<label class="elemSoumission"> <span class= "textElemSoumission">Mode d'acquisition</span></label>
-			<input type="text" name="inputModeAcquisition" id="modeAcquisition" <?php if ($data!=""){ echo " value='".ca($data["modeAcquisition"])."'"; } ?>>
+			<input type="text" class="inputFormSoumission" name="inputModeAcquisition" id="modeAcquisition" <?php if ($data!=""){ echo " value='".ca($data["modeAcquisition"])."'"; } ?>>
 			
 			<!-- Numero d'accession -->
 			<label class="elemSoumission"> <span class= "textElemSoumission">Numero d'accession</span></label>
-			<input type="text" name="inputNumeroAccession" id="numeroAccession" <?php if ($data!=""){ echo " value='".ca($data["numeroAccession"])."'"; } ?>>
+			<input type="text" class="inputFormSoumission" name="inputNumeroAccession" id="numeroAccession" <?php if ($data!=""){ echo " value='".ca($data["numeroAccession"])."'"; } ?>>
 			
 			<!-- Date d'accession -->
 			<label class="elemSoumission"> <span class= "textElemSoumission">Date d'accession</span></label>
-			<input type="text" name="inputDateAccession" id="dateAccession" <?php if ($data!=""){ echo " value='".ca($data["dateAccession"])."'"; } ?>>
+			<input type="text" class="inputFormSoumission" name="inputDateAccession" id="dateAccession" <?php if ($data!=""){ echo " value='".ca($data["dateAccession"])."'"; } ?>>
 			
 			<!-- Matériaux -->
 			<label class="elemSoumission"> <span class= "textElemSoumission">Matériaux</span></label>
-			<input type="text" name="inputMateriaux" id="materiaux" <?php if ($data!=""){ echo " value='".ca($data["materiaux"])."'"; } ?>>
+			<input type="text" class="inputFormSoumission" name="inputMateriaux" id="materiaux" <?php if ($data!=""){ echo " value='".ca($data["materiaux"])."'"; } ?>>
 			
 			<!-- Support -->
 			<label class="elemSoumission"> <span class= "textElemSoumission">Support</span></label>
-			<input type="text" name="inputSupport" id="support" <?php if ($data!=""){ echo " value='".ca($data["support"])."'"; } ?>>
+			<input type="text" class="inputFormSoumission" name="inputSupport" id="support" <?php if ($data!=""){ echo " value='".ca($data["support"])."'"; } ?>>
 			
 			<!-- Technique -->
 			<label class="elemSoumission"> <span class= "textElemSoumission">Technique</span></label>
-			<input type="text" name="inputTechnique" id="technique" <?php if ($data!=""){ echo " value='".ca($data["technique"])."'"; } ?>>
+			<input type="text" class="inputFormSoumission" name="inputTechnique" id="technique" <?php if ($data!=""){ echo " value='".ca($data["technique"])."'"; } ?>>
 			
 			<!-- categorieObjet -->
 			<label class="elemSoumission"> <span class= "textElemSoumission">Categorie de l'objet</span></label>
-			<input type="text" name="inputCategorieObjet" id="categorieObjet" <?php if ($data!=""){ echo " value='".ca($data["categorieObjet"])."'"; } ?>>
+			<input type="text" class="inputFormSoumission" name="inputCategorieObjet" id="categorieObjet" <?php if ($data!=""){ echo " value='".ca($data["categorieObjet"])."'"; } ?>>
 			
 			<!-- Dimensions generales -->
 			<label class="elemSoumission"> <span class= "textElemSoumission">Dimensions generales</span></label>
-			<input type="text" name="inputDimensionGenerales" id="dimensionGenerales" <?php if ($data!=""){ echo " value='".ca($data["dimensionsGenerales"])."'"; } ?>>
+			<input type="text" class="inputFormSoumission" name="inputDimensionGenerales" id="dimensionGenerales" <?php if ($data!=""){ echo " value='".ca($data["dimensionsGenerales"])."'"; } ?>>
 			
 		
 			<!-- Coordonnee latitude -->
 			<label class="elemSoumission"> <span class= "textElemSoumission">Coordonnee latitude</span></label>
-			<input type="text" name="inputCoordonneeLatitude" id="coordonneeLatitude" <?php if ($data!=""){ echo " value='".ca($data["coordonneeLatitude"])."'"; } ?>>
+			<input type="text" class="inputFormSoumission" name="inputCoordonneeLatitude" id="coordonneeLatitude" <?php if ($data!=""){ echo " value='".ca($data["coordonneeLatitude"])."'"; } ?>>
 		
 			<!-- Coordonnee longitude -->
 			<label class="elemSoumission"> <span class= "textElemSoumission">Coordonnee longitude</span></label>
-			<input type="text" name="inputCoordonneeLongitude" id="coordonneeLongitude" <?php if ($data!=""){ echo " value='".ca($data["coordonneeLongitude"])."'"; } ?>>
+			<input type="text" class="inputFormSoumission" name="inputCoordonneeLongitude" id="coordonneeLongitude" <?php if ($data!=""){ echo " value='".ca($data["coordonneeLongitude"])."'"; } ?>>
 		
 			<!-- Mediums -->
 			<label class="elemSoumission"> <span class= "textElemSoumission">Mediums</span></label>
-			<input type="text" name="inputMediums" id="mediums" <?php if ($data!=""){ echo " value='".ca($data["mediums"])."'"; } ?>>
+			<input type="text" class="inputFormSoumission" name="inputMediums" id="mediums" <?php if ($data!=""){ echo " value='".ca($data["mediums"])."'"; } ?>>
 			
 			<!-- Nom Collection -->
 			<label class="elemSoumission"> <span class= "textElemSoumission">Nom Collection</span></label>
-			<input type="text" name="inputNomCollection" id="nomCollection" <?php if ($data!=""){ echo " value='".ca($data["nomCollection"])."'"; } ?>>
+			<input type="text" class="inputFormSoumission" name="inputNomCollection" id="nomCollection" <?php if ($data!=""){ echo " value='".ca($data["nomCollection"])."'"; } ?>>
 			
 			<!-- Valide -->
 			<?php
@@ -638,7 +641,10 @@
 		</form>
 		
 		<br><br>
-		<input type="submit" <?php if($admin){echo"value='Valider cette oeuvre'";} else{echo"value='Soumettre cette oeuvre'";}?> id="envoyerSoumission"/>
+		<!--<input type="submit" if($admin){echo"value='Valider cette oeuvre'";} else{echo"value='Soumettre cette oeuvre'";} id="envoyerSoumission"/>-->
+		<button type="submit"id="envoyerSoumission">
+			<img id="imgSoumission" src="images/logo-Soumettre.jpg" alt="submit" />
+		</button>
 		<?php 
 		if ($admin){
 			echo "<input type='submit' value='Supprimer l&#39;oeuvre' id='supprimerSoumission'/>"; // Lien pour faire le delete de la soumission

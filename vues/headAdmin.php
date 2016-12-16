@@ -5,4 +5,5 @@
 	<script type="text/javascript" src="./js/md5.js"></script>
 	<script type="text/javascript" src="./js/admin.js"></script>
 	<link rel="stylesheet" href="css/soumission.css"/>
+	<link rel="stylesheet" href="css/admin.css"/>
 </head>
