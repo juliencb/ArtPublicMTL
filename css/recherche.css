@@ -1,147 +1,192 @@
 @font-face {
     font-family: 'bang_whack_powregular';
     src: url('font/bang_whack_pow-webfont.eot');
-    src: url('font/bang_whack_pow-webfont.eot?#iefix') format('embedded-opentype'),
-         url('font/bang_whack_pow-webfont.woff2') format('woff2'),
-         url('font/bang_whack_pow-webfont.woff') format('woff'),
-         url('font/bang_whack_pow-webfont.ttf') format('truetype'),
-         url('font/bang_whack_pow-webfont.svg#bang_whack_powregular') format('svg');
+    src: url('font/bang_whack_pow-webfont.eot?#iefix') format('embedded-opentype'), url('font/bang_whack_pow-webfont.woff2') format('woff2'), url('font/bang_whack_pow-webfont.woff') format('woff'), url('font/bang_whack_pow-webfont.ttf') format('truetype'), url('font/bang_whack_pow-webfont.svg#bang_whack_powregular') format('svg');
     font-weight: normal;
     font-style: normal;
 }
 
-#inputRecherche{
-	background-color: transparent;
-	width: 400px;
-	height: 30px;
-	margin-left: -200px;
-	border: none;
+#inputRecherche {
+    background-color: transparent;
+    width: 400px;
+    height: 30px;
+    margin-left: -200px;
+    border: none;
     border-bottom: 2px solid white;
-	font-size: 1.5em;
-	color: white;
-	font-family: 'bang_whack_powregular';
+    font-size: 1.5em;
+    color: white;
+    font-family: 'bang_whack_powregular';
 }
 
-#inputRecherche:focus{	
-	outline: none;	
+#inputRecherche:focus {
+    outline: none;
 }
 
-#faSearch{
-	color: white;
-	font-size: 1.7em;
+#faSearch {
+    color: white;
+    font-size: 1.7em;
 }
 
-#textRecherchez{
-	display: inline;
-	margin-left: -200px;
-	font-size: 1.5em;
-	color: white;
-	font-family: 'bang_whack_powregular';
-	padding-top: 30px;
-	letter-spacing: 3px;
+#textRecherchez {
+    display: inline;
+    margin-left: -200px;
+    font-size: 1.5em;
+    color: white;
+    font-family: 'bang_whack_powregular';
+    padding-top: 30px;
+    letter-spacing: 3px;
 }
 
-.divChoixRecherche{
-	overflow:hidden;
-	height:30px;
-	margin-left: -50px;
-	margin-top: -31px;
-	letter-spacing: 3px;
+.divChoixRecherche {
+    overflow: hidden;
+    height: 30px;
+    margin-left: -50px;
+    margin-top: -31px;
+    letter-spacing: 3px;
+    &:after,
+    &:before {
+        position: absolute;
+        -webkit-animation-name: opacity;
+        -webkit-animation-duration: 4s;
+        -webkit-animation-iteration-count: infinite;
+        animation-name: opacity;
+        animation-duration: 4s;
+        animation-iteration-count: infinite;
+    }
+}
 
-  &:after, &:before {
-    position:absolute;
-    -webkit-animation-name: opacity;
-    -webkit-animation-duration: 4s;
+#listeChoixRecherche {
+    margin-top: 0;
+    text-align: left;
+    list-style: none;
+    -webkit-animation-name: change;
+    -webkit-animation-duration: 12s;
     -webkit-animation-iteration-count: infinite;
-    animation-name: opacity;
-    animation-duration: 4s;
+    animation-name: change;
+    animation-duration: 12s;
     animation-iteration-count: infinite;
-  }
 }
 
-#listeChoixRecherche{
-	margin-top:0;	
-	text-align:left;
-	list-style:none;
-	-webkit-animation-name: change;
-	-webkit-animation-duration: 12s;
-	-webkit-animation-iteration-count: infinite;
-	animation-name: change;
-	animation-duration: 12s;
-	animation-iteration-count: infinite;
+.elmChoixRecherche {
+    font-size: 1.5em;
+    color: white;
+    font-family: 'bang_whack_powregular';
+    list-style: none;
 }
 
-.elmChoixRecherche{
-	font-size: 1.5em;
-	color: white;
-	font-family: 'bang_whack_powregular';	
-	list-style: none;
-}
 
 /*Reference: http://www.hongkiat.com/blog/css-text-effects/ (inspiration)*/
 
 @-webkit-keyframes opacity {
-  0%, 100% {opacity:0;}
-  50% {opacity:1;}
+    0%,
+    100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
 }
 
 @-webkit-keyframes change {
-  0%, 12%, 100% {transform:translateY(0);}
-  17%,29% {transform:translateY(-25%);}
-  34%,46% {transform:translateY(-50%);}
-  51%,63% {transform:translateY(-75%);}
-  68%,80% {transform:translateY(-50%);}
-  85%,97% {transform:translateY(-25%);}
+    0%,
+    12%,
+    100% {
+        transform: translateY(0);
+    }
+    17%,
+    29% {
+        transform: translateY(-25%);
+    }
+    34%,
+    46% {
+        transform: translateY(-50%);
+    }
+    51%,
+    63% {
+        transform: translateY(-75%);
+    }
+    68%,
+    80% {
+        transform: translateY(-50%);
+    }
+    85%,
+    97% {
+        transform: translateY(-25%);
+    }
 }
 
 @keyframes opacity {
-  0%, 100% {opacity:0;}
-  50% {opacity:1;}
+    0%,
+    100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
 }
 
 @keyframes change {
-  0%, 12%, 100% {transform:translateY(0);}
-  17%,29% {transform:translateY(-25%);}
-  34%,46% {transform:translateY(-50%);}
-  51%,63% {transform:translateY(-75%);}
-  68%,80% {transform:translateY(-50%);}
-  85%,97% {transform:translateY(-25%);}
+    0%,
+    12%,
+    100% {
+        transform: translateY(0);
+    }
+    17%,
+    29% {
+        transform: translateY(-25%);
+    }
+    34%,
+    46% {
+        transform: translateY(-50%);
+    }
+    51%,
+    63% {
+        transform: translateY(-75%);
+    }
+    68%,
+    80% {
+        transform: translateY(-50%);
+    }
+    85%,
+    97% {
+        transform: translateY(-25%);
+    }
 }
 
-#formRecherche{
-	margin-left: 80%;
-} 
-
-#resultatRecherche{
-	float: right;
-	border: 1px solid black;
-	padding-left: 10px;
-	background-color: white;
-	margin: 0px 10px 13px 0px;
+#formRecherche {
+    margin-left: 80%;
 }
 
-#titreListe{
-	font-size: 15px;
-	font-family: 'Share Tech Mono', monospace;
-	margin: 5px 0px;
+#resultatRecherche {
+    float: right;
+    border: 1px solid black;
+    padding-left: 10px;
+    background-color: white;
+    margin: 0px 10px 13px 0px;
 }
 
-#resultatRecherche ul{
-	list-style:none;
-	margin-top: -10px;
-	max-height: 70px;
-	display:block;
-	overflow:auto;
-	overflow-x: hidden;
+#titreListe {
+    font-size: 15px;
+    font-family: 'Share Tech Mono', monospace;
+    margin: 5px 0px;
 }
 
-#resultatRecherche li{
-	font-size: 10px;
-	margin-top: 5px;
-	margin-right: 10px;
+#resultatRecherche ul {
+    list-style: none;
+    margin-top: -10px;
+    max-height: 70px;
+    display: block;
+    overflow: auto;
+    overflow-x: hidden;
 }
 
-#resultatRecherche a{
-	color: black;
-	text-decoration: none;
+#resultatRecherche li {
+    font-size: 10px;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+#resultatRecherche a {
+    color: black;
+    text-decoration: none;
 }

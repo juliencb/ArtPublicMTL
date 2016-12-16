@@ -1,19 +1,15 @@
 <?php
-	class Controleur_AdminsAjax extends BaseControleur
-	{	
+	class Controleur_AdminsAjax extends BaseControleur{	
 		//la fonction qui sera appelée par le routeur
-		public function traite(array $params)
-		{				
+		public function traite(array $params){				
             // vérifie s'il y a une action passÃ©e en paramÃªtre
-			if(isset($params["action"]))
-			{
+			if(isset($params["action"])){
 				//modèle et vue vides par dÃ©faut
 				$data = array();
 				$vue = "";
 				//switch en fonction de l'action qui nous est envoyÃ©e
 				//ce switch détermine la vue $vue et obtient le modÃ¨le $data
-				switch($params["action"])
-				{			
+				switch($params["action"]){			
                    // si l'action est "importation"
                     case "importation":
                      $this->afficheVue("MiseAJourBD");	
@@ -26,10 +22,9 @@
 						echo "ERROR";		
 				}						
 			}
-			else
-			{
-					//action par dÃ©faut
-					echo "ERROR";					
+			else{
+                //action par défaut
+                echo "ERROR";					
 			}			
 		} // fin de la fonction traite
         
@@ -71,7 +66,7 @@
 				$urlImage            = "";
                 
                
-               $idArtiste = $modeleAdmins->getIdSelonNoInterneA($noInterneArtiste);
+                $idArtiste = $modeleAdmins->getIdSelonNoInterneA($noInterneArtiste);
 			  
                 // insertion dans la table catégorie
                 $modeleAdmins->insereCategorie($categorie);
@@ -107,8 +102,7 @@
 		} // fin de la fonction importeOeuvreArtiste
 		
 		
-		public function importeArrondissements()
-		{
+		public function importeArrondissements(){
             // va chercher le fichier JSON des arrondissements de la ville de MontrÃ©al
 			$modeleAdmins = new Modele_admins();
 			$arron = file_get_contents('http://donnees.ville.montreal.qc.ca/dataset/00bd85eb-23aa-4669-8f1b-ba9a000e3dd8/resource/e9b0f927-8f75-458c-8fda-b5da65cc8b73/download/limadmin.json');
