@@ -25,18 +25,26 @@
 					case "soumission":
 						$modeleOeuvres= new Modele_Oeuvres();
 						$oeuvre = "";
-						if (isset($params["id"])) $oeuvre = $modeleOeuvres->obtenirOeuvre($params["id"]);							
-						if ($oeuvre !="") {
-							$this->afficheSoumission($oeuvre);
-							break; // Si il a les infos d<une oeuvre il sort (break)
+						if(!isset($_SESSION["authentifie"])){ 
+							header("Location:./index.php?Admins&action=login");
+						}else{			
+							if (isset($params["id"])) $oeuvre = $modeleOeuvres->obtenirOeuvre($params["id"]);							
+							if ($oeuvre !="") {
+								$this->afficheSoumission($oeuvre);
+								$this->afficheVue("adminListeDesOeuvres", $data);
+								break; // Si il a les infos d<une oeuvre il sort (break)
+							}
 						}
-
 					case "listeDesOeuvres":	 // Sinon il affiche la liste des oeuvres
 						$modeleOeuvres= new Modele_Oeuvres();
-						$data = $modeleOeuvres->listeDesOeuvres();	
-						$this->afficheVue("adminListeDesOeuvres", $data);
-						break;									
-			
+						if(!isset($_SESSION["authentifie"])){ 
+							header("Location:./index.php?Admins&action=login");
+						}else{
+							$data = $modeleOeuvres->listeDesOeuvres();	
+							$this->afficheVue("headerAdmin","");
+							$this->afficheVue("adminListeDesOeuvres", $data);
+							break;									
+						}
 
 					case "authentification":
 					//Authentifie l'usager ou redirection-le vers la vue login
@@ -59,7 +67,7 @@
 					//pour initier le processus de login initie la Session grainDeSel
 					case "login":
 					default:
-						$this->afficheVue("vueLogin","");
+						//$this->afficheVue("vueLogin","");
 						if(!isset($_SESSION["grainDeSel"]))
 							$_SESSION["grainDeSel"] = rand(1, 10000);
 							$this->afficheVue("vueLogin",$_SESSION["grainDeSel"]);							
@@ -206,6 +214,7 @@
 		 public function afficheSoumission($oeuvre){
 			global $admin;
 			$admin = true;
+			$this->afficheVue("headerAdmin","");
 			$this->afficheVue("formSoumission", $oeuvre);
 		}
 		
@@ -220,6 +229,7 @@
 			if($motDePasseGrainSel == $motdePasse){
 				$_SESSION["authentifie"] = $nomUsager;
 				$data["authentifie"]=$_SESSION["authentifie"];
+				//$this->afficheVue("headerAdmin",$data);
 				$this->afficheVue("headerAdmin",$data);
 			}
 			else{

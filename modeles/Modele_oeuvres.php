@@ -100,7 +100,7 @@
 					$id = $resultat["id"];
 					
 				    //return $id . "&Merci pour votre soumission. Elle sera traite eventuellement... SqlUpdateBio = ".$sqlUpdateBio." sql = ". $sql;
-				    return $id ."&Merci pour votre soumission! Elle sera traitée sous peu par un administrateur du site ARTPUBLIC";
+				    return $id ."&MERCI POUR VOTRE SOUMISSION! \nELLE SERA TRAITÉE SOUS PEU PAR UN ADMINISTRATEUR DU SITE ARTPUBLIC";
 				}
 				else {
 					// BIG UPDATE.
@@ -137,10 +137,10 @@
 					
 				    //return $id . "&Les mises a jour ont ete effectue. SqlUpdateBio = ".$sqlUpdateBio."  Sql=". $sql;
 				    if($valide==1){
-						return $id ."&Les mises a jour ont ete effectuées. Cette Oeuvre est maintenant disponible sur le site ARTPUBLIC";	
+						return $id ."&LES MISES À JOUR ONT ÉTÉ EFFECTUÉES. \nCETTE OEUVRE EST MAINTENANT DISPONIBLE SUR LE SITE ARTPUBLIC";	
 					}
 					else{
-						return $id ."&Les mises a jour ont ete effectuées. Prenez note que cette oeuvre n'est pas encore disponible sur le site. (Pour la rendre disponible, cochez la case AUTORISÉ";	
+						return $id ."&LES MISES À JOUR ONT ÉTÉ EFFECTUÉES. ";	
 					}
 					
 

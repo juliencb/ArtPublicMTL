@@ -78,6 +78,8 @@
 	list-style: none;
 }
 
+/*Reference: http://www.hongkiat.com/blog/css-text-effects/ (inspiration)*/
+
 @-webkit-keyframes opacity {
   0%, 100% {opacity:0;}
   50% {opacity:1;}

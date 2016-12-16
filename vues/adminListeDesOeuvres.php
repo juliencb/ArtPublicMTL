@@ -6,6 +6,7 @@
 		if ($oeuvres["sousSection"]!= "") {
 			// BOUCLE des soumission (ayant section sous section)
 			// fermeture des divisions
+			echo "<div id='idListeDesOeuvres'>";
 			if ($oeuvres["sousSection"] != $sousSection && $sousSection != "") echo "</ul></div>";  // fermeture de la sous section
 			if ($oeuvres["section"] != $section && $section != "") echo "</div>";  // fermeture de la section.
 			
@@ -51,7 +52,7 @@
 		}
 
 	}
-	echo "</ul></div>";
+	echo "</ul></div></div>";
 
 ?>		
 	
