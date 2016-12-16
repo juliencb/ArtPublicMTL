@@ -22,13 +22,14 @@
 						break;
 
 					case "listeOeuvres":
-							$this->afficheVue("headerPasAccueil");
-						$this->afficheVue("ouvertureAside",""); 
-						$this->afficheVue("rechercheGauche","");   
+						$this->afficheVue("headerPasAccueil");
+						$this->afficheVue("ouvertureAside","");
+						$this->afficheVue("rechercheGauche",""); 
+						$this->afficheListeCategories();
+						$this->afficheListeArrondissements();
 						$this->afficheVue("vueBtnSoumission",""); 
 						$this->afficheVue("fermetureAside","");						
 						$this->afficheListeOeuvres();		
-
 						break;
 						
 					case "listeArtistes":

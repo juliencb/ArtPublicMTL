@@ -34,4 +34,10 @@
 .AIspace-around {align-items: space-around;}
 .AIstretch      {align-items: stretch;}
 
-.tousEgal       {flex: 1 0 auto;}
+.tousEgal{flex:1 0 autio;}
+
+
+/*tasse les item */
+.sansWrap{ flex-wrap: nowrap;}
+.avecWrap{ flex-wrap: wrap;}
+.inverseWrap{ flex-wrap: wrap-inverse;}
