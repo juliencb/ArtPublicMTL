@@ -1,2 +1,2 @@
-﻿<div class="contenu flex pas_accueil">
-	<aside>
+<div class="contenu flex row pas_accueil">
+	<aside class="sandwich">

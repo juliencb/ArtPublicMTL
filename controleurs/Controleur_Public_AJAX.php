@@ -1,8 +1,8 @@
 <?php
 	class Controleur_Public_AJAX extends Controleur_Public{	
 		//la fonction qui sera appelée par le routeur
-		public function traite(array $params){				
-			if(isset($params["action"])){
+		public function traite(array $params){	
+            if($params["action"]){
 				//modèle et vue vides par défaut
 				$data = array();
 				$vue = "";
@@ -13,12 +13,10 @@
 						if(isset($params["idValue"]) && ($params["idValue"])!=""){   
 							if(($params["idValue"])=="_"){
 								$this->afficheListeOeuvres();
-								
 							}
 							else{
 								$this->afficheOeuvreCategorie($params["idValue"]);		
 							}
-							
 						}
 					break;
 				

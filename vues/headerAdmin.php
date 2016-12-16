@@ -17,6 +17,7 @@
 						<li class="itemMenu"><a href="index.php?Admins&action=">Modifier le caroussel  ------ Non fonctionnel </a></li>
 						<li class="itemMenu"><a href="index.php?Admins&action=apropos">Modifier le contenu À Propos------ Non fonctionnel </a></li>
 						<li class="itemMenu"><a href="index.php?Admins&action=">Mettre à jour les données publiques</a></li>
+
 					</ul>
 				</nav>	
 			</div>
