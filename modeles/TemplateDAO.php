@@ -44,19 +44,4 @@
 			}
 		}
 	}
-
-		/*public function supprimer($valeur, $cle = null){
-			try{
-				if($cle == null){
-					$cle = $this->getPrimaryKey();
-				}
-				$stmt = $this->connexion->prepare("delete from " . $this->getTable() . " where " . $cle . " = :valeur");
-				$stmt->bindParam(":valeur", $valeur);
-				$stmt->execute();
-				return true;
-			}
-			catch(Exception $exc){
-				return false;
-			}
-		}*/
 ?>

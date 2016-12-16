@@ -70,14 +70,12 @@
 					//pour initier le processus de login initie la Session grainDeSel
                     case "login":
 					default:
-
 						if(!isset($_SESSION["grainDeSel"]))
 							$_SESSION["grainDeSel"] = rand(1, 10000);
 							$this->afficheVue("vueLogin",$_SESSION["grainDeSel"]);							
 						break;
 				}		
 			}
-
 			else{
 				//actions par défaut 
 				if(!isset($_SESSION["grainDeSel"]))	
@@ -87,8 +85,6 @@
 			}
 			//inclusion du footer 
 			$this->afficheVue("footerAdmin");	
-
-
 		} // fin de la fonction traite
         
         public function importeOeuvre(){
@@ -127,12 +123,11 @@
 				$description         = "";
 				$urlImage            = "";
                 
-               $idArtiste = $modeleAdmins->getIdSelonNoInterneA($noInterneArtiste);
+                $idArtiste = $modeleAdmins->getIdSelonNoInterneA($noInterneArtiste);
 			  
                 // insertion dans la table catégorie
                 $modeleAdmins->insereCategorie($categorie);
-                
-                
+                    
                 // insertion dans la table oeuvre
 				$modeleAdmins->insereOeuvre( 
 					$noInterne, 
@@ -198,7 +193,6 @@
 				$idArtiste = $modeleAdmins->getIdSelonNoInterneA($noInterneArtiste);
                 //insÃ¨re les deux id retrouvÃ©s pour faire le lien
 				$modeleAdmins->insereLiens($idOeuvre["id"], $idArtiste["id"]);
-
 			}
 		} // fin de la fonction lienArtisteOeuvre
 
@@ -219,11 +213,9 @@
                 //insertion dans la table artiste
                 $modeleAdmins->insereArtiste($noInterneArtiste, $nom, $prenom, $nomCollectif);
 			} // fin de la boucle
-			
 		} // fin de la fonction lienArtisteOeuvre
-
-		
-		 public function afficheSoumission($oeuvre){
+        
+		public function afficheSoumission($oeuvre){
 			global $admin;
 			$admin = true;
 			$this->afficheVue("headerAdmin","");
@@ -249,6 +241,5 @@
 				$this->afficheVue("vueLogin",$data);
 			}	
 		}// fin de la fonction authenficationUsager
-
 	}
 ?>
