@@ -1,15 +1,12 @@
 .elemSoumission {
     display: block;
-    margin-top: 20px;
+    margin-top: 60px;
     //margin-bottom: -10px;
+    text-align: center;
 }
 
 #etoileImportant {
     color: red;
-}
-
-#labelImportImage {
-    text-decoration: underline;
 }
 
 #labelImportImage:hover {
@@ -27,20 +24,147 @@
 
 #divSoumission {
     margin-left: 20%;
-    font-size: 15px;
-    font-family: 'Share Tech Mono', monospace;
-}
-
-#labelNom,
-#labelPrenom {
-    display: inline;
-}
-
-#nomOuCollectif {
-    margin-top: 50px;
-    display: block;
+    margin-right: 25%;
+    font-size: 20px;
+    font-family: 'klillregular';
+    border: 1px solid grey;
+    padding: 15px;
+    padding-top: 0px;
 }
 
 #labelCollectif {
     margin-top: 5px;
+}
+
+#titre {
+    //margin-top: -100px;
+}
+
+#formChargementImage {
+    //padding-left: 10%;
+    text-align: center;
+}
+
+.inputFormSoumission,
+#categorie,
+#arrondissements {
+    margin-right: 20%;
+    margin-left: 20%;
+    width: 60%;
+    border: none;
+    border-bottom: 2px solid;
+    text-align: center;
+    font-family: 'klillregular';
+    font-size: 17px;
+}
+
+.inputTextAreaFormSoumission {
+    margin-top: 10px;
+    margin-right: 20%;
+    margin-left: 20%;
+    width: 60%;
+    font-family: 'klillregular';
+    font-size: 17px;
+    padding: 10px;
+}
+
+.inputFormSoumission,
+.inputTextAreaFormSoumission,
+#categorie,
+#envoyerSoumission,
+#btnAjoutInfos,
+#arrondissements:focus {
+    outline: none;
+}
+
+#envoyerSoumission,
+#btnAjoutInfos:hover {
+    cursor: pointer;
+}
+
+#labelImportImage {
+    text-decoration: underline;
+}
+
+#description {
+    margin-bottom: 30px;
+}
+
+.radioNomArtiste {
+    border: 1px solid;
+    margin-left: 20%;
+    margin-top: 50px;
+}
+
+#categorie option {
+    text-align: center;
+}
+
+#id {
+    background-color: transparent;
+    border: 0px solid;
+    margin-left: 85%;
+    font-size: 20px;
+    //margin-bottom:-30px;
+    //margin-top: 30px;
+}
+
+#msgRetourSoumission {
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+    //border: 1px solid;
+    overflow: hidden;
+    font-family: 'bang_whack_powregular';
+}
+
+#idMsgRetourSoumission {
+    margin-top: -100px;
+    margin-left: 20%;
+    margin-right: 25%;
+    //border: 1px solid;
+}
+
+#formSoumissionObligatoire {
+    //border: 1px solid;
+    margin-top: -40px;
+}
+
+#formChargementImage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#imgId {
+    width: 150px;
+}
+
+#btnAjoutInfos {
+    background-color: transparent;
+    font-family: 'bang_whack_powregular';
+    font-size: 30px;
+    border: none;
+    margin-left: 10%;
+}
+
+#envoyerSoumission {
+    background-color: transparent;
+    border: none;
+    margin-left: 70%;
+}
+
+#imgSoumission {
+    width: 60%;
+}
+
+#labelPrenom {
+    margin-top: -10px;
+}
+
+#resultatRechercheArtiste,
+#resultatRechercheCollectif {
+    text-align: center;
 }

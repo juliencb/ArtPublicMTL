@@ -2,6 +2,7 @@
 	class Controleur_Public extends BaseControleur{
 	
 		//la fonction qui sera appelée par le routeur
+
 		public function traite(array $params){
 			//affichage du header
 			$this->afficheVue("head");
@@ -22,9 +23,12 @@
 
 					case "listeOeuvres":
 						$this->afficheVue("headerPasAccueil");
-					    $this->afficheListeCategories();					
+						$this->afficheVue("ouvertureAside","");
+						$this->afficheVue("rechercheGauche",""); 
+						$this->afficheListeCategories();
 						$this->afficheListeArrondissements();
-						$this->afficheRecherche();						
+						$this->afficheVue("vueBtnSoumission",""); 
+						$this->afficheVue("fermetureAside","");						
 						$this->afficheListeOeuvres();		
 						break;
 						
@@ -61,27 +65,35 @@
 						break;		
                         
 					case "details":
-						$this->afficheVue("headerPasAccueil");
+						
 						if(isset($params["id"])){
-							$this->afficheRecherche();
+                            $this->afficheVue("headerPasAccueil");
+                            $this->afficheVue("ouvertureAside",""); 
+                            $this->afficheVue("rechercheGauche","");   
+                            $this->afficheVue("vueBtnSoumission",""); 
+                            $this->afficheVue("fermetureAside",""); 
 							$this->afficheDetails($params["id"]);	
 						}	
 						break;
 
 					case "afficheOeuvreslieu":
                         if(isset($params["idValue"])){
-                            $this->afficheRecherche();	
-                            $this->afficheListeCategories();					
-                            $this->afficheListeArrondissements();
+                            $this->afficheVue("headerPasAccueil");
+                            $this->afficheVue("ouvertureAside",""); 
+                            $this->afficheVue("rechercheGauche","");   
+                            $this->afficheVue("vueBtnSoumission",""); 
+                            $this->afficheVue("fermetureAside","");
                             $this->afficheOeuvresLieu($params["idValue"]);
                         }
                         break;
 					
 					case "afficheOeuvrescategorie":
                         if(isset($params["idValue"])){
-                            $this->afficheRecherche();	
-                            $this->afficheListeCategories();					
-                            $this->afficheListeArrondissements();
+                            $this->afficheVue("headerPasAccueil");
+                            $this->afficheVue("ouvertureAside",""); 
+                            $this->afficheVue("rechercheGauche","");   
+                            $this->afficheVue("vueBtnSoumission",""); 
+                            $this->afficheVue("fermetureAside","");
                             $this->afficheOeuvresCategorie($params["idValue"]);
 
                         }
@@ -95,7 +107,7 @@
 						$this->afficheVue("fermetureAside","");						
                         $this->affichePageApropos();   
 					    break;
-                        
+
                     case "carte":
                             $this->afficheCarte();					
                         break;	
@@ -112,6 +124,7 @@
 				$this->afficheVue("pageAccueil","");	
 				$this->afficheRecherche();	
 			}
+
 			//inclusion du footer dans le cas d'une requête qui n'est pas AJAX
 			$this->afficheVue("footer");
 		}
@@ -123,15 +136,17 @@
            	$this->afficheVue("vueOeuvres", $data);
 		}
 		
-
 		///--fonction permet d'affiche la liste des categories--///	
 		public function afficheListeCategories(){
 			$modeleCategories= new Modele_categories();
+
 			$data = $modeleCategories->obtenirTous();
 			$this->afficheVue("vueOptionCategories", $data);
 		}
 		
 		public function afficheSoumission(){
+			global $admin;
+			$admin = false;
 			$this->afficheVue("formSoumission", "");
 		}
 

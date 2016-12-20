@@ -1,6 +1,6 @@
 <?php
-
 	function __autoload($classe){
+
 		$repertoires = array("./controleurs/", 
 							 "./modeles/", 
 							 "./vues/");

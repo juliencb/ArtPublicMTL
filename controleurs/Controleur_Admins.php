@@ -1,7 +1,9 @@
 <?php
+
 	class Controleur_Admins extends BaseControleur{	
-        
+
 		//la fonction qui sera appelée par le routeur
+
 		public function traite(array $params){	
 			//affichage du head
 			$this->afficheVue("headAdmin","");
@@ -19,9 +21,34 @@
 						$this->importeArrondissements();
 						$this->importeArtiste();
 						$this->importeOeuvre();
-						break;									  
-					
-					//si action est authentification de usager
+
+                       
+						break;
+                        
+					case "soumission":
+						$modeleOeuvres= new Modele_Oeuvres();
+						$oeuvre = "";
+						if(!isset($_SESSION["authentifie"])){ 
+							header("Location:./index.php?Admins&action=login");
+						}else{			
+							if (isset($params["id"])) $oeuvre = $modeleOeuvres->obtenirOeuvre($params["id"]);							
+							if ($oeuvre !="") {
+								$this->afficheSoumission($oeuvre);
+								$this->afficheVue("adminListeDesOeuvres", $data);
+								break; // Si il a les infos d<une oeuvre il sort (break)
+							}
+						}
+					case "listeDesOeuvres":	 // Sinon il affiche la liste des oeuvres
+						$modeleOeuvres= new Modele_Oeuvres();
+						if(!isset($_SESSION["authentifie"])){ 
+							header("Location:./index.php?Admins&action=login");
+						}else{
+							$data = $modeleOeuvres->listeDesOeuvres();	
+							$this->afficheVue("headerAdmin","");
+							$this->afficheVue("adminListeDesOeuvres", $data);
+							break;									
+						}
+
 					case "authentification":
 					//Authentifie l'usager ou redirection-le vers la vue login
 						if(isset($_POST["username"]) && isset($_POST["password"])){
@@ -41,9 +68,8 @@
 						break;
 						
 					//pour initier le processus de login initie la Session grainDeSel
-					case "login":
+                    case "login":
 					default:
-						$this->afficheVue("vueLogin","");
 						if(!isset($_SESSION["grainDeSel"]))
 							$_SESSION["grainDeSel"] = rand(1, 10000);
 							$this->afficheVue("vueLogin",$_SESSION["grainDeSel"]);							
@@ -59,7 +85,6 @@
 			}
 			//inclusion du footer 
 			$this->afficheVue("footerAdmin");	
-
 		} // fin de la fonction traite
         
         public function importeOeuvre(){
@@ -98,12 +123,11 @@
 				$description         = "";
 				$urlImage            = "";
                 
-               $idArtiste = $modeleAdmins->getIdSelonNoInterneA($noInterneArtiste);
+                $idArtiste = $modeleAdmins->getIdSelonNoInterneA($noInterneArtiste);
 			  
                 // insertion dans la table catégorie
                 $modeleAdmins->insereCategorie($categorie);
-                
-                
+                    
                 // insertion dans la table oeuvre
 				$modeleAdmins->insereOeuvre( 
 					$noInterne, 
@@ -147,7 +171,9 @@
 			}	
 		} // fin de la fonction importeArrondissements
 		
+
 		public function lienArtisteOeuvre(){
+
             // va chercher le fichier JSON des oeuvres publiques de la ville de Montréal
 			$modeleAdmins = new Modele_admins();
 			$fichierJSON = file_get_contents('http://donnees.ville.montreal.qc.ca/dataset/2980db3a-9eb4-4c0e-b7c6-a6584cb769c9/resource/18705524-c8a6-49a0-bca7-92f493e6d329/download/oeuvresdonneesouvertes.json');
@@ -158,9 +184,15 @@
 			for($i = 0; $i < $compteur; $i++){
                 //rempli les variables 
 				$noInterneArtiste    =$fichierJSON_decode[$i]->Artistes[0]->NoInterne;
- 
                 // va chercher l'id de l'artiste d'après son NoInterne
 				$idArtiste = $modeleAdmins->getIdSelonNoInterneA($noInterneArtiste);
+          
+                // va chercher l'id de l'oeuvre d'aprÃ¨s son NoInterne
+				$idOeuvre = $modeleAdmins->getIdSelonNoInterneO($noInterneOeuvre);
+                // va chercher l'id de l'artiste d'aprÃ¨s son NoInterne
+				$idArtiste = $modeleAdmins->getIdSelonNoInterneA($noInterneArtiste);
+                //insÃ¨re les deux id retrouvÃ©s pour faire le lien
+				$modeleAdmins->insereLiens($idOeuvre["id"], $idArtiste["id"]);
 			}
 		} // fin de la fonction lienArtisteOeuvre
 
@@ -181,8 +213,16 @@
                 //insertion dans la table artiste
                 $modeleAdmins->insereArtiste($noInterneArtiste, $nom, $prenom, $nomCollectif);
 			} // fin de la boucle
-			
 		} // fin de la fonction lienArtisteOeuvre
+        
+		public function afficheSoumission($oeuvre){
+			global $admin;
+			$admin = true;
+			$this->afficheVue("headerAdmin","");
+			$this->afficheVue("formSoumission", $oeuvre);
+		}
+		
+
 
 		//fait l'authenfication de l'usager avec la base de donnees
 		public function authenficationUsager($nomUsager,$motdePasse){
@@ -193,6 +233,7 @@
 			if($motDePasseGrainSel == $motdePasse){
 				$_SESSION["authentifie"] = $nomUsager;
 				$data["authentifie"]=$_SESSION["authentifie"];
+				//$this->afficheVue("headerAdmin",$data);
 				$this->afficheVue("headerAdmin",$data);
 			}
 			else{
