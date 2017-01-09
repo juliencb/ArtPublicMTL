@@ -353,7 +353,7 @@
             var xhr;
             xhr = new XMLHttpRequest();
             if (xhr) {
-                xhr.open("GET", "http://localhost/ArtPublicMTL/index.php?Admins_AJAX&action=supprimerOeuvre&id=" + document.getElementById("id").value);
+                xhr.open("GET", "http://localhost/ArtPublicMTL/index.php?AdminsAJAX&action=supprimerOeuvre&id=" + document.getElementById("id").value);
                 xhr.addEventListener("readystatechange", function () {
                     if (xhr.readyState === 4) {
                         if (xhr.status === 200) {

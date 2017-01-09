@@ -6,7 +6,7 @@
         <input type="text" class="inputLogin" id="username"=n ame="username" value="artpublicmtl" />
         <label class="elemLogin"> Mot de passe </label>
         <input type="password" class="inputLogin" id="password" name="password" value="art123" />
-        <input type="hidden" id="grainSel" name="grainSel" value="<?php echo $_SESSION[" grainDeSel "];?>"/>
+        <input type="hidden" id="grainSel" name="grainSel" value="<?php echo $_SESSION["grainDeSel"];?>"/>
         <input type="button" id="btnSoumettre" value="Se connecter" /> </form>
     <form id="formEncrypte" name="formEncrypte" method="POST" action="./index.php?Admins&action=authentification">
         <input type="hidden" name="username" />

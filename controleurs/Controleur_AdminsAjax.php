@@ -18,9 +18,13 @@
 						$this->importeOeuvre();
 						break;
                
+				}
+                case "supprimerOeuvre":
+                    $this->supprimeOeuvre();
+                    $this->afficheVue("adminListeDesOeuvres", $data);
+                break;
 					default:
 						echo "ERROR";		
-				}						
 			}
 			else{
                 //action par défaut
@@ -163,7 +167,12 @@
 			} // fin de la boucle
 		} // fin de la fonction lienArtisteOeuvre
        
-
+        public function supprimeOeuvre(){
+            $modeleAdmins = new Modele_admins();
+            if(isset($params["id"])){
+            $valide = $modeleAdmin->supprimer($params["id"]);
+            }	
+        }
 
 	}
 ?>

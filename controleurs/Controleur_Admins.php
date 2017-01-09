@@ -17,13 +17,7 @@
 				//ce switch détermine la vue $vue et obtient le modéle $data
 				switch($params["action"]){			
                    // si l'action est "importation"
-                    case "importation":
-						$this->importeArrondissements();
-						$this->importeArtiste();
-						$this->importeOeuvre();
-
-                       
-						break;
+                   
                         
 					case "soumission":
 						$modeleOeuvres= new Modele_Oeuvres();
