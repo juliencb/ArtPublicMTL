@@ -49,8 +49,7 @@
                         locations.push({
                             lat: <?php echo $oeuvres["coordonneeLatitude"] ?>
                             , lng: <?php echo $oeuvres["coordonneeLongitude"]?>
-                            , titre: "<?php echo $oeuvres["
-                            titre "] ?>"
+                            , titre: "<?php echo $oeuvres["titre"] ?>"
                             , infoWindow: "<?php echo $divInfo ?>"
                         });
                     </script>
@@ -68,15 +67,46 @@
             <div id="map"></div>
             <script>
                 function initMap() {
-                    var map = new google.maps.Map(document.getElementById('map'), {
-                        zoom: 12
-                            // met le centre de la map sur la dernière oeuvre entrée
-                            
-                        , center: {
-                            lat: <?php echo $oeuvres["coordonneeLatitude"] ?>
-                            , lng: <?php echo $oeuvres["coordonneeLongitude"] ?>
+                    //style: https://snazzymaps.com/style/71052/gray-and-red
+                        //documentation: https://developers.google.com/maps/documentation/javascript/styling
+                        // Create an array of styles.
+                      var styles = [{"featureType":"administrative","elementType":"labels","stylers":[{"visibility":"simplified"},{"color":"#ff0000"}]}
+                                    ,{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]}
+                                    ,{"featureType":"administrative.country","elementType":"labels","stylers":[{"color":"#fc0505"},{"visibility":"on"}]}
+                                    ,{"featureType":"administrative.province","elementType":"labels","stylers":[{"color":"#ff0000"},{"visibility":"simplified"}]}
+                                    ,{"featureType":"administrative.locality","elementType":"labels","stylers":[{"color":"#ff0000"},{"visibility":"simplified"}]}
+                                    ,{"featureType":"administrative.neighborhood","elementType":"labels","stylers":[{"color":"#ff0000"}
+                                    ,{"visibility":"simplified"}]},{"featureType":"administrative.land_parcel","elementType":"labels","stylers":[{"color":"#ff0000"},{"visibility":"simplified"}]}
+                                    ,{"featureType":"landscape","elementType":"all","stylers":[{"color":"#eaeaea"}]}
+                                    ,{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]}
+                                    ,{"featureType":"road","elementType":"all","stylers":[{"saturation": -100},{"lightness": 0}]}               //routes
+                                    ,{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]}
+                                    ,{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]}
+                                    ,{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},                                    //trains
+                                    {"featureType":"water","elementType":"all","stylers":[{"color":"#aaaaaa"},{"visibility":"on"}]}];
+
+                      // Create a new StyledMapType object, passing it the array of styles,
+                      // as well as the name to be displayed on the map type control.
+                      var styledMap = new google.maps.StyledMapType(styles,
+                        {name: "Styled Map"});
+
+                      // Create a map object, and include the MapTypeId to add
+                      // to the map type control.
+                      var mapOptions = {
+                        zoom: 11,
+                        center: new google.maps.LatLng(<?php echo $oeuvres["coordonneeLatitude"].",". $oeuvres["coordonneeLongitude"] ?>),
+                        mapTypeControlOptions: {
+                          mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
                         }
-                    });
+                      };
+                      var map = new google.maps.Map(document.getElementById('map'),
+                        mapOptions);
+
+                      //Associate the styled map with the MapTypeId and set it to display.
+                      map.mapTypes.set('map_style', styledMap);
+                      map.setMapTypeId('map_style');
+
+                      
                     var b = 0;
                     // https://developers.google.com/maps/documentation/javascript/events
                     var markers = locations.map(function (location, i) {

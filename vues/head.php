@@ -17,4 +17,5 @@
         <script src="./js/recherche.js"></script>
         <!--<script src="./js/soumission.js"></script>-->
         <!--<script src="js/telechargementImage.js"></script>-->
+        <title>Art Public Montreal</title>
     </head>

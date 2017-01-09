@@ -101,6 +101,13 @@
 
                         
                     case "carte":
+                            $this->afficheVue("headerPasAccueil");
+                            $this->afficheVue("ouvertureAside",""); 
+                            $this->afficheVue("rechercheGauche","");  
+                            $this->afficheListeCategories();
+                            $this->afficheListeArrondissements();
+                            $this->afficheVue("vueBtnSoumission",""); 
+                            $this->afficheVue("fermetureAside","");
                             $this->afficheCarte();					
                         break;	
 
