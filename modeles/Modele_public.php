@@ -60,11 +60,11 @@
 		
 		public function nomOeuvre($id){		
 			try{
-				$stmt = $this->connexion->prepare("select titre, categorieObjet, categorie, parc, materiaux, adresseCivique, urlImage, artiste.nom, artiste.prenom, artiste.nomCollectif, arrondissement.nom as nomArrondissement, coordonneeLatitude, coordonneeLongitude, idArtiste from oeuvre 
+				$stmt = $this->connexion->prepare("select titre, categorieObjet, categorie, parc, materiaux, adresseCivique, urlImage, artiste.nom, artiste.prenom, artiste.nomCollectif, arrondissement, coordonneeLatitude, coordonneeLongitude, idArtiste from oeuvre 
                 join artiste on oeuvre.idArtiste = artiste.id 
-				join arrondissement on oeuvre.arrondissement = arrondissement.nom WHERE oeuvre.id = :id AND oeuvre.valide = 0");
+				 WHERE oeuvre.id = :id AND oeuvre.valide = 0");
 				$stmt->execute(array(":id" => $id));
-				return $stmt->fetch();
+				return $stmt->fetchAll();
 			}	
 			catch(Exception $exc){
 				return 0;

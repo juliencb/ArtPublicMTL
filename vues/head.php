@@ -15,6 +15,7 @@
         <script src="./js/public_Oeuvres.js"></script>
         <script src="./js/admin.js"></script>
         <script src="./js/recherche.js"></script>
+        <script src="./js/maps.js"></script>
         <!--<script src="./js/soumission.js"></script>-->
         <!--<script src="js/telechargementImage.js"></script>-->
         <title>Art Public Montreal</title>
