@@ -12,7 +12,7 @@
 			try
 			{	
 						
-				$stmt = $this->connexion->prepare("SELECT * FROM a_propos");
+				$stmt = $this->connexion->prepare("SELECT * FROM a_propos ORDER BY id DESC LIMIT 0,1");
 				$stmt->execute();
 				return $stmt->fetch();
 			}		

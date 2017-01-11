@@ -42,7 +42,7 @@
 			for($i = 0; $i < $compteur; $i++){
             
                 // crée les variables à utiliser
-                $noInterneArtiste  =$fichierJSON_decode[$i]->Artistes[0]->NoInterne;
+                $noInterneArtiste  	 = $fichierJSON_decode[$i]->Artistes[0]->NoInterne;
 				$noInterne			 = $fichierJSON_decode[$i]->NoInterne;
 				$titre 				 = $fichierJSON_decode[$i]->Titre;
 				$titreVariante       = $fichierJSON_decode[$i]->TitreVariante;
