@@ -17,10 +17,62 @@
 						$this->importeArtiste();
 						$this->importeOeuvre();
 						break;
-               
-					default:
-						echo "ERROR";		
-				}						
+
+					// supression d'une oeuvre
+                    case "supprimerOeuvre":
+						if(isset($params["id"])){
+							$modeleOeuvre = new Modele_oeuvres();
+							$valide = $modeleOeuvre->supprimerOeuvre($params["id"]);
+							if($valide==""){
+								echo "";								
+							}
+							else{
+								echo "ERROR:".$valide;
+							}
+						}
+						else{													
+							echo "ERROR";
+						}
+						break;	
+
+						
+					// supression d'une image du caroussel
+                    case "supprimerImageCaroussel":
+						if(isset($params["urlImage"])){
+							$modeleCaroussel = new Modele_caroussel();
+							$valide = $modeleCaroussel->supprimerUrlImage($params["urlImage"]);
+							if($valide){
+								$data = $modeleCaroussel->imagesCaroussel();
+								$this->afficheVue("caroussel",$data);										
+							}
+							else{
+								echo "ERROR";
+							}
+						}
+						else{													
+							echo "ERROR";
+						}
+						break;	
+						
+					// ajout d'une image au caroussel
+                    case "ajoutImageCaroussel":
+						if(isset($params["urlImage"])){
+							$modeleCaroussel = new Modele_caroussel();
+							$valide = $modeleCaroussel->ajouterUrlImage($params["urlImage"]);
+							if($valide){
+								$data = $modeleCaroussel->imagesCaroussel();
+								$this->afficheVue("caroussel",$data);										
+							}
+							else{
+								echo "ERROR";
+							}
+						}
+						else{													
+							echo "ERROR";
+						}
+						break;	
+        
+				}
 			}
 			else{
                 //action par défaut
@@ -42,7 +94,7 @@
 			for($i = 0; $i < $compteur; $i++){
             
                 // crée les variables à utiliser
-                $noInterneArtiste  	 = $fichierJSON_decode[$i]->Artistes[0]->NoInterne;
+                $noInterneArtiste  =$fichierJSON_decode[$i]->Artistes[0]->NoInterne;
 				$noInterne			 = $fichierJSON_decode[$i]->NoInterne;
 				$titre 				 = $fichierJSON_decode[$i]->Titre;
 				$titreVariante       = $fichierJSON_decode[$i]->TitreVariante;
@@ -163,7 +215,12 @@
 			} // fin de la boucle
 		} // fin de la fonction lienArtisteOeuvre
        
-
+        public function supprimeOeuvre(){
+            $modeleAdmins = new Modele_admins();
+            if(isset($params["id"])){
+            $valide = $modeleAdmin->supprimer($params["id"]);
+            }	
+        }
 
 	}
 ?>

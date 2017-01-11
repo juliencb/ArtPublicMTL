@@ -8,6 +8,10 @@
     font-style: normal;
 }
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> upstream/master
 @font-face {
     font-family: 'klillregular';
     src: url('font/klill-light-webfont.eot');
@@ -26,9 +30,9 @@ body {
     font-size: 16px;
 }
 
-a {
-    text-decoration: none;
-    color: #000000;
+a{
+	text-decoration: none;
+	color: #000000;
 }
 
 h1 {
@@ -59,9 +63,7 @@ ul {
     padding: 30x;
 }
 
-
 /**CSS PAGE ACCUEIL**/
-
 .ombreTop{
     width:100%;
     height: 100%;
@@ -75,7 +77,7 @@ ul {
 }
 
 #logo {
-    width: 70%;
+    width: 80%;
     margin-left: -20px;
 }
 
@@ -85,7 +87,7 @@ ul {
 	background-image: url("../images/ligne_logo.png");
 	background-repeat: repeat-x;
     position: absolute;
-    top: 75px;
+    top: 80px;
     left: 0;
     z-index: -90;
 }
@@ -151,13 +153,24 @@ ul {
     color: #fff;
 }
 
+.ombreBottom{
+    width:100%;
+    height: 100%;
+    background-image: url("../images/degradeeNoir_petit_bottom.png");
+    background-repeat: repeat-x;
+    background-position: bottom; 
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: -100;
+}
+
 .pas_accueil #reseauxSociaux .icones a {
     color: #000;
 }
 
-
+/**FIN PAGE ACCUEIL**/
 /**DÉBUT PAGE DES ARTISTES**/
-
 #zoneDesArtistes,
 #descriptionArtiste {
     width: 100%;
@@ -167,7 +180,6 @@ ul {
     border-bottom: 2px solid black;
     margin: -10px 20px 20px 0;
 }
-
 
 /*http://www.webcis.com.br/dividir-texto-colunas-css3.html*/
 #zoneDesArtistes ul {
@@ -198,11 +210,7 @@ ul {
     position: absolute;
     bottom: -10px;
 }
-
-
 /**FIN PAGE DES ARTISTES**/
-
-
 /**DÉBUT PAGE DE LA BIO D'UN ARTISTE**/
 
 #infosMonArtiste {
@@ -229,11 +237,7 @@ ul {
     width: 30%;
     height: 30%;
 }
-
-
 /**FIN PAGE DE LA BIO D'UN ARTISTE**/
-
-
 /**DÉBUT PAGE À PROPOS**/
 .descriptionPagePropos {
     font-size: 1.2em;
@@ -246,8 +250,6 @@ ul {
 }
 
 /**FIN PAGE À PROPOS**/
-
-
 /**DÉBUT TEMPLATE GAUCHE**/
 
 #labelRechercheSimple {
@@ -319,11 +321,7 @@ ul {
     position: absolute;
     top: 100px;
 }
-
-
 /**FIN TEMPLATE GAUCHE**/
-
-
 /**Debut LISTEOEUVRES**/
 
 #collectionOeuvres .titrePage {
@@ -342,23 +340,5 @@ ul {
     width: 250px;
     height: 50px;
 }
-
-
 /**FIN LISTEOEUVRES**/
 
-
-/**DEBUT FOOTER**/
-
-.ombreBottom{
-    width:100%;
-    height: 100%;
-    background-image: url("../images/degradeeNoir_petit_bottom.png");
-    background-repeat: repeat-x;
-    background-position: bottom; 
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    z-index: -100;
-}
-
-/** FIN FOOTER**/
