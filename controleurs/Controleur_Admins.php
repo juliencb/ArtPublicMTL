@@ -67,6 +67,22 @@
 						}
 						break;
 						
+					// pour l'administration du caroussel.
+					case "gererCaroussel":
+						if(!isset($_SESSION["authentifie"])){ 
+							header("Location:./index.php?Admins&action=login");
+						}else{
+						  $modeleCaroussel= new Modele_caroussel();
+						  $data = $modeleCaroussel->imagesCaroussel();
+						  $this->afficheVue("headerAdmin","");						  
+						  $this->afficheVue("caroussel",$data);	
+						  $this->afficheVue("ajoutCaroussel","");
+						  $data = $modeleCaroussel->imagesOeuvresPourCaroussel();
+						  $this->afficheVue("listeImagesOeuvres",$data);											  
+						  
+						}
+						break;			
+						
 					//pour initier le processus de login initie la Session grainDeSel
                     case "login":
 					default:
