@@ -51,14 +51,14 @@ $(document).ready(function(){
 
 <!-- <body background=PHP echo $data[0]["urlImage"] ?> > -->
 <body>
-<!-- <body background="http://localhost/ArtPublicMTL/images/chromazone.JPG"> -->
-
-	<div id ="global" >
-
+<!--debut du conteneur GLOBAL-->
+	<div id ="global">
+		<div class="ombreTop"></div>
 		<!--Debut Section ENTÊTE-->
 		<header class ="entete flex row JCflex-start">
 			<a id="lienLogo" href="index.php">
-				<img id="logo" src="images/logo.png" alt="logo" >
+				<img id="logo" src="images/logo+blanc3.png" alt="logo" >
+				<div class="ligne_logo"></div>
 			</a>
 			<div class="menu">
 				<nav id="menuPrincipal">
@@ -66,7 +66,7 @@ $(document).ready(function(){
 						<li class="itemMenu"><a href="index.php?Public&action=listeOeuvres">OEUVRES</a></li>
 						<li class="itemMenu"><a href="index.php?Public&action=listeArtistes">ARTISTES</a></li>
 						<li class="itemMenu"><a href="#">CARTE</a></li>
-						<li class="itemMenu"><a href="#">À PROPOS</a></li>
+						<li class="itemMenu"><a href="index.php?Public&action=aPropos">À PROPOS</a></li>
 					</ul>
 				</nav>
 				<nav id="reseauxSociaux">
