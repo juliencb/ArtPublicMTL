@@ -16,7 +16,7 @@
 						<li class="itemMenu"><a href="index.php?Admins&action=listeDesOeuvres">Gérer les oeuvres</a></li>
 						<li class="itemMenu"><a href="index.php?Admins&action=gererCaroussel">Modifier le caroussel </a></li>
 						<li class="itemMenu"><a href="index.php?Admins&action=apropos">Modifier le contenu À Propos------ Non fonctionnel </a></li>
-						<li class="itemMenu"><a href="index.php?Admins&action=">Mettre à jour les données publiques</a></li>
+						<li class="itemMenu"><a href="index.php?AdminsAjax&action=importation">Mettre à jour les données publiques</a></li>
 
 					</ul>
 				</nav>	

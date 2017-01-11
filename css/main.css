@@ -3,96 +3,92 @@
 @font-face {
     font-family: 'bang_whack_powregular';
     src: url('font/bang_whack_pow-webfont.eot');
-    src: url('font/bang_whack_pow-webfont.eot?#iefix') format('embedded-opentype'),
-         url('font/bang_whack_pow-webfont.woff2') format('woff2'),
-         url('font/bang_whack_pow-webfont.woff') format('woff'),
-         url('font/bang_whack_pow-webfont.ttf') format('truetype'),
-         url('font/bang_whack_pow-webfont.svg#bang_whack_powregular') format('svg');
+    src: url('font/bang_whack_pow-webfont.eot?#iefix') format('embedded-opentype'), url('font/bang_whack_pow-webfont.woff2') format('woff2'), url('font/bang_whack_pow-webfont.woff') format('woff'), url('font/bang_whack_pow-webfont.ttf') format('truetype'), url('font/bang_whack_pow-webfont.svg#bang_whack_powregular') format('svg');
     font-weight: normal;
     font-style: normal;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> upstream/master
 @font-face {
     font-family: 'klillregular';
     src: url('font/klill-light-webfont.eot');
-    src: url('font/klill-light-webfont.eot?#iefix') format('embedded-opentype'),
-         url('font/klill-light-webfont.woff2') format('woff2'),
-         url('font/klill-light-webfont.woff') format('woff'),
-         url('font/klill-light-webfont.ttf') format('truetype'),
-         url('font/klill-light-webfont.svg#klillregular') format('svg');
+    src: url('font/klill-light-webfont.eot?#iefix') format('embedded-opentype'), url('font/klill-light-webfont.woff2') format('woff2'), url('font/klill-light-webfont.woff') format('woff'), url('font/klill-light-webfont.ttf') format('truetype'), url('font/klill-light-webfont.svg#klillregular') format('svg');
     font-weight: normal;
     font-style: normal;
 }
 
-*{
-	margin: 0px;
-	padding: 0px;
+* {
+    margin: 0px;
+    padding: 0px;
 }
 
-
-body{
-	font-family: 'klillregular';
+body {
+    font-family: 'klillregular';
     font-size: 16px;
 }
+
 
 a{
 	text-decoration: none;
 
-
-
 	color: #000000;
 
+
 }
 
-h1{
-	font-size: 2em;
+h1 {
+    font-size: 2em;
 }
 
-ul{
-	list-style: none;
+ul {
+    list-style: none;
 }
 
-#carroussel{}
+#carroussel {}
 
-#logoSuggestionOeuvre{
-	max-height: 190px;
-	margin-top: 20%;
-	margin-left: 30px;
+#logoSuggestionOeuvre {
+    max-height: 190px;
+    margin-top: 20%;
+    margin-left: 30px;
 }
 
-.entete{
-	margin: 20px;
+.entete {
+    margin: 20px;
 }
 
-.photo{
-	height: auto; 
-    width: auto; 
-    max-width: 300px; 
+.photo {
+    height: auto;
+    width: auto;
+    max-width: 300px;
     max-height: 300px;
-	padding:30x;
+    padding: 30x;
 }
+
 
 /**CSS PAGE ACCUEIL**/
-#logo{
+
+#logo {
     width: 70%;
-    margin-left: -20px; 
+    margin-left: -20px;
 }
 
-.pas_accueil .image_gauche{
-	position: absolute;
-	top: 100px;
-	left: -13px;
+.pas_accueil .image_gauche {
+    position: absolute;
+    top: 100px;
+    left: -13px;
 }
 
-.pas_accueil .image_droite{
-	position: absolute;
-	top: 94px;
-	right: 0px;
+.pas_accueil .image_droite {
+    position: absolute;
+    top: 94px;
+    right: 0px;
 }
 
 .menu {
-	width: 100%;
+    width: 100%;
 }
 
 #menuPrincipal {
@@ -107,13 +103,13 @@ ul{
 .itemMenu a {
     font-size: 1.8em;
     margin-left: 10px;
-	font-family: 'bang_whack_powregular';
-	color: white;
+    font-family: 'bang_whack_powregular';
+    color: white;
     padding: 3px;
 }
 
 .pas_accueil .itemMenu a {
-	color: black;
+    color: black;
 }
 
 .itemMenu a:hover,
@@ -136,174 +132,202 @@ ul{
 }
 
 #reseauxSociaux .icones a {
-	color: #fff;
+    color: #fff;
 }
 
 .pas_accueil #reseauxSociaux .icones a {
-	color: #000;
-}
-/**DÉBUT PAGE DES ARTISTES**/
-#zoneDesArtistes,
-#descriptionArtiste{
-	width: 100%;
+    color: #000;
 }
 
-#zoneDesArtistes .titrePage{
-	border-bottom: 2px solid black;
-	margin: -10px 20px 20px 0;
+
+/**DÉBUT PAGE DES ARTISTES**/
+
+#zoneDesArtistes,
+#descriptionArtiste {
+    width: 100%;
 }
+
+#zoneDesArtistes .titrePage {
+    border-bottom: 2px solid black;
+    margin: -10px 20px 20px 0;
+}
+
 
 /*http://www.webcis.com.br/dividir-texto-colunas-css3.html*/
-#zoneDesArtistes ul{
-	-moz-column-count: 5;
-	-moz-column-gap: 50px;
-	-webkit-column-count: 4;
-	-webkit-column-gap: 50px;
+
+#zoneDesArtistes ul {
+    -moz-column-count: 5;
+    -moz-column-gap: 50px;
+    -webkit-column-count: 4;
+    -webkit-column-gap: 50px;
 }
 
-#zoneDesArtistes ul h1{
-	font-size: 2em;
-	color: red;
-	margin-bottom: 15px;
-	margin-top: 0px;
+#zoneDesArtistes ul h1 {
+    font-size: 2em;
+    color: red;
+    margin-bottom: 15px;
+    margin-top: 0px;
 }
-#zoneDesArtistes ul .titreABC{
-	margin-top: 10px;
+
+#zoneDesArtistes ul .titreABC {
+    margin-top: 10px;
 }
 
 #zoneDesArtistes ul li,
 #descriptionArtiste p {
-	font-size: 1.2em;
+    font-size: 1.2em;
 }
 
-.suggererOeuvre{
-	float: left;
-	position: absolute;
-	bottom: -10px;
+.suggererOeuvre {
+    float: left;
+    position: absolute;
+    bottom: -10px;
 }
+
+
 /**FIN PAGE DES ARTISTES**/
+
+
 /**DÉBUT PAGE DE LA BIO D'UN ARTISTE**/
-#infosMonArtiste{
-	margin-top: 30px;
+
+#infosMonArtiste {
+    margin-top: 30px;
 }
 
 #descriptionArtiste h1,
-.titrePagePropos{
-	font-size: 2em;
-	border-bottom: 2px solid black;
-	margin: -10px 20px 20px 0px;
+.titrePagePropos {
+    font-size: 2em;
+    border-bottom: 2px solid black;
+    margin: -10px 20px 20px 0px;
 }
 
-.bioArtiste{
-	flex: 1 0 0;
+.bioArtiste {
+    flex: 1 0 0;
 }
 
-#descriptionArtiste p{
-	width: 50%;
-	margin-left: 10px;
+#descriptionArtiste p {
+    width: 50%;
+    margin-left: 10px;
 }
 
-#descriptionArtiste img{
-	width: 30%;
-	height: 30%;
+#descriptionArtiste img {
+    width: 30%;
+    height: 30%;
 }
+
+
 /**FIN PAGE DE LA BIO D'UN ARTISTE**/
+
+
 /**DÉBUT PAGE À PROPOS**/
 
-.descriptionPagePropos{
-	font-size: 1.2em;
-	margin: 20px 0px;
+.descriptionPagePropos {
+    font-size: 1.2em;
+    margin: 20px 0px;
 }
+
+
 /**FIN PAGE À PROPOS**/
+
+
 /**DÉBUT TEMPLATE GAUCHE**/
-.pas_accueil aside{
-	/*position: fixed;*/
+
+.pas_accueil aside {
+    /*position: fixed;*/
 }
 
 #labelRechercheSimple {
-	font-family: 'bang_whack_powregular';
-	font-size: 1.5em;
+    font-family: 'bang_whack_powregular';
+    font-size: 1.5em;
 }
 
-.rechercheSimple{
-	margin-top: 5px; 
-	background-color: transparent;
-	width: 250px;
-	height: 30px;
-	border: none;
+.rechercheSimple {
+    margin-top: 5px;
+    background-color: transparent;
+    width: 250px;
+    height: 30px;
+    border: none;
     border-top: 2px solid black;
 }
 
-.pas_accueil #formRecherche{
-	margin-left: 40px;
+.pas_accueil #formRecherche {
+    margin-left: 40px;
 }
 
-.pas_accueil #textRecherchez{
-	color: black;
-	letter-spacing: 1px;
-	margin-left: 0px;
-	font-size: 1.2em;
+.pas_accueil #textRecherchez {
+    color: black;
+    letter-spacing: 1px;
+    margin-left: 0px;
+    font-size: 1.2em;
 }
 
-.pas_accueil .divChoixRecherche{
-	font-size: 1em;
-	margin-left: 105px;
-	margin-top: -22px;
-	letter-spacing: 1px;
-	height: 22px;
-	width: 65%;
+.pas_accueil .divChoixRecherche {
+    font-size: 1em;
+    margin-left: 105px;
+    margin-top: -22px;
+    letter-spacing: 1px;
+    height: 22px;
+    width: 65%;
 }
 
-.pas_accueil #listeChoixRecherche{
-	margin-top: -2px;
-} 
+.pas_accueil #listeChoixRecherche {
+    margin-top: -2px;
+}
 
-.pas_accueil .elmChoixRecherche{
-	color: black;
-	font-size: 1.2em;
-	white-space: nowrap;
-} 
+.pas_accueil .elmChoixRecherche {
+    color: black;
+    font-size: 1.2em;
+    white-space: nowrap;
+}
 
-.pas_accueil #inputRecherche{
-	width: 250px;
-	height: 30px;
-	margin-left: 0px;
+.pas_accueil #inputRecherche {
+    width: 250px;
+    height: 30px;
+    margin-left: 0px;
     border-bottom: 2px solid black;
-	font-size: 1em;
-	color: black;
+    font-size: 1em;
+    color: black;
 }
 
-.pas_accueil #faSearch{
-	color: black;
-	font-size: 1em;
-	float: right;
-	margin-top: 25px;
+.pas_accueil #faSearch {
+    color: black;
+    font-size: 1em;
+    float: right;
+    margin-top: 25px;
 }
 
-.pas_accueil #logoSuggestionOeuvre{
-	margin-top: 300px;
-}	
+.pas_accueil #logoSuggestionOeuvre {
+    margin-top: 300px;
+}
 
-.pas_accueil #resultatRecherche	{
-	border: none;
-	position: absolute;
-	top: 100px;
-}	
+.pas_accueil #resultatRecherche {
+    border: none;
+    position: absolute;
+    top: 100px;
+}
+
 
 /**FIN TEMPLATE GAUCHE**/
+
+
 /**Debut LISTEOEUVRES**/
-#collectionOeuvres .titrePage{
-	border-bottom: 2px solid black;
-	margin: -10px 20px 20px 0;
+
+#collectionOeuvres .titrePage {
+    border-bottom: 2px solid black;
+    margin: -10px 20px 20px 0;
 }
-.pas_oeuvres{
-	margin:30x;
-	padding:30x;
+
+.pas_oeuvres {
+    margin: 30x;
+    padding: 30x;
 }
-.pas_Select{
-	margin-right:100x;
-	padding:300x;
-	width: 250px;
-	height: 50px;
+
+.pas_Select {
+    margin-right: 100x;
+    padding: 300x;
+    width: 250px;
+    height: 50px;
 }
+
+
 /**FIN LISTEOEUVRES**/

@@ -1,0 +1,34 @@
+Sprint 2 
+
+Tatiana Garrafa:
+- css page artistes: http://localhost:8080/ArtpublicMtl/index.php?Public&action=listeArtistes 
+- css template de base des pages autre que celle d'accueil
+c'est tout ...
+
+Mélodie Gauthier: 
+- Creation de la soumission coté PUBLIC http://localhost/ArtPublicMTL/index.php?Public&action=soumission
+- Création de la soumission coté ADMIN (AVEC ID EN PARAMETRE) http://localhost/ArtPublicMTL/index.php?Admins&action=soumission&id=1569
+- Importation d'image 
+- Gestion de l'ajout d'artiste via le formulaire de soumission d'une oeuvre 
+- Affichage de la liste des oeuvres (3 sections : A valider, validés, données publiques) http://localhost/ArtPublicMTL/index.php?Admins&action=listeDesOeuvres
+- CSS de tout le coté Admin(cest laid mais cest mieux que rien) http://localhost/ArtPublicMTL/index.php?admins
+- CSS de la soumission
+- Mock up de la page d'acceuil (Photoshop)
+- Mock up des pages du site web (Photoshop)
+
+Julien Côté-bouchard:
+
+- refactorisation du code
+- CSS et géolocalisation sur la page d'une oeuvre: http://localhost:8080/ArtpublicMtl/index.php?public&action=details&id=611
+- CSS et géolocalisation sur la page d'un arrondissement: http://localhost:8080/ArtpublicMtl/index.php?Public&action=afficheOeuvreslieu&idValue=Ville-Marie
+la géolocalisation inclue le hover sur le curseur et le clique sur le curseur.
+
+
+Stéphanie Moreau:
+- mise à jour de la base de données sur le clique d'un bouton: http://localhost:8080/ArtpublicMtl/index.php?adminsAjax&action=importation
+
+
+Huberson Tape:
+- CSS de la page de la liste des oeuvres: http://localhost:8080/ArtpublicMtl/index.php?Public&action=listeOeuvres
+- GESTION Login securisé (grain de sel) avec session et access page Accueil admin: http://localhost:8080/ArtpublicMtl/index.php?Admins
+les champs admin sont déjà remplis

@@ -1,5 +1,5 @@
-        <div class ="flex row JCflex-end ml50  ACcenter AIcenter tousEgal avecWrap JCspace-around" id="collectionOeuvres">
-            <?php
+<div class="flex row JCflex-end ml50  ACcenter AIcenter tousEgal avecWrap JCspace-around" id="collectionOeuvres">
+    <?php
                 $cont=0;
                 foreach($data as $oeuvres)
                 {
@@ -25,8 +25,8 @@
                         $cont++;
                     }	
                 }
-            ?>		
-        </div>
-    </section>
+            ?>
+</div>
 </section>
-    <!--fin Section Oeuvres-->
+</section>
+<!--fin Section Oeuvres-->
