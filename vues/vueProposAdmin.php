@@ -1,23 +1,4 @@
-﻿<script>
-    // window.addEventListener("load", function(){
-        // var btnModifPropos = document.getElementById("btnModifPropos");
-        // btnModifPropos.addEventListener("click", function(evt){
-            // //alert("Cascavel!!!");
-            // var sommesT = document.getElementById("sommesT");
-            // var sommesD = document.getElementById("sommesD");
-            // var missionT = document.getElementById("missionT");
-            // var missionD = document.getElementById("missionD");
-            // var joindreT = document.getElementById("joindreT");
-            // var joindreD = document.getElementById("joindreD");
-            // var partenaireT = document.getElementById("partenaireT");
-            // var partenaireD = document.getElementById("partenaireD");
-			
-			
-        // });
-    // });
-</script>
-
-<!--commencer directement avec la div contenu-->
+﻿<!--commencer directement avec la div contenu-->
 <div class="contenu">
 	<h1>Modification À Propos</h1>
     <form id="formModification" action="index.php?Admins&action=insererPropos" method="POST">
