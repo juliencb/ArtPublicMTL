@@ -30,7 +30,7 @@
 	
 	<!-- Form Chargement Image -->
 		<form id="formChargementImage">
-			<label for="chargerImage" class="btn" id="labelImportImage">Ajouter une nouvelle image</label>
+			<label for="chargerImage" class="btn" id="labelImportImageCaroussel">Ajouter une nouvelle image</label>
 			<input id="chargerImage" type="file" name="sortpic" style="visibility:hidden;"/>
 		</form>
 		

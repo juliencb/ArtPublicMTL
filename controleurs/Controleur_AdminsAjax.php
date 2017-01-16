@@ -71,8 +71,8 @@
 							echo "ERROR";
 						}
 						break;	
-					default:
-						echo "ERROR";		
+        
+				}
 			}
 			else{
                 //action par défaut

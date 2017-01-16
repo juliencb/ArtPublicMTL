@@ -3,7 +3,7 @@
 				if($imagesOeuvre["urlImage"]== ""){
 					$imagesOeuvre["urlImage"] = "no-image-available";
 				}
-		?> <img src="./images/<?php echo $imagesOeuvre[" urlImage "]; ?>.jpg" class="photosOeuvreUnArtiste">
+		?> <img src="./images/<?php echo $imagesOeuvre["urlImage"]; ?>.jpg" class="photosOeuvreUnArtiste">
     <?php		
 			}
 		?>
