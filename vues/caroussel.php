@@ -5,7 +5,7 @@
 			$.get("<?php echo "http://" . $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . "/ArtPublicMTL/"; ?>index.php?AdminsAjax&action=supprimerImageCaroussel&urlImage=" + urlImage, function(data){
 				if(data != "ERROR")
 					//$(".classImagesCaroussel").replaceWith(data);
-					window.location.href = 'http://localhost/ArtPublicMTL/index.php?Admins&action=gererCaroussel';
+					window.location.href = './index.php?Admins&action=gererCaroussel';
 
 				else
 					alert("Erreur : La suppression n'a pas fonctionné.");

@@ -53,6 +53,42 @@
 						}
 						break;
 						
+					case "apropos": 
+						if(!isset($_SESSION["authentifie"])){ 
+							header("Location:./index.php?Admins&action=login");
+						}else{
+							$this->afficheVue("headerAdmin","");
+							//$this->afficheVue("vueProposAdmin", $data);
+							$this->pageProposAdmins();
+						}
+						break;
+					
+					case "insererPropos": 
+						$modelePropos = new Modele_propos();
+						if(isset($_SESSION["sommesT"]) && isset($_SESSION["sommesD"]) && isset($_SESSION["missionT"]) && isset($_SESSION["missionD"]) && isset($_SESSION["joindreT"]) && isset($_SESSION["joindreD"]) && isset($_SESSION["partenaireT"]) && isset($_SESSION["partenaireD"])){
+							extract($_SESSION);
+							if(!empty($sommesT) && !empty($sommesD) && !empty($missionT) && !empty($missionD) && !empty($joindreT) && !empty($joindreD) && !empty($partenaireT) && !empty($partenaireD)){
+								$valide = $modelePropos->insererPagePropos($sommesT, $sommesD, $missionT, $missionD, $joindreT, $joindreD, $partenaireT, $partenaireD);
+								if($valide){
+									//$this->viderFormPropos();
+									$this->afficheVue("headerAdmin","");
+									echo "Insérer dans la bd";
+									//$this->afficheVue("vueProposAdmin", $valide);
+									$this->pageProposAdmins();
+								} else{
+									echo "ERROR";
+								}		
+							} else{
+								$this->afficheVue("headerAdmin","");
+								echo "Remplir tous les champs";
+								//$this->afficheVue("vueProposAdmin");
+								$this->pageProposAdmins();
+							}
+						}else{
+							echo "ERROR";
+						}
+						break;
+						
 					//si action est fin de session
 					case "finSession":
 						if(isset($_SESSION["authentifie"])){ 
@@ -251,5 +287,17 @@
 				$this->afficheVue("vueLogin",$data);
 			}	
 		}// fin de la fonction authenficationUsager
+		
+		public function pagePropos($sommesT, $sommesD, $missionT, $missionD, $joindreT, $joindreD, $partenaireT, $partenaireD){
+			$modelePropos = new Modele_propos();
+			$data = $modelePropos->obtenirTousPagePropos();
+			$this->afficheVue("vuePropos", $data);
+		}
+		
+		public function pageProposAdmins(){
+			$modelePropos = new Modele_propos();
+			$data = $modelePropos->obtenirTousPagePropos();
+			$this->afficheVue("vueProposAdmin", $data);
+		}
 	}
 ?>
