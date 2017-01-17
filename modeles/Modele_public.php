@@ -60,9 +60,10 @@
 		
 		public function nomOeuvre($id){		
 			try{
-				$stmt = $this->connexion->prepare("select titre, categorieObjet, categorie, parc, materiaux, adresseCivique, urlImage, artiste.nom, artiste.prenom, artiste.nomCollectif, arrondissement.nom as nomArrondissement, coordonneeLatitude, coordonneeLongitude, idArtiste from oeuvre 
-                join artiste on oeuvre.idArtiste = artiste.id 
-				join arrondissement on oeuvre.arrondissement = arrondissement.nom WHERE oeuvre.id = :id AND oeuvre.valide = 0");
+				$stmt = $this->connexion->prepare("SELECT titre, categorieObjet, categorie.nom as categorie, parc, materiaux, adresseCivique, urlImage, artiste.nom, artiste.prenom, artiste.nomCollectif, arrondissement.nom as nomArrondissement, arrondissement.id as idArrondissement, coordonneeLatitude, coordonneeLongitude, idArtiste from oeuvre 
+                join artiste on oeuvre.idArtiste = artiste.id
+                join categorie on oeuvre.categorie = categorie.id
+				join arrondissement on oeuvre.arrondissement = arrondissement.id WHERE oeuvre.id = :id");
 				$stmt->execute(array(":id" => $id));
 				return $stmt->fetch();
 			}	

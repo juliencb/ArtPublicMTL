@@ -49,7 +49,7 @@
             }
 
             if($data["nomArrondissement"]!=""){
-                echo "<li><span>Arrondissement :<a href='./index.php?Public&action=afficheOeuvreslieu&idValue=". $data["nomArrondissement"]. "'>". $data["nomArrondissement"]. "</span></li>";
+                echo "<li><span>Arrondissement :<a href='./index.php?Public&action=afficheOeuvreslieu&idValue=". $data["idArrondissement"]. "'>". $data["nomArrondissement"]. "</span></li>";
             }	
             ?>
                 </ul>

@@ -1,14 +1,14 @@
 <?php
 			foreach ($data as $imagesOeuvre) { 
 				if($imagesOeuvre["urlImage"]== ""){
-					$imagesOeuvre["urlImage"] = "no-image-available";
+					$imagesOeuvre["urlImage"] = "no-image-available.jpg";
 				}
-		?> <img src="./images/<?php echo $imagesOeuvre[" urlImage "]; ?>.jpg" class="photosOeuvreUnArtiste">
+		?> <img src="./images/<?php echo $imagesOeuvre["urlImage"]; ?>" class="photosOeuvreUnArtiste">
     <?php		
 			}
 		?>
         </div>
         <!--fermeture div infosMonArtiste-->
-        </section>
+            </section>
         </div>
         <!--fermeture div contenu-->

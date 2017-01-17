@@ -28,8 +28,6 @@
                                      $numeroAccession, 
                                      $description, 
                                      $urlImage,
-                                     $categorie,
-                                     $arrondissement,
                                      $idArtiste
                                      )
 
@@ -56,8 +54,6 @@
                 numeroAccession,
                 description, 
                 urlImage, 
-                categorie,
-                arrondissement, 
                 idArtiste)
                 VALUES (:noInterne, 
                 :titre, 
@@ -77,9 +73,7 @@
                 :coordonneeLongitude, 
                 :numeroAccession, 
                 :description,
-                :urlImage,
-                :categorie, 
-                :arrondissement, 
+                :urlImage, 
                 :idArtiste)
                 ON DUPLICATE KEY UPDATE
                 noInterne = :noInterne, 
@@ -100,9 +94,7 @@
                 coordonneeLongitude  = :coordonneeLongitude, 
                 numeroAccession  = :numeroAccession, 
                 description = :description,
-                urlImage = :urlImage,
-                categorie = :categorie, 
-                arrondissement = :arrondissement, 
+                urlImage = :urlImage, 
                 idArtiste = :idArtiste"
                                                  );
               
@@ -127,8 +119,6 @@
                                      ":numeroAccession" => $numeroAccession, 
                                      ":description" => $description, 
                                      ":urlImage" => $urlImage,
-                                     ":categorie" => $categorie,
-                                     ":arrondissement" => $arrondissement,
                                      ":idArtiste" => $idArtiste
                                      ));
               
@@ -228,6 +218,51 @@
 				return 0;	
 			}
 		}
+        
+        public function selectIdCategorie($categorie){
+          try{
+				$stmt = $this->connexion->prepare("SELECT * from categorie WHERE nom =:categorie");
+				$stmt->bindParam(":categorie", $categorie);
+				$stmt->execute();
+				return $stmt->fetch();
+				
+			}
+			catch(Exception $exc){
+				return 0;	
+			}
+         
+         
+        }
+        
+        public function selectIdArrondissement($arron){
+            try{
+				$stmt = $this->connexion->prepare("SELECT * from arrondissement WHERE nom =:arron");
+				$stmt->bindParam(":arron", $arron);
+				$stmt->execute();
+				return $stmt->fetch();
+				
+			}
+			catch(Exception $exc){
+				return 0;	
+			}
+           
+            
+        }
+        
+          public function updateCategorieArrondissement($idCategorie, $idArrondissement, $noInterne){
+              try{
+
+                $stmt = $this->connexion->prepare("UPDATE oeuvre SET categorie = :idCategorie, arrondissement = :idArrondissement WHERE noInterne =". $noInterne);
+                $stmt->bindParam(":idCategorie", $idCategorie);
+                $stmt->bindParam(":idArrondissement", $idArrondissement);
+				$stmt->execute();
+				return 1;
+              }
+			catch(Exception $exc){
+				return 0;	
+			}
+			
+        }
         
 	}
 ?>

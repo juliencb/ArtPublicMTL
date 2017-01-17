@@ -14,7 +14,7 @@
                             {
                                 $oeuvres["urlImage"]="no-image-available";
                             }
-                            echo "<img class='photo' src='./images/{$oeuvres["urlImage"]}.jpg'alt='{$oeuvres["titre"]}'/>
+                          echo "<img class='photo' src='./images/{$oeuvres["urlImage"]}'alt='{$oeuvres["titre"]}'/>}
 
                             </a>
                                 <div class='hoverPhoto flex row JCcenter '>
