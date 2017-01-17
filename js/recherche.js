@@ -87,7 +87,7 @@
             var a = document.createElement("a");
             a.title = resultat;
             if (type == "lieu" || type == "categorie") {
-                a.href = "./index.php?Public&action=afficheOeuvres" + type + "&idValue=" + resultat;
+                a.href = "./index.php?Public&action=afficheOeuvres" + type + "&idValue=" + resultat;  //ici vient le Id de la catégorie
             }
             if (type == "artiste") {
                 a.href = "./index.php?Public&action=descriptionArtiste&id=" + id;

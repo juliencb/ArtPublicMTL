@@ -19,7 +19,7 @@
 						
                 ?>    
 							<li><a href="index.php?Public&action=descriptionArtiste&id=<?php echo $artiste['id'] ?>">
-								<?php echo $artiste["prenom"] . " <span class='gras'>" . $artiste["nomArtiste"] . "</span>"; ?>
+								<?php echo $artiste["prenom"] . " <span class='gras'>" . utf8_decode($artiste["nomArtiste"]) . "</span>"; ?>
 								</a> </li>
                     <?php 
 						}//fermeture if
