@@ -56,6 +56,13 @@ ul {
     margin: 20px;
 }
 
+.pas_accueil .entete{
+	display: flex;
+	flex-flow : row;
+	align-content: space-between;
+}
+
+
 .photo {
     height: auto;
     width: auto;
@@ -110,6 +117,15 @@ ul {
     position: absolute;
     top: 105px;
     left: -13px;
+	display: block;
+}
+/*
+.lignes_menu{
+
+}*/
+
+.ligne_noire{
+	display: none;
 }
 
 .pas_accueil .image_droite {
@@ -276,7 +292,7 @@ ul {
 }
 /**FIN PAGE DE LA BIO D'UN ARTISTE**/
 /**DÉBUT PAGE À PROPOS**/
-.descriptionPagePropos {
+.pas_accueil .pageAPropos p {
     font-size: 1.2em;
     margin: 20px 0px 40px 0px;
 	line-height: 25px;

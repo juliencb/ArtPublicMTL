@@ -72,7 +72,7 @@ $(document).ready(function(){
 			<a id="lienLogo" href="index.php">
 				<img id="logo" src="images/logo+blanc3.png" alt="logo" alt="Logo ArtPublicMTL">
 				<div class="ligne_logo"></div>
-				<div class="cacheElem"><img class="ligne_noire" src="images/lignes_haut_gauche.png" alt="lignes_haut_gauche"></div>
+				<div class="cacheElem"><img class="ligne_noire" src="images/lignes_haut_gaucheMOB.png" alt="lignes_haut_gauche"></div>
 			</a>
 			<div class="menu">
 				<div id="burger" class="burger">
