@@ -131,7 +131,7 @@
 		
 		
 		public function afficheListeOeuvres(){
-			$modeleOeuvres= new Modele_Oeuvres();
+			$modeleOeuvres= new Modele_oeuvres();
 			$data = $modeleOeuvres->obtenirTousOeuvresArtistes();
            	$this->afficheVue("vueOeuvres", $data);
 		}
@@ -205,7 +205,7 @@
 		
 		//afficher les titres de la page à propos
         public function affichePageApropos(){
-            $modeleApropos = new Modele_Propos();
+            $modeleApropos = new Modele_propos();
             $data = $modeleApropos->obtenirTousPagePropos();
             $this->afficheVue("vuePropos", $data);
         }

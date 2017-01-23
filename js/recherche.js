@@ -10,7 +10,7 @@
                 if (inputRecherche.value != 0) {
                     if (document.getElementById("inputRecherche").value.length > 1) {
                         xhr.open("GET", "./index.php?Public_AJAX&action=recherche&recherche=" + document.getElementById("inputRecherche").value);
-                        //xhr.open("GET", http://e1595242.webdev.cmaisonneuve.qc.ca/ArtPublicMTL/index.php?Public_AJAX&action=recherche&recherche="+document.getElementById("inputRecherche").value);
+                        //xhr.open("GET", http://e1595071.webdev.cmaisonneuve.qc.ca/ArtPublicMTL/index.php?Public_AJAX&action=recherche&recherche="+document.getElementById("inputRecherche").value);
                         xhr.addEventListener("readystatechange", function () {
                             if (xhr.readyState === 4) {
                                 if (xhr.status === 200) {

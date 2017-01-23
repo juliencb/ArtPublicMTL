@@ -251,6 +251,7 @@
 		public function supprimerOeuvre($id) {
 			try{
 				$sql = "delete from oeuvre where id =".$id;
+                
 				$stmt = $this->connexion->prepare($sql);
 				$stmt->execute();
 				return "";

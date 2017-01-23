@@ -1,7 +1,10 @@
 <?php
 	class Controleur_AdminsAjax extends BaseControleur{	
 		//la fonction qui sera appelée par le routeur
-		public function traite(array $params){				
+		public function traite(array $params){
+            
+           // $this->afficheVue("headAdmin","");
+            
             // vérifie s'il y a une action passÃ©e en paramÃªtre
 			if(isset($params["action"])){
 				//modèle et vue vides par dÃ©faut
@@ -12,7 +15,9 @@
 				switch($params["action"]){			
                    // si l'action est "importation"
                     case "importation":
-                     $this->afficheVue("MiseAJourBD");	
+                        $this->afficheVue("headAdmin","");
+                        $this->afficheVue("headerAdmin","");
+                        $this->afficheVue("MiseAJourBD");	
 						$this->importeArrondissements();
 						$this->importeArtiste();
 						$this->importeOeuvre();
