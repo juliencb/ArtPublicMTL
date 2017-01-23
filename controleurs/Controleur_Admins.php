@@ -17,13 +17,7 @@
 				//ce switch détermine la vue $vue et obtient le modéle $data
 				switch($params["action"]){			
                    // si l'action est "importation"
-                    case "importation":
-						$this->importeArrondissements();
-						$this->importeArtiste();
-						$this->importeOeuvre();
-
-                       
-						break;
+                   
                         
 					case "soumission":
 						$modeleOeuvres= new Modele_Oeuvres();
@@ -44,7 +38,7 @@
 							header("Location:./index.php?Admins&action=login");
 						}else{
 							$data = $modeleOeuvres->listeDesOeuvres();	
-							$this->afficheVue("headerAdmin","");
+							$this->afficheVue("menuAdminGauche","");
 							$this->afficheVue("adminListeDesOeuvres", $data);
 							break;									
 						}
@@ -63,7 +57,7 @@
 						if(!isset($_SESSION["authentifie"])){ 
 							header("Location:./index.php?Admins&action=login");
 						}else{
-							$this->afficheVue("headerAdmin","");
+							$this->afficheVue("menuAdminGauche","");
 							//$this->afficheVue("vueProposAdmin", $data);
 							$this->pageProposAdmins();
 						}
@@ -102,6 +96,22 @@
 							header("Location:./index.php?Admins&action=login");
 						}
 						break;
+						
+					// pour l'administration du caroussel.
+					case "gererCaroussel":
+						if(!isset($_SESSION["authentifie"])){ 
+							header("Location:./index.php?Admins&action=login");
+						}else{
+						  $modeleCaroussel= new Modele_caroussel();
+						  $data = $modeleCaroussel->imagesCaroussel();
+						  $this->afficheVue("menuAdminGauche","");						  
+						  $this->afficheVue("caroussel",$data);	
+						  $this->afficheVue("ajoutCaroussel","");
+						  $data = $modeleCaroussel->imagesOeuvresPourCaroussel();
+						  $this->afficheVue("listeImagesOeuvres",$data);											  
+						  
+						}
+						break;			
 						
 					//pour initier le processus de login initie la Session grainDeSel
                     case "login":

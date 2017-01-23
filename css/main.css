@@ -1,5 +1,4 @@
 /* CSS PAGE ACCEUIL  */
-
 @font-face {
     font-family: 'bang_whack_powregular';
     src: url('font/bang_whack_pow-webfont.eot');
@@ -24,11 +23,12 @@
 body {
     font-family: 'klillregular';
     font-size: 16px;
+	background-image: none;
 }
 
-a {
-    text-decoration: none;
-    color: #000000;
+a{
+	text-decoration: none;
+	color: #000000;
 }
 
 h1 {
@@ -42,9 +42,14 @@ ul {
 #carroussel {}
 
 #logoSuggestionOeuvre {
-    max-height: 190px;
+    width: 190px;
     margin-top: 20%;
-    margin-left: 30px;
+    margin-left: 50px;
+	display: block;
+}
+
+.photoAccueilMobile{
+	display: none;
 }
 
 .entete {
@@ -56,12 +61,15 @@ ul {
     width: auto;
     max-width: 300px;
     max-height: 300px;
-    padding: 30x;
 }
 
+.hoverPhoto{
+	display: flex;
+	flex-flow : row;
+	justify-content: center;
+}
 
 /**CSS PAGE ACCUEIL**/
-
 .ombreTop{
     width:100%;
     height: 100%;
@@ -75,24 +83,32 @@ ul {
 }
 
 #logo {
-    width: 70%;
+    width: 80%;
     margin-left: -20px;
+}
+
+.pas_accueil #logo{
+	width: 80%;
+}
+
+.burger{
+	display: none;
 }
 
 .ligne_logo{
 	width:100%;
-	height: 13px;
+	height: 11px;
 	background-image: url("../images/ligne_logo.png");
 	background-repeat: repeat-x;
     position: absolute;
-    top: 75px;
+    top: 83px;
     left: 0;
     z-index: -90;
 }
 
 .pas_accueil .image_gauche {
     position: absolute;
-    top: 100px;
+    top: 105px;
     left: -13px;
 }
 
@@ -100,6 +116,7 @@ ul {
     position: absolute;
     top: 94px;
     right: 0px;
+	display: block;
 }
 
 .menu {
@@ -109,6 +126,7 @@ ul {
 
 #menuPrincipal {
     margin-top: 25px;
+	display: block;
 }
 
 .itemMenu,
@@ -124,43 +142,64 @@ ul {
     padding: 3px;
 }
 
+.cacheElem{
+	display: none;
+}
+
+.pas_accueil .cacheElem{
+	display: none;
+}
+
 .pas_accueil .itemMenu a {
     color: black;
 }
 
 .itemMenu a:hover,
-#reseauxSociaux .icones:hover {}
+.reseauxSociauxHeader .icones:hover {}
 
-#reseauxSociaux {
+.reseauxSociauxHeader {
+	display: block;
     position: absolute;
     top: 10px;
     right: 10px;
 }
 
-#reseauxSociaux ul {
+.reseauxSociauxHeader ul {
     margin: 10px 20px;
 }
 
-#reseauxSociaux .icones {
+.reseauxSociauxHeader .icones {
     font-size: 1.1em;
     margin-right: 5px;
     padding: 3px;
 }
 
-#reseauxSociaux .icones a {
+.reseauxSociauxHeader .icones a {
     color: #fff;
 }
 
-.pas_accueil #reseauxSociaux .icones a {
+.ombreBottom{
+    width:100%;
+    height: 100%;
+    background-image: url("../images/degradeeNoir_petit_bottom.png");
+    background-repeat: repeat-x;
+    background-position: bottom; 
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: -100;
+}
+
+.pas_accueil .reseauxSociauxHeader .icones a {
     color: #000;
 }
 
-
+/**FIN PAGE ACCUEIL**/
 /**DÉBUT PAGE DES ARTISTES**/
-
 #zoneDesArtistes,
 #descriptionArtiste {
     width: 100%;
+	margin-top: 0px;
 }
 
 #zoneDesArtistes .titrePage {
@@ -168,10 +207,9 @@ ul {
     margin: -10px 20px 20px 0;
 }
 
-
 /*http://www.webcis.com.br/dividir-texto-colunas-css3.html*/
 #zoneDesArtistes ul {
-    -moz-column-count: 5;
+    -moz-column-count: 4;
     -moz-column-gap: 50px;
     -webkit-column-count: 4;
     -webkit-column-gap: 50px;
@@ -179,7 +217,7 @@ ul {
 
 #zoneDesArtistes ul h1 {
     font-size: 2em;
-    color: red;
+    color: #c92e32;
     margin-bottom: 15px;
     margin-top: 0px;
 }
@@ -198,15 +236,15 @@ ul {
     position: absolute;
     bottom: -10px;
 }
-
-
 /**FIN PAGE DES ARTISTES**/
-
-
 /**DÉBUT PAGE DE LA BIO D'UN ARTISTE**/
 
 #infosMonArtiste {
     margin-top: 30px;
+}
+
+#descriptionArtiste{
+	margin-left: 0px;
 }
 
 #descriptionArtiste h1,
@@ -220,20 +258,23 @@ ul {
     flex: 1 0 0;
 }
 
+.infosMonArtiste{
+	display: flex;
+	flex-flow : row-reverse;
+}
+
 #descriptionArtiste p {
     width: 50%;
     margin-left: 10px;
+	margin-top: 0px;
+	margin-right: 0px;
 }
 
 #descriptionArtiste img {
     width: 30%;
     height: 30%;
 }
-
-
 /**FIN PAGE DE LA BIO D'UN ARTISTE**/
-
-
 /**DÉBUT PAGE À PROPOS**/
 .descriptionPagePropos {
     font-size: 1.2em;
@@ -245,9 +286,10 @@ ul {
 	margin: 0px 30px;
 }
 
+.pas_accueil .pageAPropos h1{
+	font-size: 1.8em;
+}
 /**FIN PAGE À PROPOS**/
-
-
 /**DÉBUT TEMPLATE GAUCHE**/
 
 #labelRechercheSimple {
@@ -303,11 +345,15 @@ ul {
     color: black;
 }
 
+.pas_accueil .sandwich .detailIcone{
+	position: static;
+}
+
 .pas_accueil #faSearch {
     color: black;
     font-size: 1em;
     float: right;
-    margin-top: 25px;
+    margin-top: 45px;
 }
 
 .pas_accueil #logoSuggestionOeuvre {
@@ -316,14 +362,13 @@ ul {
 
 .pas_accueil #resultatRecherche {
     border: none;
-    position: absolute;
-    top: 100px;
+    top: 240px;
+	right: inherit;
+	width: 320px;
+	margin-left: 20px;
+	background-color: transparent;
 }
-
-
 /**FIN TEMPLATE GAUCHE**/
-
-
 /**Debut LISTEOEUVRES**/
 
 #collectionOeuvres .titrePage {
@@ -342,23 +387,9 @@ ul {
     width: 250px;
     height: 50px;
 }
-
-
 /**FIN LISTEOEUVRES**/
-
-
-/**DEBUT FOOTER**/
-
-.ombreBottom{
-    width:100%;
-    height: 100%;
-    background-image: url("../images/degradeeNoir_petit_bottom.png");
-    background-repeat: repeat-x;
-    background-position: bottom; 
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    z-index: -100;
+/**FOOTER***/
+.reseauxSocFooter{
+	display: none;
 }
 
-/** FIN FOOTER**/
