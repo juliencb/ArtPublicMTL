@@ -30,7 +30,6 @@
                 if (artiste.value != "") {
                     if (prenomArtiste.length + nomArtiste.length > 0) {
                         xhr.open("GET", "http://localhost/ArtPublicMTL/index.php?Public_AJAX&action=rechercheArtiste&prenom=" + document.getElementById("prenomArtiste").value + "&nom=" + document.getElementById("nomArtiste").value);
-                        //xhr.open("GET", http://e1595242.webdev.cmaisonneuve.qc.ca/ArtPublicMTL/index.php?Public_AJAX&action=recherchePrenom&prenom="+document.getElementById("prenomArtiste").value);
                         xhr.addEventListener("readystatechange", function () {
                             if (xhr.readyState === 4) {
                                 if (xhr.status === 200) {
@@ -57,7 +56,8 @@
             xhr = new XMLHttpRequest();
             if (xhr) {
                 if (nomCollectif.value != "") {
-                    xhr.open("GET", "http://localhost/ArtPublicMTL/index.php?Public_AJAX&action=rechercheCollectif&nomCollectif=" + nomCollectif.value);
+                   xhr.open("GET", "index.php?Public_AJAX&action=rechercheCollectif&nomCollectif=" + nomCollectif.value);
+                  
                     xhr.addEventListener("readystatechange", function () {
                         if (xhr.readyState === 4) {
                             if (xhr.status === 200) {
@@ -166,7 +166,8 @@
         document.getElementById("bio").value = "";
         xhr = new XMLHttpRequest();
         if (xhr) {
-            xhr.open("GET", "http://localhost/ArtPublicMTL/index.php?Public_AJAX&action=obtenirBio&prenomArtiste=" + prenomArtiste + "&nomArtiste=" + nomArtiste + "&nomCollectif=" + nomCollectif);
+           xhr.open("GET", "index.php?Public_AJAX&action=obtenirBio&prenomArtiste=" + prenomArtiste + "&nomArtiste=" + nomArtiste + "&nomCollectif=" + nomCollectif);
+
             xhr.addEventListener("readystatechange", function () {
                 if (xhr.readyState === 4) {
                     if (xhr.status === 200) {
@@ -220,7 +221,8 @@
             var form_data = new FormData();
             form_data.append('file', file_data);
             $.ajax({
-                url: 'http://localhost/ArtPublicMTL/vues/upload.php', // point to server-side PHP script 
+                url: 'vues/upload.php', // point to server-side PHP script 
+ 
                 dataType: 'text', // what to expect back from the PHP script, if anything
                 cache: false
                 , contentType: false
@@ -309,7 +311,8 @@
 			}
 			else{
 				$('html, body').animate({ scrollTop: 0 }, 'slow'); // Reference http://stackoverflow.com/questions/4147112/how-to-jump-to-top-of-browser-page
-			    $.post("http://localhost/ArtPublicMTL/index.php?Public_AJAX&action=envoieSoumission",
+			    $.post("index.php?Public_AJAX&action=envoieSoumission",
+               
 				{
 					id: id,
 					titre: titre,
@@ -350,17 +353,17 @@
 			
 		});
 		
-		$("#supprimerSoumission").click(function(){
+			$("#supprimerSoumission").click(function(){
 			// Suppression du record.
 			var xhr;
 			xhr = new XMLHttpRequest();
 			if(xhr){							
-				xhr.open("GET", "http://localhost/ArtPublicMTL/index.php?AdminsAjax&action=supprimerOeuvre&id="+ document.getElementById("id").value);
+				xhr.open("GET", "index.php?AdminsAjax&action=supprimerOeuvre&id="+ document.getElementById("id").value);
 				xhr.addEventListener("readystatechange", function(){					
 					if(xhr.readyState === 4){
 						if(xhr.status === 200){
 							if (xhr.responseText=="") { // la suppression a ete effectue
-								window.location.href = 'http://localhost/ArtPublicMTL/index.php?admins&action=listeDesOeuvres';
+								window.location.href = 'index.php?Admins&action=listeDesOeuvres';
 							} 
 							else {
 								document.getElementById("msgRetourSoumission").value =xhr.responseText;
@@ -411,7 +414,7 @@
             <!-- Form Obligatoire -->
             <form id="formSoumissionObligatoire" <?php if($admin){echo "style = 'margin-top: 20px;'";}?>>
                 <!--id de l'oeuvre -->
-                <input type="text" name="inputId" id="id" disabled <?php if ($admin && $data!="" ){ echo "value=".$data[ "id"]; } ?>
+                <input type="text" name="inputId" id="id" disabled <?php if ($admin && $data!="" ){ echo "value='".$data[ "id"]."'"; } ?>>
                 <!--Titre de loeuvre-->
                 <label class="elemSoumission"> <span class="textElemSoumission">Titre de l'oeuvre</span>
                     <?php if($admin==false){echo"<span id='etoileImportant'>*</span>";} ?></label>
@@ -422,7 +425,7 @@
                 <select id="categorie">
                     <option> </option>
                     <?php 
-					$modeleCategories= new Modele_Categories();
+					$modeleCategories= new Modele_categories();
 					$dataCategorie = $modeleCategories->obtenirTous();
 					foreach($dataCategorie as $categorie){
 						//echo '<option value="' .$categorie["nom"] . '">' . $categorie["nom"] . "</option>";
@@ -438,7 +441,7 @@
                 <select id="arrondissements">
                     <option> </option>
                     <?php 
-				   $modeleArrondissements= new Modele_Arrondissements();
+				   $modeleArrondissements= new Modele_arrondissements();
 				   $dataArrondissement= $modeleArrondissements->obtenirTous();
 					foreach($dataArrondissement as $arrondissement){
 						//echo '<option value="' .$arrondissement["nom"] . '">' . $arrondissement["nom"] . "</option>";
@@ -470,7 +473,7 @@
             <!-- Bouton afficher Form Optionnel -->
             <?php if ($data=="") echo "<input type='button' value='Voir +' id='btnAjoutInfos' onclick='afficherOptionnel()'/>"; ?>
                 <!-- Form Optionnel -->
-                <form id="formSoumissionOptionnel" <?php if ($data=="" ) echo " style='display: none;'"; else echo " style='display: inline;' >"; ?>
+                <form id="formSoumissionOptionnel" <?php if ($data=="" ) echo " style='display: none;'"; else echo " style='display: inline;' >"; ?>>
                     <!--titre variante-->
                     <label class="elemSoumission"> <span class="textElemSoumission">Titre variante</span></label>
                     <input type="text" class="inputFormSoumission" name="inputTitreVariante" id="titreVariante" <?php if ($data!="" ){ echo " value='".ca($data[ "titreVariante"]). "'"; } ?>>

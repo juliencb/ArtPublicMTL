@@ -9,7 +9,8 @@
 		
 		public function __construct(){
 			try{
-				$this->connexion = new PDO("mysql:dbname=artpublicmtl;host=localhost", "root", "");
+                $this->connexion = new PDO("mysql:dbname=e1595071;host=localhost", "e1595071", "850921");
+				/*$this->connexion = new PDO("mysql:dbname=artpublicmtl;host=localhost", "root", "");*/
 				$this->connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
 			}
 			catch(Exception $exc){

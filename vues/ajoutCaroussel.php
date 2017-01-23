@@ -7,7 +7,8 @@
             var form_data = new FormData();                                              
             form_data.append('file', file_data);
             $.ajax({
-                url: 'http://localhost/ArtPublicMTL/vues/upload.php', // point to server-side PHP script 
+                url: 'vues/upload.php', // point to server-side PHP script 
+              //  url: 'http://e1595071.webdev.cmaisonneuve.qc.ca/ArtPublicMTL/vues/upload.php', // point to server-side PHP script 
                 dataType: 'text',  // what to expect back from the PHP script, if anything
                 cache: false,
                 contentType: false,
