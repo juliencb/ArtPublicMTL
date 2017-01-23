@@ -64,7 +64,6 @@
                 join artiste on oeuvre.idArtiste = artiste.id
                 join categorie on oeuvre.categorie = categorie.id
 				join arrondissement on oeuvre.arrondissement = arrondissement.id WHERE oeuvre.id = :id");
-				join arrondissement on oeuvre.arrondissement = arrondissement.id WHERE oeuvre.id = :id");
 				$stmt->execute(array(":id" => $id));
 				return $stmt->fetchAll();
 			}	

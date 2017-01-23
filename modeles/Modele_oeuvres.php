@@ -52,7 +52,7 @@
         
         public function obtenirTousOeuvresArrondissement(){
 			try{			
-				$stmt = $this->connexion->prepare("SELECT oeuvre.id, idArtiste, titre, arrondissement.nom as arrondissement, arrondissement.id as idArrondissement, urlImage, artiste.prenom, artiste.nom, artiste.nomCollectif, coordonneeLatitude, coordonneeLongitude
+				$stmt = $this->connexion->prepare("SELECT oeuvre.id, idArtiste, titre, arrondissement.nom as arrondissement, arrondissement.id as idArrondissement, categorie as idCategorie, urlImage, artiste.prenom, artiste.nom, artiste.nomCollectif, coordonneeLatitude, coordonneeLongitude
 													FROM oeuvre JOIN artiste ON idArtiste = artiste.id JOIN arrondissement on oeuvre.arrondissement = arrondissement.id AND oeuvre.valide = 1");
 				//$stmt->bindParam(":unArrondissement", $unArrondissement);
 				$stmt->execute();

@@ -14,8 +14,8 @@
                     case "importation":
                      $this->afficheVue("MiseAJourBD");	
 						//$this->importeArrondissements();
-						//$this->importeArtiste();
-						$this->importeOeuvre();
+						$this->importeArtiste();
+						//$this->importeOeuvre();
 						break;
 
 					// supression d'une oeuvre
@@ -146,7 +146,8 @@
 					$numeroAccession, 
 					$description, 
 					$urlImage,
-                    $idArtiste[0]
+                    $idArtiste[0],
+                    "1"
 				);
                 $idCategorie = $modeleAdmins->selectIdCategorie($categorie);
                 $idCategorie =$idCategorie["id"];

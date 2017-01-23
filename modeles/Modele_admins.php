@@ -28,7 +28,8 @@
                                      $numeroAccession, 
                                      $description, 
                                      $urlImage,
-                                     $idArtiste
+                                     $idArtiste,
+                                     $valide
                                      )
 
 		{		
@@ -54,7 +55,8 @@
                 numeroAccession,
                 description, 
                 urlImage, 
-                idArtiste)
+                idArtiste,
+                valide)
                 VALUES (:noInterne, 
                 :titre, 
                 :titreVariante, 
@@ -74,7 +76,8 @@
                 :numeroAccession, 
                 :description,
                 :urlImage, 
-                :idArtiste)
+                :idArtiste,
+                :valide)
                 ON DUPLICATE KEY UPDATE
                 noInterne = :noInterne, 
                 titre = :titre, 
@@ -95,7 +98,8 @@
                 numeroAccession  = :numeroAccession, 
                 description = :description,
                 urlImage = :urlImage, 
-                idArtiste = :idArtiste"
+                idArtiste = :idArtiste,
+                valide = :valide"
                                                  );
               
                
@@ -119,7 +123,8 @@
                                      ":numeroAccession" => $numeroAccession, 
                                      ":description" => $description, 
                                      ":urlImage" => $urlImage,
-                                     ":idArtiste" => $idArtiste
+                                     ":idArtiste" => $idArtiste,
+                                     ":valide" => $valide
                                      ));
               
              

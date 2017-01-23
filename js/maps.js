@@ -38,35 +38,69 @@
                         , lng: parseFloat(donnees_carte[i]["coordonneeLongitude"])
                         , titre: donnees_carte[i]["titre"]
                         , infoWindow: divInfo
+                        , id: donnees_carte[i]["id"]
+                        , idCategorie: donnees_carte[i]["idCategorie"]
+                        , idArrondissement: donnees_carte[i]["idArrondissement"]
                     });
                 }
             } // fin de la boucle for
         }
         initMap();
-        
-        function setMapOnAll(map) {
-            for (var i = 0; i < locations.length; i++) {
-               // console.log(locations[i]);
-                locations[i].setMap(map);
-                
-            }
-        }
         //*****************************************
-        /*if (document.querySelector("#arrondissements")) {
+        if (document.querySelector("#arrondissements")) {
             var arron = document.querySelector("#arrondissements");
-            arron.addEventListener("change", function () {});
-        }*/
+            var cat = document.querySelector("#categorie");
+            arron.addEventListener("change", function () {
+              
+                choixMarqueurs(cat.options[cat.selectedIndex].value, arron.options[arron.selectedIndex].value);
+                
+            });
+        }
         if (document.querySelector("#categorie")) {
             var cat = document.querySelector("#categorie");
+            var arron = document.querySelector("#arrondissements");
             cat.addEventListener("change", function () {
-                setMapOnAll(null);                      ///////////------------------------------ ICI
-                //locations = [];
+                choixMarqueurs(cat.options[cat.selectedIndex].value, arron.options[arron.selectedIndex].value);       
             });
         }
         //*****************************************
     });
-
     
+    function choixMarqueurs(cat, arron){
+         for (var i = 0; i < locations.length; i++) {
+           
+            if (cat == "_" && arron == "_") {
+                locations[i].marqueur.setMap(map);
+            }
+             
+            else if (cat != "_" && arron == "_") {
+                if (cat == locations[i].idCategorie) {
+                    locations[i].marqueur.setMap(map);
+                }
+                else {
+                    locations[i].marqueur.setMap(null);
+                }
+            }
+             
+            else if (cat == "_" && arron != "_") {
+                if (arron == locations[i].idArrondissement) {
+                    locations[i].marqueur.setMap(map);
+                }
+                else {
+                    locations[i].marqueur.setMap(null);
+                }
+            }
+             
+            else {
+                if (arron == locations[i].idArrondissement && cat == locations[i].idCategorie) {
+                    locations[i].marqueur.setMap(map);
+                }
+                else {
+                    locations[i].marqueur.setMap(null);
+                }
+            }
+        } // fin du for
+    }
 
     function initMap() {
         //style: https://snazzymaps.com/style/71052/gray-and-red
@@ -191,7 +225,6 @@
         var styledMap = new google.maps.StyledMapType(styles, {
             name: "Mautadine de belle Map"
         });
-     
         if (document.querySelector(".touteLaCarte")) {
             var mapOptions = {
                 zoom: 11
@@ -231,6 +264,7 @@
                 , title: location.titre
             });
             attachSecretMessage(marker, location.infoWindow);
+            location.marqueur = marker;
         });
     };
     // https://developers.google.com/maps/documentation/javascript/examples/event-closure
