@@ -427,9 +427,11 @@
 					foreach($dataCategorie as $categorie){
 						//echo '<option value="' .$categorie["nom"] . '">' . $categorie["nom"] . "</option>";
 						echo "<option ";
+                        echo "value='" . $categorie["id"] . "'";
 						if ($data!="" && $data["categorie"]==$categorie["nom"]){ echo " selected = 'selected' ";}
-						echo "'>" . $categorie["nom"] . "</option>";
+						echo ">" . $categorie["nom"] . "</option>";
 					}
+                 
 				?>
                 </select>
                 <!--Arrondissement-->
@@ -443,8 +445,9 @@
 					foreach($dataArrondissement as $arrondissement){
 						//echo '<option value="' .$arrondissement["nom"] . '">' . $arrondissement["nom"] . "</option>";
 						echo "<option ";
+                        echo "value='" . $arrondissement["id"] . "'";
 						if ($data!="" && $data["arrondissement"]==$arrondissement["nom"]){ echo " selected = 'selected' ";}
-						echo "'>" . $arrondissement["nom"] . "</option>";
+						echo ">" . $arrondissement["nom"] . "</option>";
 					}
 				?>
                 </select>
@@ -494,7 +497,7 @@
                         <!-- artiste -->
                         <div id="artiste">
                             <!--Prenom-->
-                            <label class="elemSoumission" id="labelPrenom" <?php if ($data!="" && $data[ "nomCollectif"]!="" ) echo "style='color: #C0C0C0';";?>> <span class="textElemSoumission" id="spanPrenom">Prenom de l'artiste</span></label>
+                            <label class="elemSoumission" id="labelPrenom" <?php if ($data!="" && $data[ "nomCollectif"]!="" ) echo "style='color: #C0C0C0';";?>> <span class="textElemSoumission" id="spanPrenom">Prénom de l'artiste</span></label>
                             <input type="text" class="inputFormSoumission" name="inputPrenomArtiste" id="prenomArtiste" <?php if ($data!="" ){ echo " value='".ca($data[ "prenom"]). "'"; } ?>
                             <?php if ($data!="" && $data["nomCollectif"]!="") echo "disabled = true";?>>
                                 <!--Nom-->
@@ -533,7 +536,7 @@
                                 <label class="elemSoumission"> <span class="textElemSoumission">Mode d'acquisition</span></label>
                                 <input type="text" class="inputFormSoumission" name="inputModeAcquisition" id="modeAcquisition" <?php if ($data!="" ){ echo " value='".ca($data[ "modeAcquisition"]). "'"; } ?>>
                                 <!-- Numero d'accession -->
-                                <label class="elemSoumission"> <span class="textElemSoumission">Numero d'accession</span></label>
+                                <label class="elemSoumission"> <span class="textElemSoumission">Numéro d'accession</span></label>
                                 <input type="text" class="inputFormSoumission" name="inputNumeroAccession" id="numeroAccession" <?php if ($data!="" ){ echo " value='".ca($data[ "numeroAccession"]). "'"; } ?>>
                                 <!-- Date d'accession -->
                                 <label class="elemSoumission"> <span class="textElemSoumission">Date d'accession</span></label>
@@ -548,19 +551,19 @@
                                 <label class="elemSoumission"> <span class="textElemSoumission">Technique</span></label>
                                 <input type="text" class="inputFormSoumission" name="inputTechnique" id="technique" <?php if ($data!="" ){ echo " value='".ca($data[ "technique"]). "'"; } ?>>
                                 <!-- categorieObjet -->
-                                <label class="elemSoumission"> <span class="textElemSoumission">Categorie de l'objet</span></label>
+                                <label class="elemSoumission"> <span class="textElemSoumission">Catégorie de l'objet</span></label>
                                 <input type="text" class="inputFormSoumission" name="inputCategorieObjet" id="categorieObjet" <?php if ($data!="" ){ echo " value='".ca($data[ "categorieObjet"]). "'"; } ?>>
                                 <!-- Dimensions generales -->
-                                <label class="elemSoumission"> <span class="textElemSoumission">Dimensions generales</span></label>
+                                <label class="elemSoumission"> <span class="textElemSoumission">Dimensions générales</span></label>
                                 <input type="text" class="inputFormSoumission" name="inputDimensionGenerales" id="dimensionGenerales" <?php if ($data!="" ){ echo " value='".ca($data[ "dimensionsGenerales"]). "'"; } ?>>
                                 <!-- Coordonnee latitude -->
-                                <label class="elemSoumission"> <span class="textElemSoumission">Coordonnee latitude</span></label>
+                                <label class="elemSoumission"> <span class="textElemSoumission">Coordonnée latitude</span></label>
                                 <input type="text" class="inputFormSoumission" name="inputCoordonneeLatitude" id="coordonneeLatitude" <?php if ($data!="" ){ echo " value='".ca($data[ "coordonneeLatitude"]). "'"; } ?>>
                                 <!-- Coordonnee longitude -->
-                                <label class="elemSoumission"> <span class="textElemSoumission">Coordonnee longitude</span></label>
+                                <label class="elemSoumission"> <span class="textElemSoumission">Coordonnée longitude</span></label>
                                 <input type="text" class="inputFormSoumission" name="inputCoordonneeLongitude" id="coordonneeLongitude" <?php if ($data!="" ){ echo " value='".ca($data[ "coordonneeLongitude"]). "'"; } ?>>
                                 <!-- Mediums -->
-                                <label class="elemSoumission"> <span class="textElemSoumission">Mediums</span></label>
+                                <label class="elemSoumission"> <span class="textElemSoumission">Médiums</span></label>
                                 <input type="text" class="inputFormSoumission" name="inputMediums" id="mediums" <?php if ($data!="" ){ echo " value='".ca($data[ "mediums"]). "'"; } ?>>
                                 <!-- Nom Collection -->
                                 <label class="elemSoumission"> <span class="textElemSoumission">Nom Collection</span></label>

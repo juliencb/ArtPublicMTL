@@ -24,7 +24,8 @@
 		public function obtenirOeuvresCategorie($uneCategorie){
 			try{	
 				$stmt = $this->connexion->prepare("SELECT oeuvre.id, titre, idArtiste, categorie,urlImage, artiste.prenom, artiste.nom  
-													FROM oeuvre JOIN artiste ON idArtiste = artiste.id WHERE categorie= :uneCategorie AND oeuvre.valide = 1");
+													FROM oeuvre JOIN artiste ON idArtiste = artiste.id 
+                                                    JOIN categorie ON oeuvre.categorie = categorie.id WHERE categorie= :uneCategorie AND oeuvre.valide = 1");
 				$stmt->bindParam(":uneCategorie", $uneCategorie);
 				$stmt->execute();
 				return $stmt->fetchAll();	

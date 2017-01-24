@@ -76,7 +76,7 @@
 						}	
 						break;
 
-					case "afficheOeuvreslieu":
+					case "afficheOeuvresLieu":
                         if(isset($params["idValue"])){
                             $this->afficheVue("headerPasAccueil");
                             $this->afficheVue("ouvertureAside",""); 
@@ -87,7 +87,7 @@
                         }
                         break;
 					
-					case "afficheOeuvrescategorie":
+					case "afficheOeuvresCategorie":
                         if(isset($params["idValue"])){
                             $this->afficheVue("headerPasAccueil");
                             $this->afficheVue("ouvertureAside",""); 
