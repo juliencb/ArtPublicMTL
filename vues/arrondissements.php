@@ -27,7 +27,8 @@
                     echo "<li class='titreOeuvres'><a id='{$oeuvres["id"]}' href='./index.php?Public&action=details&id={$oeuvres["id"]}'>{$oeuvres["titre"]}</a></li>";
 
             } // fin de la boucle foreach
-
+            if($oeuvres["coordonneeLatitude"] != "" || $oeuvres["coordonneeLatitude"] != null){
+                
             ?>
                     </ul>
                     <style>
@@ -43,6 +44,7 @@
             </section>
         </div>
         <?php
+            }
             }
             else{
                 echo "<section>Cette page n'existe pas.";

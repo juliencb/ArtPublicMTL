@@ -16,12 +16,12 @@
 
             if($data[0]["urlImage"]!=""){
                 
-        ?> <a href="images/<?php echo $data[0]["urlImage"]?>.jpg"><img class="photo" src=" ./images/<?php echo $data[0]["urlImage"]?>.jpg" alt = " <?php echo $data[0]["titre"] ?>"/></a>
+        ?> <a href="images/<?php echo $data[0]["urlImage"]?>"><img class="photo" src=" images/<?php echo $data[0]["urlImage"]?>" alt = " <?php echo $data[0]["titre"] ?>"/></a>
 
                         <?php
             }
             else{
-        ?> <img class="photo" src="./images/no-image-available.jpg" alt="aucune image" />
+        ?> <img class="photo" src="images/no-image-available.jpg" alt="aucune image" />
                             <?php
             }
         ?>
@@ -30,7 +30,7 @@
                     <?php
 
             if(($data[0]["prenom"]&&$data[0]["nom"]!="")&&($data[0]["prenom"]!= null && $data[0]["nom"]!= null )){
-                echo "<li><span>Artiste: <a href='./index.php?Public&action=descriptionArtiste&id=". $data[0]["idArtiste"] . "'>". $data[0]["prenom"]." ".$data[0]["nom"]. "</a></span></li>";
+                echo "<li><span>Artiste: <a href='index.php?Public&action=descriptionArtiste&id=". $data[0]["idArtiste"] . "'>". $data[0]["prenom"]." ".$data[0]["nom"]. "</a></span></li>";
 
             }
             else{
@@ -58,27 +58,31 @@
             }
 
             if($data[0]["nomArrondissement"]!=""){
-                echo "<li><span>Arrondissement :<a href='./index.php?Public&action=afficheOeuvreslieu&idValue=". $data[0]["idArrondissement"]. "'>". $data[0]["nomArrondissement"]. "</a></span></li>";
+                echo "<li><span>Arrondissement :<a href='index.php?Public&action=afficheOeuvreslieu&idValue=". $data[0]["idArrondissement"]. "'>". $data[0]["nomArrondissement"]. "</a></span></li>";
+            }
+            if($data[0]["coordonneeLatitude"]!="" || $data[0]["coordonneeLatitude"]!=null){
 
-            }	
             ?>
-                </ul>
-            </section>
-            <section class="flex tousEgal">
-                
-                    <style>
-                        #map {
-                            height: 600px;
-                            width: 800px
-                        }
-                    </style>
-                    <div id="map"></div>
-                    
-                    <script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC4QkcRKk6J15A3d0lLu8SZljq6opZkBMI'>
-                    </script>
-              
-            </section>
-        </section>
+                        </ul>
+                    </section>
+                    <section class="flex tousEgal">
+
+                            <style>
+                                #map {
+                                    height: 600px;
+                                    width: 800px
+                                }
+                            </style>
+                            <div id="map"></div>
+
+                            <script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC4QkcRKk6J15A3d0lLu8SZljq6opZkBMI'>
+                            </script>
+
+                    </section>
+                </section>
+            <?php
+            }
+            ?>
 		<section class="btnRetournerListeArtistes">
 			<a href="index.php?Public&action=listeOeuvres"><img src="./images/triangle-select.png" alt="Retourner à la liste des oeuvres" class="btnRetourner">
 			Retourner à la liste des oeuvres</a>

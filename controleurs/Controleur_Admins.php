@@ -38,6 +38,7 @@
 							header("Location:index.php?Admins&action=login");
 						}else{
 							$data = $modeleOeuvres->listeDesOeuvres();	
+							$this->afficheVue("headerAdmin");
 							$this->afficheVue("adminListeDesOeuvres", $data);
 							break;									
 						}
