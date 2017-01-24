@@ -30,7 +30,7 @@
                 if (artiste.value != "") {
                     if (prenomArtiste.length + nomArtiste.length > 0) {
 
-                        xhr.open("GET", "http://localhost:8080/ArtPublicMTL/index.php?Public_AJAX&action=rechercheArtiste&prenom=" + document.getElementById("prenomArtiste").value + "&nom=" + document.getElementById("nomArtiste").value);
+                        xhr.open("GET", "index.php?Public_AJAX&action=rechercheArtiste&prenom=" + document.getElementById("prenomArtiste").value + "&nom=" + document.getElementById("nomArtiste").value);
                         //xhr.open("GET", http://e1595242.webdev.cmaisonneuve.qc.ca/ArtPublicMTL/index.php?Public_AJAX&action=recherchePrenom&prenom="+document.getElementById("prenomArtiste").value);
 
                         xhr.addEventListener("readystatechange", function () {
@@ -60,7 +60,7 @@
             if (xhr) {
                 if (nomCollectif.value != "") {
 
-                    xhr.open("GET", "http://localhost:8080/ArtPublicMTL/index.php?Public_AJAX&action=rechercheCollectif&nomCollectif=" + nomCollectif.value);
+                    xhr.open("GET", "index.php?Public_AJAX&action=rechercheCollectif&nomCollectif=" + nomCollectif.value);
 
                     xhr.addEventListener("readystatechange", function () {
                         if (xhr.readyState === 4) {
@@ -171,7 +171,7 @@
         xhr = new XMLHttpRequest();
         if (xhr) {
 
-            xhr.open("GET", "http://localhost:8080/ArtPublicMTL/index.php?Public_AJAX&action=obtenirBio&prenomArtiste=" + prenomArtiste + "&nomArtiste=" + nomArtiste + "&nomCollectif=" + nomCollectif);
+            xhr.open("GET", "index.php?Public_AJAX&action=obtenirBio&prenomArtiste=" + prenomArtiste + "&nomArtiste=" + nomArtiste + "&nomCollectif=" + nomCollectif);
 
             xhr.addEventListener("readystatechange", function () {
                 if (xhr.readyState === 4) {
@@ -474,9 +474,7 @@
                 <!--Description de l'oeuvre-->
                 <label class="elemSoumission"> <span class="textElemSoumission">Description de l'oeuvre</span>
                     <?php if($admin==false){echo"<span id='etoileImportant'>*</span>";} ?></label>
-                <textarea rows="4" cols="50" class="inputTextAreaFormSoumission" id="description" name="inputDescription">
-                    <?php if ($data!=""){ echo ca($data["description"]); } ?>
-                </textarea>
+                <textarea rows="4" cols="50" class="inputTextAreaFormSoumission" id="description" name="inputDescription"><?php if ($data!=""){ echo ca(trim($data["description"])); } ?></textarea>
                 <!-- Fin form obligatoire -->
             </form>
             <!-- Form Chargement Image -->
