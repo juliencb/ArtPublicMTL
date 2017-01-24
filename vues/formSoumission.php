@@ -29,7 +29,7 @@
             if (xhr) {
                 if (artiste.value != "") {
                     if (prenomArtiste.length + nomArtiste.length > 0) {
-                        xhr.open("GET", "http://localhost/ArtPublicMTL/index.php?Public_AJAX&action=rechercheArtiste&prenom=" + document.getElementById("prenomArtiste").value + "&nom=" + document.getElementById("nomArtiste").value);
+                        xhr.open("GET", "http://localhost:8080/ArtPublicMTL/index.php?Public_AJAX&action=rechercheArtiste&prenom=" + document.getElementById("prenomArtiste").value + "&nom=" + document.getElementById("nomArtiste").value);
                         //xhr.open("GET", http://e1595242.webdev.cmaisonneuve.qc.ca/ArtPublicMTL/index.php?Public_AJAX&action=recherchePrenom&prenom="+document.getElementById("prenomArtiste").value);
                         xhr.addEventListener("readystatechange", function () {
                             if (xhr.readyState === 4) {
@@ -57,7 +57,7 @@
             xhr = new XMLHttpRequest();
             if (xhr) {
                 if (nomCollectif.value != "") {
-                    xhr.open("GET", "http://localhost/ArtPublicMTL/index.php?Public_AJAX&action=rechercheCollectif&nomCollectif=" + nomCollectif.value);
+                    xhr.open("GET", "http://localhost:8080/ArtPublicMTL/index.php?Public_AJAX&action=rechercheCollectif&nomCollectif=" + nomCollectif.value);
                     xhr.addEventListener("readystatechange", function () {
                         if (xhr.readyState === 4) {
                             if (xhr.status === 200) {
@@ -166,7 +166,7 @@
         document.getElementById("bio").value = "";
         xhr = new XMLHttpRequest();
         if (xhr) {
-            xhr.open("GET", "http://localhost/ArtPublicMTL/index.php?Public_AJAX&action=obtenirBio&prenomArtiste=" + prenomArtiste + "&nomArtiste=" + nomArtiste + "&nomCollectif=" + nomCollectif);
+            xhr.open("GET", "http://localhost:8080/ArtPublicMTL/index.php?Public_AJAX&action=obtenirBio&prenomArtiste=" + prenomArtiste + "&nomArtiste=" + nomArtiste + "&nomCollectif=" + nomCollectif);
             xhr.addEventListener("readystatechange", function () {
                 if (xhr.readyState === 4) {
                     if (xhr.status === 200) {
@@ -220,7 +220,7 @@
             var form_data = new FormData();
             form_data.append('file', file_data);
             $.ajax({
-                url: 'http://localhost/ArtPublicMTL/vues/upload.php', // point to server-side PHP script 
+                url: 'http://localhost:8080/ArtPublicMTL/vues/upload.php', // point to server-side PHP script 
                 dataType: 'text', // what to expect back from the PHP script, if anything
                 cache: false
                 , contentType: false
@@ -309,7 +309,7 @@
 			}
 			else{
 				$('html, body').animate({ scrollTop: 0 }, 'slow'); // Reference http://stackoverflow.com/questions/4147112/how-to-jump-to-top-of-browser-page
-			    $.post("http://localhost/ArtPublicMTL/index.php?Public_AJAX&action=envoieSoumission",
+			    $.post("http://localhost:8080/ArtPublicMTL/index.php?Public_AJAX&action=envoieSoumission",
 				{
 					id: id,
 					titre: titre,
@@ -355,12 +355,12 @@
 			var xhr;
 			xhr = new XMLHttpRequest();
 			if(xhr){							
-				xhr.open("GET", "http://localhost/ArtPublicMTL/index.php?AdminsAjax&action=supprimerOeuvre&id="+ document.getElementById("id").value);
+				xhr.open("GET", "http://localhost:8080/ArtPublicMTL/index.php?AdminsAjax&action=supprimerOeuvre&id="+ document.getElementById("id").value);
 				xhr.addEventListener("readystatechange", function(){					
 					if(xhr.readyState === 4){
 						if(xhr.status === 200){
 							if (xhr.responseText=="") { // la suppression a ete effectue
-								window.location.href = 'http://localhost/ArtPublicMTL/index.php?admins&action=listeDesOeuvres';
+								window.location.href = 'http://localhost:8080/ArtPublicMTL/index.php?admins&action=listeDesOeuvres';
 							} 
 							else {
 								document.getElementById("msgRetourSoumission").value =xhr.responseText;
@@ -428,7 +428,7 @@
 						//echo '<option value="' .$categorie["nom"] . '">' . $categorie["nom"] . "</option>";
 						echo "<option ";
                         echo "value='" . $categorie["id"] . "'";
-						if ($data!="" && $data["categorie"]==$categorie["nom"]){ echo " selected = 'selected' ";}
+						if ($data!="" && $data["categorie"]==$categorie["id"]){ echo " selected = 'selected' ";}
 						echo ">" . $categorie["nom"] . "</option>";
 					}
                  
@@ -446,7 +446,7 @@
 						//echo '<option value="' .$arrondissement["nom"] . '">' . $arrondissement["nom"] . "</option>";
 						echo "<option ";
                         echo "value='" . $arrondissement["id"] . "'";
-						if ($data!="" && $data["arrondissement"]==$arrondissement["nom"]){ echo " selected = 'selected' ";}
+						if ($data!="" && $data["arrondissement"]==$arrondissement["id"]){ echo " selected = 'selected' ";}
 						echo ">" . $arrondissement["nom"] . "</option>";
 					}
 				?>
@@ -481,7 +481,7 @@
                     <label class="elemSoumission"> <span class="textElemSoumission">Nom du parc</span></label>
                     <input type="text" class="inputFormSoumission" name="inputNomParc" id="nomParc" <?php if ($data!="" ){ echo " value='".ca($data[ "parc"]). "'"; } ?>>
                     <!--Nom du Batiment-->
-                    <label class="elemSoumission"> <span class="textElemSoumission"> Batiment</span></label>
+                    <label class="elemSoumission"> <span class="textElemSoumission"> Bâtiment</span></label>
                     <input type="text" class="inputFormSoumission" name="inputBatiment" id="batiment" <?php if ($data!="" ){ echo " value='".ca($data[ "batiment"]). "'"; } ?>>
                     <br>
                     <br>

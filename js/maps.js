@@ -112,7 +112,8 @@
                 , "stylers": [{
                     "visibility": "simplified"
                 }, {
-                    "color": "#ff0000"
+                    "color": "#c92e32"
+                    //"color": "#ff0000"
                 }]
             }
                                     , {
@@ -126,7 +127,8 @@
                 "featureType": "administrative.country"
                 , "elementType": "labels"
                 , "stylers": [{
-                    "color": "#fc0505"
+                   // "color": "#fc0505"
+                    "color": "#c92e32"
                 }, {
                     "visibility": "on"
                 }]
@@ -135,7 +137,8 @@
                 "featureType": "administrative.province"
                 , "elementType": "labels"
                 , "stylers": [{
-                    "color": "#ff0000"
+                    "color": "#c92e32"
+                   // "color": "#ff0000"
                 }, {
                     "visibility": "simplified"
                 }]
@@ -144,7 +147,8 @@
                 "featureType": "administrative.locality"
                 , "elementType": "labels"
                 , "stylers": [{
-                    "color": "#ff0000"
+                    "color": "#c92e32"
+                    //"color": "#ff0000"
                 }, {
                     "visibility": "simplified"
                 }]
@@ -153,7 +157,8 @@
                 "featureType": "administrative.neighborhood"
                 , "elementType": "labels"
                 , "stylers": [{
-                        "color": "#ff0000"
+                        "color": "#c92e32"
+                       // "color": "#ff0000"
                     }
                                     , {
                         "visibility": "simplified"
@@ -162,7 +167,8 @@
                 "featureType": "administrative.land_parcel"
                 , "elementType": "labels"
                 , "stylers": [{
-                    "color": "#ff0000"
+                   // "color": "#ff0000"
+                    "color": "#c92e32"
                 }, {
                     "visibility": "simplified"
                 }]
@@ -262,6 +268,7 @@
                 position: location
                 , map: map
                 , title: location.titre
+                , icon: 'http://e1595070.webdev.cmaisonneuve.qc.ca/marqueur.png'
             });
             attachSecretMessage(marker, location.infoWindow);
             location.marqueur = marker;
