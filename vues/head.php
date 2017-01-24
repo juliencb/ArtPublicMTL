@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
+        <title>Art Public Montreal</title>
+        <meta http-equiv="Content-type" content="text/html;charset=utf-8" />
 		<!-- Mobile Specific Metas
 			------------------------------------ -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
@@ -17,6 +18,7 @@
         <link rel="stylesheet" media="screen and (min-width: 600px)" href="css/main.css" />
         <link rel="stylesheet" media="screen and (min-width: 600px)" href="css/recherche.css" />
 		
+
         <link rel="stylesheet" href="css/flexbox.css" />
         <link rel="stylesheet" href="css/soumission.css" />
         <link rel="stylesheet" href="css/arrondissement.css" />
@@ -29,6 +31,7 @@
         <script src="./js/admin.js"></script>
         <script src="./js/recherche.js"></script>
         <script src="./js/menu_recherche.js"></script>
+        <script src="./js/maps.js"></script>
         <!--<script src="./js/soumission.js"></script>-->
         <!--<script src="js/telechargementImage.js"></script>-->
     </head>

@@ -1,6 +1,8 @@
 <div class="collectionOeuvres" id="collectionOeuvres">
     <?php
+    if($data){
                 $cont=0;
+        
                 foreach($data as $oeuvres)
                 {
                    // if (strpos($oeuvres["titre"], 'Non titré') === true) {
@@ -8,13 +10,13 @@
                     {
                         echo"<div class ='uneOeuvreCollection flex column ACcenter AIcenter avecWrap' id='{$oeuvres["id"]}'>
 
-                            <a href='./index.php?public&action=details&id={$oeuvres["id"]}'>";
+                            <a href='./index.php?Public&action=details&id={$oeuvres["id"]}'>";
 
                             if($oeuvres["urlImage"]=="")
                             {
-                                $oeuvres["urlImage"]="no-image-available";
+                                $oeuvres["urlImage"]="no-image-available.jpg";
                             }
-                            echo "<img class='photo' src='./images/{$oeuvres["urlImage"]}.jpg'alt='{$oeuvres["titre"]}'/>
+                          echo "<img class='photo' src='images/{$oeuvres["urlImage"]}'alt='{$oeuvres["titre"]}'/>
 
                             </a>
                                 <div class='hoverPhoto'>
@@ -25,6 +27,10 @@
                         $cont++;
                     }	
                 }
+    }
+    else{
+        echo "Cette page n'existe pas.";
+    }
             ?>
 </div>
 </section>

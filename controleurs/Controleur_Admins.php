@@ -20,10 +20,10 @@
                    
                         
 					case "soumission":
-						$modeleOeuvres= new Modele_Oeuvres();
+						$modeleOeuvres= new Modele_oeuvres();
 						$oeuvre = "";
 						if(!isset($_SESSION["authentifie"])){ 
-							header("Location:./index.php?Admins&action=login");
+							header("Location:index.php?Admins&action=login");
 						}else{			
 							if (isset($params["id"])) $oeuvre = $modeleOeuvres->obtenirOeuvre($params["id"]);							
 							if ($oeuvre !="") {
@@ -33,12 +33,11 @@
 							}
 						}
 					case "listeDesOeuvres":	 // Sinon il affiche la liste des oeuvres
-						$modeleOeuvres= new Modele_Oeuvres();
+						$modeleOeuvres= new Modele_oeuvres();
 						if(!isset($_SESSION["authentifie"])){ 
-							header("Location:./index.php?Admins&action=login");
+							header("Location:index.php?Admins&action=login");
 						}else{
 							$data = $modeleOeuvres->listeDesOeuvres();	
-							$this->afficheVue("menuAdminGauche","");
 							$this->afficheVue("adminListeDesOeuvres", $data);
 							break;									
 						}
@@ -49,7 +48,8 @@
 							$this-> authenficationUsager($_POST["username"],$_POST["password"]);
 						}
 						else{
-							header("Location:./index.php?Admins&action=login");
+							header("Location:
+                            index.php?Admins&action=login");
 						}
 						break;
 						
@@ -57,8 +57,7 @@
 						if(!isset($_SESSION["authentifie"])){ 
 							header("Location:./index.php?Admins&action=login");
 						}else{
-							$this->afficheVue("menuAdminGauche","");
-							//$this->afficheVue("vueProposAdmin", $data);
+							$this->afficheVue("vueProposAdmin", $data);
 							$this->pageProposAdmins();
 						}
 						break;
@@ -93,14 +92,14 @@
 					case "finSession":
 						if(isset($_SESSION["authentifie"])){ 
 							session_destroy();
-							header("Location:./index.php?Admins&action=login");
+							header("Location:index.php?Admins&action=login");
 						}
 						break;
 						
 					// pour l'administration du caroussel.
 					case "gererCaroussel":
 						if(!isset($_SESSION["authentifie"])){ 
-							header("Location:./index.php?Admins&action=login");
+							header("Location:index.php?Admins&action=login");
 						}else{
 						  $modeleCaroussel= new Modele_caroussel();
 						  $data = $modeleCaroussel->imagesCaroussel();

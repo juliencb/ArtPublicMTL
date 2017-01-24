@@ -1,21 +1,27 @@
 <?php
-	class Controleur_AdminsAjax extends BaseControleur{	
+	class Controleur_AdminsAjax extends Controleur_Admins{	
 		//la fonction qui sera appelée par le routeur
-		public function traite(array $params){				
+		public function traite(array $params){
+            
+           // $this->afficheVue("headAdmin","");
+            
             // vérifie s'il y a une action passÃ©e en paramÃªtre
 			if(isset($params["action"])){
 				//modèle et vue vides par dÃ©faut
 				$data = array();
 				$vue = "";
-				//switch en fonction de l'action qui nous est envoyÃ©e
-				//ce switch détermine la vue $vue et obtient le modÃ¨le $data
+				//switch en fonction de l'action qui nous est envoyée
+				//ce switch détermine la vue $vue et obtient le modèle $data
 				switch($params["action"]){			
                    // si l'action est "importation"
                     case "importation":
-                     $this->afficheVue("MiseAJourBD");	
+
+                        $this->afficheVue("headAdmin","");
+                        $this->afficheVue("headerAdmin","");
+                        $this->afficheVue("MiseAJourBD");	
 						$this->importeArrondissements();
 						$this->importeArtiste();
-						$this->importeOeuvre();
+						//$this->importeOeuvre();
 						break;
 
 					// supression d'une oeuvre
@@ -74,6 +80,7 @@
         
 				}
 			}
+            
 			else{
                 //action par défaut
                 echo "ERROR";					
@@ -87,7 +94,7 @@
             
             // va chercher le JSON de la ville et le décode
 			$fichierJSON = file_get_contents('http://donnees.ville.montreal.qc.ca/dataset/2980db3a-9eb4-4c0e-b7c6-a6584cb769c9/resource/18705524-c8a6-49a0-bca7-92f493e6d329/download/oeuvresdonneesouvertes.json');
-			$fichierJSON_decode = JSON_decode($fichierJSON);
+			$fichierJSON_decode = JSON_decode($fichierJSON, false, 512, JSON_UNESCAPED_UNICODE);
             
             //fait une boucle pour chacune des oeuvres du JSON
             $compteur = count($fichierJSON_decode);
@@ -124,7 +131,7 @@
                 $modeleAdmins->insereCategorie($categorie);
                 
                 
-                // insertion dans la table oeuvre
+                //insertion dans la table oeuvre
 				$modeleAdmins->insereOeuvre( 
 					$noInterne, 
 					$titre, 
@@ -145,17 +152,28 @@
 					$numeroAccession, 
 					$description, 
 					$urlImage,
-                    $categorie,
-                    $arrondissement,
-                    $idArtiste[0]
+                    $idArtiste[0],
+                    "1"
 				);
+                $idCategorie = $modeleAdmins->selectIdCategorie($categorie);
+                $idCategorie =$idCategorie["id"];
+                
+                // var_dump(($arrondissement));
+                $idArrondissement = $modeleAdmins->selectIdArrondissement(($arrondissement));
+                $idArrondissement = $idArrondissement["id"];
+               // var_dump($idArrondissement);
+                //echo "----";
+                
+                
+                $modeleAdmins->updateCategorieArrondissement($idCategorie, $idArrondissement, $noInterne);
+                
 			} // fin de la boucle
                
 		} // fin de la fonction importeOeuvreArtiste
 		
 		
 		public function importeArrondissements(){
-            // va chercher le fichier JSON des arrondissements de la ville de MontrÃ©al
+            // va chercher le fichier JSON des arrondissements de la ville de Montréal
 			$modeleAdmins = new Modele_admins();
 			$arron = file_get_contents('http://donnees.ville.montreal.qc.ca/dataset/00bd85eb-23aa-4669-8f1b-ba9a000e3dd8/resource/e9b0f927-8f75-458c-8fda-b5da65cc8b73/download/limadmin.json');
 			$arron_decode = JSON_decode($arron);
@@ -163,9 +181,9 @@
             // fait une boucle sur tous les arrondissements du JSON
 			for($i = 0; $i < $compteur; $i++){
 				$ville = $arron_decode->features[$i]->properties->NOM;
-                
                 // rempli la BD avec les arrondissements
 				$modeleAdmins->insereArrondissement($ville);
+				//$modeleAdmins->insereArrondissement(utf8_decode($ville));
 			}	
 		} // fin de la fonction importeArrondissements
 		

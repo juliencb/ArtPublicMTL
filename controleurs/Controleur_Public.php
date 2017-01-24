@@ -107,10 +107,18 @@
 						$this->afficheVue("fermetureAside","");						
                         $this->affichePageApropos();   
 					    break;
-
+                        
                     case "carte":
+                            $this->afficheVue("headerPasAccueil");
+                            $this->afficheVue("ouvertureAside",""); 
+                            $this->afficheVue("rechercheGauche","");  
+                            $this->afficheListeCategories();
+                            $this->afficheListeArrondissements();
+                            $this->afficheVue("vueBtnSoumission",""); 
+                            $this->afficheVue("fermetureAside","");
                             $this->afficheCarte();					
                         break;	
+
 
 					default:
 						$this->afficheVue("header","");
@@ -139,7 +147,6 @@
 		///--fonction permet d'affiche la liste des categories--///	
 		public function afficheListeCategories(){
 			$modeleCategories= new Modele_categories();
-
 			$data = $modeleCategories->obtenirTous();
 			$this->afficheVue("vueOptionCategories", $data);
 		}
@@ -205,7 +212,7 @@
 		
 		//afficher les titres de la page à propos
         public function affichePageApropos(){
-            $modeleApropos = new Modele_Propos();
+            $modeleApropos = new Modele_propos();
             $data = $modeleApropos->obtenirTousPagePropos();
             $this->afficheVue("vuePropos", $data);
         }

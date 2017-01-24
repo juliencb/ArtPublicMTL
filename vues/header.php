@@ -9,6 +9,7 @@ $(document).ready(function(){
 	echo "	var imagesArray = [";
 	$modeleCaroussel= new Modele_caroussel();
 	$data = $modeleCaroussel->imagesCaroussel();
+  
 	$separateur = "";
 	foreach($data as $imageCaroussel) {
 		echo $separateur."'". $imageCaroussel["urlImage"] ."'"; 
@@ -84,7 +85,7 @@ $(document).ready(function(){
 					<ul>
 						<li class="itemMenu"><a href="index.php?Public&action=listeOeuvres">OEUVRES</a></li>
 						<li class="itemMenu"><a href="index.php?Public&action=listeArtistes">ARTISTES</a></li>
-						<li class="itemMenu"><a href="#">CARTE</a></li>
+						<li class="itemMenu"><a href="index.php?Public&action=carte">CARTE</a></li>
 						<li class="itemMenu"><a href="index.php?Public&action=aPropos">À PROPOS</a></li>
 						<li class="itemMenu cacheElem"><a href="index.php?Public&action=soumission">SOUMISSION</a></li>
 					</ul>

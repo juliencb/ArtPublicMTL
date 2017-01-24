@@ -33,9 +33,9 @@ body {
 }
 
 #logo {
-    width: 50%;
+    width: 30%;
 	margin-top: 20px;
-	margin-left: -20px;
+	margin-left: 40px;
 }
 
 li {
@@ -90,9 +90,7 @@ a {
 .menu {
 	width: 800px;
 	padding: 10px;
-	margin: 10px 370px;
-    border: 1px solid #000;
-	border-radius: 10px;
+	margin: 10px 280px;
 }
 
 .menuPrincipal{
@@ -100,8 +98,8 @@ a {
 }
 
 .btnMenu{
-	background-color: gray;
 	display: table-cell;
+	margin-left: 30px;
 	vertical-align: bottom;
 	width: 200px;
 	height: 180px;
@@ -113,8 +111,9 @@ a {
 /*FIN PAGE D'ACCUEIL */
 /*DEBUT D'AUTRES PAGES */
 
+
 /*FIN D'AUTRES PAGES */
-#labelImportImage{
+#labelImportImageCaroussel{
 	font-size: 30px;
 	font-family: 'klillregular';
 	text-decoration: none;
