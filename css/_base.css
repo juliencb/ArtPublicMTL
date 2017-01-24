@@ -191,10 +191,6 @@ ul {
 	display: none;
 }
 
-.rechercheMOB{
-	display: block;
-}
-
 /*------- FOOTER -------*/
 footer{
 	padding: 23px 0;
@@ -296,6 +292,10 @@ footer{
 }
 
 .btnRetourner, 
+.btnRetournerListeArtistes{
+	font-size:.9em;
+}
+
 #descriptionArtiste .btnRetourner{
 	width: 5%;
 	height: 5%;
