@@ -221,12 +221,7 @@
 			$this->afficheVue("arrondissements", $data);
 		}
 		
-		//afficher les titres de la page à propos
-        public function affichePageApropos(){
-            $modeleApropos = new Modele_propos();
-            $data = $modeleApropos->obtenirTousPagePropos();
-            $this->afficheVue("vuePropos", $data);
-        }
+		
             
         public function afficheCarte(){
 			$modeleOeuvres= new Modele_oeuvres();
@@ -234,10 +229,12 @@
 			$this->afficheVue("pageCarte", $data);
 		}
         
+    //afficher les titres de la page à propos
         public function affichePageApropos(){
             $modeleApropos = new Modele_propos();
             $data = $modeleApropos->obtenirTousPagePropos();
             $this->afficheVue("vuePropos", $data);
         }
+
 	}
 ?>
