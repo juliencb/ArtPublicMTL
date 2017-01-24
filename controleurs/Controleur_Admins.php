@@ -20,10 +20,10 @@
                    
                         
 					case "soumission":
-						$modeleOeuvres= new Modele_Oeuvres();
+						$modeleOeuvres= new Modele_oeuvres();
 						$oeuvre = "";
 						if(!isset($_SESSION["authentifie"])){ 
-							header("Location:./index.php?Admins&action=login");
+							header("Location:index.php?Admins&action=login");
 						}else{			
 							if (isset($params["id"])) $oeuvre = $modeleOeuvres->obtenirOeuvre($params["id"]);							
 							if ($oeuvre !="") {
@@ -33,9 +33,9 @@
 							}
 						}
 					case "listeDesOeuvres":	 // Sinon il affiche la liste des oeuvres
-						$modeleOeuvres= new Modele_Oeuvres();
+						$modeleOeuvres= new Modele_oeuvres();
 						if(!isset($_SESSION["authentifie"])){ 
-							header("Location:./index.php?Admins&action=login");
+							header("Location:index.php?Admins&action=login");
 						}else{
 							$data = $modeleOeuvres->listeDesOeuvres();	
 							$this->afficheVue("headerAdmin","");
@@ -49,7 +49,44 @@
 							$this-> authenficationUsager($_POST["username"],$_POST["password"]);
 						}
 						else{
+							header("Location:
+                            index.php?Admins&action=login");
+						}
+						break;
+						
+					case "apropos": 
+						if(!isset($_SESSION["authentifie"])){ 
 							header("Location:./index.php?Admins&action=login");
+						}else{
+							$this->afficheVue("headerAdmin","");
+							//$this->afficheVue("vueProposAdmin", $data);
+							$this->pageProposAdmins();
+						}
+						break;
+					
+					case "insererPropos": 
+						$modelePropos = new Modele_propos();
+						if(isset($_SESSION["sommesT"]) && isset($_SESSION["sommesD"]) && isset($_SESSION["missionT"]) && isset($_SESSION["missionD"]) && isset($_SESSION["joindreT"]) && isset($_SESSION["joindreD"]) && isset($_SESSION["partenaireT"]) && isset($_SESSION["partenaireD"])){
+							extract($_SESSION);
+							if(!empty($sommesT) && !empty($sommesD) && !empty($missionT) && !empty($missionD) && !empty($joindreT) && !empty($joindreD) && !empty($partenaireT) && !empty($partenaireD)){
+								$valide = $modelePropos->insererPagePropos($sommesT, $sommesD, $missionT, $missionD, $joindreT, $joindreD, $partenaireT, $partenaireD);
+								if($valide){
+									//$this->viderFormPropos();
+									$this->afficheVue("headerAdmin","");
+									echo "Insérer dans la bd";
+									//$this->afficheVue("vueProposAdmin", $valide);
+									$this->pageProposAdmins();
+								} else{
+									echo "ERROR";
+								}		
+							} else{
+								$this->afficheVue("headerAdmin","");
+								echo "Remplir tous les champs";
+								//$this->afficheVue("vueProposAdmin");
+								$this->pageProposAdmins();
+							}
+						}else{
+							echo "ERROR";
 						}
 						break;
 						
@@ -57,14 +94,14 @@
 					case "finSession":
 						if(isset($_SESSION["authentifie"])){ 
 							session_destroy();
-							header("Location:./index.php?Admins&action=login");
+							header("Location:index.php?Admins&action=login");
 						}
 						break;
 						
 					// pour l'administration du caroussel.
 					case "gererCaroussel":
 						if(!isset($_SESSION["authentifie"])){ 
-							header("Location:./index.php?Admins&action=login");
+							header("Location:index.php?Admins&action=login");
 						}else{
 						  $modeleCaroussel= new Modele_caroussel();
 						  $data = $modeleCaroussel->imagesCaroussel();
@@ -251,5 +288,17 @@
 				$this->afficheVue("vueLogin",$data);
 			}	
 		}// fin de la fonction authenficationUsager
+		
+		public function pagePropos($sommesT, $sommesD, $missionT, $missionD, $joindreT, $joindreD, $partenaireT, $partenaireD){
+			$modelePropos = new Modele_propos();
+			$data = $modelePropos->obtenirTousPagePropos();
+			$this->afficheVue("vuePropos", $data);
+		}
+		
+		public function pageProposAdmins(){
+			$modelePropos = new Modele_propos();
+			$data = $modelePropos->obtenirTousPagePropos();
+			$this->afficheVue("vueProposAdmin", $data);
+		}
 	}
 ?>

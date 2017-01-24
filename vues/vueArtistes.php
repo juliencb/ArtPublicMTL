@@ -7,7 +7,9 @@
                 ?>
             <h1>A</h1>
             <?php 
-                    foreach ($data as $artiste){
+               
+        foreach ($data as $artiste){
+                      
                         $premiereLettre = strtoupper(substr($artiste["nomArtiste"], 0, 1));
                         if(chr($compteur) != $premiereLettre){
                             $compteur++;

@@ -139,7 +139,6 @@
 		///--fonction permet d'affiche la liste des categories--///	
 		public function afficheListeCategories(){
 			$modeleCategories= new Modele_categories();
-
 			$data = $modeleCategories->obtenirTous();
 			$this->afficheVue("vueOptionCategories", $data);
 		}

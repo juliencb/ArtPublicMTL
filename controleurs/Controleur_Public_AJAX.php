@@ -57,7 +57,7 @@
 						if(isset($params["id"]) ){  // on assume ici que si on recoit le champ id on aurra tout les autres champs.
 							//if ($params["id"]=="") {
 								// on insere le record
-								$modeleOeuvres = new Modele_Oeuvres();
+								$modeleOeuvres = new Modele_oeuvres();
 								$resultatsMAJ = $modeleOeuvres->oeuvreMAJ($params["id"], $params["titre"], $params["categorie"], $params["arrondissement"], $params["adresse"], $params["description"], $params["image"], $params["titreVariante"],
 								$params["nomParc"], $params["batiment"], $params["prenomArtiste"], $params["nomArtiste"], $params["nomCollectif"], $params["bio"], $params["modeAcquisition"], $params["numeroAccession"], $params["dateAccession"], $params["materiaux"], 
 								$params["support"], $params["technique"], $params["categorieObjet"], $params["dimensionGenerales"], $params["coordonneeLatitude"], $params["coordonneeLongitude"], $params["mediums"],  $params["nomCollection"], $params["valide"]);							 
@@ -85,7 +85,7 @@
 						
 						
 					case "obtenirBio";
-						$modeleOeuvres= new Modele_Oeuvres();
+						$modeleOeuvres= new Modele_oeuvres();
 			            $bio = $modeleOeuvres->obtenirBio($params["prenomArtiste"],$params["nomArtiste"],$params["nomCollectif"]);
 						echo $bio;
 						break;                       
@@ -175,7 +175,7 @@
 		
 		//affiche les oeuvres du Select categorie
 		public function afficheOeuvreCategorie($val){
-			$modeleOeuvres= new Modele_Oeuvres();
+			$modeleOeuvres= new Modele_oeuvres();
 			$data=$modeleOeuvres-> obtenirOeuvresCategorie($val);
 			$this->afficheVue("vueOeuvres", $data);
 			
@@ -183,7 +183,7 @@
 		
 		//affiche les oeuvres du Select lieu
 		public function afficheOeuvreArrondissement($val){
-			$modeleOeuvres= new Modele_Oeuvres();
+			$modeleOeuvres= new Modele_oeuvres();
 			$data=$modeleOeuvres-> obtenirOeuvresArrondissement($val);
 			$this->afficheVue("vueOeuvres", $data);
 		}

@@ -13,9 +13,11 @@
             <section class="flex row">
                 <section>
                     <?php
+
             if($data[0]["urlImage"]!=""){
                 
-        ?> <a href="./images/<?php echo $data[0][" urlImage "]?>.jpg"><img class="photo" src=" ./images/<?php echo $data[0]["urlImage"]?>.jpg" alt = " <?php echo $data[0]["titre"] ?>"/></a>
+        ?> <a href="images/<?php echo $data[0]["urlImage"]?>.jpg"><img class="photo" src=" ./images/<?php echo $data[0]["urlImage"]?>.jpg" alt = " <?php echo $data[0]["titre"] ?>"/></a>
+
                         <?php
             }
             else{
@@ -26,8 +28,10 @@
                 </section>
                 <ul>
                     <?php
+
             if(($data[0]["prenom"]&&$data[0]["nom"]!="")&&($data[0]["prenom"]!= null && $data[0]["nom"]!= null )){
                 echo "<li><span>Artiste: <a href='./index.php?Public&action=descriptionArtiste&id=". $data[0]["idArtiste"] . "'>". $data[0]["prenom"]." ".$data[0]["nom"]. "</a></span></li>";
+
             }
             else{
                 echo "<li><span>Atelier: ". $data[0]["nomCollectif"]."</span></li>";
