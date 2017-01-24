@@ -1,5 +1,5 @@
 <?php
-	class Controleur_AdminsAjax extends BaseControleur{	
+	class Controleur_AdminsAjax extends Controleur_Admins{	
 		//la fonction qui sera appelée par le routeur
 		public function traite(array $params){
             
