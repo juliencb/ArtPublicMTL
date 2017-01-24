@@ -186,7 +186,7 @@
 		public function afficheDetails($id){ 
 			$modelePublic = new Modele_public();
 			$data = $modelePublic->nomOeuvre($id);
-			$this->afficheVue("afficheDetails", $data);
+			$this->afficheVue("AfficheDetails", $data);
 
 		}
 

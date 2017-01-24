@@ -9,6 +9,7 @@ $(document).ready(function(){
 	echo "	var imagesArray = [";
 	$modeleCaroussel= new Modele_caroussel();
 	$data = $modeleCaroussel->imagesCaroussel();
+  
 	$separateur = "";
 	foreach($data as $imageCaroussel) {
 		echo $separateur."'". $imageCaroussel["urlImage"] ."'"; 

@@ -9,8 +9,9 @@
                 <section>
                     <?php
             if($data["urlImage"]!=""){
-                
-        ?> <a href="./images/<?php echo $data[" urlImage "]?>.jpg"><img class="photo" src=" ./images/<?php echo $data["urlImage"]?>.jpg" alt = " <?php echo $data["titre"] ?>"/></a>
+               
+        ?> <a href=".mages/<?php echo $data["urlImage"];?>"><img class="photo" src=" images/<?php echo $data["urlImage"]?>" alt = " <?php echo $data["titre"] ?>"/></a>
+                    
                         <?php
             }
             else{
@@ -21,8 +22,10 @@
                 </section>
                 <ul>
                     <?php
+                    
             if(($data["prenom"]&&$data["nom"]!="")&&($data["prenom"]!= null && $data["nom"]!= null )){
                 echo "<li><span>Artiste: <a href='./index.php?Public&action=descriptionArtiste&id=". $data["idArtiste"] . "'>". $data["prenom"]." ".$data["nom"]. "</a></span></li>";
+               
             }
             else{
                 echo "<li><span>Atelier: ". $data["nomCollectif"]."</span></li>";
