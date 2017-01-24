@@ -15,6 +15,6 @@
 				</div>
 			</div>
 		</form>
-	<i id="faSearch" class="fa fa-search detailIcone" aria-hidden="true"></i>
+		<i id="faSearch" class="fa fa-search detailIcone" aria-hidden="true"></i>
 	</div>
 </div>

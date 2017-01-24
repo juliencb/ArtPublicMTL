@@ -1,4 +1,4 @@
-<div class="flex row JCflex-end ml50 AIcenter tousEgal avecWrap JCspace-around" id="collectionOeuvres">
+<div class="collectionOeuvres" id="collectionOeuvres">
     <?php
                 $cont=0;
                 foreach($data as $oeuvres)
@@ -6,7 +6,7 @@
                    // if (strpos($oeuvres["titre"], 'Non titré') === true) {
                     if($cont<15)
                     {
-                        echo"<div class ='flex column ACcenter AIcenter avecWrap id='{$oeuvres["id"]}'>
+                        echo"<div class ='uneOeuvreCollection flex column ACcenter AIcenter avecWrap' id='{$oeuvres["id"]}'>
 
                             <a href='./index.php?public&action=details&id={$oeuvres["id"]}'>";
 

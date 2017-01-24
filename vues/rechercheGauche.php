@@ -1,4 +1,4 @@
-<div class="flex column">
+<div class="flex column rechercheMOB rechercheEcran">
 	<div id="resultatRecherche" class="resultatRecherche"></div>
 	<div class="flex iconeRecherche">
 		<form id="formRecherche" class="formRechercheSimple cacheMontreForm" method="POST">

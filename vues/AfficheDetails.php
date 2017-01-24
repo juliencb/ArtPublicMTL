@@ -1,11 +1,11 @@
-<article class="flex tousEgal column ml50">
+<article class="flex column mt30">
     <?php
    
         echo "<h1 class='ligneBas'>" . $data["titre"] . "</h1>";
         
     ?>
-        <section class="flex tousEgal">
-            <section class="flex row">
+        <section class="detailDuneOeuvre">
+            <section class="infosOeuvre">
                 <section>
                     <?php
             if($data["urlImage"]!=""){
@@ -93,4 +93,8 @@
         ?>
             </section>
         </section>
+		<section class="btnRetournerListeArtistes">
+			<a href="index.php?Public&action=listeOeuvres"><img src="./images/triangle-select.png" alt="Retourner à la liste des oeuvres" class="btnRetourner">
+			Retourner à la liste des oeuvres</a>
+		</section>
 </article>

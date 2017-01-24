@@ -1,5 +1,5 @@
 <!--commencer directement avec la div contenu-->
-<section id="descriptionArtiste" class="flex column">
+<section id="descriptionArtiste" class="descriptionArtiste flex column">
     <h1 class="bioArtiste">
 			<?php 
 				if (isset($data["prenom"]) && isset($data["nom"])){

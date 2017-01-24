@@ -31,10 +31,6 @@ body {
 	background-image: none;
 }
 
-.contenu{
-	height: 440px;
-}
-
 a{
 	text-decoration: none;
 	color: #000000;
@@ -49,13 +45,14 @@ ul {
 }
 /*------- HEADER -------*/
 #logo{
-	width: 50%;
+	width: 85%;
 	margin-top: 9px;
 }
 
 .ligne_noire{
-	margin-left: -20px;
-	margin-top: -15px;
+	margin-left: 0px;
+	margin-top: 0px;
+	max-width: 320px;
 }
 
 .reseauxSociauxHeader{
@@ -182,8 +179,8 @@ ul {
 }
 
 		/*------- HEADER PAS ACCUEIL -------*/
-.pas_accueil #logo{
-	width: 85%;
+.pas_accueil .entete{
+	display: block;
 }
 
 .pas_accueil .image_droite{
@@ -191,12 +188,18 @@ ul {
 }
 
 .pas_accueil .image_gauche{
-	position: absolute;
-    top: 46px;
-    left: -13px;
+	display: none;
+}
+
+.rechercheMOB{
+	display: block;
 }
 
 /*------- FOOTER -------*/
+footer{
+	padding: 23px 0;
+}
+
 .reseauxSocFooter{
 	width: 90px;
 	margin: 0px auto;
@@ -218,12 +221,28 @@ ul {
 /*------- PAGE DES OEUVRES -------*/
 
 .photo{
-	width: 40%;
+	width: 60%;
+	padding: 5px 0;
 }
 
 .hoverPhoto{
 	display: none;
 }
+
+.collectionOeuvres{
+	display: block;
+	margin-top: 50px;
+}
+
+.uneOeuvreCollection{
+}
+
+.detailDuneOeuvre{
+	margin-top: 10px;
+	display: block;
+	margin-left: 30px;
+}
+
 
 /*------- PAGE DES ARTISTES -------*/
 /*http://www.webcis.com.br/dividir-texto-colunas-css3.html*/
@@ -253,16 +272,33 @@ ul {
 #descriptionArtiste img {
     width: 40%;
     height: 40%;
+	margin-top: 10px;
 }
 
 .infosMonArtiste{
 	display: flex;
-	flex-flow : column-reverse;
+	flex-flow : column;
 }
 
 .infosMonArtiste p{
 	margin-top: 20px;
 	margin-right: 20px;
+}
+
+#descriptionArtiste .btnRetournerListeArtistes{
+	margin-left: 0px;
+}
+
+.btnRetournerListeArtistes{
+	font-size:.9em;
+	margin-top: 20px;
+	margin-left: 30px;
+}
+
+.btnRetourner, 
+#descriptionArtiste .btnRetourner{
+	width: 5%;
+	height: 5%;
 }
 
 /*------- PAGE À PROPOS -------*/

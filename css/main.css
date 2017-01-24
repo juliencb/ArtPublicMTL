@@ -56,6 +56,13 @@ ul {
     margin: 20px;
 }
 
+.pas_accueil .entete{
+	display: flex;
+	flex-flow : row;
+	align-content: space-between;
+}
+
+
 .photo {
     height: auto;
     width: auto;
@@ -110,6 +117,15 @@ ul {
     position: absolute;
     top: 105px;
     left: -13px;
+	display: block;
+}
+/*
+.lignes_menu{
+
+}*/
+
+.ligne_noire{
+	display: none;
 }
 
 .pas_accueil .image_droite {
@@ -231,6 +247,12 @@ ul {
     font-size: 1.2em;
 }
 
+#descriptionArtiste .btnRetourner{
+	width: 25px;
+	height: 15px;
+}
+
+
 .suggererOeuvre {
     float: left;
     position: absolute;
@@ -276,7 +298,7 @@ ul {
 }
 /**FIN PAGE DE LA BIO D'UN ARTISTE**/
 /**DÉBUT PAGE À PROPOS**/
-.descriptionPagePropos {
+.pas_accueil .pageAPropos p {
     font-size: 1.2em;
     margin: 20px 0px 40px 0px;
 	line-height: 25px;
@@ -370,6 +392,18 @@ ul {
 }
 /**FIN TEMPLATE GAUCHE**/
 /**Debut LISTEOEUVRES**/
+.collectionOeuvres{
+	display: flex;
+	flex-flow : row;
+	justify-content: space-around;
+	align-items: center;
+	flex-wrap: wrap;
+	margin-top: 0px;
+}
+
+.uneOeuvreCollection{
+	margin-top: 10px;
+}
 
 #collectionOeuvres .titrePage {
     border-bottom: 2px solid black;
@@ -386,6 +420,21 @@ ul {
     padding: 300x;
     width: 250px;
     height: 50px;
+}
+
+.detailDuneOeuvre{
+	margin-top: 30px;
+	display: flex;
+	margin-left: 10px;
+}
+
+.detailDuneOeuvre img{
+	
+}
+
+.infosOeuvre{
+	display: flex;
+	flex-flow : row;
 }
 /**FIN LISTEOEUVRES**/
 /**FOOTER***/
