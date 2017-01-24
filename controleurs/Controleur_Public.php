@@ -233,11 +233,5 @@
 			$data=$modeleOeuvres-> obtenirTousOeuvresArrondissement();
 			$this->afficheVue("pageCarte", $data);
 		}
-        
-        public function affichePageApropos(){
-            $modeleApropos = new Modele_propos();
-            $data = $modeleApropos->obtenirTousPagePropos();
-            $this->afficheVue("vuePropos", $data);
-        }
 	}
 ?>
