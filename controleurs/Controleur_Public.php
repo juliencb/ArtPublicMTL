@@ -60,7 +60,7 @@
                         
 					case "soumission":
 						$this->afficheVue("headerPasAccueil");
-						$this->afficheRecherche();
+						//$this->afficheRecherche();
 						$this->afficheSoumission();
 						break;		
                         

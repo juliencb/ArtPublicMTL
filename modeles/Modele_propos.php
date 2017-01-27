@@ -21,10 +21,10 @@
 				return false;
 			}
 		}
-		
-		public function insererPagePropos($sommesT, $sommesD, $missionT, $missionD, $joindreT, $joindreD, $partenaireT, $partenaireD){
+		        
+        public function insererPagePropos($sommesT, $sommesD, $missionT, $missionD, $joindreT, $joindreD, $partenaireT, $partenaireD){
 			try{
-				$stmt = $this->connexion->prepare("INSERT into a_propos(sommesT, sommesD, missionT, missionD, joindreT, joindreD, partenaireT, partenaireD) VALUES (:sommesT, :sommesD, :missionT, :missionD, :joindreT, :joindreD, :partenaireT, :partenaireD)");
+				$stmt = $this->connexion->prepare("UPDATE  a_propos SET sommesT = :sommesT, sommesD = :sommesD, missionT = :missionT, missionD = :missionD, joindreT = :joindreT, joindreD = :joindreD, partenaireT = :partenaireT, partenaireD = :partenaireD");
 				$stmt->execute(array(":sommesT" => $sommesT, ":sommesD" => $sommesD, ":missionT" => $missionT, ":missionD" => $missionD, ":joindreT" => $joindreT, ":joindreD" => $joindreD, ":partenaireT" => $partenaireT, ":partenaireD" => $partenaireD));
 				return 1;
 			}

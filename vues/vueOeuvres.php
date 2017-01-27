@@ -1,13 +1,13 @@
 <div class="collectionOeuvres" id="collectionOeuvres">
     <?php
     if($data){
-                $cont=0;
+               // $cont=0;
         
                 foreach($data as $oeuvres)
                 {
                    // if (strpos($oeuvres["titre"], 'Non titré') === true) {
-                    if($cont<15)
-                    {
+                    //if($cont<15)
+                    //{
                         echo"<div class ='uneOeuvreCollection flex column ACcenter AIcenter avecWrap' id='{$oeuvres["id"]}'>
 
                             <a href='./index.php?Public&action=details&id={$oeuvres["id"]}'>";
@@ -24,8 +24,8 @@
                                     <span class='nomArtistes '><a href='./index.php?public&action=descriptionArtiste&id={$oeuvres["idArtiste"]}'>, {$oeuvres["prenom"]} {$oeuvres["nom"]}</a></span>
                                 </div>
                         </div>";
-                        $cont++;
-                    }	
+                       // $cont++;
+                    //}	
                 }
     }
     else{

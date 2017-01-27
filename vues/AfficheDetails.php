@@ -1,4 +1,9 @@
 <article class="flex column mt30 pageUneOeuvre">
+    <?php 
+        
+    if( $data != null){
+    
+    ?>
     <script>
         <?php
                 echo "var donnees_carte =". json_encode($data);
@@ -82,6 +87,10 @@
                 </section>
             <?php
             }
+        }
+    else{
+        echo "Cette page n'existe pas.";
+    }
             ?>
 		<section class="btnRetournerListeArtistes">
 			<a href="index.php?Public&action=listeOeuvres"><img src="./images/triangle-select.png" alt="Retourner à la liste des oeuvres" class="btnRetourner">

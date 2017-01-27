@@ -12,6 +12,7 @@
 				$stmt = $this->connexion->prepare("SELECT oeuvre.id, idArtiste,titre, titreVariante, categorie.nom as categorie, urlImage, artiste.prenom, artiste.nom, artiste.nomCollectif
 													FROM oeuvre JOIN artiste ON idArtiste = artiste.id 
                                                     JOIN categorie ON oeuvre.categorie = categorie.id WHERE oeuvre.valide = 1");
+               // $stmt = $this->connexion->prepare("");
 				$stmt->execute();
 				return $stmt->fetchAll();
 			}		
